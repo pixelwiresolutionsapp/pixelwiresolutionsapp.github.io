@@ -251,6 +251,85 @@
     .btn-send:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
     .btn-cancel { background: #f2f4f7; color: #344054; }
     .btn-cancel:hover { background: #e4e7ec; }
+    .social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      transition: all .25s;
+      text-decoration: none;
+    }
+    .social-icons a:hover { background: rgba(255,255,255,.3); transform: scale(1.12); }
+    .social-icons svg { width: 20px; height: 20px; fill: #fff; }
+    .share-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      justify-content: center;
+    }
+    .share-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 2px solid #e4e7ec;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #344054;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .share-btn:hover { border-color: #1a1a2e; background: #f9fafb; }
+    .share-btn svg { width: 18px; height: 18px; }
+    .share-btn.ig:hover { border-color: #E1306C; color: #E1306C; }
+    .share-btn.fb:hover { border-color: #1877F2; color: #1877F2; }
+    .share-btn.tt:hover { border-color: #000; color: #000; }
+    .share-btn.ig svg { fill: #E1306C; }
+    .share-btn.fb svg { fill: #1877F2; }
+    .share-btn.tt svg { fill: #000; }
+    .order-channel-label {
+      font-size: .8rem;
+      color: #667085;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .channel-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .channel-tab {
+      flex: 1;
+      padding: 10px 8px;
+      border: 2px solid #d0d5dd;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s;
+      font-weight: 600;
+      font-size: .82rem;
+      background: #fff;
+    }
+    .channel-tab:hover, .channel-tab.selected {
+      border-color: #1a1a2e;
+      background: #f0f2f5;
+      color: #1a1a2e;
+    }
+    .channel-tab.selected { background: #1a1a2e; color: #fff; }
+    .channel-tab svg { width: 18px; height: 18px; vertical-align: middle; margin-right: 4px; }
     .footer {
       text-align: center;
       padding: 24px 16px;
@@ -259,6 +338,25 @@
       border-top: 1px solid #e4e7ec;
       background: #fff;
     }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #667085;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+    .footer-social a:hover { color: #1a1a2e; }
+    .footer-social svg { width: 20px; height: 20px; }
     .toast {
       position: fixed;
       bottom: 24px;
@@ -291,7 +389,18 @@
 <body>
   <header class="header">
     <h1>Laptop Bags &amp; Cases</h1>
-    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Tap any bag to order via WhatsApp</p>
+    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://wa.me/18767731193" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+      </a>
+    </div>
   </header>
   <div class="wa-bar">
     <span>&#128172; Orders sent via WhatsApp to:</span>
@@ -316,19 +425,68 @@
       <input type="text" id="custName" placeholder="Enter your full name" />
       <label for="custQty">Quantity</label>
       <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
-      <label>Send Order To</label>
-      <div class="phone-options">
-        <div class="phone-opt selected" data-phone="18767731193" onclick="selectPhone(this)">(876) 773-1193</div>
-        <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+      <div class="order-channel-label">Order via</div>
+      <div class="channel-tabs" id="channelTabs">
+        <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
+          <svg viewBox="0 0 24 24" style="fill:#25d366;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          WhatsApp
+        </div>
+        <div class="channel-tab" data-channel="messenger" onclick="selectChannel(this)">
+          <svg viewBox="0 0 24 24" style="fill:#1877F2;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15.16.14.26.34.27.56l.05 1.74c.02.59.63.97 1.17.73l1.94-.81c.16-.07.34-.09.51-.05.9.25 1.85.38 2.83.38h.08C17.64 21.4 22 17.27 22 11.7 22 6.13 17.64 2 12 2zm5.89 7.54l-2.83 4.48c-.45.71-1.39.88-2.07.37l-2.25-1.69a.75.75 0 00-.9 0l-3.04 2.31c-.42.32-.97-.2-.68-.65l2.83-4.48c.45-.71 1.39-.88 2.07-.37l2.25 1.69a.75.75 0 00.9 0l3.04-2.31c.42-.32.97.2.68.65z"/></svg>
+          Messenger
+        </div>
+        <div class="channel-tab" data-channel="instagram" onclick="selectChannel(this)">
+          <svg viewBox="0 0 24 24" style="fill:#E1306C;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </div>
+      </div>
+      <div id="waPhoneSection">
+        <label>Send Order To</label>
+        <div class="phone-options">
+          <div class="phone-opt selected" data-phone="18767731193" onclick="selectPhone(this)">(876) 773-1193</div>
+          <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+        </div>
+      </div>
+      <div id="messengerInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+        Your order message will open in <b>Facebook Messenger</b> to <b>Pixel Wire Solutions</b>.
+      </div>
+      <div id="igInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+        This will open <b>Instagram DM</b> to <b>@pixelwiresolutions</b> with your order details.
       </div>
       <div class="modal-actions">
         <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-        <button class="btn-send" onclick="sendWhatsApp()">&#128172; Send on WhatsApp</button>
+        <button class="btn-send" id="btnSend" onclick="sendOrder()">&#128172; Send on WhatsApp</button>
+      </div>
+      <div class="share-row">
+        <a class="share-btn ig" id="shareIG" href="#" target="_blank" title="Share on Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
+        <a class="share-btn fb" id="shareFB" href="#" target="_blank" title="Share on Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a class="share-btn tt" id="shareCopy" href="#" onclick="copyProductLink(event); return false;" title="Copy product link">
+          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          Copy Link
+        </a>
       </div>
     </div>
   </div>
   <div class="toast" id="toast"></div>
-  <footer class="footer">&copy; 2025 &#8212; All rights reserved. Prices are in JMD.</footer>
+  <footer class="footer">
+    &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @pixelwiresolutions
+      </a>
+      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        pixelwiresolutions
+      </a>
+    </div>
+  </footer>
 
   <script>
   const products = [
@@ -359,6 +517,7 @@
   ];
 
   let selectedPhone = "18767731193";
+  let selectedChannel = "whatsapp";
   let currentProduct = null;
 
   function renderCards(filter) {
@@ -395,6 +554,14 @@
     document.getElementById("custName").value = "";
     document.getElementById("custQty").value = "1";
     document.getElementById("modalOverlay").classList.add("open");
+    selectedChannel = "whatsapp";
+    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+    document.getElementById("waPhoneSection").style.display = "block";
+    document.getElementById("messengerInfo").style.display = "none";
+    document.getElementById("igInfo").style.display = "none";
+    document.getElementById("btnSend").innerHTML = "&#128172; Send on WhatsApp";
+    setupShareLinks();
   }
 
   function closeModal() {
@@ -409,28 +576,58 @@
     selectedPhone = el.getAttribute("data-phone");
   }
 
-  function sendWhatsApp() {
+  function selectChannel(el) {
+    var tabs = document.querySelectorAll(".channel-tab");
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+    el.classList.add("selected");
+    selectedChannel = el.getAttribute("data-channel");
+    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+    var btn = document.getElementById("btnSend");
+    if (selectedChannel === "whatsapp") btn.innerHTML = "&#128172; Send on WhatsApp";
+    else if (selectedChannel === "messenger") btn.innerHTML = "&#128172; Send on Messenger";
+    else btn.innerHTML = "&#128172; Send on Instagram";
+  }
+
+  function getOrderMsg() {
     var name = document.getElementById("custName").value.trim();
     var qty = document.getElementById("custQty").value.trim();
-    if (!name) { showToast("Please enter your name"); return; }
-    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return; }
+    if (!name) { showToast("Please enter your name"); return null; }
+    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
     var p = currentProduct;
     var total = (p.price * Number(qty)).toFixed(2);
-    var msg = encodeURIComponent(
-      "*NEW BAG ORDER*\n\n" +
-      "*Customer:* " + name + "\n" +
-      "*Product:* " + p.brand + " " + p.name + "\n" +
-      "*Model:* " + p.model + "\n" +
-      "*Fits:* " + p.size + " Laptop\n" +
-      "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
-      "*Quantity:* " + qty + "\n" +
-      "*Total:* $" + Number(total).toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" +
-      "Please confirm availability and payment details."
-    );
-    window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
-    closeModal();
-    showToast("Opening WhatsApp...");
+    return {
+      text: "*NEW BAG ORDER*\n\n" +
+        "*Customer:* " + name + "\n" +
+        "*Product:* " + p.brand + " " + p.name + "\n" +
+        "*Model:* " + p.model + "\n" +
+        "*Fits:* " + p.size + " Laptop\n" +
+        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+        "*Quantity:* " + qty + "\n" +
+        "*Total:* $" + Number(total).toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" +
+        "Please confirm availability and payment details."
+    };
   }
+
+  function sendOrder() {
+    var order = getOrderMsg();
+    if (!order) return;
+    var msg = encodeURIComponent(order.text);
+    if (selectedChannel === "whatsapp") {
+      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+      showToast("Opening WhatsApp...");
+    } else if (selectedChannel === "messenger") {
+      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+      showToast("Opening Messenger...");
+    } else if (selectedChannel === "instagram") {
+      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+      showToast("Opening Instagram DM...");
+    }
+    closeModal();
+  }
+
+  function sendWhatsApp() { sendOrder(); }
 
   function showToast(msg) {
     var t = document.getElementById("toast");
@@ -450,6 +647,27 @@
   document.getElementById("modalOverlay").addEventListener("click", function(e) {
     if (e.target === e.currentTarget) closeModal();
   });
+
+  function setupShareLinks() {
+    var p = currentProduct;
+    if (!p) return;
+    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+    var pageUrl = encodeURIComponent(window.location.href);
+    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+  }
+
+  function copyProductLink(e) {
+    e.preventDefault();
+    var p = currentProduct;
+    if (!p) return;
+    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+    } else {
+      showToast("Long-press to copy the link");
+    }
+  }
 
   renderCards();
   </script>
