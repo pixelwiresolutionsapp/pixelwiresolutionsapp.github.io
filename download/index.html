@@ -129,12 +129,15 @@
       font-size: .85rem;
       font-weight: 800;
     }
-    .bag-icon {
-      font-size: 4rem;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,.15));
+    .card-img img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.18));
       transition: transform .3s;
+      border-radius: 6px;
     }
-    .card:hover .bag-icon { transform: scale(1.1) rotate(-3deg); }
+    .card:hover .card-img img { transform: scale(1.08); }
     .card-body {
       padding: 16px 18px 18px;
       flex: 1;
@@ -276,7 +279,7 @@
     @media (max-width: 600px) {
       .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
       .card-img { height: 140px; }
-      .bag-icon { font-size: 2.8rem; }
+      .card-img img { max-width: 80%; max-height: 80%; }
       .card-body { padding: 12px 13px 14px; }
       .card-body h3 { font-size: .88rem; }
       .buy-btn { padding: 9px 12px; font-size: .8rem; }
@@ -329,30 +332,30 @@
 
   <script>
   const products = [
-    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", icon: "\u{1F4C6}", size: '14.1"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
-    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", icon: "\u{1F4C6}", size: '15.6"', desc: "Textured surface with enhanced shock absorption." },
-    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", icon: "\u{1F4C6}", size: '15.6"', desc: "Minimalist rectangular design with smooth finish." },
-    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", icon: "\u{1F4C6}", size: '15.6"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
-    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", icon: "\u{1F4BC}", size: '15.6"', desc: "Messenger bag style with buckle closures and shoulder strap." },
-    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", icon: "\u{1F4BC}", size: '15.6"', desc: "Slim profile briefcase with front organizer pocket." },
-    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", icon: "\u{1F392}", size: '15.6"', desc: "Light grey backpack with padded shoulder straps." },
-    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", icon: "\u{1F392}", size: '15.6"', desc: "Navy blue classic backpack with multiple compartments." },
-    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Sleek black design with matching accessory pouch." },
-    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", icon: "\u{1F392}", size: '15.6"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
-    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", icon: "\u{1F392}", size: '15.6"', desc: "Casual everyday backpack with multiple zippered compartments." },
-    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Athletic sporty design with breathable mesh backing." },
-    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Structured business-casual backpack with accessory case." },
-    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Professional executive style with extensive organization." },
-    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Business-oriented design with clean lines." },
-    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", icon: "\u{1F392}", size: '15.6"', desc: "Modern minimalist design with sleek profile." },
-    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", icon: "\u{1F392}", size: '15.6"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
-    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Expandable design with zippers to increase capacity." },
-    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", icon: "\u{1F45C}", size: '15.6"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
-    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Rugged durable design with multiple external pockets." },
-    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", icon: "\u{1F392}", size: '15.6"', desc: "Premium leather-like finish, vintage-inspired design." },
-    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", icon: "\u{1F4BC}", size: '15.6"', desc: "Eco-friendly construction using sustainable materials." },
-    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", icon: "\u{1F4BC}", size: '15"', desc: "Ultra-slim professional briefcase with minimal bulk." },
-    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", icon: "\u{1F392}", size: '15.6"', desc: "Environmentally friendly with Eco Loop materials." }
+    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", img: "https://sfile.chatglm.cn/images-ppt/ab9705780db1.png", size: '14.1"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", img: "https://sfile.chatglm.cn/images-ppt/511320742f17.jpg", size: '15.6"', desc: "Textured surface with enhanced shock absorption." },
+    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg", size: '15.6"', desc: "Minimalist rectangular design with smooth finish." },
+    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", img: "https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg", size: '15.6"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", img: "https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg", size: '15.6"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", img: "https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg", size: '15.6"', desc: "Slim profile briefcase with front organizer pocket." },
+    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", img: "https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg", size: '15.6"', desc: "Light grey backpack with padded shoulder straps." },
+    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", img: "https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg", size: '15.6"', desc: "Navy blue classic backpack with multiple compartments." },
+    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg", size: '15.6"', desc: "Sleek black design with matching accessory pouch." },
+    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", img: "https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg", size: '15.6"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", img: "https://sfile.chatglm.cn/images-ppt/566273b95e89.png", size: '15.6"', desc: "Casual everyday backpack with multiple zippered compartments." },
+    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg", size: '15.6"', desc: "Athletic sporty design with breathable mesh backing." },
+    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/68ea16cc6fa1.jpeg", size: '15.6"', desc: "Structured business-casual backpack with accessory case." },
+    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg", size: '15.6"', desc: "Professional executive style with extensive organization." },
+    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg", size: '15.6"', desc: "Business-oriented design with clean lines." },
+    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", img: "https://sfile.chatglm.cn/images-ppt/ab13bb88ab4a.jpg", size: '15.6"', desc: "Modern minimalist design with sleek profile." },
+    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", img: "https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg", size: '15.6"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg", size: '15.6"', desc: "Expandable design with zippers to increase capacity." },
+    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", img: "https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg", size: '15.6"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/dca51c002750.jpg", size: '15.6"', desc: "Rugged durable design with multiple external pockets." },
+    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", img: "https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg", size: '15.6"', desc: "Premium leather-like finish, vintage-inspired design." },
+    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", img: "https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg", size: '15.6"', desc: "Eco-friendly construction using sustainable materials." },
+    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg", size: '15"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg", size: '15.6"', desc: "Environmentally friendly with Eco Loop materials." }
   ];
 
   let selectedPhone = "18767731193";
@@ -369,7 +372,7 @@
       html += '<div class="card" onclick="openModal(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">';
       html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44);">';
       html += '<span class="brand-tag">' + p.brand + '</span>';
-      html += '<span class="bag-icon">' + p.icon + '</span>';
+      html += '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" />';
       html += '<span class="price-tag">$' + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + '</span>';
       html += '</div>';
       html += '<div class="card-body">';
