@@ -1,0 +1,856 @@
+     1→<!DOCTYPE html>
+     2→<html lang="en">
+     3→<head>
+     4→  <meta charset="UTF-8" />
+     5→  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     6→  <title>Klipxtreme &amp; More | Laptop Bags &amp; Cases</title>
+     7→  <meta name="description" content="Shop laptop bags, sleeves, backpacks and cases from Klipxtreme, Targus, HP &amp; Dell. Order via WhatsApp." />
+     8→  <style>
+     9→    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    10→    html { scroll-behavior: smooth; }
+    11→    body {
+    12→      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    13→      background: #f0f2f5;
+    14→      color: #1a1a2e;
+    15→      line-height: 1.5;
+    16→      min-height: 100vh;
+    17→    }
+    18→    .header {
+    19→      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    20→      color: #fff;
+    21→      padding: 28px 20px 22px;
+    22→      text-align: center;
+    23→      position: sticky;
+    24→      top: 0;
+    25→      z-index: 100;
+    26→      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    27→    }
+    28→    .header h1 {
+    29→      font-size: clamp(1.4rem, 4vw, 2.2rem);
+    30→      font-weight: 800;
+    31→      letter-spacing: -0.5px;
+    32→      margin-bottom: 4px;
+    33→    }
+    34→    .header p {
+    35→      font-size: 0.95rem;
+    36→      opacity: .85;
+    37→      max-width: 600px;
+    38→      margin: 0 auto;
+    39→    }
+    40→    .wa-bar {
+    41→      background: #075e54;
+    42→      color: #fff;
+    43→      text-align: center;
+    44→      padding: 10px 16px;
+    45→      font-size: .88rem;
+    46→      display: flex;
+    47→      align-items: center;
+    48→      justify-content: center;
+    49→      gap: 10px;
+    50→      flex-wrap: wrap;
+    51→    }
+    52→    .wa-bar a { color: #dcf8c6; text-decoration: underline; font-weight: 600; }
+    53→    .wa-bar a:hover { color: #fff; }
+    54→    .filter-bar {
+    55→      display: flex;
+    56→      justify-content: center;
+    57→      gap: 8px;
+    58→      padding: 18px 16px 10px;
+    59→      flex-wrap: wrap;
+    60→    }
+    61→    .filter-btn {
+    62→      border: 2px solid #d0d5dd;
+    63→      background: #fff;
+    64→      border-radius: 24px;
+    65→      padding: 7px 18px;
+    66→      font-size: .85rem;
+    67→      font-weight: 600;
+    68→      cursor: pointer;
+    69→      transition: all .2s;
+    70→      color: #344054;
+    71→    }
+    72→    .filter-btn:hover, .filter-btn.active {
+    73→      background: #1a1a2e;
+    74→      color: #fff;
+    75→      border-color: #1a1a2e;
+    76→    }
+    77→    .grid {
+    78→      display: grid;
+    79→      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    80→      gap: 20px;
+    81→      padding: 14px 20px 40px;
+    82→      max-width: 1280px;
+    83→      margin: 0 auto;
+    84→    }
+    85→    .card {
+    86→      background: #fff;
+    87→      border-radius: 16px;
+    88→      overflow: hidden;
+    89→      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    90→      display: flex;
+    91→      flex-direction: column;
+    92→      transition: transform .22s, box-shadow .22s;
+    93→      cursor: pointer;
+    94→      position: relative;
+    95→    }
+    96→    .card:hover {
+    97→      transform: translateY(-5px);
+    98→      box-shadow: 0 8px 30px rgba(0,0,0,.13);
+    99→    }
+   100→    .card-img {
+   101→      height: 190px;
+   102→      display: flex;
+   103→      align-items: center;
+   104→      justify-content: center;
+   105→      position: relative;
+   106→      overflow: hidden;
+   107→    }
+   108→    .card-img .brand-tag {
+   109→      position: absolute;
+   110→      top: 12px;
+   111→      left: 12px;
+   112→      background: rgba(255,255,255,.92);
+   113→      padding: 3px 10px;
+   114→      border-radius: 20px;
+   115→      font-size: .7rem;
+   116→      font-weight: 700;
+   117→      text-transform: uppercase;
+   118→      letter-spacing: .5px;
+   119→      color: #1a1a2e;
+   120→    }
+   121→    .card-img .price-tag {
+   122→      position: absolute;
+   123→      bottom: 12px;
+   124→      right: 12px;
+   125→      background: #1a1a2e;
+   126→      color: #25d366;
+   127→      padding: 5px 12px;
+   128→      border-radius: 20px;
+   129→      font-size: .85rem;
+   130→      font-weight: 800;
+   131→    }
+   132→    .card-img img {
+   133→      max-width: 85%;
+   134→      max-height: 85%;
+   135→      object-fit: contain;
+   136→      filter: drop-shadow(0 4px 10px rgba(0,0,0,.18));
+   137→      transition: transform .3s;
+   138→      border-radius: 6px;
+   139→    }
+   140→    .card:hover .card-img img { transform: scale(1.08); }
+   141→    .card-body {
+   142→      padding: 16px 18px 18px;
+   143→      flex: 1;
+   144→      display: flex;
+   145→      flex-direction: column;
+   146→      gap: 6px;
+   147→    }
+   148→    .card-body .model { font-size: .72rem; color: #667085; font-weight: 500; letter-spacing: .3px; }
+   149→    .card-body h3 { font-size: 1rem; font-weight: 700; line-height: 1.3; color: #101828; }
+   150→    .card-body .desc { font-size: .82rem; color: #475467; flex: 1; }
+   151→    .card-body .size-info {
+   152→      font-size: .78rem;
+   153→      color: #667085;
+   154→      background: #f9fafb;
+   155→      padding: 4px 10px;
+   156→      border-radius: 8px;
+   157→      display: inline-block;
+   158→      width: fit-content;
+   159→    }
+   160→    .buy-btn {
+   161→      display: flex;
+   162→      align-items: center;
+   163→      justify-content: center;
+   164→      gap: 8px;
+   165→      margin-top: 10px;
+   166→      padding: 11px 16px;
+   167→      border: none;
+   168→      border-radius: 12px;
+   169→      font-size: .9rem;
+   170→      font-weight: 700;
+   171→      cursor: pointer;
+   172→      transition: all .2s;
+   173→      background: linear-gradient(135deg, #25d366, #128c7e);
+   174→      color: #fff;
+   175→      width: 100%;
+   176→    }
+   177→    .buy-btn:hover {
+   178→      background: linear-gradient(135deg, #128c7e, #075e54);
+   179→      box-shadow: 0 4px 15px rgba(37,211,102,.35);
+   180→    }
+   181→    .buy-btn svg { width: 20px; height: 20px; fill: #fff; }
+   182→    .modal-overlay {
+   183→      display: none;
+   184→      position: fixed;
+   185→      inset: 0;
+   186→      background: rgba(0,0,0,.55);
+   187→      z-index: 200;
+   188→      align-items: center;
+   189→      justify-content: center;
+   190→      padding: 20px;
+   191→    }
+   192→    .modal-overlay.open { display: flex; }
+   193→    .modal {
+   194→      background: #fff;
+   195→      border-radius: 20px;
+   196→      padding: 32px 28px 28px;
+   197→      max-width: 420px;
+   198→      width: 100%;
+   199→      text-align: center;
+   200→      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+   201→      animation: modalIn .3s ease;
+   202→    }
+   203→    @keyframes modalIn {
+   204→      from { opacity: 0; transform: scale(.92) translateY(20px); }
+   205→      to { opacity: 1; transform: scale(1) translateY(0); }
+   206→    }
+   207→    .modal h2 { font-size: 1.25rem; margin-bottom: 4px; }
+   208→    .modal .modal-product { font-size: .95rem; color: #475467; margin-bottom: 6px; }
+   209→    .modal .modal-price { font-size: 1.3rem; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; }
+   210→    .modal label { display: block; text-align: left; font-size: .85rem; font-weight: 600; color: #344054; margin-bottom: 6px; }
+   211→    .modal input[type="text"] {
+   212→      width: 100%;
+   213→      padding: 11px 14px;
+   214→      border: 2px solid #d0d5dd;
+   215→      border-radius: 12px;
+   216→      font-size: .95rem;
+   217→      margin-bottom: 14px;
+   218→      outline: none;
+   219→      transition: border-color .2s;
+   220→    }
+   221→    .modal input[type="text"]:focus { border-color: #25d366; }
+   222→    .phone-options { display: flex; gap: 10px; margin-bottom: 20px; }
+   223→    .phone-opt {
+   224→      flex: 1;
+   225→      padding: 12px 10px;
+   226→      border: 2px solid #d0d5dd;
+   227→      border-radius: 12px;
+   228→      text-align: center;
+   229→      cursor: pointer;
+   230→      transition: all .2s;
+   231→      font-weight: 600;
+   232→      font-size: .88rem;
+   233→    }
+   234→    .phone-opt:hover, .phone-opt.selected {
+   235→      border-color: #25d366;
+   236→      background: #f0fdf4;
+   237→      color: #075e54;
+   238→    }
+   239→    .modal-actions { display: flex; gap: 10px; }
+   240→    .modal-actions button {
+   241→      flex: 1;
+   242→      padding: 12px;
+   243→      border: none;
+   244→      border-radius: 12px;
+   245→      font-size: .92rem;
+   246→      font-weight: 700;
+   247→      cursor: pointer;
+   248→      transition: all .2s;
+   249→    }
+   250→    .btn-send { background: linear-gradient(135deg, #25d366, #128c7e); color: #fff; }
+   251→    .btn-send:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   252→    .btn-cancel { background: #f2f4f7; color: #344054; }
+   253→    .btn-cancel:hover { background: #e4e7ec; }
+   254→    .social-icons {
+   255→      display: flex;
+   256→      align-items: center;
+   257→      justify-content: center;
+   258→      gap: 14px;
+   259→      margin-top: 12px;
+   260→    }
+   261→    .social-icons a {
+   262→      display: flex;
+   263→      align-items: center;
+   264→      justify-content: center;
+   265→      width: 38px;
+   266→      height: 38px;
+   267→      border-radius: 50%;
+   268→      background: rgba(255,255,255,.15);
+   269→      transition: all .25s;
+   270→      text-decoration: none;
+   271→    }
+   272→    .social-icons a:hover { background: rgba(255,255,255,.3); transform: scale(1.12); }
+   273→    .social-icons svg { width: 20px; height: 20px; fill: #fff; }
+   274→    .share-row {
+   275→      display: flex;
+   276→      gap: 8px;
+   277→      margin-top: 14px;
+   278→      justify-content: center;
+   279→    }
+   280→    .share-btn {
+   281→      display: flex;
+   282→      align-items: center;
+   283→      gap: 6px;
+   284→      padding: 8px 14px;
+   285→      border: 2px solid #e4e7ec;
+   286→      border-radius: 10px;
+   287→      background: #fff;
+   288→      cursor: pointer;
+   289→      font-size: .8rem;
+   290→      font-weight: 600;
+   291→      color: #344054;
+   292→      transition: all .2s;
+   293→      text-decoration: none;
+   294→    }
+   295→    .share-btn:hover { border-color: #1a1a2e; background: #f9fafb; }
+   296→    .share-btn svg { width: 18px; height: 18px; }
+   297→    .share-btn.ig:hover { border-color: #E1306C; color: #E1306C; }
+   298→    .share-btn.fb:hover { border-color: #1877F2; color: #1877F2; }
+   299→    .share-btn.tt:hover { border-color: #000; color: #000; }
+   300→    .share-btn.ig svg { fill: #E1306C; }
+   301→    .share-btn.fb svg { fill: #1877F2; }
+   302→    .share-btn.tt svg { fill: #000; }
+   303→    .order-channel-label {
+   304→      font-size: .8rem;
+   305→      color: #667085;
+   306→      margin-bottom: 8px;
+   307→      font-weight: 600;
+   308→    }
+   309→    .channel-tabs {
+   310→      display: flex;
+   311→      gap: 8px;
+   312→      margin-bottom: 16px;
+   313→    }
+   314→    .channel-tab {
+   315→      flex: 1;
+   316→      padding: 10px 8px;
+   317→      border: 2px solid #d0d5dd;
+   318→      border-radius: 12px;
+   319→      text-align: center;
+   320→      cursor: pointer;
+   321→      transition: all .2s;
+   322→      font-weight: 600;
+   323→      font-size: .82rem;
+   324→      background: #fff;
+   325→    }
+   326→    .channel-tab:hover, .channel-tab.selected {
+   327→      border-color: #1a1a2e;
+   328→      background: #f0f2f5;
+   329→      color: #1a1a2e;
+   330→    }
+   331→    .channel-tab.selected { background: #1a1a2e; color: #fff; }
+   332→    .channel-tab svg { width: 18px; height: 18px; vertical-align: middle; margin-right: 4px; }
+   333→    .footer {
+   334→      text-align: center;
+   335→      padding: 24px 16px;
+   336→      font-size: .82rem;
+   337→      color: #667085;
+   338→      border-top: 1px solid #e4e7ec;
+   339→      background: #fff;
+   340→    }
+   341→    .footer-social {
+   342→      display: flex;
+   343→      align-items: center;
+   344→      justify-content: center;
+   345→      gap: 16px;
+   346→      margin-top: 12px;
+   347→    }
+   348→    .footer-social a {
+   349→      display: flex;
+   350→      align-items: center;
+   351→      gap: 6px;
+   352→      color: #667085;
+   353→      text-decoration: none;
+   354→      font-weight: 600;
+   355→      font-size: .85rem;
+   356→      transition: color .2s;
+   357→    }
+   358→    .footer-social a:hover { color: #1a1a2e; }
+   359→    .footer-social svg { width: 20px; height: 20px; }
+   360→    .card-img .photo-count {
+   361→      position: absolute;
+   362→      bottom: 12px;
+   363→      left: 12px;
+   364→      background: rgba(0,0,0,.6);
+   365→      color: #fff;
+   366→      padding: 3px 10px;
+   367→      border-radius: 20px;
+   368→      font-size: .72rem;
+   369→      font-weight: 700;
+   370→      backdrop-filter: blur(4px);
+   371→      cursor: pointer;
+   372→      transition: background .2s;
+   373→    }
+   374→    .card-img .photo-count:hover { background: rgba(0,0,0,.8); }
+   375→    .lightbox-overlay {
+   376→      display: none;
+   377→      position: fixed;
+   378→      inset: 0;
+   379→      background: rgba(0,0,0,.92);
+   380→      z-index: 500;
+   381→      align-items: center;
+   382→      justify-content: center;
+   383→      flex-direction: column;
+   384→    }
+   385→    .lightbox-overlay.open { display: flex; }
+   386→    .lightbox-top {
+   387→      position: absolute;
+   388→      top: 0;
+   389→      left: 0;
+   390→      right: 0;
+   391→      display: flex;
+   392→      align-items: center;
+   393→      justify-content: space-between;
+   394→      padding: 16px 20px;
+   395→      z-index: 510;
+   396→    }
+   397→    .lightbox-title {
+   398→      color: #fff;
+   399→      font-size: .95rem;
+   400→      font-weight: 700;
+   401→      max-width: 70%;
+   402→      overflow: hidden;
+   403→      text-overflow: ellipsis;
+   404→      white-space: nowrap;
+   405→    }
+   406→    .lightbox-close {
+   407→      width: 40px;
+   408→      height: 40px;
+   409→      border-radius: 50%;
+   410→      border: none;
+   411→      background: rgba(255,255,255,.15);
+   412→      color: #fff;
+   413→      font-size: 1.4rem;
+   414→      cursor: pointer;
+   415→      display: flex;
+   416→      align-items: center;
+   417→      justify-content: center;
+   418→      transition: background .2s;
+   419→    }
+   420→    .lightbox-close:hover { background: rgba(255,255,255,.3); }
+   421→    .lightbox-img-wrap {
+   422→      position: relative;
+   423→      width: 90vw;
+   424→      max-width: 600px;
+   425→      height: 60vh;
+   426→      max-height: 500px;
+   427→      display: flex;
+   428→      align-items: center;
+   429→      justify-content: center;
+   430→      overflow: hidden;
+   431→    }
+   432→    .lightbox-img-wrap img {
+   433→      max-width: 90%;
+   434→      max-height: 90%;
+   435→      object-fit: contain;
+   436→      border-radius: 10px;
+   437→      transition: opacity .25s, transform .25s;
+   438→      user-select: none;
+   439→      -webkit-user-drag: none;
+   440→    }
+   441→    .lightbox-img-wrap img.slide-left {
+   442→      opacity: 0;
+   443→      transform: translateX(-40px);
+   444→    }
+   445→    .lightbox-img-wrap img.slide-right {
+   446→      opacity: 0;
+   447→      transform: translateX(40px);
+   448→    }
+   449→    .lb-arrow {
+   450→      position: absolute;
+   451→      top: 50%;
+   452→      transform: translateY(-50%);
+   453→      width: 44px;
+   454→      height: 44px;
+   455→      border-radius: 50%;
+   456→      border: none;
+   457→      background: rgba(255,255,255,.15);
+   458→      color: #fff;
+   459→      font-size: 1.5rem;
+   460→      cursor: pointer;
+   461→      display: flex;
+   462→      align-items: center;
+   463→      justify-content: center;
+   464→      transition: background .2s;
+   465→      z-index: 505;
+   466→      backdrop-filter: blur(4px);
+   467→    }
+   468→    .lb-arrow:hover { background: rgba(255,255,255,.3); }
+   469→    .lb-arrow.left { left: 10px; }
+   470→    .lb-arrow.right { right: 10px; }
+   471→    .lightbox-dots {
+   472→      display: flex;
+   473→      gap: 8px;
+   474→      margin-top: 16px;
+   475→    }
+   476→    .lightbox-dots .dot {
+   477→      width: 10px;
+   478→      height: 10px;
+   479→      border-radius: 50%;
+   480→      background: rgba(255,255,255,.3);
+   481→      cursor: pointer;
+   482→      transition: all .2s;
+   483→      border: none;
+   484→    }
+   485→    .lightbox-dots .dot.active {
+   486→      background: #fff;
+   487→      transform: scale(1.3);
+   488→    }
+   489→    .lightbox-counter {
+   490→      color: rgba(255,255,255,.7);
+   491→      font-size: .85rem;
+   492→      margin-top: 10px;
+   493→      font-weight: 600;
+   494→    }
+   495→    .lightbox-order-bar {
+   496→      position: absolute;
+   497→      bottom: 0;
+   498→      left: 0;
+   499→      right: 0;
+   500→      padding: 16px 20px;
+   501→      background: linear-gradient(transparent, rgba(0,0,0,.7));
+   502→      display: flex;
+   503→      align-items: center;
+   504→      justify-content: space-between;
+   505→      gap: 12px;
+   506→    }
+   507→    .lightbox-order-bar .lb-price {
+   508→      color: #25d366;
+   509→      font-size: 1.2rem;
+   510→      font-weight: 800;
+   511→    }
+   512→    .lightbox-order-bar .lb-order-btn {
+   513→      padding: 10px 24px;
+   514→      border: none;
+   515→      border-radius: 12px;
+   516→      background: linear-gradient(135deg, #25d366, #128c7e);
+   517→      color: #fff;
+   518→      font-weight: 700;
+   519→      font-size: .9rem;
+   520→      cursor: pointer;
+   521→      transition: box-shadow .2s;
+   522→    }
+   523→    .lightbox-order-bar .lb-order-btn:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   524→    .toast {
+   525→      position: fixed;
+   526→      bottom: 24px;
+   527→      left: 50%;
+   528→      transform: translateX(-50%) translateY(80px);
+   529→      background: #1a1a2e;
+   530→      color: #25d366;
+   531→      padding: 12px 24px;
+   532→      border-radius: 12px;
+   533→      font-weight: 600;
+   534→      font-size: .9rem;
+   535→      z-index: 600;
+   536→      opacity: 0;
+   537→      transition: all .35s ease;
+   538→      pointer-events: none;
+   539→    }
+   540→    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+   541→    @media (max-width: 600px) {
+   542→      .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
+   543→      .card-img { height: 140px; }
+   544→      .card-img img { max-width: 80%; max-height: 80%; }
+   545→      .card-body { padding: 12px 13px 14px; }
+   546→      .card-body h3 { font-size: .88rem; }
+   547→      .buy-btn { padding: 9px 12px; font-size: .8rem; }
+   548→      .phone-options { flex-direction: column; }
+   549→      .modal { padding: 24px 20px 22px; }
+   550→    }
+   551→  </style>
+   552→</head>
+   553→<body>
+   554→  <header class="header">
+   555→    <h1>Laptop Bags &amp; Cases</h1>
+   556→    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
+   557→    <div class="social-icons">
+   558→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank" title="Instagram">
+   559→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   560→      </a>
+   561→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank" title="Facebook">
+   562→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   563→      </a>
+   564→      <a href="https://wa.me/18767731193" target="_blank" title="WhatsApp">
+   565→        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   566→      </a>
+   567→    </div>
+   568→  </header>
+   569→  <div class="wa-bar">
+   570→    <span>&#128172; Orders sent via WhatsApp to:</span>
+   571→    <a href="https://wa.me/18767731193" target="_blank">(876) 773-1193</a>
+   572→    <span>or</span>
+   573→    <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
+   574→  </div>
+   575→  <div class="filter-bar" id="filterBar">
+   576→    <button class="filter-btn active" data-filter="all">All Items</button>
+   577→    <button class="filter-btn" data-filter="sleeve">Sleeves</button>
+   578→    <button class="filter-btn" data-filter="case">Cases</button>
+   579→    <button class="filter-btn" data-filter="backpack">Backpacks</button>
+   580→    <button class="filter-btn" data-filter="handbag">Handbags</button>
+   581→  </div>
+   582→  <div class="grid" id="productGrid"></div>
+   583→  <div class="modal-overlay" id="modalOverlay">
+   584→    <div class="modal">
+   585→      <h2>&#128722; Order This Bag</h2>
+   586→      <p class="modal-product" id="modalProduct"></p>
+   587→      <p class="modal-price" id="modalPrice"></p>
+   588→      <label for="custName">Your Name</label>
+   589→      <input type="text" id="custName" placeholder="Enter your full name" />
+   590→      <label for="custQty">Quantity</label>
+   591→      <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+   592→      <div class="order-channel-label">Order via</div>
+   593→      <div class="channel-tabs" id="channelTabs">
+   594→        <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
+   595→          <svg viewBox="0 0 24 24" style="fill:#25d366;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   596→          WhatsApp
+   597→        </div>
+   598→        <div class="channel-tab" data-channel="messenger" onclick="selectChannel(this)">
+   599→          <svg viewBox="0 0 24 24" style="fill:#1877F2;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15.16.14.26.34.27.56l.05 1.74c.02.59.63.97 1.17.73l1.94-.81c.16-.07.34-.09.51-.05.9.25 1.85.38 2.83.38h.08C17.64 21.4 22 17.27 22 11.7 22 6.13 17.64 2 12 2zm5.89 7.54l-2.83 4.48c-.45.71-1.39.88-2.07.37l-2.25-1.69a.75.75 0 00-.9 0l-3.04 2.31c-.42.32-.97-.2-.68-.65l2.83-4.48c.45-.71 1.39-.88 2.07-.37l2.25 1.69a.75.75 0 00.9 0l3.04-2.31c.42-.32.97.2.68.65z"/></svg>
+   600→          Messenger
+   601→        </div>
+   602→        <div class="channel-tab" data-channel="instagram" onclick="selectChannel(this)">
+   603→          <svg viewBox="0 0 24 24" style="fill:#E1306C;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   604→          Instagram
+   605→        </div>
+   606→      </div>
+   607→      <div id="waPhoneSection">
+   608→        <label>Send Order To</label>
+   609→        <div class="phone-options">
+   610→          <div class="phone-opt selected" data-phone="18767731193" onclick="selectPhone(this)">(876) 773-1193</div>
+   611→          <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+   612→        </div>
+   613→      </div>
+   614→      <div id="messengerInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   615→        Your order message will open in <b>Facebook Messenger</b> to <b>Pixel Wire Solutions</b>.
+   616→      </div>
+   617→      <div id="igInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   618→        This will open <b>Instagram DM</b> to <b>@pixelwiresolutions</b> with your order details.
+   619→      </div>
+   620→      <div class="modal-actions">
+   621→        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+   622→        <button class="btn-send" id="btnSend" onclick="sendOrder()">&#128172; Send on WhatsApp</button>
+   623→      </div>
+   624→      <div class="share-row">
+   625→        <a class="share-btn ig" id="shareIG" href="#" target="_blank" title="Share on Instagram">
+   626→          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   627→          Instagram
+   628→        </a>
+   629→        <a class="share-btn fb" id="shareFB" href="#" target="_blank" title="Share on Facebook">
+   630→          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   631→          Facebook
+   632→        </a>
+   633→        <a class="share-btn tt" id="shareCopy" href="#" onclick="copyProductLink(event); return false;" title="Copy product link">
+   634→          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+   635→          Copy Link
+   636→        </a>
+   637→      </div>
+   638→    </div>
+   639→  </div>
+   640→  <div class="lightbox-overlay" id="lightboxOverlay">
+   641→    <div class="lightbox-top">
+   642→      <span class="lightbox-title" id="lbTitle"></span>
+   643→      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+   644→    </div>
+   645→    <button class="lb-arrow left" onclick="lbPrev()" id="lbArrowLeft">&#8249;</button>
+   646→    <div class="lightbox-img-wrap" id="lbImgWrap">
+   647→      <img id="lbImg" src="" alt="" />
+   648→    </div>
+   649→    <button class="lb-arrow right" onclick="lbNext()" id="lbArrowRight">&#8250;</button>
+   650→    <div class="lightbox-dots" id="lbDots"></div>
+   651→    <div class="lightbox-counter" id="lbCounter"></div>
+   652→    <div class="lightbox-order-bar">
+   653→      <span class="lb-price" id="lbPrice"></span>
+   654→      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Bag</button>
+   655→    </div>
+   656→  </div>
+   657→  <div class="toast" id="toast"></div>
+   658→  <footer class="footer">
+   659→    &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
+   660→    <div class="footer-social">
+   661→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank">
+   662→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   663→        @pixelwiresolutions
+   664→      </a>
+   665→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank">
+   666→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   667→        pixelwiresolutions
+   668→      </a>
+   669→    </div>
+   670→  </footer>
+   671→
+   672→  <script>
+   673→  const products = [
+   674→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", img: "https://sfile.chatglm.cn/images-ppt/ab9705780db1.png", size: '14.1"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+   675→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", img: "https://sfile.chatglm.cn/images-ppt/511320742f17.jpg", size: '15.6"', desc: "Textured surface with enhanced shock absorption." },
+   676→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg", size: '15.6"', desc: "Minimalist rectangular design with smooth finish." },
+   677→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", img: "https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg", size: '15.6"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+   678→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", img: "https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg", size: '15.6"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+   679→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", img: "https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg", size: '15.6"', desc: "Slim profile briefcase with front organizer pocket." },
+   680→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", img: "https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg", size: '15.6"', desc: "Light grey backpack with padded shoulder straps." },
+   681→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", img: "https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg", size: '15.6"', desc: "Navy blue classic backpack with multiple compartments." },
+   682→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg", size: '15.6"', desc: "Sleek black design with matching accessory pouch." },
+   683→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", img: "https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg", size: '15.6"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+   684→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", img: "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", size: '15.6"', desc: "Casual everyday backpack with multiple zippered compartments." },
+   685→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg", size: '15.6"', desc: "Athletic sporty design with breathable mesh backing." },
+   686→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Friazcomputer.com%2Fwp-content%2Fuploads%2F2023%2F07%2FKNB-456-BL.jpg&f=1&nofb=1&ipt=76f65289643c9ab8e34f1f974b12085377eb8d306036c3cec7f0d467ae926783", size: '15.6"', desc: "Structured business-casual backpack with accessory case." },
+   687→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg", size: '15.6"', desc: "Professional executive style with extensive organization." },
+   688→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg", size: '15.6"', desc: "Business-oriented design with clean lines." },
+   689→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", img: "https://sfile.chatglm.cn/images-ppt/479bf895146e.jpg", size: '15.6"', desc: "Modern minimalist design with sleek profile." },
+   690→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", img: "https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg", size: '15.6"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+   691→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg", size: '15.6"', desc: "Expandable design with zippers to increase capacity." },
+   692→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", img: "https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg", size: '15.6"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+   693→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/db879f77cf77.jpg", size: '15.6"', desc: "Rugged durable design with multiple external pockets." },
+   694→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", img: "https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg", size: '15.6"', desc: "Premium leather-like finish, vintage-inspired design." },
+   695→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", img: "https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg", size: '15.6"', desc: "Eco-friendly construction using sustainable materials." },
+   696→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg", size: '15"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+   697→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", img: "https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg", size: '15.6"', desc: "Environmentally friendly with Eco Loop materials." }
+   698→  ];
+   699→
+   700→  let selectedPhone = "18767731193";
+   701→  let selectedChannel = "whatsapp";
+   702→  let currentProduct = null;
+   703→
+   704→  function renderCards(filter) {
+   705→    filter = filter || "all";
+   706→    var grid = document.getElementById("productGrid");
+   707→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+   708→    var html = "";
+   709→    for (var i = 0; i < filtered.length; i++) {
+   710→      var p = filtered[i];
+   711→      var pJson = JSON.stringify(p).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+   712→      html += '<div class="card" onclick="openModal(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">';
+   713→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44);">';
+   714→      html += '<span class="brand-tag">' + p.brand + '</span>';
+   715→      html += '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" />';
+   716→      html += '<span class="price-tag">$' + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + '</span>';
+   717→      html += '</div>';
+   718→      html += '<div class="card-body">';
+   719→      html += '<span class="model">' + p.model + '</span>';
+   720→      html += '<h3>' + p.name + '</h3>';
+   721→      html += '<p class="desc">' + p.desc + '</p>';
+   722→      html += '<span class="size-info">\u{1F4BB} Fits ' + p.size + ' Laptop</span>';
+   723→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModal(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">';
+   724→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+   725→      html += ' Order via WhatsApp</button>';
+   726→      html += '</div></div>';
+   727→    }
+   728→    grid.innerHTML = html;
+   729→  }
+   730→
+   731→  function openModal(product) {
+   732→    currentProduct = product;
+   733→    document.getElementById("modalProduct").textContent = product.brand + " \u2014 " + product.name;
+   734→    document.getElementById("modalPrice").textContent = "$" + product.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   735→    document.getElementById("custName").value = "";
+   736→    document.getElementById("custQty").value = "1";
+   737→    document.getElementById("modalOverlay").classList.add("open");
+   738→    selectedChannel = "whatsapp";
+   739→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+   740→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+   741→    document.getElementById("waPhoneSection").style.display = "block";
+   742→    document.getElementById("messengerInfo").style.display = "none";
+   743→    document.getElementById("igInfo").style.display = "none";
+   744→    document.getElementById("btnSend").innerHTML = "&#128172; Send on WhatsApp";
+   745→    setupShareLinks();
+   746→  }
+   747→
+   748→  function closeModal() {
+   749→    document.getElementById("modalOverlay").classList.remove("open");
+   750→    currentProduct = null;
+   751→  }
+   752→
+   753→  function selectPhone(el) {
+   754→    var opts = document.querySelectorAll(".phone-opt");
+   755→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   756→    el.classList.add("selected");
+   757→    selectedPhone = el.getAttribute("data-phone");
+   758→  }
+   759→
+   760→  function selectChannel(el) {
+   761→    var tabs = document.querySelectorAll(".channel-tab");
+   762→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+   763→    el.classList.add("selected");
+   764→    selectedChannel = el.getAttribute("data-channel");
+   765→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+   766→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+   767→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+   768→    var btn = document.getElementById("btnSend");
+   769→    if (selectedChannel === "whatsapp") btn.innerHTML = "&#128172; Send on WhatsApp";
+   770→    else if (selectedChannel === "messenger") btn.innerHTML = "&#128172; Send on Messenger";
+   771→    else btn.innerHTML = "&#128172; Send on Instagram";
+   772→  }
+   773→
+   774→  function getOrderMsg() {
+   775→    var name = document.getElementById("custName").value.trim();
+   776→    var qty = document.getElementById("custQty").value.trim();
+   777→    if (!name) { showToast("Please enter your name"); return null; }
+   778→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+   779→    var p = currentProduct;
+   780→    var total = (p.price * Number(qty)).toFixed(2);
+   781→    return {
+   782→      text: "*NEW BAG ORDER*\n\n" +
+   783→        "*Customer:* " + name + "\n" +
+   784→        "*Product:* " + p.brand + " " + p.name + "\n" +
+   785→        "*Model:* " + p.model + "\n" +
+   786→        "*Fits:* " + p.size + " Laptop\n" +
+   787→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   788→        "*Quantity:* " + qty + "\n" +
+   789→        "*Total:* $" + Number(total).toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" +
+   790→        "Please confirm availability and payment details."
+   791→    };
+   792→  }
+   793→
+   794→  function sendOrder() {
+   795→    var order = getOrderMsg();
+   796→    if (!order) return;
+   797→    var msg = encodeURIComponent(order.text);
+   798→    if (selectedChannel === "whatsapp") {
+   799→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+   800→      showToast("Opening WhatsApp...");
+   801→    } else if (selectedChannel === "messenger") {
+   802→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+   803→      showToast("Opening Messenger...");
+   804→    } else if (selectedChannel === "instagram") {
+   805→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+   806→      showToast("Opening Instagram DM...");
+   807→    }
+   808→    closeModal();
+   809→  }
+   810→
+   811→  function sendWhatsApp() { sendOrder(); }
+   812→
+   813→  function showToast(msg) {
+   814→    var t = document.getElementById("toast");
+   815→    t.textContent = msg;
+   816→    t.classList.add("show");
+   817→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+   818→  }
+   819→
+   820→  document.getElementById("filterBar").addEventListener("click", function(e) {
+   821→    if (!e.target.classList.contains("filter-btn")) return;
+   822→    var btns = document.querySelectorAll(".filter-btn");
+   823→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+   824→    e.target.classList.add("active");
+   825→    renderCards(e.target.getAttribute("data-filter"));
+   826→  });
+   827→
+   828→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+   829→    if (e.target === e.currentTarget) closeModal();
+   830→  });
+   831→
+   832→  function setupShareLinks() {
+   833→    var p = currentProduct;
+   834→    if (!p) return;
+   835→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+   836→    var pageUrl = encodeURIComponent(window.location.href);
+   837→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+   838→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+   839→  }
+   840→
+   841→  function copyProductLink(e) {
+   842→    e.preventDefault();
+   843→    var p = currentProduct;
+   844→    if (!p) return;
+   845→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+   846→    if (navigator.clipboard) {
+   847→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+   848→    } else {
+   849→      showToast("Long-press to copy the link");
+   850→    }
+   851→  }
+   852→
+   853→  renderCards();
+   854→  </script>
+   855→</body>
+   856→</html>
