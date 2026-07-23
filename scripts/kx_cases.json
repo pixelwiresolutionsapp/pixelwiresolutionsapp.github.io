@@ -1,0 +1,81 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {
+      "icon": {
+        "https://www.klipxtreme.com/favicon.ico": {
+          "data-n-head": "1",
+          "type": "image/x-icon"
+        }
+      },
+      "preload": {
+        "https://www.klipxtreme.com/_nuxt/2d665d4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/63b3dc4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/94604d6.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/0e54c98.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/204bd08.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/435bef7.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/4d50f1d.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/512d149.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/6ed679a.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/7fb5108.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/a5c4425.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/e6d2687.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/e8ce7f1.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/ee6f8e9.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/d59bf4f.js": {
+          "as": "script"
+        }
+      }
+    },
+    "html": "<html lang=\"en\"><head>\n    <title>Klip Xtreme</title><meta data-n-head=\"1\" charset=\"utf-8\"><meta data-n-head=\"1\" name=\"format-detection\" content=\"telephone=no\"><link data-n-head=\"1\" rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\"><link rel=\"preload\" href=\"/_nuxt/d59bf4f.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/63b3dc4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/e6d2687.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/94604d6.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/7fb5108.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/2d665d4.js\" as=\"script\">\n  <link href=\"/_nuxt/css/e6d2687.css\" rel=\"stylesheet\"><link href=\"/_nuxt/css/7fb5108.css\" rel=\"stylesheet\"><script async=\"\" src=\"https://connect.facebook.net/en_US/fbevents.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/b1e1f56.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/eab92e9.js\"></script><script src=\"/_vercel/insights/script.js\" defer=\"\" data-sdkn=\"@vercel/analytics\" data-sdkv=\"1.3.1\"></script><meta data-n-head=\"1\" name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script src=\"https://accvent.com/chat/analytics.js\" async=\"true\" id=\"accvent-analytics\" key=\"klipgoo\" code=\"G-Y75PYVPYTB\" ze=\"2e1f6805-0eed-4abc-99fa-77f798fae299\" pixel=\"977175647225620\"></script><script charset=\"utf-8\" src=\"/_nuxt/fb28aa9.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/0e54c98.css\"><script charset=\"utf-8\" src=\"/_nuxt/fdf5d2b.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/manifest.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/512d149.css\"><script charset=\"utf-8\" src=\"/_nuxt/967a3bd.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/204bd08.css\"><script charset=\"utf-8\" src=\"/_nuxt/f6573f9.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/e8ce7f1.css\"><script charset=\"utf-8\" src=\"/_nuxt/29b8c76.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/ee6f8e9.css\"><script charset=\"utf-8\" src=\"/_nuxt/aba09f4.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/435bef7.css\"><script charset=\"utf-8\" src=\"/_nuxt/d111859.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/a5c4425.css\"><script charset=\"utf-8\" src=\"/_nuxt/83cfc79.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/6ed679a.css\"><script charset=\"utf-8\" src=\"/_nuxt/638b3a1.js\"></script><link rel=\"preload\" as=\"style\" href=\"/_nuxt/css/4d50f1d.css\"><script charset=\"utf-8\" src=\"/_nuxt/f2734e4.js\"></script><link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css\" rel=\"stylesheet\" id=\"font-awesome\"><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/blog/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/catalog/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/privacy-policy/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/where-to-buy/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/webinars/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/warranty/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/generales/about-us/payload.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/submenu/support/payload.js\"></script></head>\n  <body data-aos-easing=\"ease\" data-aos-duration=\"400\" data-aos-delay=\"0\">\n    <div id=\"__nuxt\"><!----><div id=\"__layout\"><div style=\"position: relative;\"><header id=\"header-container\"><div class=\"header-box\"><a data-v-3b211748=\"\" href=\"/\" class=\"logo-container nuxt-link-active\"><img data-v-3b211748=\"\" src=\"https://klip-xtreme-frontend.s3.amazonaws.com/media/img/klipxtreme-logo-white.svg\" alt=\"klipxtreme-logo-white\"></a> <nav class=\"nav-container\"><ul><li><!----> <span class=\"submenu-action\">Audio</span> <div class=\"submenu\"><ul><li><span>Headphones</span> <div class=\"submenu\"><ul><li><span>Wireless</span></li><li><span>Noise Canceling</span></li><li><span>True Wireless Stereo (TWS)</span></li><li><span>Wired</span></li><li><span>Open ear &amp; Bone conduction</span></li></ul></div></li><li><span>Speaker</span> <div class=\"submenu\"><ul><li><span>Party Speakers</span></li><li><span>Portable Speakers</span></li><li><span>Sound Bars</span></li><li><span>Sound Systems</span></li></ul></div></li></ul></div></li><li><!----> <span class=\"submenu-action\">Business</span> <div class=\"submenu\"><ul><li><span>Business</span> <div class=\"submenu\"><ul><li><span>Ergonomic Keyboards</span></li><li><span>Ergonomic Mice</span></li><li><span>Headset</span></li><li><span>Backpacks</span></li><li><span>Docking stations</span></li><li><span>Carry On Luggage</span></li><li><span>Presenters</span></li><li><span>Conference cameras and webcams</span></li></ul></div></li></ul></div></li><li><!----> <span class=\"submenu-action\">Fashion</span> <div class=\"submenu\"><ul><li><span>Fashion</span> <div class=\"submenu\"><ul><li><span>Modevo</span></li><li><span>Aurum</span></li><li><span>Nomadia</span></li><li><span>Ada</span></li><li><span>Isa</span></li><li><span>Eva</span></li><li><span>Sam</span></li><li><span>Val</span></li></ul></div></li></ul></div></li><li><!----> <span class=\"submenu-action\">Products</span> <div class=\"submenu submenu-products\"><ul><li><span>Bag &amp; Case</span> <div class=\"submenu\"><ul><li><span>Backpacks</span></li><li><span>Ladies Bag</span></li><li><span>Laptop Sleeves</span></li><li><span>Notebook Cases</span></li></ul></div></li><li><span>Mobile Accessories</span> <div class=\"submenu\"><ul><li><span>Cables</span></li><li><span>Powerbanks</span></li><li><span>Wall Chargers</span></li><li><span>Wireless Chargers</span></li><li><span>Car Chargers</span></li><li><span>Mobile Mounts</span></li></ul></div></li><li><span>PC Essentials</span> <div class=\"submenu\"><ul><li><span>Laptop Stands</span></li><li><span>Keyboards</span></li><li><span>Pads</span></li><li><span>Mice</span></li><li><span>Hubs And Card Readers</span></li><li><span>Presenters</span></li><li><span>Security Cables</span></li><li><span>Pc Audio</span></li><li><span>Photo Papers</span></li><li><span>Webcams</span></li></ul></div></li><li><span>Mounts</span> <div class=\"submenu\"><ul><li><span>TV Mounts</span></li><li><span>Projector Mounts</span></li><li><span>Monitor Mounts</span></li></ul></div></li><li><span>Projection Screens</span> <div class=\"submenu\"><ul><li><span>Tripod Screens</span></li><li><span>Wall Mounts</span></li><li><span>Electric Screens</span></li></ul></div></li></ul></div></li><li><a href=\"/disney-en/marvel-en/deadpool-and-wolverine-en/\" class=\"\" style=\"display: none;\">Marvel</a> <span title=\"Marvel\"><img src=\"https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Marvel_Logo.svg\" alt=\"Marvel_Logo.svg\"></span> <!----></li><li><a href=\"/submenu/where-to-buy/\" class=\"\" style=\"display: none;\">Where to buy</a> <span>Where to buy</span> <!----></li><li><a href=\"/submenu/support/\" class=\"\" style=\"display: none;\">Support</a> <span>Support</span> <!----></li><li><a href=\"/submenu/catalog/\" class=\"\" style=\"display: none;\">Catalog</a> <span>Catalog</span> <!----></li></ul></nav> <div class=\"search-container\"><form class=\"search-box\"><input placeholder=\"Search...\"> <span><i class=\"fa-solid fa-search icon-search\"></i></span></form> <div class=\"lang-container\"><span>SPA</span></div> <div class=\"search-icon-container\"><span><i class=\"fa-solid fa-search icon-search\"></i></span> <div></div></div> <div class=\"menu-mobile-container\"><i class=\"fa-solid fa-bars\"></i> <!----></div></div></div></header> <div class=\"main-container-\"><div class=\"flex-fill-\"><!----></div> <footer data-v-3f6390e2=\"\"><div data-v-3f6390e2=\"\" class=\"logo-container\"><a data-v-3b211748=\"\" data-v-3f6390e2=\"\" href=\"/\" class=\"logo-container nuxt-link-active\"><img data-v-3b211748=\"\" src=\"https://klip-xtreme-frontend.s3.amazonaws.com/media/img/klipxtreme-logo-white.svg\" alt=\"klipxtreme-logo-white\"></a></div> <div data-v-3f6390e2=\"\" class=\"nav-container\"><nav data-v-3f6390e2=\"\"><ul data-v-3f6390e2=\"\"><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/submenu/blog/\" class=\"\">Klip Tips</a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/submenu/catalog/\" class=\"\">Catalog</a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/privacy-policy/\" class=\"\">Privacy Policy</a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/submenu/where-to-buy/\" class=\"\">Where To Buy</a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/submenu/webinars/\" class=\"\">Webinars</a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"/submenu/warranty/\" class=\"\">Warranty</a></li></ul></nav></div> <div data-v-3f6390e2=\"\" class=\"info-container\"><div data-v-3f6390e2=\"\"><strong data-v-3f6390e2=\"\">About Us:</strong> <a data-v-3f6390e2=\"\" href=\"/generales/about-us/\" class=\"\">Our company</a></div><div data-v-3f6390e2=\"\"><strong data-v-3f6390e2=\"\">Support:</strong> <a data-v-3f6390e2=\"\" href=\"/submenu/support/\" class=\"\">Contact us</a></div><div data-v-3f6390e2=\"\"><!----> <a data-v-3f6390e2=\"\" href=\"https://support.klipxtreme.com/\">FAQs</a></div></div> <div data-v-3f6390e2=\"\" class=\"social-container\"><span data-v-3f6390e2=\"\">Follow us on:</span> <ul data-v-3f6390e2=\"\"><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"https://www.facebook.com/klipxtreme/\" target=\"_blank\"><i data-v-3f6390e2=\"\" class=\"fa-brands fa-facebook-f\"></i></a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"https://www.instagram.com/klipxtreme\" target=\"_blank\"><i data-v-3f6390e2=\"\" class=\"fa-brands fa-instagram\"></i></a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"https://www.youtube.com/user/KlipXtremeLA\" target=\"_blank\"><i data-v-3f6390e2=\"\" class=\"fa-brands fa-youtube\"></i></a></li><li data-v-3f6390e2=\"\"><a data-v-3f6390e2=\"\" href=\"https://www.tiktok.com/@klipxtreme_oficial?_t=8aTyYXT1Byg&amp;_r=1\" target=\"_blank\"><i data-v-3f6390e2=\"\" class=\"fa-brands fa-tiktok\"></i></a></li></ul></div> <div data-v-3f6390e2=\"\" id=\"chatButton\"></div></footer></div> <div id=\"close_widget\"></div></div></div></div><script>window.__NUXT__={config:{_app:{basePath:\"/\",assetsPath:\"/_nuxt/\",cdnURL:null}},staticAssetsBase:\"/_nuxt/static/1783705120\"}</script>\n  <script src=\"/_nuxt/d59bf4f.js\"></script><script src=\"/_nuxt/63b3dc4.js\"></script><script src=\"/_nuxt/94604d6.js\"></script><script src=\"/_nuxt/2d665d4.js\"></script><script async=\"\" id=\"klipgoo\" src=\"https://www.googletagmanager.com/gtag/js?id=G-Y75PYVPYTB\"></script>\n\n<link href=\"/_nuxt/css/0e54c98.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/512d149.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/204bd08.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/e8ce7f1.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/ee6f8e9.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/a5c4425.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/6ed679a.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/4d50f1d.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/435bef7.css\" rel=\"stylesheet\" type=\"text/css\"></body></html>",
+    "httpStatus": 404,
+    "httpStatusText": "",
+    "metadata": {
+      "format-detection": "telephone=no",
+      "lang": "en",
+      "viewport": "width=device-width, initial-scale=1"
+    },
+    "title": "Klip Xtreme",
+    "url": "https://www.klipxtreme.com/all-products/bags-and-cases/cases",
+    "usage": {
+      "tokens": 3787
+    },
+    "warning": "Target URL returned error 404: Not Found"
+  },
+  "meta": {
+    "usage": {
+      "tokens": 3787
+    }
+  },
+  "status": 20000
+}

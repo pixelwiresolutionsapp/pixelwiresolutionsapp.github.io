@@ -1,0 +1,56 @@
+{
+  "KNS-214BL": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-imgico-1.jpg"
+  ],
+  "KNS-215": [],
+  "KNS-420": [],
+  "KNS-330": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-02.jpg"
+  ],
+  "KNC-041": [],
+  "KNC-025": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-04.jpg"
+  ],
+  "KNB-406GR": [],
+  "KNB-416": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-04.jpg"
+  ],
+  "KNB-577": [],
+  "KNB-582": [],
+  "KNB-426BL": [],
+  "KNB-456": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos lifestyle KNB-456-1(0).jpg"
+  ],
+  "KNB-895": [],
+  "KNB-467KH": [],
+  "KNB-650BK": [],
+  "KLB-461": [
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg",
+    "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_01(0).jpg"
+  ],
+  "KNB-583": [],
+  "KNB-468": []
+}

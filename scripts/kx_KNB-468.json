@@ -1,0 +1,93 @@
+{
+  "code": 200,
+  "data": {
+    "description": "Be highly impressed by Klip Xtreme´s new addition to its ladies backpack collection.",
+    "external": {
+      "icon": {
+        "https://www.klipxtreme.com/favicon.ico": {
+          "data-n-head": "ssr",
+          "type": "image/x-icon"
+        }
+      },
+      "preload": {
+        "https://www.klipxtreme.com/_nuxt/2d665d4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/3bcacbc.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/6358797.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/63b3dc4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/94604d6.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/96fe339.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/a520645.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/afd6d34.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/0206c31.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/2eb1979.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/7fb5108.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/e6d2687.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/fad9216.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/d59bf4f.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/manifest.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/KNB-468/payload.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/KNB-468/state.js": {
+          "as": "script"
+        }
+      }
+    },
+    "html": "<html data-n-head-ssr=\"\" lang=\"en\" data-n-head=\"%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D\"><head>\n    <title>Toscana KNB-468 laptop backpack | Klip Xtreme | Klipxtreme</title><meta data-n-head=\"ssr\" charset=\"utf-8\"><meta data-n-head=\"ssr\" name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta data-n-head=\"ssr\" name=\"format-detection\" content=\"telephone=no\"><meta data-n-head=\"ssr\" name=\"og:title\" data-hid=\"og:title\" content=\"Toscana KNB-468 laptop backpack | Klip Xtreme | Klipxtreme\"><meta data-n-head=\"ssr\" name=\"description\" data-hid=\"description\" content=\"Be highly impressed by Klip Xtreme´s new addition to its ladies backpack collection.\"><meta data-n-head=\"ssr\" name=\"og:description\" data-hid=\"og:description\" content=\"Be highly impressed by Klip Xtreme´s new addition to its ladies backpack collection.\"><meta data-n-head=\"ssr\" name=\"keywords\" data-hid=\"keywords\" content=\"toscana,knb-468,laptop,backpack,|,klip,xtreme,highly,impressed,xtreme´s,addition,ladies,collection\"><meta data-n-head=\"ssr\" name=\"og:type\" data-hid=\"og:content\" content=\"website\"><meta data-n-head=\"ssr\" name=\"og:image\" data-hid=\"og:image\" content=\"https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg\"><meta data-n-head=\"ssr\" name=\"twitter:image\" data-hid=\"twitter:image\" content=\"https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg\"><link data-n-head=\"ssr\" rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\"><link rel=\"preload\" href=\"/_nuxt/d59bf4f.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/63b3dc4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/e6d2687.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/94604d6.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/7fb5108.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/2d665d4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/2eb1979.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/afd6d34.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/96fe339.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/0206c31.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/6358797.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/3bcacbc.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/fad9216.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/a520645.js\" as=\"script\"><link rel=\"stylesheet\" href=\"/_nuxt/css/e6d2687.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/7fb5108.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/2eb1979.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/0206c31.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/fad9216.css\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/KNB-468/state.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/KNB-468/payload.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/manifest.js\" as=\"script\">\n  </head>\n  <body>\n    <div data-server-rendered=\"true\" id=\"__nuxt\"><div id=\"__layout\"><div style=\"position:relative\"> <div class=\"main-container-\"><div class=\"flex-fill-\"><section data-fetch-key=\"0\" class=\"m-auto\"><h1 class=\"home-subtitle-h1\">Toscana KNB-468 laptop backpack | Klip Xtreme</h1>         </section></div> </div> </div></div></div><script defer=\"\" src=\"/_nuxt/static/1783705120/st-products/internal/KNB-468/state.js\"></script><script src=\"/_nuxt/d59bf4f.js\" defer=\"\"></script><script src=\"/_nuxt/afd6d34.js\" defer=\"\"></script><script src=\"/_nuxt/96fe339.js\" defer=\"\"></script><script src=\"/_nuxt/6358797.js\" defer=\"\"></script><script src=\"/_nuxt/3bcacbc.js\" defer=\"\"></script><script src=\"/_nuxt/a520645.js\" defer=\"\"></script><script src=\"/_nuxt/63b3dc4.js\" defer=\"\"></script><script src=\"/_nuxt/94604d6.js\" defer=\"\"></script><script src=\"/_nuxt/2d665d4.js\" defer=\"\"></script>\n  \n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "description": "Be highly impressed by Klip Xtreme´s new addition to its ladies backpack collection.",
+      "format-detection": "telephone=no",
+      "keywords": "toscana,knb-468,laptop,backpack,|,klip,xtreme,highly,impressed,xtreme´s,addition,ladies,collection",
+      "lang": "en",
+      "og:description": "Be highly impressed by Klip Xtreme´s new addition to its ladies backpack collection.",
+      "og:image": "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg",
+      "og:title": "Toscana KNB-468 laptop backpack | Klip Xtreme | Klipxtreme",
+      "og:type": "website",
+      "twitter:image": "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg",
+      "viewport": "width=device-width,initial-scale=1"
+    },
+    "title": "Toscana KNB-468 laptop backpack | Klip Xtreme | Klipxtreme",
+    "url": "https://www.klipxtreme.com/st-products/internal/KNB-468",
+    "usage": {
+      "tokens": 1231
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 1231
+    }
+  },
+  "status": 20000
+}

@@ -1,0 +1,87 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {
+      "icon": {
+        "https://www.klipxtreme.com/favicon.ico": {
+          "data-n-head": "ssr",
+          "type": "image/x-icon"
+        }
+      },
+      "preload": {
+        "https://www.klipxtreme.com/_nuxt/2d665d4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/3bcacbc.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/6358797.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/63b3dc4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/94604d6.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/96fe339.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/a520645.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/afd6d34.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/0206c31.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/2eb1979.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/7fb5108.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/e6d2687.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/fad9216.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/d59bf4f.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/manifest.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/payload.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js": {
+          "as": "script"
+        }
+      }
+    },
+    "html": "<html lang=\"en\"><head>\n    <title>Klip Xtreme</title><meta data-n-head=\"ssr\" charset=\"utf-8\"><meta data-n-head=\"ssr\" name=\"format-detection\" content=\"telephone=no\"><link data-n-head=\"ssr\" rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\"><link rel=\"preload\" href=\"/_nuxt/d59bf4f.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/63b3dc4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/e6d2687.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/94604d6.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/7fb5108.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/2d665d4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/2eb1979.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/afd6d34.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/96fe339.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/0206c31.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/6358797.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/3bcacbc.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/fad9216.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/a520645.js\" as=\"script\"><link rel=\"stylesheet\" href=\"/_nuxt/css/e6d2687.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/7fb5108.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/2eb1979.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/0206c31.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/fad9216.css\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/payload.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/manifest.js\" as=\"script\">\n  <script src=\"/_vercel/insights/script.js\" defer data-sdkn=\"@vercel/analytics\" data-sdkv=\"1.3.1\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/manifest.js\"></script><script charset=\"utf-8\" src=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/payload.js\"></script><meta data-n-head=\"ssr\" name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head>\n  <body data-aos-easing=\"ease\" data-aos-duration=\"400\" data-aos-delay=\"0\">\n    <div id=\"__nuxt\"><!----><div id=\"__layout\"><div style=\"position: relative;\"><!----> <div class=\"main-container-\"><div class=\"flex-fill-\"><section class=\"m-auto\"><h1 class=\"home-subtitle-h1\">XpandPack | Slim &amp; expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK</h1> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----></section></div> <!----></div> <div id=\"close_widget\"></div></div></div></div><script defer src=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js\"></script><script src=\"/_nuxt/d59bf4f.js\" defer></script><script src=\"/_nuxt/afd6d34.js\" defer></script><script src=\"/_nuxt/96fe339.js\" defer></script><script src=\"/_nuxt/6358797.js\" defer></script><script src=\"/_nuxt/3bcacbc.js\" defer></script><script src=\"/_nuxt/a520645.js\" defer></script><script src=\"/_nuxt/63b3dc4.js\" defer></script><script src=\"/_nuxt/94604d6.js\" defer></script><script src=\"/_nuxt/2d665d4.js\" defer></script>\n  \n\n<link href=\"/_nuxt/css/0206c31.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/fad9216.css\" rel=\"stylesheet\" type=\"text/css\"><link href=\"/_nuxt/css/2eb1979.css\" rel=\"stylesheet\" type=\"text/css\"></body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "format-detection": "telephone=no",
+      "lang": "en",
+      "viewport": "width=device-width, initial-scale=1"
+    },
+    "publishedTime": "Thu, 23 Jul 2026 03:28:42 GMT",
+    "title": "Klip Xtreme",
+    "url": "https://www.klipxtreme.com/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en",
+    "usage": {
+      "tokens": 1120
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 1120
+    }
+  },
+  "status": 20000
+}

@@ -1,0 +1,93 @@
+{
+  "code": 200,
+  "data": {
+    "description": "This expandable backpack adapts to your on-the-go needs and keeps you comfortable in any conditions. It fits a laptop up to 15.6\", all your smaller tech goodies, important documents and more. If you need extra space, the main compartment can expand by two thirds its size!",
+    "external": {
+      "icon": {
+        "https://www.klipxtreme.com/favicon.ico": {
+          "data-n-head": "ssr",
+          "type": "image/x-icon"
+        }
+      },
+      "preload": {
+        "https://www.klipxtreme.com/_nuxt/2d665d4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/3bcacbc.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/6358797.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/63b3dc4.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/94604d6.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/96fe339.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/a520645.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/afd6d34.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/0206c31.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/2eb1979.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/7fb5108.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/e6d2687.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/css/fad9216.css": {
+          "as": "style"
+        },
+        "https://www.klipxtreme.com/_nuxt/d59bf4f.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/manifest.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/payload.js": {
+          "as": "script"
+        },
+        "https://www.klipxtreme.com/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js": {
+          "as": "script"
+        }
+      }
+    },
+    "html": "<html data-n-head-ssr=\"\" lang=\"en\" data-n-head=\"%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D\"><head>\n    <title>XpandPack | Slim &amp; expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK | Klipxtreme</title><meta data-n-head=\"ssr\" charset=\"utf-8\"><meta data-n-head=\"ssr\" name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta data-n-head=\"ssr\" name=\"format-detection\" content=\"telephone=no\"><meta data-n-head=\"ssr\" name=\"og:title\" data-hid=\"og:title\" content=\"XpandPack | Slim &amp; expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK | Klipxtreme\"><meta data-n-head=\"ssr\" name=\"description\" data-hid=\"description\" content=\"This expandable backpack adapts to your on-the-go needs and keeps you comfortable in any conditions. It fits a laptop up to 15.6&quot;, all your smaller tech goodies, important documents and more. If you need extra space, the main compartment can expand by two thirds its size!\"><meta data-n-head=\"ssr\" name=\"og:description\" data-hid=\"og:description\" content=\"This expandable backpack adapts to your on-the-go needs and keeps you comfortable in any conditions. It fits a laptop up to 15.6&quot;, all your smaller tech goodies, important documents and more. If you need extra space, the main compartment can expand by two thirds its size!\"><meta data-n-head=\"ssr\" name=\"keywords\" data-hid=\"keywords\" content=\"xpandpack,|,slim,expandable,water-resistant,laptop,backpack,anti-theft,pocket,-,knb-650bk,adapts,on-the-go,comfortable,conditions,fits,156,smaller,tech,goodies,important,documents,extra,space,main,compartment,expand,thirds,size\"><meta data-n-head=\"ssr\" name=\"og:type\" data-hid=\"og:content\" content=\"website\"><meta data-n-head=\"ssr\" name=\"og:image\" data-hid=\"og:image\" content=\"http://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg\"><meta data-n-head=\"ssr\" name=\"twitter:image\" data-hid=\"twitter:image\" content=\"http://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg\"><link data-n-head=\"ssr\" rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\"><link rel=\"preload\" href=\"/_nuxt/d59bf4f.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/63b3dc4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/e6d2687.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/94604d6.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/7fb5108.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/2d665d4.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/2eb1979.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/afd6d34.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/96fe339.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/0206c31.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/6358797.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/3bcacbc.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/css/fad9216.css\" as=\"style\"><link rel=\"preload\" href=\"/_nuxt/a520645.js\" as=\"script\"><link rel=\"stylesheet\" href=\"/_nuxt/css/e6d2687.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/7fb5108.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/2eb1979.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/0206c31.css\"><link rel=\"stylesheet\" href=\"/_nuxt/css/fad9216.css\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/payload.js\" as=\"script\"><link rel=\"preload\" href=\"/_nuxt/static/1783705120/manifest.js\" as=\"script\">\n  </head>\n  <body>\n    <div data-server-rendered=\"true\" id=\"__nuxt\"><div id=\"__layout\"><div style=\"position:relative\"> <div class=\"main-container-\"><div class=\"flex-fill-\"><section data-fetch-key=\"0\" class=\"m-auto\"><h1 class=\"home-subtitle-h1\">XpandPack | Slim &amp; expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK</h1>         </section></div> </div> </div></div></div><script defer=\"\" src=\"/_nuxt/static/1783705120/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en/state.js\"></script><script src=\"/_nuxt/d59bf4f.js\" defer=\"\"></script><script src=\"/_nuxt/afd6d34.js\" defer=\"\"></script><script src=\"/_nuxt/96fe339.js\" defer=\"\"></script><script src=\"/_nuxt/6358797.js\" defer=\"\"></script><script src=\"/_nuxt/3bcacbc.js\" defer=\"\"></script><script src=\"/_nuxt/a520645.js\" defer=\"\"></script><script src=\"/_nuxt/63b3dc4.js\" defer=\"\"></script><script src=\"/_nuxt/94604d6.js\" defer=\"\"></script><script src=\"/_nuxt/2d665d4.js\" defer=\"\"></script>\n  \n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "description": "This expandable backpack adapts to your on-the-go needs and keeps you comfortable in any conditions. It fits a laptop up to 15.6\", all your smaller tech goodies, important documents and more. If you need extra space, the main compartment can expand by two thirds its size!",
+      "format-detection": "telephone=no",
+      "keywords": "xpandpack,|,slim,expandable,water-resistant,laptop,backpack,anti-theft,pocket,-,knb-650bk,adapts,on-the-go,comfortable,conditions,fits,156,smaller,tech,goodies,important,documents,extra,space,main,compartment,expand,thirds,size",
+      "lang": "en",
+      "og:description": "This expandable backpack adapts to your on-the-go needs and keeps you comfortable in any conditions. It fits a laptop up to 15.6\", all your smaller tech goodies, important documents and more. If you need extra space, the main compartment can expand by two thirds its size!",
+      "og:image": "http://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg",
+      "og:title": "XpandPack | Slim & expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK | Klipxtreme",
+      "og:type": "website",
+      "twitter:image": "http://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg",
+      "viewport": "width=device-width,initial-scale=1"
+    },
+    "title": "XpandPack | Slim & expandable water-resistant laptop backpack with anti-theft pocket - KNB-650BK | Klipxtreme",
+    "url": "https://www.klipxtreme.com/st-products/internal/slim-and-expandable-water-resistant-laptop-backpack-KNB-650BK-en",
+    "usage": {
+      "tokens": 1463
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 1463
+    }
+  },
+  "status": 20000
+}
