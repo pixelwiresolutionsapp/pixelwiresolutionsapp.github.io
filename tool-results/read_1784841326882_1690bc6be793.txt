@@ -1,0 +1,472 @@
+   500→      padding: 16px 20px;
+   501→      background: linear-gradient(transparent, rgba(0,0,0,.7));
+   502→      display: flex;
+   503→      align-items: center;
+   504→      justify-content: space-between;
+   505→      gap: 12px;
+   506→    }
+   507→    .lightbox-order-bar .lb-price {
+   508→      color: #25d366;
+   509→      font-size: 1.2rem;
+   510→      font-weight: 800;
+   511→    }
+   512→    .lightbox-order-bar .lb-order-btn {
+   513→      padding: 10px 24px;
+   514→      border: none;
+   515→      border-radius: 12px;
+   516→      background: linear-gradient(135deg, #25d366, #128c7e);
+   517→      color: #fff;
+   518→      font-weight: 700;
+   519→      font-size: .9rem;
+   520→      cursor: pointer;
+   521→      transition: box-shadow .2s;
+   522→    }
+   523→    .lightbox-order-bar .lb-order-btn:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   524→    .toast {
+   525→      position: fixed;
+   526→      bottom: 24px;
+   527→      left: 50%;
+   528→      transform: translateX(-50%) translateY(80px);
+   529→      background: #1a1a2e;
+   530→      color: #25d366;
+   531→      padding: 12px 24px;
+   532→      border-radius: 12px;
+   533→      font-weight: 600;
+   534→      font-size: .9rem;
+   535→      z-index: 600;
+   536→      opacity: 0;
+   537→      transition: all .35s ease;
+   538→      pointer-events: none;
+   539→    }
+   540→    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+   541→    @media (max-width: 600px) {
+   542→      .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
+   543→      .card-img { height: 140px; }
+   544→      .card-img img { max-width: 80%; max-height: 80%; }
+   545→      .card-body { padding: 12px 13px 14px; }
+   546→      .card-body h3 { font-size: .88rem; }
+   547→      .buy-btn { padding: 9px 12px; font-size: .8rem; }
+   548→      .phone-options { flex-direction: column; }
+   549→      .modal { padding: 24px 20px 22px; }
+   550→      .lightbox-img-wrap { width: 95vw; height: 50vh; }
+   551→      .lb-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
+   552→      .lb-arrow.left { left: 4px; }
+   553→      .lb-arrow.right { right: 4px; }
+   554→      .lightbox-order-bar { padding: 12px 14px; }
+   555→      .lightbox-order-bar .lb-price { font-size: 1rem; }
+   556→      .lightbox-order-bar .lb-order-btn { padding: 8px 16px; font-size: .82rem; }
+   557→    }
+   558→  </style>
+   559→</head>
+   560→<body>
+   561→  <header class="header">
+   562→    <h1>Laptop Bags &amp; Cases</h1>
+   563→    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
+   564→    <div class="social-icons">
+   565→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank" title="Instagram">
+   566→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   567→      </a>
+   568→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank" title="Facebook">
+   569→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   570→      </a>
+   571→      <a href="https://wa.me/18767731193" target="_blank" title="WhatsApp">
+   572→        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   573→      </a>
+   574→    </div>
+   575→  </header>
+   576→  <div class="wa-bar">
+   577→    <span>&#128172; Orders sent via WhatsApp to:</span>
+   578→    <a href="https://wa.me/18767731193" target="_blank">(876) 773-1193</a>
+   579→    <span>or</span>
+   580→    <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
+   581→  </div>
+   582→  <div class="filter-bar" id="filterBar">
+   583→    <button class="filter-btn active" data-filter="all">All Items</button>
+   584→    <button class="filter-btn" data-filter="sleeve">Sleeves</button>
+   585→    <button class="filter-btn" data-filter="case">Cases</button>
+   586→    <button class="filter-btn" data-filter="backpack">Backpacks</button>
+   587→    <button class="filter-btn" data-filter="handbag">Handbags</button>
+   588→  </div>
+   589→  <div class="grid" id="productGrid"></div>
+   590→  <div class="modal-overlay" id="modalOverlay">
+   591→    <div class="modal">
+   592→      <h2>&#128722; Order This Bag</h2>
+   593→      <p class="modal-product" id="modalProduct"></p>
+   594→      <p class="modal-price" id="modalPrice"></p>
+   595→      <button id="viewPhotosBtn" onclick="closeModal(); openLightbox(currentProduct)" style="display:none;width:100%;padding:10px;border:2px dashed #d0d5dd;border-radius:12px;background:#f9fafb;cursor:pointer;font-size:.88rem;font-weight:600;color:#344054;margin-bottom:16px;transition:all .2s;" onmouseover="this.style.borderColor='#1a1a2e';this.style.background='#f0f2f5'" onmouseout="this.style.borderColor='#d0d5dd';this.style.background='#f9fafb'">&#128247; View All Photos</button>
+   596→      <label for="custName">Your Name</label>
+   597→      <input type="text" id="custName" placeholder="Enter your full name" />
+   598→      <label for="custQty">Quantity</label>
+   599→      <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+   600→      <div class="order-channel-label">Order via</div>
+   601→      <div class="channel-tabs" id="channelTabs">
+   602→        <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
+   603→          <svg viewBox="0 0 24 24" style="fill:#25d366;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   604→          WhatsApp
+   605→        </div>
+   606→        <div class="channel-tab" data-channel="messenger" onclick="selectChannel(this)">
+   607→          <svg viewBox="0 0 24 24" style="fill:#1877F2;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15.16.14.26.34.27.56l.05 1.74c.02.59.63.97 1.17.73l1.94-.81c.16-.07.34-.09.51-.05.9.25 1.85.38 2.83.38h.08C17.64 21.4 22 17.27 22 11.7 22 6.13 17.64 2 12 2zm5.89 7.54l-2.83 4.48c-.45.71-1.39.88-2.07.37l-2.25-1.69a.75.75 0 00-.9 0l-3.04 2.31c-.42.32-.97-.2-.68-.65l2.83-4.48c.45-.71 1.39-.88 2.07-.37l2.25 1.69a.75.75 0 00.9 0l3.04-2.31c.42-.32.97.2.68.65z"/></svg>
+   608→          Messenger
+   609→        </div>
+   610→        <div class="channel-tab" data-channel="instagram" onclick="selectChannel(this)">
+   611→          <svg viewBox="0 0 24 24" style="fill:#E1306C;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   612→          Instagram
+   613→        </div>
+   614→      </div>
+   615→      <div id="waPhoneSection">
+   616→        <label>Send Order To</label>
+   617→        <div class="phone-options">
+   618→          <div class="phone-opt selected" data-phone="18767731193" onclick="selectPhone(this)">(876) 773-1193</div>
+   619→          <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+   620→        </div>
+   621→      </div>
+   622→      <div id="messengerInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   623→        Your order message will open in <b>Facebook Messenger</b> to <b>Pixel Wire Solutions</b>.
+   624→      </div>
+   625→      <div id="igInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   626→        This will open <b>Instagram DM</b> to <b>@pixelwiresolutions</b> with your order details.
+   627→      </div>
+   628→      <div class="modal-actions">
+   629→        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+   630→        <button class="btn-send" id="btnSend" onclick="sendOrder()">&#128172; Send on WhatsApp</button>
+   631→      </div>
+   632→      <div class="share-row">
+   633→        <a class="share-btn ig" id="shareIG" href="#" target="_blank" title="Share on Instagram">
+   634→          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   635→          Instagram
+   636→        </a>
+   637→        <a class="share-btn fb" id="shareFB" href="#" target="_blank" title="Share on Facebook">
+   638→          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   639→          Facebook
+   640→        </a>
+   641→        <a class="share-btn tt" id="shareCopy" href="#" onclick="copyProductLink(event); return false;" title="Copy product link">
+   642→          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+   643→          Copy Link
+   644→        </a>
+   645→      </div>
+   646→    </div>
+   647→  </div>
+   648→  <div class="lightbox-overlay" id="lightboxOverlay">
+   649→    <div class="lightbox-top">
+   650→      <span class="lightbox-title" id="lbTitle"></span>
+   651→      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+   652→    </div>
+   653→    <button class="lb-arrow left" onclick="lbPrev()" id="lbArrowLeft">&#8249;</button>
+   654→    <div class="lightbox-img-wrap" id="lbImgWrap">
+   655→      <img id="lbImg" src="" alt="" />
+   656→    </div>
+   657→    <button class="lb-arrow right" onclick="lbNext()" id="lbArrowRight">&#8250;</button>
+   658→    <div class="lightbox-dots" id="lbDots"></div>
+   659→    <div class="lightbox-counter" id="lbCounter"></div>
+   660→    <div class="lightbox-order-bar">
+   661→      <span class="lb-price" id="lbPrice"></span>
+   662→      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Bag</button>
+   663→    </div>
+   664→  </div>
+   665→  <div class="toast" id="toast"></div>
+   666→  <footer class="footer">
+   667→    &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
+   668→    <div class="footer-social">
+   669→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank">
+   670→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   671→        @pixelwiresolutions
+   672→      </a>
+   673→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank">
+   674→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   675→        pixelwiresolutions
+   676→      </a>
+   677→    </div>
+   678→  </footer>
+   679→
+   680→  <script>
+   681→  const products = [
+   682→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://sfile.chatglm.cn/images-ppt/ab9705780db1.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+   683→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://sfile.chatglm.cn/images-ppt/511320742f17.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-02.jpg"], size: '15.6"', desc: "Textured surface with enhanced shock absorption." },
+   684→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg"], size: '15.6"', desc: "Minimalist rectangular design with smooth finish." },
+   685→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg"], size: '15.6"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+   686→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", imgs: ["https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg"], size: '15.6"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+   687→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg"], size: '15.6"', desc: "Slim profile briefcase with front organizer pocket." },
+   688→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", imgs: ["https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406BL.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg"], size: '15.6"', desc: "Light grey backpack with padded shoulder straps." },
+   689→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", imgs: ["https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg"], size: '15.6"', desc: "Navy blue classic backpack with multiple compartments." },
+   690→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg"], size: '15.6"', desc: "Sleek black design with matching accessory pouch." },
+   691→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", imgs: ["https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg"], size: '15.6"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+   692→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg"], size: '15.6"', desc: "Casual everyday backpack with multiple zippered compartments." },
+   693→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg", "https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg"], size: '15.6"', desc: "Athletic sporty design with breathable mesh backing." },
+   694→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", imgs: ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Friazcomputer.com%2Fwp-content%2Fuploads%2F2023%2F07%2FKNB-456-BL.jpg&f=1&nofb=1&ipt=76f65289643c9ab8e34f1f974b12085377eb8d306036c3cec7f0d467ae926783", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg"], size: '15.6"', desc: "Structured business-casual backpack with accessory case." },
+   695→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg"], size: '15.6"', desc: "Professional executive style with extensive organization." },
+   696→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg", "https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg"], size: '15.6"', desc: "Business-oriented design with clean lines." },
+   697→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", imgs: ["https://sfile.chatglm.cn/images-ppt/479bf895146e.jpg", "https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png"], size: '15.6"', desc: "Modern minimalist design with sleek profile." },
+   698→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", imgs: ["https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg"], size: '15.6"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+   699→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-2.jpg"], size: '15.6"', desc: "Expandable design with zippers to increase capacity." },
+   700→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", imgs: ["https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg"], size: '15.6"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+   701→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/db879f77cf77.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg"], size: '15.6"', desc: "Rugged durable design with multiple external pockets." },
+   702→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6"', desc: "Premium leather-like finish, vintage-inspired design." },
+   703→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg", "https://www.bhphotovideo.com/images/images500x500/hp_3e5f8aa_top_load_bag_f_1680535239_1660232.jpg", "https://www.bhphotovideo.com/images/fb/hp_3e5f8aa_top_load_bag_f_1660232.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971126.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971127.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971128.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971129.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971130.jpg"], size: '15.6"', desc: "Eco-friendly construction using sustainable materials." },
+   704→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg", "https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+   705→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg", "https://www.provantage.com/1080962725.JPG"], size: '15.6"', desc: "Environmentally friendly with Eco Loop materials." }
+   706→  ];
+   707→
+   708→  let selectedPhone = "18767731193";
+   709→  let selectedChannel = "whatsapp";
+   710→  let currentProduct = null;
+   711→  let lbProduct = null;
+   712→  let lbIndex = 0;
+   713→  let lbImages = [];
+   714→  let touchStartX = 0;
+   715→  let touchEndX = 0;
+   716→
+   717→  function renderCards(filter) {
+   718→    filter = filter || "all";
+   719→    var grid = document.getElementById("productGrid");
+   720→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+   721→    var html = "";
+   722→    for (var i = 0; i < filtered.length; i++) {
+   723→      var p = filtered[i];
+   724→      var pJson = JSON.stringify(p).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+   725→      html += '<div class="card" onclick="openModal(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">';
+   726→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44);">';
+   727→      var imgs = Array.isArray(p.imgs) ? p.imgs : [p.img];
+   728→      html += '<span class="brand-tag">' + p.brand + '</span>';
+   729→      html += '<img src="' + imgs[0] + '" alt="' + p.name + '" loading="lazy" onerror="this.style.display=\'none\'" />';
+   730→      if (imgs.length > 1) {
+   731→        html += '<span class="photo-count" onclick="event.stopPropagation(); openLightbox(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">' + imgs.length + ' Photos</span>';
+   732→      }
+   733→      html += '<span class="price-tag">$' + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + '</span>';
+   734→      html += '</div>';
+   735→      html += '<div class="card-body">';
+   736→      html += '<span class="model">' + p.model + '</span>';
+   737→      html += '<h3>' + p.name + '</h3>';
+   738→      html += '<p class="desc">' + p.desc + '</p>';
+   739→      html += '<span class="size-info">\u{1F4BB} Fits ' + p.size + ' Laptop</span>';
+   740→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModal(' + pJson.replace(/&quot;/g, "&amp;quot;") + ')">';
+   741→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+   742→      html += ' Order via WhatsApp</button>';
+   743→      html += '</div></div>';
+   744→    }
+   745→    grid.innerHTML = html;
+   746→  }
+   747→
+   748→  function openModal(product) {
+   749→    currentProduct = product;
+   750→    document.getElementById("modalProduct").textContent = product.brand + " \u2014 " + product.name;
+   751→    document.getElementById("modalPrice").textContent = "$" + product.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   752→    document.getElementById("custName").value = "";
+   753→    document.getElementById("custQty").value = "1";
+   754→    document.getElementById("modalOverlay").classList.add("open");
+   755→    selectedChannel = "whatsapp";
+   756→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+   757→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+   758→    document.getElementById("waPhoneSection").style.display = "block";
+   759→    document.getElementById("messengerInfo").style.display = "none";
+   760→    document.getElementById("igInfo").style.display = "none";
+   761→    document.getElementById("btnSend").innerHTML = "&#128172; Send on WhatsApp";
+   762→    var imgCount = getProductImages(product).length;
+   763→    document.getElementById("viewPhotosBtn").style.display = imgCount > 1 ? "block" : "none";
+   764→    setupShareLinks();
+   765→  }
+   766→
+   767→  function closeModal() {
+   768→    document.getElementById("modalOverlay").classList.remove("open");
+   769→    currentProduct = null;
+   770→  }
+   771→
+   772→  function selectPhone(el) {
+   773→    var opts = document.querySelectorAll(".phone-opt");
+   774→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   775→    el.classList.add("selected");
+   776→    selectedPhone = el.getAttribute("data-phone");
+   777→  }
+   778→
+   779→  function selectChannel(el) {
+   780→    var tabs = document.querySelectorAll(".channel-tab");
+   781→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+   782→    el.classList.add("selected");
+   783→    selectedChannel = el.getAttribute("data-channel");
+   784→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+   785→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+   786→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+   787→    var btn = document.getElementById("btnSend");
+   788→    if (selectedChannel === "whatsapp") btn.innerHTML = "&#128172; Send on WhatsApp";
+   789→    else if (selectedChannel === "messenger") btn.innerHTML = "&#128172; Send on Messenger";
+   790→    else btn.innerHTML = "&#128172; Send on Instagram";
+   791→  }
+   792→
+   793→  function getOrderMsg() {
+   794→    var name = document.getElementById("custName").value.trim();
+   795→    var qty = document.getElementById("custQty").value.trim();
+   796→    if (!name) { showToast("Please enter your name"); return null; }
+   797→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+   798→    var p = currentProduct;
+   799→    var total = (p.price * Number(qty)).toFixed(2);
+   800→    return {
+   801→      text: "*NEW BAG ORDER*\n\n" +
+   802→        "*Customer:* " + name + "\n" +
+   803→        "*Product:* " + p.brand + " " + p.name + "\n" +
+   804→        "*Model:* " + p.model + "\n" +
+   805→        "*Fits:* " + p.size + " Laptop\n" +
+   806→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   807→        "*Quantity:* " + qty + "\n" +
+   808→        "*Total:* $" + Number(total).toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" +
+   809→        "Please confirm availability and payment details."
+   810→    };
+   811→  }
+   812→
+   813→  function sendOrder() {
+   814→    var order = getOrderMsg();
+   815→    if (!order) return;
+   816→    var msg = encodeURIComponent(order.text);
+   817→    if (selectedChannel === "whatsapp") {
+   818→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+   819→      showToast("Opening WhatsApp...");
+   820→    } else if (selectedChannel === "messenger") {
+   821→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+   822→      showToast("Opening Messenger...");
+   823→    } else if (selectedChannel === "instagram") {
+   824→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+   825→      showToast("Opening Instagram DM...");
+   826→    }
+   827→    closeModal();
+   828→  }
+   829→
+   830→  function sendWhatsApp() { sendOrder(); }
+   831→
+   832→  function getProductImages(p) {
+   833→    return Array.isArray(p.imgs) ? p.imgs : [p.img];
+   834→  }
+   835→
+   836→  function openLightbox(product, startIndex) {
+   837→    lbProduct = product;
+   838→    lbImages = getProductImages(product);
+   839→    lbIndex = startIndex || 0;
+   840→    renderLightbox();
+   841→    document.getElementById("lightboxOverlay").classList.add("open");
+   842→    document.body.style.overflow = "hidden";
+   843→  }
+   844→
+   845→  function closeLightbox() {
+   846→    document.getElementById("lightboxOverlay").classList.remove("open");
+   847→    document.body.style.overflow = "";
+   848→    lbProduct = null;
+   849→  }
+   850→
+   851→  function renderLightbox() {
+   852→    var img = document.getElementById("lbImg");
+   853→    img.onerror = function() {
+   854→      this.style.display = 'none';
+   855→      if (lbImages.length > 1) {
+   856→        var next = (lbIndex + 1) % lbImages.length;
+   857→        if (next !== lbIndex) { lbIndex = next; renderLightbox(); }
+   858→      }
+   859→    };
+   860→    img.src = lbImages[lbIndex];
+   861→    img.style.display = '';
+   862→    img.alt = lbProduct.name + " - Photo " + (lbIndex + 1);
+   863→    img.className = "";
+   864→    document.getElementById("lbTitle").textContent = lbProduct.brand + " " + lbProduct.name;
+   865→    document.getElementById("lbPrice").textContent = "$" + lbProduct.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   866→    document.getElementById("lbCounter").textContent = (lbIndex + 1) + " / " + lbImages.length;
+   867→    document.getElementById("lbArrowLeft").style.display = lbImages.length > 1 ? "flex" : "none";
+   868→    document.getElementById("lbArrowRight").style.display = lbImages.length > 1 ? "flex" : "none";
+   869→    var dotsHtml = "";
+   870→    for (var i = 0; i < lbImages.length; i++) {
+   871→      dotsHtml += '<button class="dot' + (i === lbIndex ? ' active' : '') + '" onclick="lbGoTo(' + i + ')"></button>';
+   872→    }
+   873→    document.getElementById("lbDots").innerHTML = dotsHtml;
+   874→    document.getElementById("lbDots").style.display = lbImages.length > 1 ? "flex" : "none";
+   875→  }
+   876→
+   877→  function lbGoTo(index) {
+   878→    if (index === lbIndex) return;
+   879→    var img = document.getElementById("lbImg");
+   880→    img.className = index > lbIndex ? "slide-left" : "slide-right";
+   881→    setTimeout(function() {
+   882→      lbIndex = index;
+   883→      renderLightbox();
+   884→      img.className = index > lbIndex ? "slide-right" : "slide-left";
+   885→      requestAnimationFrame(function() { img.className = ""; });
+   886→    }, 200);
+   887→  }
+   888→
+   889→  function lbNext() {
+   890→    if (lbImages.length <= 1) return;
+   891→    lbGoTo((lbIndex + 1) % lbImages.length);
+   892→  }
+   893→
+   894→  function lbPrev() {
+   895→    if (lbImages.length <= 1) return;
+   896→    lbGoTo((lbIndex - 1 + lbImages.length) % lbImages.length);
+   897→  }
+   898→
+   899→  function orderFromLightbox() {
+   900→    closeLightbox();
+   901→    if (lbProduct) openModal(lbProduct);
+   902→  }
+   903→
+   904→  document.getElementById("lbImgWrap").addEventListener("touchstart", function(e) {
+   905→    touchStartX = e.changedTouches[0].screenX;
+   906→  }, {passive: true});
+   907→
+   908→  document.getElementById("lbImgWrap").addEventListener("touchend", function(e) {
+   909→    touchEndX = e.changedTouches[0].screenX;
+   910→    var diff = touchStartX - touchEndX;
+   911→    if (Math.abs(diff) > 50) {
+   912→      if (diff > 0) lbNext(); else lbPrev();
+   913→    }
+   914→  }, {passive: true});
+   915→
+   916→  document.getElementById("lightboxOverlay").addEventListener("click", function(e) {
+   917→    if (e.target === e.currentTarget) closeLightbox();
+   918→  });
+   919→
+   920→  document.addEventListener("keydown", function(e) {
+   921→    if (!document.getElementById("lightboxOverlay").classList.contains("open")) return;
+   922→    if (e.key === "ArrowRight" || e.key === "ArrowDown") lbNext();
+   923→    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") lbPrev();
+   924→    else if (e.key === "Escape") closeLightbox();
+   925→  });
+   926→
+   927→  function showToast(msg) {
+   928→    var t = document.getElementById("toast");
+   929→    t.textContent = msg;
+   930→    t.classList.add("show");
+   931→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+   932→  }
+   933→
+   934→  document.getElementById("filterBar").addEventListener("click", function(e) {
+   935→    if (!e.target.classList.contains("filter-btn")) return;
+   936→    var btns = document.querySelectorAll(".filter-btn");
+   937→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+   938→    e.target.classList.add("active");
+   939→    renderCards(e.target.getAttribute("data-filter"));
+   940→  });
+   941→
+   942→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+   943→    if (e.target === e.currentTarget) closeModal();
+   944→  });
+   945→
+   946→  function setupShareLinks() {
+   947→    var p = currentProduct;
+   948→    if (!p) return;
+   949→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+   950→    var pageUrl = encodeURIComponent(window.location.href);
+   951→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+   952→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+   953→  }
+   954→
+   955→  function copyProductLink(e) {
+   956→    e.preventDefault();
+   957→    var p = currentProduct;
+   958→    if (!p) return;
+   959→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+   960→    if (navigator.clipboard) {
+   961→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+   962→    } else {
+   963→      showToast("Long-press to copy the link");
+   964→    }
+   965→  }
+   966→
+   967→  renderCards();
+   968→  </script>
+   969→</body>
+
+[showing lines 500-969 of 970; use offset=970 with limit to continue reading]
