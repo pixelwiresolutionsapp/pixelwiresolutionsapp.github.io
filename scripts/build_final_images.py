@@ -1,0 +1,217 @@
+#!/usr/bin/env python3
+"""Build final image arrays for all 24 products.
+Combines scraped Klipxtreme S3 images with newly found Targus/HP/Dell images."""
+import json, re, os
+
+# Load previously scraped Klipxtreme images
+with open('/home/z/my-project/scripts/all_product_images.json') as f:
+    scraped = json.load(f)
+
+# Current product data (model -> current single img URL)
+current_imgs = {
+    'KNS-214BL': 'https://sfile.chatglm.cn/images-ppt/ab9705780db1.png',
+    'KNS-215': 'https://sfile.chatglm.cn/images-ppt/511320742f17.jpg',
+    'KNS-420': 'https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg',
+    'KNS-330': 'https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg',
+    'KNC-041': 'https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg',
+    'KNC-025': 'https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg',
+    'KNB-406GR': 'https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg',
+    'KNB-416': 'https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg',
+    'KNB-577': 'https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg',
+    'KNB-582': 'https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg',
+    'KNB-426BL': 'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg',
+    'KNB-456': 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Friazcomputer.com%2Fwp-content%2Fuploads%2F2023%2F07%2FKNB-456-BL.jpg&f=1&nofb=1&ipt=76f65289643c9ab8e34f1f974b12085377eb8d306036c3cec7f0d467ae926783',
+    'KNB-895': 'https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg',
+    'KNB-467KH': 'https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg',
+    'KNB-650BK': 'https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg',
+    'KLB-461': 'https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg',
+    'KNB-583': 'https://sfile.chatglm.cn/images-ppt/db879f77cf77.jpg',
+    'KNB-468': 'https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg',
+    'TAS-119': 'https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg',
+    'TAS-217': 'https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg',
+    'HP-PP15': 'https://sfile.chatglm.cn/images-ppt/479bf895146e.jpg',
+    'HP-RB15': 'https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg',
+    'DL-PS15': 'https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg',
+    'DL-EL15': 'https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg',
+}
+
+# Manually curated additional images for products that have good scraped S3 data
+good_klipxtreme = {
+    # These have real Klipxtreme S3 product images from the scrape
+    'KNS-214BL': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg',
+    ],
+    'KNS-330': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg',
+    ],
+    'KNS-420': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg',
+    ],
+    'KNC-041': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg',
+    ],
+    'KNC-025': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg',
+    ],
+    'KNB-406GR': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406BL.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg',
+    ],
+    'KNB-416': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg',
+    ],
+    'KNB-577': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg',
+    ],
+    'KNB-582': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg',
+    ],
+    'KNB-426BL': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg',
+    ],
+    'KNB-456': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg',
+    ],
+    'KNB-895': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg',
+    ],
+    'KNB-467KH': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg',
+    ],
+    'KLB-461': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg',
+    ],
+    'KNB-583': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg',
+    ],
+    'KNB-468': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg',
+    ],
+}
+
+# Products needing manually curated images (non-Klipxtreme or missing scrape data)
+other_images = {
+    # KNS-215: Try S3 URLs based on Klipxtreme naming patterns
+    'KNS-215': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-01.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-02.jpg',
+    ],
+    # KNB-650BK: Try S3 URLs based on naming patterns
+    'KNB-650BK': [
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-land.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-1.jpg',
+        'https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-2.jpg',
+    ],
+    # Targus Sport Backpack (TSB89104US) - scraped from Targus website
+    'TAS-119': [
+        'https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg',
+    ],
+    # Targus Intellect Essential (TSB966GL) - scraped from Targus website
+    'TAS-217': [
+        'https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg',
+        'https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg',
+    ],
+    # HP Prelude Pro - from HP Widen CDN
+    'HP-PP15': [
+        'https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png',
+    ],
+    # HP Renew Business
+    'HP-RB15': [],
+    # Dell Pro Slim Briefcase
+    'DL-PS15': [],
+    # Dell Eco Loop Essential
+    'DL-EL15': [],
+}
+
+# Build final image arrays
+final = {}
+all_models = list(current_imgs.keys())
+
+for model in all_models:
+    base_img = current_imgs[model]
+    
+    # Get extra images
+    if model in good_klipxtreme:
+        extras = good_klipxtreme[model]
+    elif model in other_images:
+        extras = other_images[model]
+    else:
+        extras = []
+    
+    # Build imgs array: current image first, then extras (avoid duplicates)
+    imgs = [base_img]
+    seen = {base_img.split('?')[0].split('#')[0]}
+    
+    for img in extras:
+        norm = img.split('?')[0].split('#')[0]
+        if norm not in seen:
+            seen.add(norm)
+            imgs.append(img)
+    
+    final[model] = imgs
+
+# Print summary
+print('=== FINAL IMAGE ARRAYS ===')
+for model, imgs in final.items():
+    count = len(imgs)
+    status = 'MULTI' if count > 1 else 'SINGLE'
+    print(f'{model}: {count} images [{status}]')
+
+# Save
+with open('/home/z/my-project/scripts/final_images.json', 'w') as f:
+    json.dump(final, f, indent=2)
+print(f'\nSaved to final_images.json')
+print(f'Products with multiple images: {sum(1 for v in final.values() if len(v) > 1)}/24')
