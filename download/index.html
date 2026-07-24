@@ -236,6 +236,33 @@
       background: #f0fdf4;
       color: #075e54;
     }
+    .delivery-options { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .delivery-opt {
+      flex: 1;
+      min-width: 120px;
+      padding: 12px 10px;
+      border: 2px solid #d0d5dd;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s;
+      font-weight: 600;
+      font-size: .82rem;
+      line-height: 1.4;
+    }
+    .delivery-opt:hover, .delivery-opt.selected {
+      border-color: #1a1a2e;
+      background: #f0f2f5;
+      color: #1a1a2e;
+    }
+    .delivery-opt .del-price {
+      display: block;
+      font-size: .78rem;
+      font-weight: 400;
+      color: #667085;
+      margin-top: 2px;
+    }
+    .delivery-opt.selected .del-price { color: #1a1a2e; }
     .modal-actions { display: flex; gap: 10px; }
     .modal-actions button {
       flex: 1;
@@ -597,6 +624,24 @@
       <input type="text" id="custName" placeholder="Enter your full name" />
       <label for="custQty">Quantity</label>
       <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+      <div class="order-channel-label">Delivery Method</div>
+      <div class="delivery-options" id="deliveryOptions">
+        <div class="delivery-opt selected" data-delivery="pickup" data-cost="0" onclick="selectDelivery(this)">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Pickup
+          <span class="del-price">Free</span>
+        </div>
+        <div class="delivery-opt" data-delivery="round-town" data-cost="600" onclick="selectDelivery(this)">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM19.5 9.5L21 12h-3l1.5-2.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+          Round Town Delivery
+          <span class="del-price">$600 JMD</span>
+        </div>
+        <div class="delivery-opt" data-delivery="outside-kingston" data-cost="courier" onclick="selectDelivery(this)">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm3.5-9l1.96 3.5H4l1.96-3.5h3.54zm10.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          Outside Kingston
+          <span class="del-price">Knutsford / Doorway</span>
+        </div>
+      </div>
       <div class="order-channel-label">Order via</div>
       <div class="channel-tabs" id="channelTabs">
         <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
@@ -706,6 +751,8 @@
   ];
 
   var productIndices = [];
+  var selectedDelivery = "pickup";
+  var selectedDeliveryCost = 0;
   var selectedPhone = "18767731193";
   var selectedChannel = "whatsapp";
   var currentProduct = null;
@@ -774,6 +821,10 @@
     document.getElementById("modalPrice").textContent = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
     document.getElementById("custName").value = "";
     document.getElementById("custQty").value = "1";
+    selectedDelivery = "pickup";
+    selectedDeliveryCost = 0;
+    document.querySelectorAll(".delivery-opt").forEach(function(d) { d.classList.remove("selected"); });
+    document.querySelector('.delivery-opt[data-delivery="pickup"]').classList.add("selected");
     document.getElementById("modalOverlay").classList.add("open");
     selectedChannel = "whatsapp";
     document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
@@ -793,7 +844,9 @@
     lastViewedIndex = idx;
     lbProduct = p;
     lbProductIndex = idx;
-    lbImages = getProductImages(p);
+    var allImgs = getProductImages(p);
+    // Pre-filter: only include images that start with http
+    lbImages = allImgs.filter(function(u) { return u && u.indexOf('http') === 0; });
     lbIndex = 0;
     renderLightbox();
     document.getElementById("lightboxOverlay").classList.add("open");
@@ -811,6 +864,15 @@
     for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
     el.classList.add("selected");
     selectedPhone = el.getAttribute("data-phone");
+  }
+
+  function selectDelivery(el) {
+    var opts = document.querySelectorAll(".delivery-opt");
+    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+    el.classList.add("selected");
+    selectedDelivery = el.getAttribute("data-delivery");
+    var cost = el.getAttribute("data-cost");
+    selectedDeliveryCost = cost === "courier" ? -1 : Number(cost);
   }
 
   function selectChannel(el) {
@@ -833,7 +895,17 @@
     if (!name) { showToast("Please enter your name"); return null; }
     if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
     var p = currentProduct;
-    var total = (p.price * Number(qty)).toFixed(2);
+    var subtotal = p.price * Number(qty);
+    var deliveryLabel = "Pickup (Free)";
+    var deliveryLine = "";
+    if (selectedDelivery === "round-town") {
+      deliveryLabel = "Round Town Delivery";
+      deliveryLine = "\n*Delivery:* $600.00 JMD\n";
+    } else if (selectedDelivery === "outside-kingston") {
+      deliveryLabel = "Outside Kingston (Knutsford/Doorway Courier)";
+      deliveryLine = "\n*Delivery:* Via Knutsford or Doorway courier (rate quoted separately)\n";
+    }
+    var grandTotal = selectedDeliveryCost >= 0 ? subtotal + selectedDeliveryCost : subtotal;
     return {
       text: "*NEW BAG ORDER*\n\n" +
         "*Customer:* " + name + "\n" +
@@ -842,7 +914,10 @@
         "*Fits:* " + p.size + " Laptop\n" +
         "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
         "*Quantity:* " + qty + "\n" +
-        "*Total:* $" + Number(total).toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" +
+        "*Subtotal:* $" + subtotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+        deliveryLine +
+        "*Delivery Method:* " + deliveryLabel + "\n" +
+        (selectedDeliveryCost >= 0 ? "*Grand Total:* $" + grandTotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" : "*Grand Total:* To be quoted (courier rate)\n\n") +
         "Please confirm availability and payment details."
     };
   }
