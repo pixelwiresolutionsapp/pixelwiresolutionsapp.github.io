@@ -1,0 +1,348 @@
+     1→   726→  var products = [
+     2→   727→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://sfile.chatglm.cn/images-ppt/ab9705780db1.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+     3→   728→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://sfile.chatglm.cn/images-ppt/511320742f17.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-02.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
+     4→   729→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg"], size: '15.6\"', desc: "Minimalist rectangular design with smooth finish." },
+     5→   730→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg"], size: '15.6\"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+     6→   731→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", imgs: ["https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg"], size: '15.6\"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+     7→   732→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg"], size: '15.6\"', desc: "Slim profile briefcase with front organizer pocket." },
+     8→   733→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", imgs: ["https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406BL.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg"], size: '15.6\"', desc: "Light grey backpack with padded shoulder straps." },
+     9→   734→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", imgs: ["https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg"], size: '15.6\"', desc: "Navy blue classic backpack with multiple compartments." },
+    10→   735→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg"], size: '15.6\"', desc: "Sleek black design with matching accessory pouch." },
+    11→   736→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", imgs: ["https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg"], size: '15.6\"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+    12→   737→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg"], size: '15.6\"', desc: "Casual everyday backpack with multiple zippered compartments." },
+    13→   738→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg", "https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg"], size: '15.6\"', desc: "Athletic sporty design with breathable mesh backing." },
+    14→   739→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", imgs: ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Friazcomputer.com%2Fwp-content%2Fuploads%2F2023%2F07%2FKNB-456-BL.jpg&f=1&nofb=1&ipt=76f65289643c9ab8e34f1f974b12085377eb8d306036c3cec7f0d467ae926783", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg"], size: '15.6\"', desc: "Structured business-casual backpack with accessory case." },
+    15→   740→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg"], size: '15.6\"', desc: "Professional executive style with extensive organization." },
+    16→   741→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg", "https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg"], size: '15.6\"', desc: "Business-oriented design with clean lines." },
+    17→   742→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", imgs: ["https://sfile.chatglm.cn/images-ppt/479bf895146e.jpg", "https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png"], size: '15.6\"', desc: "Modern minimalist design with sleek profile." },
+    18→   743→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", imgs: ["https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg"], size: '15.6\"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+    19→   744→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-2.jpg"], size: '15.6\"', desc: "Expandable design with zippers to increase capacity." },
+    20→   745→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", imgs: ["https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg"], size: '15.6\"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+    21→   746→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/db879f77cf77.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg"], size: '15.6\"', desc: "Rugged durable design with multiple external pockets." },
+    22→   747→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6\"', desc: "Premium leather-like finish, vintage-inspired design." },
+    23→   748→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg", "https://www.bhphotovideo.com/images/images500x500/hp_3e5f8aa_top_load_bag_f_1680535239_1660232.jpg", "https://www.bhphotovideo.com/images/fb/hp_3e5f8aa_top_load_bag_f_1660232.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971126.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971127.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971128.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971129.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971130.jpg"], size: '15.6\"', desc: "Eco-friendly construction using sustainable materials." },
+    24→   749→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg", "https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+    25→   750→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg", "https://www.provantage.com/1080962725.JPG"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." }
+    26→   751→  ];
+    27→   752→
+    28→   753→  var productIndices = [];
+    29→   754→  var selectedDelivery = "pickup";
+    30→   755→  var selectedDeliveryCost = 0;
+    31→   756→  var selectedPhone = "18767731193";
+    32→   757→  var selectedChannel = "whatsapp";
+    33→   758→  var currentProduct = null;
+    34→   759→  var currentProductIndex = -1;
+    35→   760→  var lastViewedIndex = 0;
+    36→   761→  var lbProduct = null;
+    37→   762→  var lbProductIndex = -1;
+    38→   763→  var lbIndex = 0;
+    39→   764→  var lbImages = [];
+    40→   765→  var touchStartX = 0;
+    41→   766→  var touchEndX = 0;
+    42→   767→
+    43→   768→  function escAttr(s) {
+    44→   769→    return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    45→   770→  }
+    46→   771→
+    47→   772→  function renderCards(filter) {
+    48→   773→    filter = filter || "all";
+    49→   774→    var grid = document.getElementById("productGrid");
+    50→   775→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+    51→   776→    productIndices = [];
+    52→   777→    for (var fi = 0; fi < filtered.length; fi++) {
+    53→   778→      for (var pi = 0; pi < products.length; pi++) {
+    54→   779→        if (products[pi] === filtered[fi]) { productIndices.push(pi); break; }
+    55→   780→      }
+    56→   781→    }
+    57→   782→    var html = "";
+    58→   783→    for (var i = 0; i < filtered.length; i++) {
+    59→   784→      var p = filtered[i];
+    60→   785→      var idx = productIndices[i];
+    61→   786→      var imgs = Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+    62→   787→      var safeName = escAttr(p.name);
+    63→   788→      var safeBrand = escAttr(p.brand);
+    64→   789→      var safeModel = escAttr(p.model);
+    65→   790→      var safeDesc = escAttr(p.desc);
+    66→   791→      var priceStr = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2});
+    67→   792→      html += '<div class="card">';
+    68→   793→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
+    69→   794→      html += '<span class="brand-tag">' + safeBrand + '</span>';
+    70→   795→      html += '<img src="' + escAttr(imgs[0]) + '" alt="' + safeName + '" loading="lazy" onerror="this.style.display=\'none\'" />';
+    71→   796→      if (imgs.length > 1) {
+    72→   797→        html += '<span class="photo-count" onclick="event.stopPropagation(); openLightboxByIndex(' + idx + ')">' + imgs.length + ' Photos</span>';
+    73→   798→      }
+    74→   799→      html += '<span class="price-tag">' + priceStr + '</span>';
+    75→   800→      html += '</div>';
+    76→   801→      html += '<div class="card-body">';
+    77→   802→      html += '<span class="model">' + safeModel + '</span>';
+    78→   803→      html += '<h3>' + safeName + '</h3>';
+    79→   804→      html += '<p class="desc">' + safeDesc + '</p>';
+    80→   805→      html += '<span class="size-info">💻 Fits ' + escAttr(p.size) + ' Laptop</span>';
+    81→   806→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModalByIndex(' + idx + ')">';
+    82→   807→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+    83→   808→      html += ' Order via WhatsApp</button>';
+    84→   809→      html += '</div></div>';
+    85→   810→    }
+    86→   811→    grid.innerHTML = html;
+    87→   812→  }
+    88→   813→
+    89→   814→  function openModalByIndex(idx) {
+    90→   815→    var p = products[idx];
+    91→   816→    if (!p) return;
+    92→   817→    currentProduct = p;
+    93→   818→    currentProductIndex = idx;
+    94→   819→    lastViewedIndex = idx;
+    95→   820→    document.getElementById("modalProduct").textContent = p.brand + " \u2014 " + p.name;
+    96→   821→    document.getElementById("modalPrice").textContent = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+    97→   822→    document.getElementById("custName").value = "";
+    98→   823→    document.getElementById("custQty").value = "1";
+    99→   824→    selectedDelivery = "pickup";
+   100→   825→    selectedDeliveryCost = 0;
+   101→   826→    document.querySelectorAll(".delivery-opt").forEach(function(d) { d.classList.remove("selected"); });
+   102→   827→    document.querySelector('.delivery-opt[data-delivery="pickup"]').classList.add("selected");
+   103→   828→    document.getElementById("modalOverlay").classList.add("open");
+   104→   829→    selectedChannel = "whatsapp";
+   105→   830→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+   106→   831→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+   107→   832→    document.getElementById("waPhoneSection").style.display = "block";
+   108→   833→    document.getElementById("messengerInfo").style.display = "none";
+   109→   834→    document.getElementById("igInfo").style.display = "none";
+   110→   835→    document.getElementById("btnSend").innerHTML = "💬 Send on WhatsApp";
+   111→   836→    var imgCount = getProductImages(p).length;
+   112→   837→    document.getElementById("viewPhotosBtn").style.display = imgCount > 1 ? "block" : "none";
+   113→   838→    setupShareLinks();
+   114→   839→  }
+   115→   840→
+   116→   841→  function openLightboxByIndex(idx) {
+   117→   842→    var p = products[idx];
+   118→   843→    if (!p) return;
+   119→   844→    lastViewedIndex = idx;
+   120→   845→    lbProduct = p;
+   121→   846→    lbProductIndex = idx;
+   122→   847→    var allImgs = getProductImages(p);
+   123→   848→    // Pre-filter: only include images that start with http
+   124→   849→    lbImages = allImgs.filter(function(u) { return u && u.indexOf('http') === 0; });
+   125→   850→    lbIndex = 0;
+   126→   851→    renderLightbox();
+   127→   852→    document.getElementById("lightboxOverlay").classList.add("open");
+   128→   853→    document.body.style.overflow = "hidden";
+   129→   854→  }
+   130→   855→
+   131→   856→  function closeModal() {
+   132→   857→    document.getElementById("modalOverlay").classList.remove("open");
+   133→   858→    currentProduct = null;
+   134→   859→    currentProductIndex = -1;
+   135→   860→  }
+   136→   861→
+   137→   862→  function selectPhone(el) {
+   138→   863→    var opts = document.querySelectorAll(".phone-opt");
+   139→   864→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   140→   865→    el.classList.add("selected");
+   141→   866→    selectedPhone = el.getAttribute("data-phone");
+   142→   867→  }
+   143→   868→
+   144→   869→  function selectDelivery(el) {
+   145→   870→    var opts = document.querySelectorAll(".delivery-opt");
+   146→   871→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   147→   872→    el.classList.add("selected");
+   148→   873→    selectedDelivery = el.getAttribute("data-delivery");
+   149→   874→    var cost = el.getAttribute("data-cost");
+   150→   875→    selectedDeliveryCost = cost === "courier" ? -1 : Number(cost);
+   151→   876→  }
+   152→   877→
+   153→   878→  function selectChannel(el) {
+   154→   879→    var tabs = document.querySelectorAll(".channel-tab");
+   155→   880→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+   156→   881→    el.classList.add("selected");
+   157→   882→    selectedChannel = el.getAttribute("data-channel");
+   158→   883→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+   159→   884→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+   160→   885→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+   161→   886→    var btn = document.getElementById("btnSend");
+   162→   887→    if (selectedChannel === "whatsapp") btn.innerHTML = "💬 Send on WhatsApp";
+   163→   888→    else if (selectedChannel === "messenger") btn.innerHTML = "💬 Send on Messenger";
+   164→   889→    else btn.innerHTML = "💬 Send on Instagram";
+   165→   890→  }
+   166→   891→
+   167→   892→  function getOrderMsg() {
+   168→   893→    var name = document.getElementById("custName").value.trim();
+   169→   894→    var qty = document.getElementById("custQty").value.trim();
+   170→   895→    if (!name) { showToast("Please enter your name"); return null; }
+   171→   896→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+   172→   897→    var p = currentProduct;
+   173→   898→    var subtotal = p.price * Number(qty);
+   174→   899→    var deliveryLabel = "Pickup (Free)";
+   175→   900→    var deliveryLine = "";
+   176→   901→    if (selectedDelivery === "round-town") {
+   177→   902→      deliveryLabel = "Round Town Delivery";
+   178→   903→      deliveryLine = "\n*Delivery:* $600.00 JMD\n";
+   179→   904→    } else if (selectedDelivery === "outside-kingston") {
+   180→   905→      deliveryLabel = "Outside Kingston (Knutsford/Doorway Courier)";
+   181→   906→      deliveryLine = "\n*Delivery:* Via Knutsford or Doorway courier (rate quoted separately)\n";
+   182→   907→    }
+   183→   908→    var grandTotal = selectedDeliveryCost >= 0 ? subtotal + selectedDeliveryCost : subtotal;
+   184→   909→    return {
+   185→   910→      text: "*NEW BAG ORDER*\n\n" +
+   186→   911→        "*Customer:* " + name + "\n" +
+   187→   912→        "*Product:* " + p.brand + " " + p.name + "\n" +
+   188→   913→        "*Model:* " + p.model + "\n" +
+   189→   914→        "*Fits:* " + p.size + " Laptop\n" +
+   190→   915→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   191→   916→        "*Quantity:* " + qty + "\n" +
+   192→   917→        "*Subtotal:* $" + subtotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   193→   918→        deliveryLine +
+   194→   919→        "*Delivery Method:* " + deliveryLabel + "\n" +
+   195→   920→        (selectedDeliveryCost >= 0 ? "*Grand Total:* $" + grandTotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" : "*Grand Total:* To be quoted (courier rate)\n\n") +
+   196→   921→        "Please confirm availability and payment details."
+   197→   922→    };
+   198→   923→  }
+   199→   924→
+   200→   925→  function sendOrder() {
+   201→   926→    var order = getOrderMsg();
+   202→   927→    if (!order) return;
+   203→   928→    var msg = encodeURIComponent(order.text);
+   204→   929→    if (selectedChannel === "whatsapp") {
+   205→   930→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+   206→   931→      showToast("Opening WhatsApp...");
+   207→   932→    } else if (selectedChannel === "messenger") {
+   208→   933→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+   209→   934→      showToast("Opening Messenger...");
+   210→   935→    } else if (selectedChannel === "instagram") {
+   211→   936→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+   212→   937→      showToast("Opening Instagram DM...");
+   213→   938→    }
+   214→   939→    closeModal();
+   215→   940→  }
+   216→   941→
+   217→   942→  function getProductImages(p) {
+   218→   943→    return Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+   219→   944→  }
+   220→   945→
+   221→   946→  function closeLightbox() {
+   222→   947→    document.getElementById("lightboxOverlay").classList.remove("open");
+   223→   948→    document.body.style.overflow = "";
+   224→   949→    lbProduct = null;
+   225→   950→    lbProductIndex = -1;
+   226→   951→  }
+   227→   952→
+   228→   953→  function renderLightbox() {
+   229→   954→    var img = document.getElementById("lbImg");
+   230→   955→    img.onerror = function() {
+   231→   956→      this.style.display = 'none';
+   232→   957→      if (lbImages.length > 1) {
+   233→   958→        var next = (lbIndex + 1) % lbImages.length;
+   234→   959→        if (next !== lbIndex) { lbIndex = next; renderLightbox(); }
+   235→   960→      }
+   236→   961→    };
+   237→   962→    img.src = lbImages[lbIndex];
+   238→   963→    img.style.display = '';
+   239→   964→    img.alt = lbProduct.name + ' - Photo ' + (lbIndex + 1);
+   240→   965→    img.className = "";
+   241→   966→    document.getElementById("lbTitle").textContent = lbProduct.brand + " " + lbProduct.name;
+   242→   967→    document.getElementById("lbPrice").textContent = "$" + lbProduct.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   243→   968→    document.getElementById("lbCounter").textContent = (lbIndex + 1) + " / " + lbImages.length;
+   244→   969→    document.getElementById("lbArrowLeft").style.display = lbImages.length > 1 ? "flex" : "none";
+   245→   970→    document.getElementById("lbArrowRight").style.display = lbImages.length > 1 ? "flex" : "none";
+   246→   971→    var dotsHtml = "";
+   247→   972→    for (var i = 0; i < lbImages.length; i++) {
+   248→   973→      dotsHtml += '<button class="dot' + (i === lbIndex ? ' active' : '') + '" onclick="lbGoTo(' + i + ')"></button>';
+   249→   974→    }
+   250→   975→    document.getElementById("lbDots").innerHTML = dotsHtml;
+   251→   976→    document.getElementById("lbDots").style.display = lbImages.length > 1 ? "flex" : "none";
+   252→   977→  }
+   253→   978→
+   254→   979→  function lbGoTo(index) {
+   255→   980→    if (index === lbIndex) return;
+   256→   981→    var img = document.getElementById("lbImg");
+   257→   982→    img.className = index > lbIndex ? "slide-left" : "slide-right";
+   258→   983→    setTimeout(function() {
+   259→   984→      lbIndex = index;
+   260→   985→      renderLightbox();
+   261→   986→      img.className = index > lbIndex ? "slide-right" : "slide-left";
+   262→   987→      requestAnimationFrame(function() { img.className = ""; });
+   263→   988→    }, 200);
+   264→   989→  }
+   265→   990→
+   266→   991→  function lbNext() {
+   267→   992→    if (lbImages.length <= 1) return;
+   268→   993→    lbGoTo((lbIndex + 1) % lbImages.length);
+   269→   994→  }
+   270→   995→
+   271→   996→  function lbPrev() {
+   272→   997→    if (lbImages.length <= 1) return;
+   273→   998→    lbGoTo((lbIndex - 1 + lbImages.length) % lbImages.length);
+   274→   999→  }
+   275→  1000→
+   276→  1001→  function orderFromLightbox() {
+   277→  1002→    var idx = lbProductIndex >= 0 ? lbProductIndex : lastViewedIndex;
+   278→  1003→    closeLightbox();
+   279→  1004→    openModalByIndex(idx);
+   280→  1005→  }
+   281→  1006→
+   282→  1007→  document.getElementById("lbImgWrap").addEventListener("touchstart", function(e) {
+   283→  1008→    touchStartX = e.changedTouches[0].screenX;
+   284→  1009→  }, {passive: true});
+   285→  1010→
+   286→  1011→  document.getElementById("lbImgWrap").addEventListener("touchend", function(e) {
+   287→  1012→    touchEndX = e.changedTouches[0].screenX;
+   288→  1013→    var diff = touchStartX - touchEndX;
+   289→  1014→    if (Math.abs(diff) > 50) {
+   290→  1015→      if (diff > 0) lbNext(); else lbPrev();
+   291→  1016→    }
+   292→  1017→  }, {passive: true});
+   293→  1018→
+   294→  1019→  document.getElementById("lightboxOverlay").addEventListener("click", function(e) {
+   295→  1020→    if (e.target === e.currentTarget) closeLightbox();
+   296→  1021→  });
+   297→  1022→
+   298→  1023→  document.addEventListener("keydown", function(e) {
+   299→  1024→    if (!document.getElementById("lightboxOverlay").classList.contains("open")) return;
+   300→  1025→    if (e.key === "ArrowRight" || e.key === "ArrowDown") lbNext();
+   301→  1026→    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") lbPrev();
+   302→  1027→    else if (e.key === "Escape") closeLightbox();
+   303→  1028→  });
+   304→  1029→
+   305→  1030→  function showToast(msg) {
+   306→  1031→    var t = document.getElementById("toast");
+   307→  1032→    t.textContent = msg;
+   308→  1033→    t.classList.add("show");
+   309→  1034→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+   310→  1035→  }
+   311→  1036→
+   312→  1037→  document.getElementById("filterBar").addEventListener("click", function(e) {
+   313→  1038→    if (!e.target.classList.contains("filter-btn")) return;
+   314→  1039→    var btns = document.querySelectorAll(".filter-btn");
+   315→  1040→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+   316→  1041→    e.target.classList.add("active");
+   317→  1042→    renderCards(e.target.getAttribute("data-filter"));
+   318→  1043→  });
+   319→  1044→
+   320→  1045→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+   321→  1046→    if (e.target === e.currentTarget) closeModal();
+   322→  1047→  });
+   323→  1048→
+   324→  1049→  function setupShareLinks() {
+   325→  1050→    var p = currentProduct;
+   326→  1051→    if (!p) return;
+   327→  1052→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+   328→  1053→    var pageUrl = encodeURIComponent(window.location.href);
+   329→  1054→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+   330→  1055→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+   331→  1056→  }
+   332→  1057→
+   333→  1058→  function copyProductLink(e) {
+   334→  1059→    e.preventDefault();
+   335→  1060→    var p = currentProduct;
+   336→  1061→    if (!p) return;
+   337→  1062→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+   338→  1063→    if (navigator.clipboard) {
+   339→  1064→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+   340→  1065→    } else {
+   341→  1066→      showToast("Long-press to copy the link");
+   342→  1067→    }
+   343→  1068→  }
+   344→  1069→
+   345→  1070→  renderCards();
+   346→  1071→  </script>
+   347→  1072→</body>
+   348→  1073→</html>
