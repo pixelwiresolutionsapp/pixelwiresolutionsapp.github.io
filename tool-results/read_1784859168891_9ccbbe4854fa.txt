@@ -1,0 +1,475 @@
+   400→   599→   599→        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   401→   600→   600→      </a>
+   402→   601→   601→    </div>
+   403→   602→   602→  </header>
+   404→   603→   603→  <div class="wa-bar">
+   405→   604→   604→    <span>&#128172; Orders sent via WhatsApp to:</span>
+   406→   605→   605→    <a href="https://wa.me/18767731193" target="_blank">(876) 773-1193</a>
+   407→   606→   606→    <span>or</span>
+   408→   607→   607→    <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
+   409→   608→   608→  </div>
+   410→   609→   609→  <div class="filter-bar" id="filterBar">
+   411→   610→   610→    <button class="filter-btn active" data-filter="all">All Items</button>
+   412→   611→   611→    <button class="filter-btn" data-filter="sleeve">Sleeves</button>
+   413→   612→   612→    <button class="filter-btn" data-filter="case">Cases</button>
+   414→   613→   613→    <button class="filter-btn" data-filter="backpack">Backpacks</button>
+   415→   614→   614→    <button class="filter-btn" data-filter="handbag">Handbags</button>
+   416→   615→   615→  </div>
+   417→   616→   616→  <div class="grid" id="productGrid"></div>
+   418→   617→   617→  <div class="modal-overlay" id="modalOverlay">
+   419→   618→   618→    <div class="modal">
+   420→   619→   619→      <h2>&#128722; Order This Bag</h2>
+   421→   620→   620→      <p class="modal-product" id="modalProduct"></p>
+   422→   621→   621→      <p class="modal-price" id="modalPrice"></p>
+   423→   622→   622→      <button id="viewPhotosBtn" onclick="closeModal(); openLightboxByIndex(currentProductIndex)" style="display:none;width:100%;padding:10px;border:2px dashed #d0d5dd;border-radius:12px;background:#f9fafb;cursor:pointer;font-size:.88rem;font-weight:600;color:#344054;margin-bottom:16px;transition:all .2s;" onmouseover="this.style.borderColor='#1a1a2e';this.style.background='#f0f2f5'" onmouseout="this.style.borderColor='#d0d5dd';this.style.background='#f9fafb'">&#128247; View All Photos</button>
+   424→   623→   623→      <label for="custName">Your Name</label>
+   425→   624→   624→      <input type="text" id="custName" placeholder="Enter your full name" />
+   426→   625→   625→      <label for="custQty">Quantity</label>
+   427→   626→   626→      <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+   428→   627→   627→      <div class="order-channel-label">Delivery Method</div>
+   429→   628→   628→      <div class="delivery-options" id="deliveryOptions">
+   430→   629→   629→        <div class="delivery-opt selected" data-delivery="pickup" data-cost="0" onclick="selectDelivery(this)">
+   431→   630→   630→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+   432→   631→   631→          Pickup
+   433→   632→   632→          <span class="del-price">Free</span>
+   434→   633→   633→        </div>
+   435→   634→   634→        <div class="delivery-opt" data-delivery="round-town" data-cost="600" onclick="selectDelivery(this)">
+   436→   635→   635→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM19.5 9.5L21 12h-3l1.5-2.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+   437→   636→   636→          Round Town Delivery
+   438→   637→   637→          <span class="del-price">$600 JMD</span>
+   439→   638→   638→        </div>
+   440→   639→   639→        <div class="delivery-opt" data-delivery="outside-kingston" data-cost="courier" onclick="selectDelivery(this)">
+   441→   640→   640→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm3.5-9l1.96 3.5H4l1.96-3.5h3.54zm10.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+   442→   641→   641→          Outside Kingston
+   443→   642→   642→          <span class="del-price">Knutsford / Doorway</span>
+   444→   643→   643→        </div>
+   445→   644→   644→      </div>
+   446→   645→   645→      <div class="order-channel-label">Order via</div>
+   447→   646→   646→      <div class="channel-tabs" id="channelTabs">
+   448→   647→   647→        <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
+   449→   648→   648→          <svg viewBox="0 0 24 24" style="fill:#25d366;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+   450→   649→   649→          WhatsApp
+   451→   650→   650→        </div>
+   452→   651→   651→        <div class="channel-tab" data-channel="messenger" onclick="selectChannel(this)">
+   453→   652→   652→          <svg viewBox="0 0 24 24" style="fill:#1877F2;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15.16.14.26.34.27.56l.05 1.74c.02.59.63.97 1.17.73l1.94-.81c.16-.07.34-.09.51-.05.9.25 1.85.38 2.83.38h.08C17.64 21.4 22 17.27 22 11.7 22 6.13 17.64 2 12 2zm5.89 7.54l-2.83 4.48c-.45.71-1.39.88-2.07.37l-2.25-1.69a.75.75 0 00-.9 0l-3.04 2.31c-.42.32-.97-.2-.68-.65l2.83-4.48c.45-.71 1.39-.88 2.07-.37l2.25 1.69a.75.75 0 00.9 0l3.04-2.31c.42-.32.97.2.68.65z"/></svg>
+   454→   653→   653→          Messenger
+   455→   654→   654→        </div>
+   456→   655→   655→        <div class="channel-tab" data-channel="instagram" onclick="selectChannel(this)">
+   457→   656→   656→          <svg viewBox="0 0 24 24" style="fill:#E1306C;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   458→   657→   657→          Instagram
+   459→   658→   658→        </div>
+   460→   659→   659→      </div>
+   461→   660→   660→      <div id="waPhoneSection">
+   462→   661→   661→        <label>Send Order To</label>
+   463→   662→   662→        <div class="phone-options">
+   464→   663→   663→          <div class="phone-opt selected" data-phone="18767731193" onclick="selectPhone(this)">(876) 773-1193</div>
+   465→   664→   664→          <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+   466→   665→   665→        </div>
+   467→   666→   666→      </div>
+   468→   667→   667→      <div id="messengerInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   469→   668→   668→        Your order message will open in <b>Facebook Messenger</b> to <b>Pixel Wire Solutions</b>.
+   470→   669→   669→      </div>
+   471→   670→   670→      <div id="igInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+   472→   671→   671→        This will open <b>Instagram DM</b> to <b>@pixelwiresolutions</b> with your order details.
+   473→   672→   672→      </div>
+   474→   673→   673→      <div class="modal-actions">
+   475→   674→   674→        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+   476→   675→   675→        <button class="btn-send" id="btnSend" onclick="sendOrder()">&#128172; Send on WhatsApp</button>
+   477→   676→   676→      </div>
+   478→   677→   677→      <div class="share-row">
+   479→   678→   678→        <a class="share-btn ig" id="shareIG" href="#" target="_blank" title="Share on Instagram">
+   480→   679→   679→          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   481→   680→   680→          Instagram
+   482→   681→   681→        </a>
+   483→   682→   682→        <a class="share-btn fb" id="shareFB" href="#" target="_blank" title="Share on Facebook">
+   484→   683→   683→          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   485→   684→   684→          Facebook
+   486→   685→   685→        </a>
+   487→   686→   686→        <a class="share-btn tt" id="shareCopy" href="#" onclick="copyProductLink(event); return false;" title="Copy product link">
+   488→   687→   687→          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+   489→   688→   688→          Copy Link
+   490→   689→   689→        </a>
+   491→   690→   690→      </div>
+   492→   691→   691→    </div>
+   493→   692→   692→  </div>
+   494→   693→   693→  <div class="lightbox-overlay" id="lightboxOverlay">
+   495→   694→   694→    <div class="lightbox-top">
+   496→   695→   695→      <span class="lightbox-title" id="lbTitle"></span>
+   497→   696→   696→      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+   498→   697→   697→    </div>
+   499→   698→   698→    <button class="lb-arrow left" onclick="lbPrev()" id="lbArrowLeft">&#8249;</button>
+   500→   699→   699→    <div class="lightbox-img-wrap" id="lbImgWrap">
+   501→   700→   700→      <img id="lbImg" src="" alt="" />
+   502→   701→   701→    </div>
+   503→   702→   702→    <button class="lb-arrow right" onclick="lbNext()" id="lbArrowRight">&#8250;</button>
+   504→   703→   703→    <div class="lightbox-dots" id="lbDots"></div>
+   505→   704→   704→    <div class="lightbox-counter" id="lbCounter"></div>
+   506→   705→   705→    <div class="lightbox-order-bar">
+   507→   706→   706→      <span class="lb-price" id="lbPrice"></span>
+   508→   707→   707→      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Bag</button>
+   509→   708→   708→    </div>
+   510→   709→   709→  </div>
+   511→   710→   710→  <div class="toast" id="toast"></div>
+   512→   711→   711→  <footer class="footer">
+   513→   712→   712→    &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
+   514→   713→   713→    <div class="footer-social">
+   515→   714→   714→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank">
+   516→   715→   715→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+   517→   716→   716→        @pixelwiresolutions
+   518→   717→   717→      </a>
+   519→   718→   718→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank">
+   520→   719→   719→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+   521→   720→   720→        pixelwiresolutions
+   522→   721→   721→      </a>
+   523→   722→   722→    </div>
+   524→   723→   723→  </footer>
+   525→   724→   724→
+   526→   725→   725→  <script>
+   527→   726→   726→  var products = [
+   528→   727→   727→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://sfile.chatglm.cn/images-ppt/ab9705780db1.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+   529→   728→   728→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://sfile.chatglm.cn/images-ppt/511320742f17.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-215-detalle-02.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
+   530→   729→   729→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/e3d3b2826001.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg"], size: '15.6\"', desc: "Minimalist rectangular design with smooth finish." },
+   531→   730→   730→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/cbd27f787496.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg"], size: '15.6\"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+   532→   731→   731→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", imgs: ["https://sfile.chatglm.cn/images-ppt/0cb99287ede5.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg"], size: '15.6\"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+   533→   732→   732→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", imgs: ["https://sfile.chatglm.cn/images-ppt/8babb817c17a.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg"], size: '15.6\"', desc: "Slim profile briefcase with front organizer pocket." },
+   534→   733→   733→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", imgs: ["https://sfile.chatglm.cn/images-ppt/c20cfa115cb9.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406BL.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg"], size: '15.6\"', desc: "Light grey backpack with padded shoulder straps." },
+   535→   734→   734→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", imgs: ["https://sfile.chatglm.cn/images-ppt/3bd653bd46b7.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg"], size: '15.6\"', desc: "Navy blue classic backpack with multiple compartments." },
+   536→   735→   735→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/07bfb41c199b.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg"], size: '15.6\"', desc: "Sleek black design with matching accessory pouch." },
+   537→   736→   736→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", imgs: ["https://sfile.chatglm.cn/images-ppt/bfbc65bd4ac0.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg"], size: '15.6\"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+   538→   737→   737→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg"], size: '15.6\"', desc: "Casual everyday backpack with multiple zippered compartments." },
+   539→   738→   738→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/b81df36f0151.jpg", "https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg"], size: '15.6\"', desc: "Athletic sporty design with breathable mesh backing." },
+   540→   739→   739→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", imgs: ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Friazcomputer.com%2Fwp-content%2Fuploads%2F2023%2F07%2FKNB-456-BL.jpg&f=1&nofb=1&ipt=76f65289643c9ab8e34f1f974b12085377eb8d306036c3cec7f0d467ae926783", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg"], size: '15.6\"', desc: "Structured business-casual backpack with accessory case." },
+   541→   740→   740→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/581509ef8147.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg"], size: '15.6\"', desc: "Professional executive style with extensive organization." },
+   542→   741→   741→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/fb15637058cf.jpg", "https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg"], size: '15.6\"', desc: "Business-oriented design with clean lines." },
+   543→   742→   742→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", imgs: ["https://sfile.chatglm.cn/images-ppt/479bf895146e.jpg", "https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png"], size: '15.6\"', desc: "Modern minimalist design with sleek profile." },
+   544→   743→   743→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", imgs: ["https://sfile.chatglm.cn/images-ppt/2c37ee8e2784.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg"], size: '15.6\"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+   545→   744→   744→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/583f7a6576e3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-detalle-2.jpg"], size: '15.6\"', desc: "Expandable design with zippers to increase capacity." },
+   546→   745→   745→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", imgs: ["https://sfile.chatglm.cn/images-ppt/8fac28ed7313.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg"], size: '15.6\"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+   547→   746→   746→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/db879f77cf77.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg"], size: '15.6\"', desc: "Rugged durable design with multiple external pockets." },
+   548→   747→   747→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://sfile.chatglm.cn/images-ppt/a07b918b70da.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6\"', desc: "Premium leather-like finish, vintage-inspired design." },
+   549→   748→   748→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://sfile.chatglm.cn/images-ppt/5a7c521655b4.jpg", "https://www.bhphotovideo.com/images/images500x500/hp_3e5f8aa_top_load_bag_f_1680535239_1660232.jpg", "https://www.bhphotovideo.com/images/fb/hp_3e5f8aa_top_load_bag_f_1660232.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971126.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971127.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971128.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971129.jpg", "https://static.bhphoto.com/images/multiple_images/1680536096_IMG_1971130.jpg"], size: '15.6\"', desc: "Eco-friendly construction using sustainable materials." },
+   550→   749→   749→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/c3332ea82cb9.jpg", "https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+   551→   750→   750→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://sfile.chatglm.cn/images-ppt/9d4b074d31e9.jpg", "https://www.provantage.com/1080962725.JPG"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." }
+   552→   751→   751→  ];
+   553→   752→   752→
+   554→   753→   753→  var productIndices = [];
+   555→   754→   754→  var selectedDelivery = "pickup";
+   556→   755→   755→  var selectedDeliveryCost = 0;
+   557→   756→   756→  var selectedPhone = "18767731193";
+   558→   757→   757→  var selectedChannel = "whatsapp";
+   559→   758→   758→  var currentProduct = null;
+   560→   759→   759→  var currentProductIndex = -1;
+   561→   760→   760→  var lastViewedIndex = 0;
+   562→   761→   761→  var lbProduct = null;
+   563→   762→   762→  var lbProductIndex = -1;
+   564→   763→   763→  var lbIndex = 0;
+   565→   764→   764→  var lbImages = [];
+   566→   765→   765→  var touchStartX = 0;
+   567→   766→   766→  var touchEndX = 0;
+   568→   767→   767→
+   569→   768→   768→  function escAttr(s) {
+   570→   769→   769→    return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+   571→   770→   770→  }
+   572→   771→   771→
+   573→   772→   772→  function renderCards(filter) {
+   574→   773→   773→    filter = filter || "all";
+   575→   774→   774→    var grid = document.getElementById("productGrid");
+   576→   775→   775→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+   577→   776→   776→    productIndices = [];
+   578→   777→   777→    for (var fi = 0; fi < filtered.length; fi++) {
+   579→   778→   778→      for (var pi = 0; pi < products.length; pi++) {
+   580→   779→   779→        if (products[pi] === filtered[fi]) { productIndices.push(pi); break; }
+   581→   780→   780→      }
+   582→   781→   781→    }
+   583→   782→   782→    var html = "";
+   584→   783→   783→    for (var i = 0; i < filtered.length; i++) {
+   585→   784→   784→      var p = filtered[i];
+   586→   785→   785→      var idx = productIndices[i];
+   587→   786→   786→      var imgs = Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+   588→   787→   787→      var safeName = escAttr(p.name);
+   589→   788→   788→      var safeBrand = escAttr(p.brand);
+   590→   789→   789→      var safeModel = escAttr(p.model);
+   591→   790→   790→      var safeDesc = escAttr(p.desc);
+   592→   791→   791→      var priceStr = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2});
+   593→   792→   792→      html += '<div class="card">';
+   594→   793→   793→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
+   595→   794→   794→      html += '<span class="brand-tag">' + safeBrand + '</span>';
+   596→   795→   795→      html += '<img src="' + escAttr(imgs[0]) + '" alt="' + safeName + '" loading="lazy" onerror="this.style.display=\'none\'" />';
+   597→   796→   796→      if (imgs.length > 1) {
+   598→   797→   797→        html += '<span class="photo-count" onclick="event.stopPropagation(); openLightboxByIndex(' + idx + ')">' + imgs.length + ' Photos</span>';
+   599→   798→   798→      }
+   600→   799→   799→      html += '<span class="price-tag">' + priceStr + '</span>';
+   601→   800→   800→      html += '</div>';
+   602→   801→   801→      html += '<div class="card-body">';
+   603→   802→   802→      html += '<span class="model">' + safeModel + '</span>';
+   604→   803→   803→      html += '<h3>' + safeName + '</h3>';
+   605→   804→   804→      html += '<p class="desc">' + safeDesc + '</p>';
+   606→   805→   805→      html += '<span class="size-info">💻 Fits ' + escAttr(p.size) + ' Laptop</span>';
+   607→   806→   806→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModalByIndex(' + idx + ')">';
+   608→   807→   807→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+   609→   808→   808→      html += ' Order via WhatsApp</button>';
+   610→   809→   809→      html += '</div></div>';
+   611→   810→   810→    }
+   612→   811→   811→    grid.innerHTML = html;
+   613→   812→   812→  }
+   614→   813→   813→
+   615→   814→   814→  function openModalByIndex(idx) {
+   616→   815→   815→    var p = products[idx];
+   617→   816→   816→    if (!p) return;
+   618→   817→   817→    currentProduct = p;
+   619→   818→   818→    currentProductIndex = idx;
+   620→   819→   819→    lastViewedIndex = idx;
+   621→   820→   820→    document.getElementById("modalProduct").textContent = p.brand + " \u2014 " + p.name;
+   622→   821→   821→    document.getElementById("modalPrice").textContent = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   623→   822→   822→    document.getElementById("custName").value = "";
+   624→   823→   823→    document.getElementById("custQty").value = "1";
+   625→   824→   824→    selectedDelivery = "pickup";
+   626→   825→   825→    selectedDeliveryCost = 0;
+   627→   826→   826→    document.querySelectorAll(".delivery-opt").forEach(function(d) { d.classList.remove("selected"); });
+   628→   827→   827→    document.querySelector('.delivery-opt[data-delivery="pickup"]').classList.add("selected");
+   629→   828→   828→    document.getElementById("modalOverlay").classList.add("open");
+   630→   829→   829→    selectedChannel = "whatsapp";
+   631→   830→   830→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+   632→   831→   831→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+   633→   832→   832→    document.getElementById("waPhoneSection").style.display = "block";
+   634→   833→   833→    document.getElementById("messengerInfo").style.display = "none";
+   635→   834→   834→    document.getElementById("igInfo").style.display = "none";
+   636→   835→   835→    document.getElementById("btnSend").innerHTML = "💬 Send on WhatsApp";
+   637→   836→   836→    var imgCount = getProductImages(p).length;
+   638→   837→   837→    document.getElementById("viewPhotosBtn").style.display = imgCount > 1 ? "block" : "none";
+   639→   838→   838→    setupShareLinks();
+   640→   839→   839→  }
+   641→   840→   840→
+   642→   841→   841→  function openLightboxByIndex(idx) {
+   643→   842→   842→    var p = products[idx];
+   644→   843→   843→    if (!p) return;
+   645→   844→   844→    lastViewedIndex = idx;
+   646→   845→   845→    lbProduct = p;
+   647→   846→   846→    lbProductIndex = idx;
+   648→   847→   847→    var allImgs = getProductImages(p);
+   649→   848→   848→    // Pre-filter: only include images that start with http
+   650→   849→   849→    lbImages = allImgs.filter(function(u) { return u && u.indexOf('http') === 0; });
+   651→   850→   850→    lbIndex = 0;
+   652→   851→   851→    renderLightbox();
+   653→   852→   852→    document.getElementById("lightboxOverlay").classList.add("open");
+   654→   853→   853→    document.body.style.overflow = "hidden";
+   655→   854→   854→  }
+   656→   855→   855→
+   657→   856→   856→  function closeModal() {
+   658→   857→   857→    document.getElementById("modalOverlay").classList.remove("open");
+   659→   858→   858→    currentProduct = null;
+   660→   859→   859→    currentProductIndex = -1;
+   661→   860→   860→  }
+   662→   861→   861→
+   663→   862→   862→  function selectPhone(el) {
+   664→   863→   863→    var opts = document.querySelectorAll(".phone-opt");
+   665→   864→   864→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   666→   865→   865→    el.classList.add("selected");
+   667→   866→   866→    selectedPhone = el.getAttribute("data-phone");
+   668→   867→   867→  }
+   669→   868→   868→
+   670→   869→   869→  function selectDelivery(el) {
+   671→   870→   870→    var opts = document.querySelectorAll(".delivery-opt");
+   672→   871→   871→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+   673→   872→   872→    el.classList.add("selected");
+   674→   873→   873→    selectedDelivery = el.getAttribute("data-delivery");
+   675→   874→   874→    var cost = el.getAttribute("data-cost");
+   676→   875→   875→    selectedDeliveryCost = cost === "courier" ? -1 : Number(cost);
+   677→   876→   876→  }
+   678→   877→   877→
+   679→   878→   878→  function selectChannel(el) {
+   680→   879→   879→    var tabs = document.querySelectorAll(".channel-tab");
+   681→   880→   880→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+   682→   881→   881→    el.classList.add("selected");
+   683→   882→   882→    selectedChannel = el.getAttribute("data-channel");
+   684→   883→   883→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+   685→   884→   884→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+   686→   885→   885→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+   687→   886→   886→    var btn = document.getElementById("btnSend");
+   688→   887→   887→    if (selectedChannel === "whatsapp") btn.innerHTML = "💬 Send on WhatsApp";
+   689→   888→   888→    else if (selectedChannel === "messenger") btn.innerHTML = "💬 Send on Messenger";
+   690→   889→   889→    else btn.innerHTML = "💬 Send on Instagram";
+   691→   890→   890→  }
+   692→   891→   891→
+   693→   892→   892→  function getOrderMsg() {
+   694→   893→   893→    var name = document.getElementById("custName").value.trim();
+   695→   894→   894→    var qty = document.getElementById("custQty").value.trim();
+   696→   895→   895→    if (!name) { showToast("Please enter your name"); return null; }
+   697→   896→   896→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+   698→   897→   897→    var p = currentProduct;
+   699→   898→   898→    var subtotal = p.price * Number(qty);
+   700→   899→   899→    var deliveryLabel = "Pickup (Free)";
+   701→   900→   900→    var deliveryLine = "";
+   702→   901→   901→    if (selectedDelivery === "round-town") {
+   703→   902→   902→      deliveryLabel = "Round Town Delivery";
+   704→   903→   903→      deliveryLine = "\n*Delivery:* $600.00 JMD\n";
+   705→   904→   904→    } else if (selectedDelivery === "outside-kingston") {
+   706→   905→   905→      deliveryLabel = "Outside Kingston (Knutsford/Doorway Courier)";
+   707→   906→   906→      deliveryLine = "\n*Delivery:* Via Knutsford or Doorway courier (rate quoted separately)\n";
+   708→   907→   907→    }
+   709→   908→   908→    var grandTotal = selectedDeliveryCost >= 0 ? subtotal + selectedDeliveryCost : subtotal;
+   710→   909→   909→    return {
+   711→   910→   910→      text: "*NEW BAG ORDER*\n\n" +
+   712→   911→   911→        "*Customer:* " + name + "\n" +
+   713→   912→   912→        "*Product:* " + p.brand + " " + p.name + "\n" +
+   714→   913→   913→        "*Model:* " + p.model + "\n" +
+   715→   914→   914→        "*Fits:* " + p.size + " Laptop\n" +
+   716→   915→   915→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   717→   916→   916→        "*Quantity:* " + qty + "\n" +
+   718→   917→   917→        "*Subtotal:* $" + subtotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+   719→   918→   918→        deliveryLine +
+   720→   919→   919→        "*Delivery Method:* " + deliveryLabel + "\n" +
+   721→   920→   920→        (selectedDeliveryCost >= 0 ? "*Grand Total:* $" + grandTotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" : "*Grand Total:* To be quoted (courier rate)\n\n") +
+   722→   921→   921→        "Please confirm availability and payment details."
+   723→   922→   922→    };
+   724→   923→   923→  }
+   725→   924→   924→
+   726→   925→   925→  function sendOrder() {
+   727→   926→   926→    var order = getOrderMsg();
+   728→   927→   927→    if (!order) return;
+   729→   928→   928→    var msg = encodeURIComponent(order.text);
+   730→   929→   929→    if (selectedChannel === "whatsapp") {
+   731→   930→   930→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+   732→   931→   931→      showToast("Opening WhatsApp...");
+   733→   932→   932→    } else if (selectedChannel === "messenger") {
+   734→   933→   933→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+   735→   934→   934→      showToast("Opening Messenger...");
+   736→   935→   935→    } else if (selectedChannel === "instagram") {
+   737→   936→   936→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+   738→   937→   937→      showToast("Opening Instagram DM...");
+   739→   938→   938→    }
+   740→   939→   939→    closeModal();
+   741→   940→   940→  }
+   742→   941→   941→
+   743→   942→   942→  function getProductImages(p) {
+   744→   943→   943→    return Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+   745→   944→   944→  }
+   746→   945→   945→
+   747→   946→   946→  function closeLightbox() {
+   748→   947→   947→    document.getElementById("lightboxOverlay").classList.remove("open");
+   749→   948→   948→    document.body.style.overflow = "";
+   750→   949→   949→    lbProduct = null;
+   751→   950→   950→    lbProductIndex = -1;
+   752→   951→   951→  }
+   753→   952→   952→
+   754→   953→   953→  function renderLightbox() {
+   755→   954→   954→    var img = document.getElementById("lbImg");
+   756→   955→   955→    img.onerror = function() {
+   757→   956→   956→      this.style.display = 'none';
+   758→   957→   957→      if (lbImages.length > 1) {
+   759→   958→   958→        var next = (lbIndex + 1) % lbImages.length;
+   760→   959→   959→        if (next !== lbIndex) { lbIndex = next; renderLightbox(); }
+   761→   960→   960→      }
+   762→   961→   961→    };
+   763→   962→   962→    img.src = lbImages[lbIndex];
+   764→   963→   963→    img.style.display = '';
+   765→   964→   964→    img.alt = lbProduct.name + ' - Photo ' + (lbIndex + 1);
+   766→   965→   965→    img.className = "";
+   767→   966→   966→    document.getElementById("lbTitle").textContent = lbProduct.brand + " " + lbProduct.name;
+   768→   967→   967→    document.getElementById("lbPrice").textContent = "$" + lbProduct.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+   769→   968→   968→    document.getElementById("lbCounter").textContent = (lbIndex + 1) + " / " + lbImages.length;
+   770→   969→   969→    document.getElementById("lbArrowLeft").style.display = lbImages.length > 1 ? "flex" : "none";
+   771→   970→   970→    document.getElementById("lbArrowRight").style.display = lbImages.length > 1 ? "flex" : "none";
+   772→   971→   971→    var dotsHtml = "";
+   773→   972→   972→    for (var i = 0; i < lbImages.length; i++) {
+   774→   973→   973→      dotsHtml += '<button class="dot' + (i === lbIndex ? ' active' : '') + '" onclick="lbGoTo(' + i + ')"></button>';
+   775→   974→   974→    }
+   776→   975→   975→    document.getElementById("lbDots").innerHTML = dotsHtml;
+   777→   976→   976→    document.getElementById("lbDots").style.display = lbImages.length > 1 ? "flex" : "none";
+   778→   977→   977→  }
+   779→   978→   978→
+   780→   979→   979→  function lbGoTo(index) {
+   781→   980→   980→    if (index === lbIndex) return;
+   782→   981→   981→    var img = document.getElementById("lbImg");
+   783→   982→   982→    img.className = index > lbIndex ? "slide-left" : "slide-right";
+   784→   983→   983→    setTimeout(function() {
+   785→   984→   984→      lbIndex = index;
+   786→   985→   985→      renderLightbox();
+   787→   986→   986→      img.className = index > lbIndex ? "slide-right" : "slide-left";
+   788→   987→   987→      requestAnimationFrame(function() { img.className = ""; });
+   789→   988→   988→    }, 200);
+   790→   989→   989→  }
+   791→   990→   990→
+   792→   991→   991→  function lbNext() {
+   793→   992→   992→    if (lbImages.length <= 1) return;
+   794→   993→   993→    lbGoTo((lbIndex + 1) % lbImages.length);
+   795→   994→   994→  }
+   796→   995→   995→
+   797→   996→   996→  function lbPrev() {
+   798→   997→   997→    if (lbImages.length <= 1) return;
+   799→   998→   998→    lbGoTo((lbIndex - 1 + lbImages.length) % lbImages.length);
+   800→   999→   999→  }
+   801→  1000→  1000→
+   802→  1001→  1001→  function orderFromLightbox() {
+   803→  1002→  1002→    var idx = lbProductIndex >= 0 ? lbProductIndex : lastViewedIndex;
+   804→  1003→  1003→    closeLightbox();
+   805→  1004→  1004→    openModalByIndex(idx);
+   806→  1005→  1005→  }
+   807→  1006→  1006→
+   808→  1007→  1007→  document.getElementById("lbImgWrap").addEventListener("touchstart", function(e) {
+   809→  1008→  1008→    touchStartX = e.changedTouches[0].screenX;
+   810→  1009→  1009→  }, {passive: true});
+   811→  1010→  1010→
+   812→  1011→  1011→  document.getElementById("lbImgWrap").addEventListener("touchend", function(e) {
+   813→  1012→  1012→    touchEndX = e.changedTouches[0].screenX;
+   814→  1013→  1013→    var diff = touchStartX - touchEndX;
+   815→  1014→  1014→    if (Math.abs(diff) > 50) {
+   816→  1015→  1015→      if (diff > 0) lbNext(); else lbPrev();
+   817→  1016→  1016→    }
+   818→  1017→  1017→  }, {passive: true});
+   819→  1018→  1018→
+   820→  1019→  1019→  document.getElementById("lightboxOverlay").addEventListener("click", function(e) {
+   821→  1020→  1020→    if (e.target === e.currentTarget) closeLightbox();
+   822→  1021→  1021→  });
+   823→  1022→  1022→
+   824→  1023→  1023→  document.addEventListener("keydown", function(e) {
+   825→  1024→  1024→    if (!document.getElementById("lightboxOverlay").classList.contains("open")) return;
+   826→  1025→  1025→    if (e.key === "ArrowRight" || e.key === "ArrowDown") lbNext();
+   827→  1026→  1026→    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") lbPrev();
+   828→  1027→  1027→    else if (e.key === "Escape") closeLightbox();
+   829→  1028→  1028→  });
+   830→  1029→  1029→
+   831→  1030→  1030→  function showToast(msg) {
+   832→  1031→  1031→    var t = document.getElementById("toast");
+   833→  1032→  1032→    t.textContent = msg;
+   834→  1033→  1033→    t.classList.add("show");
+   835→  1034→  1034→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+   836→  1035→  1035→  }
+   837→  1036→  1036→
+   838→  1037→  1037→  document.getElementById("filterBar").addEventListener("click", function(e) {
+   839→  1038→  1038→    if (!e.target.classList.contains("filter-btn")) return;
+   840→  1039→  1039→    var btns = document.querySelectorAll(".filter-btn");
+   841→  1040→  1040→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+   842→  1041→  1041→    e.target.classList.add("active");
+   843→  1042→  1042→    renderCards(e.target.getAttribute("data-filter"));
+   844→  1043→  1043→  });
+   845→  1044→  1044→
+   846→  1045→  1045→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+   847→  1046→  1046→    if (e.target === e.currentTarget) closeModal();
+   848→  1047→  1047→  });
+   849→  1048→  1048→
+   850→  1049→  1049→  function setupShareLinks() {
+   851→  1050→  1050→    var p = currentProduct;
+   852→  1051→  1051→    if (!p) return;
+   853→  1052→  1052→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+   854→  1053→  1053→    var pageUrl = encodeURIComponent(window.location.href);
+   855→  1054→  1054→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+   856→  1055→  1055→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+   857→  1056→  1056→  }
+   858→  1057→  1057→
+   859→  1058→  1058→  function copyProductLink(e) {
+   860→  1059→  1059→    e.preventDefault();
+   861→  1060→  1060→    var p = currentProduct;
+   862→  1061→  1061→    if (!p) return;
+   863→  1062→  1062→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+   864→  1063→  1063→    if (navigator.clipboard) {
+   865→  1064→  1064→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+   866→  1065→  1065→    } else {
+   867→  1066→  1066→      showToast("Long-press to copy the link");
+   868→  1067→  1067→    }
+   869→  1068→  1068→  }
+   870→  1069→  1069→
+   871→  1070→  1070→  renderCards();
+   872→  1071→  1071→  </script>
+   873→  1072→  1072→</body>
+   874→  1073→  1073→</html>
