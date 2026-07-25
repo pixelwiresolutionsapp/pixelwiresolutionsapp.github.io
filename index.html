@@ -15,6 +15,60 @@
       line-height: 1.5;
       min-height: 100vh;
     }
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    .splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 20px;
+      object-fit: contain;
+      animation: splashPulse 1.5s ease-in-out infinite;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 8px 32px rgba(255,255,255,.25));
+    }
+    @keyframes splashPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+    .splash-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,255,255,.15);
+      border-top-color: #25d366;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin-top: 8px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .splash-welcome {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.3);
+    }
+    .splash-sub {
+      color: rgba(255,255,255,.7);
+      font-size: .92rem;
+      margin-top: 4px;
+    }
     .header {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: #fff;
@@ -585,6 +639,12 @@
   </style>
 </head>
 <body>
+  <div class="splash-screen" id="splashScreen">
+    <img class="splash-logo" src="logo.jpg" alt="Pixel Wire Solutions" onerror="this.style.display='none'" />
+    <div class="splash-welcome">Welcome to Pixel Wire Solutions</div>
+    <div class="splash-sub">Your trusted tech accessories store</div>
+    <div class="splash-spinner"></div>
+  </div>
   <header class="header">
     <h1>Laptop Bags &amp; Cases</h1>
     <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
@@ -1067,6 +1127,10 @@
   }
 
   renderCards();
+  setTimeout(function(){
+    var splash = document.getElementById('splashScreen');
+    if(splash){ splash.classList.add('hidden'); }
+  }, 2200);
   </script>
 </body>
 </html>
