@@ -747,7 +747,7 @@
   </style>
 </head>
 <body>
-  <div class="splash-screen" id="splashScreen">
+  <div class="splash-screen" id="splashScreen" onclick="this.classList.add('hidden')">
     <img class="splash-logo" src="logo.jpg" alt="Pixel Wire Solutions" onerror="this.style.display='none'" />
     <div class="splash-welcome">Welcome to Pixel Wire Solutions</div>
     <div class="splash-sub">Your trusted tech accessories store</div>
@@ -899,6 +899,8 @@
   </footer>
 
   <script>
+  // Auto-dismiss splash screen immediately (failsafe)
+  (function(){ setTimeout(function(){ var s=document.getElementById('splashScreen'); if(s) s.classList.add('hidden'); },2200); })();
   var products = [
     { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
     { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://store.domainnetworks.ca/cdn/shop/files/51410.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
