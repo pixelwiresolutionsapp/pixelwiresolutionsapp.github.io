@@ -126,6 +126,104 @@
       transition: all .2s;
       color: #344054;
     }
+    .service-banner {
+      max-width: 1100px;
+      margin: 0 auto 16px;
+      padding: 0 16px;
+    }
+    .service-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f3460 100%);
+      border-radius: 18px;
+      padding: 28px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 8px 32px rgba(15,23,42,.25);
+      border: 1px solid rgba(255,255,255,.08);
+      flex-wrap: wrap;
+    }
+    .service-card-left {
+      flex: 1;
+      min-width: 240px;
+    }
+    .service-card-left h2 {
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-card-left h2 svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    .service-card-left p {
+      color: rgba(255,255,255,.75);
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+    .service-card-left .service-highlight {
+      color: #fbbf24;
+      font-weight: 700;
+      font-size: .82rem;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .service-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .service-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all .25s;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .service-btn.primary {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(37,211,102,.35);
+    }
+    .service-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+    }
+    .service-btn.primary svg { width: 22px; height: 22px; }
+    .service-btn.secondary {
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(6px);
+    }
+    .service-btn.secondary:hover {
+      background: rgba(255,255,255,.2);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      .service-card {
+        padding: 20px 18px;
+        flex-direction: column;
+        text-align: center;
+      }
+      .service-card-left h2 { justify-content: center; }
+      .service-card-left .service-highlight { justify-content: center; }
+      .service-btns { justify-content: center; }
+    }
     .filter-btn:hover, .filter-btn.active {
       background: #1a1a2e;
       color: #fff;
@@ -808,6 +906,31 @@
     <button class="filter-btn" data-filter="mouse">Mouse</button>
     <button class="filter-btn" data-filter="camera">Cameras</button>
   </div>
+  <div class="service-banner">
+    <div class="service-card">
+      <div class="service-card-left">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          CCTV Installation Services
+        </h2>
+        <p>Professional security camera supply &amp; installation for homes, offices, shops &amp; warehouses. Get a free quote today!</p>
+        <div class="service-highlight">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Site visits are mandatory for all installations
+        </div>
+      </div>
+      <div class="service-btns">
+        <a class="service-btn primary" id="cctvWaBtn" href="#" target="blank">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          Get CCTV Quote
+        </a>
+        <a class="service-btn secondary" href="tel:18767731173">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Us
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="grid" id="productGrid"></div>
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
@@ -1332,6 +1455,26 @@
     } else {
       showToast("Long-press to copy the link");
     }
+  }
+
+  // CCTV Service WhatsApp link
+  var cctvMsg = encodeURIComponent(
+    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+    "Quick questions so we can send you an accurate quote:\n\n" +
+    "Please state name?\n" +
+    "a. Installation location:\n" +
+    "b. Property type: Home, Office, Shop, Warehouse, Other\n" +
+    "d. Indoor or Outdoor cameras request?\n" +
+    "e. Need night vision + mobile app viewing? Yes/No\n" +
+    "g. Best number to reach you:\n\n" +
+    "Once we have this information, our team will get back to you within 24 hours with pricing + next steps.\n\n" +
+    "Also, note site visits are mandated for all installation!!\n\n" +
+    "Thank you,\n" +
+    "Team Pixelwire Solutions"
+  );
+  var cctvBtn = document.getElementById('cctvWaBtn');
+  if (cctvBtn) {
+    cctvBtn.href = 'https://wa.me/18767731173?text=' + cctvMsg;
   }
 
   renderCards();
