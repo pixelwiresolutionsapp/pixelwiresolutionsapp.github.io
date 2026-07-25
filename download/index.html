@@ -242,6 +242,110 @@
       transition: background .15s;
     }
     .call-dropdown a:hover { background: rgba(255,255,255,.1); }
+    .brand-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: rgba(56,189,248,.15);
+      border: 1px solid rgba(56,189,248,.3);
+      color: #38bdf8;
+      border-radius: 10px;
+      font-size: .78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .brand-toggle:hover { background: rgba(56,189,248,.25); }
+    .brand-compare {
+      display: none;
+      margin-top: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .brand-compare.open { display: block; }
+    .brand-compare-inner {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .brand-header {
+      color: #38bdf8;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .brand-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .brand-table-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .78rem;
+      color: rgba(255,255,255,.85);
+      min-width: 500px;
+    }
+    .brand-table-wrap th {
+      background: rgba(56,189,248,.15);
+      color: #38bdf8;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 700;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+    .brand-table-wrap td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    .brand-table-wrap tr:hover td { background: rgba(255,255,255,.04); }
+    .brand-table-wrap td strong { color: #38bdf8; }
+    .brand-tips {
+      background: rgba(56,189,248,.08);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+    .brand-tip-title {
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: .82rem;
+      margin-bottom: 10px;
+    }
+    .brand-tip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: .8rem;
+      color: rgba(255,255,255,.8);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .brand-tip:last-child { border-bottom: none; }
+    .tip-label {
+      color: #fff;
+      font-weight: 700;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .brand-survey-note {
+      background: rgba(251,191,36,.1);
+      border: 1px solid rgba(251,191,36,.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.55;
+    }
+    .brand-survey-note strong { color: #fbbf24; }
     @media (max-width: 600px) {
       .service-card {
         padding: 20px 18px;
@@ -963,6 +1067,64 @@
       </div>
     </div>
   </div>
+  <div class="service-banner">
+    <div class="service-card" style="background: linear-gradient(135deg, #0c2d48 0%, #145374 50%, #0f3460 100%);">
+      <div class="service-card-left">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          PBX &amp; Phone Systems
+        </h2>
+        <p>Professional VoIP phone system supply &amp; installation for offices, call centers &amp; multi-site businesses.</p>
+        <div class="service-highlight" style="color:#38bdf8;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          A paid site survey is mandatory before final pricing
+        </div>
+        <button class="brand-toggle" onclick="document.getElementById('brandCompare').classList.toggle('open')">&#9660; Compare Desk Phone Brands</button>
+      </div>
+      <div class="service-btns">
+        <a class="service-btn primary" id="pbxWaBtn" href="#" target="_blank" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          Get PBX Quote
+        </a>
+        <div class="service-btn secondary call-btn-group" style="position:relative;cursor:pointer;" onclick="this.querySelector('.call-dropdown-pbx').classList.toggle('show')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Us
+          <div class="call-dropdown call-dropdown-pbx">
+            <a href="tel:18767731173">(876) 773-1173</a>
+            <a href="tel:18765595290">(876) 559-5290</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-compare" id="brandCompare">
+      <div class="brand-compare-inner">
+        <div class="brand-header">Desk Phone Brand Comparison</div>
+        <div class="brand-table-wrap">
+          <table>
+            <thead><tr><th>Brand</th><th>Pros</th><th>Cons</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Yealink</strong></td><td>Great value for money, wide range from basic to executive models, easy to set up, reliable</td><td>Build quality feels less premium at lower price points; fewer advanced enterprise features than Cisco</td></tr>
+              <tr><td><strong>Grandstream</strong></td><td>Cheapest option, decent for small businesses, simple provisioning</td><td>Interface feels dated, less polished audio quality, weaker brand reputation for larger enterprise clients</td></tr>
+              <tr><td><strong>Cisco</strong></td><td>Rock-solid reliability, excellent audio quality, strong enterprise features (security, integrations), trusted brand name</td><td>Most expensive, steeper learning curve to configure, often overkill for small offices</td></tr>
+              <tr><td><strong>Poly (Polycom)</strong></td><td>Best-in-class audio/conference phone quality, great for boardrooms and call-heavy roles</td><td>Pricier than Yealink/Grandstream, focus is more on conferencing than basic desk use</td></tr>
+              <tr><td><strong>Avaya</strong></td><td>Strong for legacy enterprise environments already using Avaya PBX, solid support ecosystem</td><td>Can be expensive, company has had financial instability in recent years which worries some buyers on long-term support</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="brand-tips">
+          <div class="brand-tip-title">Quick Recommendation</div>
+          <div class="brand-tip"><span class="tip-label">Tight budget / Small office</span> Grandstream or entry-level Yealink</div>
+          <div class="brand-tip"><span class="tip-label">Best overall value</span> Yealink</div>
+          <div class="brand-tip"><span class="tip-label">Big enterprise / Top reliability</span> Cisco</div>
+          <div class="brand-tip"><span class="tip-label">Conference rooms / Call center</span> Poly</div>
+          <div class="brand-tip"><span class="tip-label">Already on Avaya ecosystem</span> Stick with Avaya</div>
+        </div>
+        <div class="brand-survey-note">
+          <strong>Important:</strong> A paid site survey is mandatory before final pricing is confirmed. This lets us physically inspect the space, verify existing cable runs, check wall/ceiling access, and confirm equipment placement (rack space, wiring closet, etc.). The quote given from the questions above is a rough estimate only - the site survey determines the final, accurate installation cost.
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="grid" id="productGrid"></div>
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
@@ -1507,6 +1669,27 @@
   var cctvBtn = document.getElementById('cctvWaBtn');
   if (cctvBtn) {
     cctvBtn.href = 'https://wa.me/18767731173?text=' + cctvMsg;
+  }
+
+  // PBX Service WhatsApp link
+  var pbxMsg = encodeURIComponent(
+    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+    "Quick questions so we can send you an accurate PBX quote:\n\n" +
+    "Please state name?\n" +
+    "How many users/extensions do you need?\n" +
+    "Do you need desk phones?\n" +
+    "Single location or multiple sites?\n" +
+    "Do you already have a server/network cabinet, or do you need one provided?\n" +
+    "Are there existing cable runs in place, or will new cable runs need to be installed?\n" +
+    "What's your target budget for the installation?\n\n" +
+    "Note: A paid site survey is mandatory before final pricing. This lets us physically inspect the space, verify cable runs, check wall/ceiling access, and confirm equipment placement.\n\n" +
+    "Once we have this info, our team will get back to you within 24 hours.\n\n" +
+    "Thank you,\n" +
+    "Team Pixelwire Solutions"
+  );
+  var pbxBtn = document.getElementById('pbxWaBtn');
+  if (pbxBtn) {
+    pbxBtn.href = 'https://wa.me/18767731173?text=' + pbxMsg;
   }
 
   // Call Us dropdown toggle
