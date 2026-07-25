@@ -648,6 +648,102 @@
       .header p { font-size: .82rem; }
       .wa-bar { font-size: .78rem; padding: 8px 12px; }
     }
+  
+    .specs-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      border: 1.5px solid #d0d5dd;
+      border-radius: 8px;
+      background: #f9fafb;
+      color: #344054;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      margin-top: 6px;
+    }
+    .specs-btn:hover { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+    .specs-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 400;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .specs-overlay.open { display: flex; }
+    .specs-panel {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      position: relative;
+      animation: specsIn .3s ease;
+    }
+    @keyframes specsIn {
+      from { opacity: 0; transform: translateY(30px) scale(.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .specs-panel h3 {
+      font-size: 1.1rem;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .specs-panel .specs-model {
+      font-size: .82rem;
+      color: #667085;
+      margin-bottom: 16px;
+    }
+    .specs-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .specs-panel ul li {
+      padding: 10px 14px;
+      background: #f9fafb;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: .85rem;
+      color: #344054;
+      line-height: 1.45;
+      border-left: 3px solid #25d366;
+    }
+    .specs-panel ul li strong {
+      color: #1a1a2e;
+    }
+    .specs-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: #f2f4f7;
+      color: #344054;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    .specs-close:hover { background: #e4e7ec; }
+    @media (max-width: 600px) {
+      .specs-btn { font-size: .72rem; padding: 4px 8px; }
+      .specs-panel { padding: 20px 16px; border-radius: 16px; }
+      .specs-panel ul li { font-size: .8rem; padding: 8px 10px; }
+    }
+
   </style>
 </head>
 <body>
@@ -779,6 +875,14 @@
       <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Bag</button>
     </div>
   </div>
+    <div class="specs-overlay" id="specsOverlay" onclick="if(event.target===this)closeSpecs()">
+    <div class="specs-panel">
+      <button class="specs-close" onclick="closeSpecs()">&times;</button>
+      <h3 id="specsTitle"></h3>
+      <div class="specs-model" id="specsModel"></div>
+      <ul id="specsList"></ul>
+    </div>
+  </div>
   <div class="toast" id="toast"></div>
   <footer class="footer">
     &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
@@ -819,12 +923,69 @@
     { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6\"', desc: "Premium leather-like finish, vintage-inspired design." },
     { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://hp.widen.net/content/duud3on3mi/webp/duud3on3mi.png"], size: '15.6\"', desc: "Eco-friendly construction using sustainable materials." },
     { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+    ,
+    { name: "Sculpt Ergonomic Mouse", brand: "Microsoft", model: "Microsoft Sculpt Ergonomic Mouse", price: 3500, category: "accessory", color: "#111827", imgs: ["mouse-sculpt-1.jpg", "mouse-sculpt-2.jpg", "mouse-sculpt-3.jpg"], size: "N/A", desc: "Ergonomic vertical wireless mouse with 4-way scroll wheel." },
+    { name: "Arc Mouse", brand: "Microsoft", model: "Microsoft Arc Mouse", price: 3500, category: "accessory", color: "#374151", imgs: ["mouse-arc-1.jpg"], size: "N/A", desc: "Ultra-slim folding Bluetooth mouse, snaps flat for pocket storage." },
+    { name: "Vertical Ergonomic Mouse", brand: "HOMEFISH", model: "HOMEFISH Vertical Ergonomic Mouse", price: 3500, category: "accessory", color: "#1f2937", imgs: ["mouse-homefish-1.jpg"], size: "N/A", desc: "2.4GHz wireless ergonomic mouse with 3 adjustable DPI levels." }
     { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://i5.walmartimages.com/seo/Dell-Backpack-14-16-Black_73e72394-17f6-4138-a95d-21141480471f.d5dbc49cb95fc3f27e7f8c8c99e1693c.jpeg", "https://i5.walmartimages.com/asr/2f629e66-82b4-4f6e-bf14-e68f94c40704.fbea6b3ab08c92257dedeeed035bd407.jpeg", "https://i5.walmartimages.com/asr/65e3fb23-570b-4fb7-b271-23d89fc37236.37d34e1dd25c7467ee28d7b720668e71.jpeg", "https://i5.walmartimages.com/asr/1617167f-31f2-47f9-8d5c-2878592dc0a7.3cf54ce390b8f150814faacd94d44fce.jpeg"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." }
   ];
 
   var productIndices = [];
   var selectedDelivery = "pickup";
   var selectedDeliveryCost = 0;
+  var productSpecs = {
+  "KNS-214BL": ["Fits laptops up to 14.1 inches", "Material: High-quality neoprene (water-repellent, lightweight)", "Closure: Two-tone reversible sleeve (no zipper); use as stand-alone or inside a bag", "Pockets: None (slip-in design)", "Dimensions: 15.7 x 11.14 x 0.59 in; Weight: 6.3 oz", "Machine washable; bone-shaped design creates a built-in bumper"],
+  "KNS-215": ["Fits laptops up to 15.6 inches", "Material: Outside 100% neoprene; inside 100% polyester (water-resistant)", "Closure: One main zippered pocket", "Pockets: Single main zippered compartment", "Dimensions: 15.3 x 11.4 x 0.5 in; Weight: 0.77 lb", "Lightweight, sleek design; ideal for standalone use or inside a backpack"],
+  "KNS-420": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (extra durable fabric for daily wear and tear)", "Closure: One main zippered pocket", "Pockets: Front zippered pocket for small accessories (cables, memory cards, etc.)", "Dimensions: 14.5 x 9.4 x 0.7 in; Weight: 0.6 lb", "Built-in carry handle; versatile and stylish design"],
+  "KNS-330": ["Fits laptops up to 15.6 inches", "Material: 4mm wetsuit-grade neoprene (lightweight, tough, shock-absorbing)", "Closure: Slip-in with elastic corner straps (stay-on mode)", "Pockets: None; standalone sleeve design", "Dimensions: 15.7 x 11.2 x 1.38 in; Weight: N/A", "Comfortable handles for easy carrying; machine washable; water-repellent"],
+  "KNC-041": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (durable construction)", "Straps: Adjustable & detachable shoulder strap; reinforced carry handles; trolley strap for carry-on", "Pockets: Zippered front pocket with internal organizer for accessories", "Dimensions: 15 x 11.2 x 2.3 in; Weight: 1 lb", "Max load weight: 22 lb; padded laptop compartment"],
+  "KNC-025": ["Fits laptops up to 15.6 inches", "Material: 840D polyester exterior / 210D polyester lining (durable top-load)", "Handles: Reinforced carry handles; top-load briefcase design", "Pockets: Two zippered compartments (main holds laptop and files; front for accessories); laptop compartment: 15 x 10 x 1 in", "Dimensions: 16.5 x 16 x 3 in; Weight: 1.3–1.4 lb", "Fully lined and padded main compartment with interior divider and strap"],
+  "KNB-406GR": ["Fits laptops up to 15.6 inches", "Material: Exterior 100% 600-denier polyester; lining 100% 210-denier polyester", "Straps: Adjustable padded shoulder straps; padded back panel; carry handle", "Compartments: Spacious padded main compartment with interior divider; zippered front pocket; multifunctional utility organizer; zippered mesh pocket", "Dimensions: 16.1 x 11.4 x 6.6 in; Laptop compartment: 13.7 x 10.6 x 1.5 in; Weight: 1 lb", "Max load: 26.4 lb"],
+  "KNB-416": ["Fits laptops up to 15.6 inches", "Material: Exterior 300-denier polyester; high-quality and durable", "Straps: Padded shoulder straps; padded back panel", "Compartments: One main padded compartment with divider; one accessory pocket; utility zippered pocket; smartphone compartment", "Dimensions: 17.1 x 11.4 x 3.7 in; Laptop compartment: 14.9 x 11 x 1.9 in; Weight: 1.52 lb", "Max load: 26 lb; organizer panel for accessories"],
+  "KNB-577": ["Fits laptops up to 15.6 inches", "Material: 100% polyester; ultra-padded back side", "Straps: Padded shoulder straps; carry handle", "Compartments: Well-padded laptop pocket; three frontal zipper pockets; interior organizer; exterior pockets", "Dimensions: 11.4 x 4.7 x 17.5 in; Laptop compartment: 11 x 1 x 15 in; Weight: 1.3 lb", "Max load: 33 lb; built-in USB charging port; water bottle pockets"],
+  "KNB-582": ["Fits laptops up to 15.6 inches; tablet pocket up to 12 inches", "Material: Exterior 100% high-quality polyester; lining 100% polyester; metal pullers", "Straps: Adjustable shoulder straps; integrated soft-padded handle; mesh-padded back panel; side straps", "Compartments: One spacious main compartment with interior zippered pocket; two front accessory/stationery pockets; two mesh side pockets", "Dimensions: 12.2 x 6.7 x 18.3 in; Laptop compartment: 15.5 x 11 x 1.5 in; Weight: N/A", "Max load: 39.6 lb; rubber grommet for cord pass-through; 1-year warranty"],
+  "KNB-426BL": ["Fits laptops up to 15.6 inches", "Material: Highly-durable protective nylon; metal pullers; high-quality lining", "Straps: Adjustable shoulder straps with ergonomically padded back panel; ultra-padded integrated handle", "Compartments: Two fully lined and padded main compartments; interior multifunctional organizer with zippered pocket; four lateral pockets (two zippered)", "Dimensions: 15.3 x 11.4 x 4.3 in; Laptop compartment: 12 x 11 x 1 in; Weight: 1 lb", "Max load: 33 lb; removable key clip; soft cushioned tablet pocket"],
+  "KNB-456": ["Fits laptops up to 15.6 inches; designed for women", "Material: Exterior 100% 1600D nylon; black leatherette accents and handle; polyester lining", "Straps: Adjustable padded shoulder straps; padded back panel; reinforced leatherette handle", "Compartments: One main padded compartment; one front zippered utility pocket; one interior zippered pocket", "Dimensions: 16.5 x 5.11 x 11.4 in; Laptop compartment: 15.7 x 0.5 x 10.6 in; Weight: 1.16 lb", "Max load: 33 lb; stylish design with leatherette detailing"],
+  "KNB-895": ["Fits laptops up to 15.6 inches; 2-in-1 backpack & notebook case", "Material: 100% polyester; built-in USB charging port for power bank (not included)", "Straps: Adjustable padded shoulder straps; carry-on strap; integrated handle", "Compartments: One main padded laptop compartment; two front zipper pockets (horizontal + vertical); interior organizer", "Dimensions: 11.8 x 3.1 x 16.5 in; Laptop compartment: 11 x 0.6 x 15 in; Weight: 1.7 lb", "Max load: 33 lb; TSA-compliant; versatile business/travel design"],
+  "KNB-467KH": ["Fits laptops up to 15.6 inches; fits tablets up to 10–12 inches", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; lining polyester; contemporary sleek design", "Straps: Adjustable padded shoulder straps; carry handle", "Compartments: Ample lined main compartment with laptop + tablet pockets; two interior utility/organizer pockets", "Dimensions: 17.3 x 12.5 x 4 in; Laptop compartment: 16.5 x 10.6 x 2 in; Weight: 1.32 lb", "Max load: 26.4 lb; premium tablet pouch; metal zippers"],
+  "KNB-650BK": ["Fits laptops up to 15.6 inches; tablet compartment up to 12 inches", "Material: High-quality water-resistant polyester; anti-theft rear pocket", "Straps: Padded shoulder straps; ultra-padded backrest; carry-on strap; handle", "Compartments: One main expandable compartment (expands up to 60%); tablet pocket; two front zipper pockets; interior mesh zippered pocket; anti-theft rear pocket", "Dimensions: 11 x 3.5 x 16.9 in (slim); expands 60%; Weight: 1.6 lb", "Max load: 33 lb; water-resistant exterior; expandable design for travel"],
+  "KNB-583": ["Fits laptops up to 16 inches; fully lined and padded main compartment with divider and strap", "Material: High-quality durable polyester; TSA-compliant", "Straps: Adjustable padded shoulder straps; integrated handle; luggage pass-through strap", "Compartments: Dedicated padded laptop compartment; two vertical front zippered pockets; interior organizer", "Dimensions: 12.9 x 5.5 x 18.8 in; Laptop compartment: 11 x 0.78 x 14.9 in; Weight: 1.85 lb", "Max load: 39.6 lb; spacious design; 1-year warranty"],
+  "KNB-468": ["Fits laptops up to 15.6 inches; ladies' collection", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; metal zippers with leatherette pullers; polyester lining", "Straps: Adjustable ergonomic padded shoulder straps; reinforced handle; pass-through carry-on strap", "Compartments: Three main compartments; one fully lined padded laptop compartment with four multipurpose pockets; zippered organizer; front zippered pocket", "Dimensions: 16.5 x 12.6 x 5.5 in; Laptop compartment: 13.3 x 11 x 2 in; Weight: 0.76 lb", "Load capacity: 12 kg; colors: red, blue, khaki, brown"],
+  "KLB-461": ["Fits laptops up to 15.6 inches; ladies' handbag design", "Material: 100% premium quality polyester; leatherette straps with fine stitching", "Handles: Leatherette straps for hand carry; double-stitched seams for durability", "Pockets: Two main zippered compartments; one interior zippered pocket; one zippered pocket on back panel", "Dimensions: 16.9 x 5.7 x 11.8 in; Weight: 1.2 lb", "Max load: 17.6 lb; trendy two-tone design; lightweight and portable"],
+  "TSB89104US": ["Fits laptops up to 15.6–16 inches", "Material: Polyester (lightweight, durable); reflective accents", "Straps: Shoulder carrying straps; hand strap", "Compartments: Padded laptop compartment; tablet compartment; front essentials pocket; dual mesh side water bottle pockets", "Dimensions: 12.23 x 5.23 x 17.76 in (L x W x H); Weight: 1.0 lb (16 oz)", "Storage volume: ~25 liters; water bottle pockets; sporty lightweight design"],
+  "TSB966GL-92": ["Fits laptops up to 15.6 inches", "Material: Polyester (lightweight, water-resistant)", "Straps: Adjustable shoulder straps; slim lightweight design", "Compartments: Dedicated side-loading laptop compartment; extra-large main compartment; zippered front pocket with organizer for business cards, keys, drives, chargers", "Dimensions: 16.75 x 12.19 x 5.71 in (L x W x H); Laptop compartment: 14.75 x 1.53 in; Weight: 0.92 lb", "Water-resistant; designed for work and travel essentials"],
+  "HP-PP15": ["Fits laptops up to 15.6 inches; padded laptop compartment", "Material: 95% post-consumer recycled external fabric; fabric body", "Straps: Adjustable shoulder straps; trolley strap; belt loop", "Compartments: Laptop compartment; document compartment; main compartment; accessories pockets; pen loop; zippered pockets; slip pockets for phone/wallet/sunglasses", "Dimensions: 16.7 x 5 x 12.5 in (D x W x H) / 317.5 x 127 x 425.5 mm; Weight: 0.48 kg (1.06 lb)", "Lockable zippers; reflective accents; water-resistant, bump-resistant, scratch-resistant"],
+  "HP-RB15": ["Fits laptops up to 15.6 inches", "Material: 100% ocean-bound plastics (main fabric); all tags/strings/stuffing from recycled sources; water-resistant", "Straps: Adjustable shoulder straps; carry handles", "Compartments: Padded laptop compartment; main storage; multiple pockets; lockable zippers", "Dimensions: 15.4 x 2.6 x 11.4 in (W x D x H) / 39 x 6.5 x 29 cm; Weight: 0.61 kg (1.34 lb)", "Max load: 18.9 lb; eco-friendly ocean-bound plastic construction"],
+  "DL-PS15": ["Fits laptops up to 15–15.6 inches (up to 39.6 cm)", "Material: 600D recycled polyester fabric with foam padding; weather-resistant, dirt-resistant; 100% recycled plastic content", "Straps: Padded carry handles; luggage pass-through strap", "Compartments: Padded laptop sleeve; tablet pocket; front zippered accessory pocket; pen loops; business card holder", "Dimensions: 15.4 x 3.5 x 11.4 in (W x D x H); Weight: 17.28 oz (549 g / 1.08 lb)", "Reflective accents; slim-fit briefcase design for business"],
+  "DL-EL15": ["Fits laptops up to 16 inches (max laptop dimension: 400 x 270 x 25 mm)", "Material: 100% recycled materials / ocean-bound plastic; 360° foam cushion protection", "Straps: Adjustable shoulder straps; padded back panel; top handle; luggage pass-through", "Compartments: Large full-access front opening; padded laptop compartment; zippered front pocket; accessory organization", "Dimensions: 17.3 x 5.5 x 12.2 in (H x D x W); Weight: 17.64 oz (500 g / 1.1 lb)", "18-liter capacity; eco-friendly sustainable design"],
+  "Microsoft Sculpt Ergonomic Mouse": ["Connectivity: 2.4 GHz wireless via USB nano transceiver (no Bluetooth support)", "DPI: 1,000 DPI optical sensor", "Battery: 2x AA alkaline batteries; up to 12-month battery life", "OS Compatibility: Windows 8/10/11; limited Mac support (no companion software for macOS)", "Weight: 5.47 oz (155 g) including batteries", "Ergonomic tilt design with thumb scoop; 4-way scroll wheel; Windows button; 5 buttons"],
+  "Microsoft Arc Mouse": ["Connectivity: Bluetooth Low Energy (BLE) 4.0/4.1; no USB receiver or dongle required", "Battery: 2x AAA alkaline batteries (included); up to 6-month battery life", "OS Compatibility: Windows 10/11; macOS 10.13+; Android; iPadOS 13+", "Weight: 2.91 oz (82.5 g) including batteries; ultra-light and portable", "Dimensions: 5.17 x 2.17 x 0.56 in (flat); folds to turn on, flatten to turn off", "Full scroll plane for vertical and horizontal scrolling; slim ergonomic design; snaps flat for pocket storage"],
+  "HOMEFISH Vertical Ergonomic Mouse": ["Connectivity: 2.4 GHz wireless via USB nano receiver; receiving distance up to 10m", "DPI: 3 adjustable levels — 800 / 1200 / 1600 DPI (switchable button)", "Battery: USB rechargeable or AA/AAA (varies by sub-model); low-noise click design", "OS Compatibility: Windows XP/7/8/10/11, macOS, Linux, Chrome OS", "Buttons: 6 buttons (left, right, scroll, DPI switch, forward, back); right-hand use only", "Ergonomic vertical design to reduce wrist strain; optical sensor; lightweight portable form factor"]
+};
+
+  function openSpecsByIndex(idx) {
+    var p = products[idx];
+    if (!p) return;
+    var sp = productSpecs[p.model] || productSpecs[p.name] || [];
+    document.getElementById('specsTitle').textContent = p.brand + ' ' + p.name;
+    document.getElementById('specsModel').textContent = 'Model: ' + p.model + (p.size !== 'N/A' ? ' | Fits: ' + p.size + ' Laptop' : '');
+    var list = document.getElementById('specsList');
+    if (sp.length === 0) {
+      list.innerHTML = '<li>No detailed specs available for this product yet.</li>';
+    } else {
+      var li = '';
+      for (var i = 0; i < sp.length; i++) {
+        li += '<li>' + sp[i] + '</li>';
+      }
+      list.innerHTML = li;
+    }
+    document.getElementById('specsOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSpecs() {
+    document.getElementById('specsOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
   var selectedPhone = "18767731173";
   var selectedChannel = "whatsapp";
   var currentProduct = null;
@@ -874,10 +1035,11 @@
       html += '<span class="model">' + safeModel + '</span>';
       html += '<h3>' + safeName + '</h3>';
       html += '<p class="desc">' + safeDesc + '</p>';
-      html += '<span class="size-info">💻 Fits ' + escAttr(p.size) + ' Laptop</span>';
+      html += '<span class="size-info">' + (p.size === 'N/A' ? '&#128433; Computer Accessory' : '&#128187; Fits ' + escAttr(p.size) + ' Laptop') + '</span>';
       html += '<button class="buy-btn" onclick="event.stopPropagation(); openModalByIndex(' + idx + ')">';
       html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
       html += ' Order via WhatsApp</button>';
+      html += '<button class="specs-btn" onclick="event.stopPropagation(); openSpecsByIndex(' + idx + ')">&#9881; View Specs</button>';
       html += '</div></div>';
     }
     grid.innerHTML = html;
