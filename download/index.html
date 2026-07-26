@@ -1134,6 +1134,7 @@
     <button class="filter-btn" data-filter="handbag">Handbags</button>
     <button class="filter-btn" data-filter="mouse">Mouse</button>
     <button class="filter-btn" data-filter="camera">Cameras</button>
+    <button class="filter-btn" data-filter="scanner">Scanners</button>
     <button class="services-btn" id="servicesToggle" onclick="toggleServices()">
       Services
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1245,7 +1246,7 @@
   <div class="grid" id="productGrid"></div>
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-      <h2>&#128722; Order This Bag</h2>
+      <h2>&#128722; Order This Item</h2>
       <p class="modal-product" id="modalProduct"></p>
       <p class="modal-price" id="modalPrice"></p>
       <button id="viewPhotosBtn" onclick="closeModal(); openLightboxByIndex(currentProductIndex)" style="display:none;width:100%;padding:10px;border:2px dashed #d0d5dd;border-radius:12px;background:#f9fafb;cursor:pointer;font-size:.88rem;font-weight:600;color:#344054;margin-bottom:16px;transition:all .2s;" onmouseover="this.style.borderColor='#1a1a2e';this.style.background='#f0f2f5'" onmouseout="this.style.borderColor='#d0d5dd';this.style.background='#f9fafb'">&#128247; View All Photos</button>
@@ -1333,7 +1334,7 @@
     <div class="lightbox-counter" id="lbCounter"></div>
     <div class="lightbox-order-bar">
       <span class="lb-price" id="lbPrice"></span>
-      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Bag</button>
+      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Item</button>
     </div>
   </div>
     <div class="specs-overlay" id="specsOverlay" onclick="if(event.target===this)closeSpecs()">
@@ -1396,6 +1397,7 @@
     { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
     { name: "Vertical Ergonomic Mouse", brand: "HOMEFISH", model: "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical", price: 3500, category: "mouse", color: "#111827", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/mouse-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-3.jpg"], size: "N/A", desc: "Ergonomic vertical wireless optical mouse with 3 adjustable DPI levels (800/1200/1600)." },
     { name: "C8c Lite Kit 4MP", brand: "EZVIZ", model: "EZVIZ C8c Lite Kit 4MP", price: 25990, category: "camera", color: "#1e40af", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/cam-1.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-2.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-3.png"], size: "N/A", desc: "4MP indoor/outdoor surveillance camera kit with color night vision and pan & tilt." },
+    { name: "2D Barcode Scanner X11", brand: "Generic", model: "X11-Black", price: 7800, category: "scanner", color: "#0f172a", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/scanner-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-4.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-5.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-6.jpg"], size: "N/A", desc: "Desktop omnidirectional 2D barcode scanner - reads 1D, 2D, QR, Data Matrix & PDF417 codes automatically." },
     { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://i5.walmartimages.com/seo/Dell-Backpack-14-16-Black_73e72394-17f6-4138-a95d-21141480471f.d5dbc49cb95fc3f27e7f8c8c99e1693c.jpeg", "https://i5.walmartimages.com/asr/2f629e66-82b4-4f6e-bf14-e68f94c40704.fbea6b3ab08c92257dedeeed035bd407.jpeg", "https://i5.walmartimages.com/asr/65e3fb23-570b-4fb7-b271-23d89fc37236.37d34e1dd25c7467ee28d7b720668e71.jpeg", "https://i5.walmartimages.com/asr/1617167f-31f2-47f9-8d5c-2878592dc0a7.3cf54ce390b8f150814faacd94d44fce.jpeg"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." }
   ];
 
@@ -1428,7 +1430,8 @@
   "DL-PS15": ["Fits laptops up to 15–15.6 inches (up to 39.6 cm)", "Material: 600D recycled polyester fabric with foam padding; weather-resistant, dirt-resistant; 100% recycled plastic content", "Straps: Padded carry handles; luggage pass-through strap", "Compartments: Padded laptop sleeve; tablet pocket; front zippered accessory pocket; pen loops; business card holder", "Dimensions: 15.4 x 3.5 x 11.4 in (W x D x H); Weight: 17.28 oz (549 g / 1.08 lb)", "Reflective accents; slim-fit briefcase design for business"],
   "DL-EL15": ["Fits laptops up to 16 inches (max laptop dimension: 400 x 270 x 25 mm)", "Material: 100% recycled materials / ocean-bound plastic; 360° foam cushion protection", "Straps: Adjustable shoulder straps; padded back panel; top handle; luggage pass-through", "Compartments: Large full-access front opening; padded laptop compartment; zippered front pocket; accessory organization", "Dimensions: 17.3 x 5.5 x 12.2 in (H x D x W); Weight: 17.64 oz (500 g / 1.1 lb)", "18-liter capacity; eco-friendly sustainable design"],
   "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical": ["Connectivity: 2.4 GHz wireless via USB nano receiver; receiving distance up to 10m", "DPI: 3 adjustable levels - 800 / 1200 / 1600 DPI (switchable button)", "Battery: USB rechargeable; low-noise click design", "OS Compatibility: Windows XP/7/8/10/11, macOS, Linux, Chrome OS", "Buttons: 6 buttons (left, right, scroll, DPI switch, forward, back); right-hand use only", "Ergonomic vertical design to reduce wrist strain; optical sensor; lightweight portable form factor"],
-  "EZVIZ C8c Lite Kit 4MP": ["Resolution: 4MP (2560 x 1440) QHD with color night vision", "Lens: 4mm focal length; 108-degree field of view", "Pan & Tilt: 340-degree horizontal pan; 120-degree vertical tilt; auto-tracking", "Indoor/Outdoor: IP65 weatherproof rating for outdoor use", "Storage: Supports microSD card up to 256GB (not included); H.265 video compression", "Connectivity: Wi-Fi 2.4GHz; works with EZVIZ app (iOS/Android) for remote viewing and alerts", "Audio: Built-in microphone and speaker for two-way communication", "Kit includes: Camera unit, mounting accessories, power adapter"]
+  "EZVIZ C8c Lite Kit 4MP": ["Resolution: 4MP (2560 x 1440) QHD with color night vision", "Lens: 4mm focal length; 108-degree field of view", "Pan & Tilt: 340-degree horizontal pan; 120-degree vertical tilt; auto-tracking", "Indoor/Outdoor: IP65 weatherproof rating for outdoor use", "Storage: Supports microSD card up to 256GB (not included); H.265 video compression", "Connectivity: Wi-Fi 2.4GHz; works with EZVIZ app (iOS/Android) for remote viewing and alerts", "Audio: Built-in microphone and speaker for two-way communication", "Kit includes: Camera unit, mounting accessories, power adapter"],
+  "X11-Black": ["Type: Desktop omnidirectional 2D barcode scanner (presentation imager)", "Scan Capability: Reads 1D, 2D, QR, Data Matrix, PDF417 barcodes automatically", "Scan Pattern: Omnidirectional - reads codes from any angle", "Sensor: CMOS image sensor for fast, accurate scanning", "Light Source: White LED illumination with red aiming ring", "Connectivity: USB (wired); plug-and-play with Windows, Mac, Linux, POS systems", "Stand: Built-in adjustable stand for hands-free desktop use", "Beep Indicator: Built-in buzzer confirms successful scan", "Compatibility: Works with POS software, retail, restaurants, pharmacies, logistics", "Body: Compact black housing with durable design for daily commercial use"]
 };
 
   function openSpecsByIndex(idx) {
