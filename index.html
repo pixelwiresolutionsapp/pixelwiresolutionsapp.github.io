@@ -1163,6 +1163,7 @@
     <button class="filter-btn" data-filter="camera">Cameras</button>
     <button class="filter-btn" data-filter="scanner">Scanners</button>
     <button class="filter-btn" data-filter="tool">Electrical</button>
+    <button class="filter-btn" data-filter="auto">Car Auto</button>
     <button class="services-btn" id="servicesToggle" onclick="toggleServices()">
       Services
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1428,7 +1429,7 @@
     { name: "2D Barcode Scanner X11", brand: "Generic", model: "X11-Black", price: 7800, category: "scanner", color: "#0f172a", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/scanner-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-4.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-5.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-6.jpg"], size: "N/A", desc: "Desktop omnidirectional 2D barcode scanner - reads 1D, 2D, QR, Data Matrix & PDF417 codes automatically." },
     { name: "Non-Contact Voltage Tester Pen B15", brand: "ANENG", model: "ANENG B15", price: 3980, category: "tool", color: "#ea580c", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/volt-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/volt-2.jpg"], size: "N/A", desc: "Non-contact induction voltage tester pen (24V~250V AC) with dual LED indicators and built-in flashlight." },
     { name: "Intelligent Pulse Repair Charger", brand: "XINHANGXIN", model: "Intelligent Pulse Repair Charger", price: 9500, category: "tool", color: "#1e293b", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/charger-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-1.jpg"], size: "N/A", desc: "12V/24V automatic smart battery charger with pulse repair mode - revives sulfated car, truck & motorcycle batteries." },
-    { name: "10PCS Precision Pick and Hook Set", brand: "Generic", model: "10PCS Precision Pick and Hook Set", price: 3800, category: "tool", color: "#15803d", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/pick-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/pick-2.jpg"], size: "N/A", desc: "10-piece precision pick & hook set for removing oil seals, O-rings, gaskets & cotter pins in automotive work." },
+    { name: "10PCS Precision Pick and Hook Set", brand: "Generic", model: "10PCS Precision Pick and Hook Set", price: 3800, category: "auto", color: "#15803d", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/pick-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/pick-2.jpg"], size: "N/A", desc: "10-piece precision pick & hook set for removing oil seals, O-rings, gaskets & cotter pins in automotive work." },
     { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://i5.walmartimages.com/seo/Dell-Backpack-14-16-Black_73e72394-17f6-4138-a95d-21141480471f.d5dbc49cb95fc3f27e7f8c8c99e1693c.jpeg", "https://i5.walmartimages.com/asr/2f629e66-82b4-4f6e-bf14-e68f94c40704.fbea6b3ab08c92257dedeeed035bd407.jpeg", "https://i5.walmartimages.com/asr/65e3fb23-570b-4fb7-b271-23d89fc37236.37d34e1dd25c7467ee28d7b720668e71.jpeg", "https://i5.walmartimages.com/asr/1617167f-31f2-47f9-8d5c-2878592dc0a7.3cf54ce390b8f150814faacd94d44fce.jpeg"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." }
   ];
 
@@ -1534,7 +1535,8 @@
       'mouse': '&#128433; Computer Accessory',
       'camera': '&#128249; Security Camera',
       'scanner': '&#128247; Barcode Scanner',
-      'tool': '&#9881; Electrical Tool'
+      'tool': '&#9881; Electrical Tool',
+      'auto': '&#128663; Car Auto Tool'
     };
     return labels[p.category] || '&#128433; Computer Accessory';
   }
