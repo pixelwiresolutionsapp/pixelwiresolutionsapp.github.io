@@ -467,7 +467,7 @@
       margin: 0 auto;
     }
     .card {
-      background: #fff;
+      background: linear-gradient(180deg, #ffffff 0%, #fafbfc 60%, #f5f7fa 100%);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,.07);
@@ -476,18 +476,38 @@
       transition: transform .22s, box-shadow .22s;
       cursor: pointer;
       position: relative;
+      border: 1px solid rgba(15,23,42,.05);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #0f172a, #1e3a5f, #38bdf8, #1e3a5f, #0f172a);
+      background-size: 200% 100%;
+      animation: cardTopShimmer 4s linear infinite;
+      opacity: .8;
+      z-index: 3;
+    }
+    @keyframes cardTopShimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0,0,0,.13);
+      box-shadow: 0 12px 36px rgba(0,0,0,.15);
     }
     .card-img {
-      height: 200px;
+      height: 210px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
+      padding-top: 38px;
+      box-sizing: border-box;
     }
     .card-img::after {
       content: '';
@@ -519,19 +539,25 @@
     }
     .card-img .brand-tag {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 4px 12px;
+      top: 10px;
+      left: 10px;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 5px 13px;
       border-radius: 20px;
       font-size: .7rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .5px;
-      color: #1a1a2e;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      color: #0f172a;
+      box-shadow: 0 2px 10px rgba(0,0,0,.12);
+      border: 1px solid rgba(15,23,42,.08);
+      z-index: 3;
+      max-width: calc(100% - 80px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .card-img .price-tag {
       position: absolute;
@@ -978,8 +1004,9 @@
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     @media (max-width: 600px) {
       .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
-      .card-img { height: 140px; }
+      .card-img { height: 160px; padding-top: 32px; }
       .card-img img { max-width: 80%; max-height: 80%; }
+      .card-img .brand-tag { font-size: .6rem; padding: 3px 9px; top: 8px; left: 8px; max-width: calc(100% - 60px); }
       .card-body { padding: 12px 13px 14px; }
       .card-body h3 { font-size: .88rem; }
       .buy-btn { padding: 9px 12px; font-size: .8rem; }
@@ -1517,7 +1544,7 @@
       var safeDesc = escAttr(p.desc);
       var priceStr = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2});
       html += '<div class="card">';
-      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
+      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44), radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 60%); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
       html += '<span class="brand-tag">' + safeBrand + '</span>';
       html += '<img src="' + escAttr(imgs[0]) + '" alt="' + safeName + '" loading="lazy" onerror="this.style.display=\'none\'" />';
       if (imgs.length > 1) {
