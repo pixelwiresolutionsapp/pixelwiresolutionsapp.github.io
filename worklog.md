@@ -51,3 +51,31 @@ Stage Summary:
 - WhatsApp/Call/Email order flow with delivery pricing (pickup/Kingston/islandwide)
 - Neon PostgreSQL schema ready for Vercel deployment
 - Local dev uses SQLite, production uses Neon via @neondatabase/serverless
+
+---
+Task ID: 3
+Agent: Main Agent
+Task: Set up Neon PostgreSQL backend and Vercel deployment, update WhatsApp contact numbers
+
+Work Log:
+- Updated WhatsApp numbers to (876) 773-1173 and (876) 559-5290 in both page.tsx and index.html
+- Changed contact bar label from "💬 Orders sent via WhatsApp to:" to "📞 Call or WhatsApp:"
+- Switched Prisma schema from SQLite to Neon PostgreSQL (replaced schema.prisma with schema.neon.prisma content)
+- Updated db.ts to use Neon serverless adapter with WebSocket support for Vercel
+- Installed ws and @types/ws for Neon WebSocket connections
+- Updated seed.ts site settings: whatsapp_primary=18767731173, whatsapp_secondary=18765595290
+- Created vercel.json with build command, region, and env config
+- Created .env.example with Neon connection string templates
+- Added API fetch layer to index.html with API_BASE_URL config variable
+- API fetch maps response format to existing product array format with full fallback
+- Generated Prisma client for PostgreSQL and verified successful build
+- All API routes compiled: /api/products, /api/categories, /api/brands, /api/orders, /api/settings, /api/health
+- Created NEON_VERCEL_SETUP.md with step-by-step deployment guide
+- Committed and pushed all changes to GitHub
+
+Stage Summary:
+- Backend fully configured for Neon + Vercel deployment
+- Contact info updated: 📞 Call or WhatsApp: (876) 773-1173 or (876) 559-5290
+- Static site can fetch live data from Vercel API when API_BASE_URL is set
+- Deployment guide covers: Neon project creation, schema push, seed, Vercel CLI/dashboard deploy
+- Build passes, all code pushed to main branch
