@@ -1,0 +1,1942 @@
+     1→<!DOCTYPE html>
+     2→<html lang="en">
+     3→<head>
+     4→  <meta charset="UTF-8" />
+     5→  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     6→  <title>Klipxtreme &amp; More | Laptop Bags &amp; Cases</title>
+     7→  <meta name="description" content="Shop laptop bags, sleeves, backpacks and cases from Klipxtreme, Targus, HP &amp; Dell. Order via WhatsApp." />
+     8→  <style>
+     9→    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    10→    html { scroll-behavior: smooth; }
+    11→    body {
+    12→      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    13→      background: #f0f2f5;
+    14→      color: #1a1a2e;
+    15→      line-height: 1.5;
+    16→      min-height: 100vh;
+    17→    }
+    18→    .splash-screen {
+    19→      position: fixed;
+    20→      inset: 0;
+    21→      z-index: 9999;
+    22→      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    23→      display: flex;
+    24→      flex-direction: column;
+    25→      align-items: center;
+    26→      justify-content: center;
+    27→      transition: opacity .6s ease, visibility .6s ease;
+    28→    }
+    29→    .splash-screen.hidden {
+    30→      opacity: 0;
+    31→      visibility: hidden;
+    32→      pointer-events: none;
+    33→    }
+    34→    .splash-logo {
+    35→      width: 140px;
+    36→      height: 140px;
+    37→      border-radius: 20px;
+    38→      object-fit: contain;
+    39→      animation: splashPulse 1.5s ease-in-out infinite;
+    40→      margin-bottom: 24px;
+    41→      filter: drop-shadow(0 8px 32px rgba(255,255,255,.25));
+    42→    }
+    43→    @keyframes splashPulse {
+    44→      0%, 100% { transform: scale(1); }
+    45→      50% { transform: scale(1.06); }
+    46→    }
+    47→    .splash-spinner {
+    48→      width: 40px;
+    49→      height: 40px;
+    50→      border: 4px solid rgba(255,255,255,.15);
+    51→      border-top-color: #25d366;
+    52→      border-radius: 50%;
+    53→      animation: spin .8s linear infinite;
+    54→      margin-top: 8px;
+    55→    }
+    56→    @keyframes spin {
+    57→      to { transform: rotate(360deg); }
+    58→    }
+    59→    .splash-welcome {
+    60→      color: #fff;
+    61→      font-size: 1.5rem;
+    62→      font-weight: 700;
+    63→      letter-spacing: .5px;
+    64→      margin-bottom: 8px;
+    65→      text-shadow: 0 2px 10px rgba(0,0,0,.3);
+    66→      text-align: center;
+    67→      padding: 0 20px;
+    68→    }
+    69→    .splash-sub {
+    70→      color: rgba(255,255,255,.7);
+    71→      font-size: .92rem;
+    72→      margin-top: 4px;
+    73→      text-align: center;
+    74→    }
+    75→    .header {
+    76→      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    77→      color: #fff;
+    78→      padding: 28px 20px 22px;
+    79→      text-align: center;
+    80→      position: sticky;
+    81→      top: 0;
+    82→      z-index: 100;
+    83→      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    84→    }
+    85→    .header h1 {
+    86→      font-size: clamp(1.4rem, 4vw, 2.2rem);
+    87→      font-weight: 800;
+    88→      letter-spacing: -0.5px;
+    89→      margin-bottom: 4px;
+    90→    }
+    91→    .header p {
+    92→      font-size: 0.95rem;
+    93→      opacity: .85;
+    94→      max-width: 600px;
+    95→      margin: 0 auto;
+    96→    }
+    97→    .wa-bar {
+    98→      background: #075e54;
+    99→      color: #fff;
+   100→      text-align: center;
+   101→      padding: 10px 16px;
+   102→      font-size: .88rem;
+   103→      display: flex;
+   104→      align-items: center;
+   105→      justify-content: center;
+   106→      gap: 10px;
+   107→      flex-wrap: wrap;
+   108→    }
+   109→    .wa-bar a { color: #dcf8c6; text-decoration: underline; font-weight: 600; }
+   110→    .wa-bar a:hover { color: #fff; }
+   111→    .filter-bar {
+   112→      display: flex;
+   113→      justify-content: center;
+   114→      gap: 8px;
+   115→      padding: 18px 16px 10px;
+   116→      flex-wrap: wrap;
+   117→    }
+   118→    .filter-btn {
+   119→      border: 2px solid #d0d5dd;
+   120→      background: #fff;
+   121→      border-radius: 24px;
+   122→      padding: 7px 18px;
+   123→      font-size: .85rem;
+   124→      font-weight: 600;
+   125→      cursor: pointer;
+   126→      transition: all .2s;
+   127→      color: #344054;
+   128→    }
+   129→    .services-btn {
+   130→      border: 2px solid #0f172a;
+   131→      background: #0f172a;
+   132→      color: #fff;
+   133→      border-radius: 24px;
+   134→      padding: 7px 18px;
+   135→      font-size: .85rem;
+   136→      font-weight: 600;
+   137→      cursor: pointer;
+   138→      transition: all .2s;
+   139→    }
+   140→    .services-btn:hover {
+   141→      background: #1e3a5f;
+   142→      border-color: #1e3a5f;
+   143→    }
+   144→    .services-btn svg {
+   145→      width: 14px;
+   146→      height: 14px;
+   147→      vertical-align: middle;
+   148→      margin-left: 4px;
+   149→      transition: transform .3s;
+   150→    }
+   151→    .services-btn.open svg {
+   152→      transform: rotate(180deg);
+   153→    }
+   154→    #servicesSection {
+   155→      max-width: 1100px;
+   156→      margin: 0 auto;
+   157→      padding: 0 16px;
+   158→      max-height: 0;
+   159→      overflow: hidden;
+   160→      transition: max-height .5s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+   161→      opacity: 0;
+   162→    }
+   163→    #servicesSection.open {
+   164→      max-height: 5000px;
+   165→      opacity: 1;
+   166→    }
+   167→    #servicesSection .service-banner {
+   168→      max-width: 100%;
+   169→      margin: 0 0 16px;
+   170→      padding: 0;
+   171→    }
+   172→    .service-card {
+   173→      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f3460 100%);
+   174→      border-radius: 18px;
+   175→      padding: 28px 30px;
+   176→      display: flex;
+   177→      align-items: center;
+   178→      justify-content: space-between;
+   179→      gap: 20px;
+   180→      box-shadow: 0 8px 32px rgba(15,23,42,.25);
+   181→      border: 1px solid rgba(255,255,255,.08);
+   182→      flex-wrap: wrap;
+   183→      position: relative;
+   184→      transition: all .35s cubic-bezier(.4,0,.2,1);
+   185→      overflow: hidden;
+   186→    }
+   187→    .service-card.collapsed {
+   188→      max-height: 54px;
+   189→      padding: 14px 30px 14px 56px;
+   190→      overflow: hidden;
+   191→    }
+   192→    .service-card.collapsed .service-card-left,
+   193→    .service-card.collapsed .service-btns,
+   194→    .service-card.collapsed .brand-compare {
+   195→      opacity: 0;
+   196→      visibility: hidden;
+   197→      height: 0;
+   198→      margin: 0;
+   199→      padding: 0;
+   200→      overflow: hidden;
+   201→    }
+   202→    .service-collapse-btn {
+   203→      position: absolute;
+   204→      top: 12px;
+   205→      right: 14px;
+   206→      width: 30px;
+   207→      height: 30px;
+   208→      border-radius: 50%;
+   209→      border: 1px solid rgba(255,255,255,.2);
+   210→      background: rgba(255,255,255,.08);
+   211→      color: rgba(255,255,255,.6);
+   212→      display: flex;
+   213→      align-items: center;
+   214→      justify-content: center;
+   215→      cursor: pointer;
+   216→      font-size: 1rem;
+   217→      line-height: 1;
+   218→      z-index: 5;
+   219→      transition: all .2s;
+   220→      backdrop-filter: blur(4px);
+   221→    }
+   222→    .service-collapse-btn:hover {
+   223→      background: rgba(255,255,255,.18);
+   224→      color: #fff;
+   225→    }
+   226→    .service-card.collapsed .service-collapse-btn {
+   227→      position: absolute;
+   228→      top: 50%;
+   229→      transform: translateY(-50%);
+   230→    }
+   231→    .service-collapsed-label {
+   232→      display: none;
+   233→      align-items: center;
+   234→      gap: 10px;
+   235→      color: rgba(255,255,255,.85);
+   236→      font-size: .92rem;
+   237→      font-weight: 700;
+   238→    }
+   239→    .service-card.collapsed .service-collapsed-label {
+   240→      display: flex;
+   241→    }
+   242→    .service-card-left {
+   243→      flex: 1;
+   244→      min-width: 240px;
+   245→    }
+   246→    .service-card-left h2 {
+   247→      color: #fff;
+   248→      font-size: 1.35rem;
+   249→      font-weight: 800;
+   250→      margin-bottom: 6px;
+   251→      display: flex;
+   252→      align-items: center;
+   253→      gap: 10px;
+   254→    }
+   255→    .service-card-left h2 svg {
+   256→      width: 28px;
+   257→      height: 28px;
+   258→      flex-shrink: 0;
+   259→    }
+   260→    .service-card-left p {
+   261→      color: rgba(255,255,255,.75);
+   262→      font-size: .88rem;
+   263→      line-height: 1.55;
+   264→    }
+   265→    .service-card-left .service-highlight {
+   266→      color: #fbbf24;
+   267→      font-weight: 700;
+   268→      font-size: .82rem;
+   269→      margin-top: 8px;
+   270→      display: flex;
+   271→      align-items: center;
+   272→      gap: 6px;
+   273→    }
+   274→    .service-btns {
+   275→      display: flex;
+   276→      gap: 12px;
+   277→      flex-wrap: wrap;
+   278→    }
+   279→    .service-btn {
+   280→      display: inline-flex;
+   281→      align-items: center;
+   282→      gap: 8px;
+   283→      padding: 14px 24px;
+   284→      border-radius: 14px;
+   285→      font-size: .92rem;
+   286→      font-weight: 700;
+   287→      text-decoration: none;
+   288→      transition: all .25s;
+   289→      cursor: pointer;
+   290→      border: none;
+   291→      white-space: nowrap;
+   292→    }
+   293→    .service-btn.primary {
+   294→      background: linear-gradient(135deg, #25d366, #128c7e);
+   295→      color: #fff;
+   296→      box-shadow: 0 4px 16px rgba(37,211,102,.35);
+   297→    }
+   298→    .service-btn.primary:hover {
+   299→      transform: translateY(-2px);
+   300→      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+   301→    }
+   302→    .service-btn.primary svg { width: 22px; height: 22px; }
+   303→    .service-btn.secondary {
+   304→      background: rgba(255,255,255,.12);
+   305→      color: #fff;
+   306→      border: 1px solid rgba(255,255,255,.2);
+   307→      backdrop-filter: blur(6px);
+   308→    }
+   309→    .service-btn.secondary:hover {
+   310→      background: rgba(255,255,255,.2);
+   311→      transform: translateY(-2px);
+   312→    }
+   313→    .call-btn-group {
+   314→      position: relative;
+   315→      cursor: pointer;
+   316→    }
+   317→    .call-dropdown {
+   318→      display: none;
+   319→      position: absolute;
+   320→      top: calc(100% + 8px);
+   321→      right: 0;
+   322→      background: #1a1a2e;
+   323→      border-radius: 12px;
+   324→      padding: 6px;
+   325→      min-width: 240px;
+   326→      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+   327→      z-index: 50;
+   328→    }
+   329→    .call-dropdown.show { display: block; }
+   330→    .call-dropdown a {
+   331→      display: flex;
+   332→      align-items: center;
+   333→      gap: 12px;
+   334→      color: #fff;
+   335→      text-decoration: none;
+   336→      padding: 16px 18px;
+   337→      border-radius: 10px;
+   338→      font-size: 1.05rem;
+   339→      font-weight: 600;
+   340→      letter-spacing: .3px;
+   341→      transition: background .15s;
+   342→    }
+   343→    .call-dropdown a svg {
+   344→      width: 22px;
+   345→      height: 22px;
+   346→      flex-shrink: 0;
+   347→      fill: #4ade80;
+   348→    }
+   349→    .call-dropdown a:hover { background: rgba(255,255,255,.1); }
+   350→    .brand-toggle {
+   351→      display: inline-flex;
+   352→      align-items: center;
+   353→      gap: 6px;
+   354→      margin-top: 12px;
+   355→      padding: 8px 16px;
+   356→      background: rgba(56,189,248,.15);
+   357→      border: 1px solid rgba(56,189,248,.3);
+   358→      color: #38bdf8;
+   359→      border-radius: 10px;
+   360→      font-size: .78rem;
+   361→      font-weight: 700;
+   362→      cursor: pointer;
+   363→      transition: all .2s;
+   364→    }
+   365→    .brand-toggle:hover { background: rgba(56,189,248,.25); }
+   366→    .brand-compare {
+   367→      display: none;
+   368→      margin-top: 16px;
+   369→      border-radius: 16px;
+   370→      overflow: hidden;
+   371→    }
+   372→    .brand-compare.open { display: block; }
+   373→    .brand-compare-inner {
+   374→      background: rgba(255,255,255,.06);
+   375→      border: 1px solid rgba(255,255,255,.1);
+   376→      border-radius: 16px;
+   377→      padding: 24px;
+   378→    }
+   379→    .brand-header {
+   380→      color: #38bdf8;
+   381→      font-size: 1.05rem;
+   382→      font-weight: 800;
+   383→      margin-bottom: 16px;
+   384→      text-align: center;
+   385→    }
+   386→    .brand-table-wrap {
+   387→      overflow-x: auto;
+   388→      margin-bottom: 20px;
+   389→      -webkit-overflow-scrolling: touch;
+   390→    }
+   391→    .brand-table-wrap table {
+   392→      width: 100%;
+   393→      border-collapse: collapse;
+   394→      font-size: .78rem;
+   395→      color: rgba(255,255,255,.85);
+   396→      min-width: 500px;
+   397→    }
+   398→    .brand-table-wrap th {
+   399→      background: rgba(56,189,248,.15);
+   400→      color: #38bdf8;
+   401→      padding: 10px 12px;
+   402→      text-align: left;
+   403→      font-weight: 700;
+   404→      font-size: .75rem;
+   405→      text-transform: uppercase;
+   406→      letter-spacing: .3px;
+   407→    }
+   408→    .brand-table-wrap td {
+   409→      padding: 10px 12px;
+   410→      border-bottom: 1px solid rgba(255,255,255,.06);
+   411→      vertical-align: top;
+   412→      line-height: 1.45;
+   413→    }
+   414→    .brand-table-wrap tr:hover td { background: rgba(255,255,255,.04); }
+   415→    .brand-table-wrap td strong { color: #38bdf8; }
+   416→    .brand-tips {
+   417→      background: rgba(56,189,248,.08);
+   418→      border-radius: 12px;
+   419→      padding: 16px 18px;
+   420→      margin-bottom: 16px;
+   421→    }
+   422→    .brand-tip-title {
+   423→      color: #38bdf8;
+   424→      font-weight: 800;
+   425→      font-size: .82rem;
+   426→      margin-bottom: 10px;
+   427→    }
+   428→    .brand-tip {
+   429→      display: flex;
+   430→      align-items: center;
+   431→      gap: 10px;
+   432→      padding: 6px 0;
+   433→      font-size: .8rem;
+   434→      color: rgba(255,255,255,.8);
+   435→      border-bottom: 1px solid rgba(255,255,255,.05);
+   436→    }
+   437→    .brand-tip:last-child { border-bottom: none; }
+   438→    .tip-label {
+   439→      color: #fff;
+   440→      font-weight: 700;
+   441→      min-width: 160px;
+   442→      flex-shrink: 0;
+   443→    }
+   444→    .brand-survey-note {
+   445→      background: rgba(251,191,36,.1);
+   446→      border: 1px solid rgba(251,191,36,.25);
+   447→      border-radius: 12px;
+   448→      padding: 14px 16px;
+   449→      font-size: .8rem;
+   450→      color: rgba(255,255,255,.85);
+   451→      line-height: 1.55;
+   452→    }
+   453→    .brand-survey-note strong { color: #fbbf24; }
+   454→    @media (max-width: 600px) {
+   455→      .service-card {
+   456→        padding: 20px 18px;
+   457→        flex-direction: column;
+   458→        text-align: center;
+   459→      }
+   460→      .service-card-left h2 { justify-content: center; }
+   461→      .service-card-left .service-highlight { justify-content: center; }
+   462→      .service-btns { justify-content: center; }
+   463→      .service-card.collapsed { padding: 14px 18px 14px 48px; }
+   464→    }
+   465→    .filter-btn:hover, .filter-btn.active {
+   466→      background: #1a1a2e;
+   467→      color: #fff;
+   468→      border-color: #1a1a2e;
+   469→    }
+   470→    .grid {
+   471→      display: grid;
+   472→      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+   473→      gap: 20px;
+   474→      padding: 14px 20px 40px;
+   475→      max-width: 1280px;
+   476→      margin: 0 auto;
+   477→    }
+   478→    .card {
+   479→      background: linear-gradient(180deg, #ffffff 0%, #fafbfc 60%, #f5f7fa 100%);
+   480→      border-radius: 16px;
+   481→      overflow: hidden;
+   482→      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+   483→      display: flex;
+   484→      flex-direction: column;
+   485→      transition: transform .22s, box-shadow .22s;
+   486→      cursor: pointer;
+   487→      position: relative;
+   488→      border: 1px solid rgba(15,23,42,.05);
+   489→    }
+   490→    .card::before {
+   491→      content: '';
+   492→      position: absolute;
+   493→      top: 0;
+   494→      left: 0;
+   495→      right: 0;
+   496→      height: 3px;
+   497→      background: linear-gradient(90deg, #0f172a, #1e3a5f, #38bdf8, #1e3a5f, #0f172a);
+   498→      background-size: 200% 100%;
+   499→      animation: cardTopShimmer 4s linear infinite;
+   500→      opacity: .8;
+   501→      z-index: 3;
+   502→    }
+   503→    @keyframes cardTopShimmer {
+   504→      0% { background-position: 0% 0%; }
+   505→      100% { background-position: 200% 0%; }
+   506→    }
+   507→    .card:hover {
+   508→      transform: translateY(-5px);
+   509→      box-shadow: 0 12px 36px rgba(0,0,0,.15);
+   510→    }
+   511→    .card-img {
+   512→      height: 210px;
+   513→      display: flex;
+   514→      align-items: center;
+   515→      justify-content: center;
+   516→      position: relative;
+   517→      overflow: hidden;
+   518→      padding-top: 38px;
+   519→      box-sizing: border-box;
+   520→    }
+   521→    .card-img::after {
+   522→      content: '';
+   523→      position: absolute;
+   524→      top: -50%;
+   525→      left: -50%;
+   526→      width: 200%;
+   527→      height: 200%;
+   528→      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,.12) 45%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.12) 55%, transparent 60%);
+   529→      transform: translateX(-100%) rotate(25deg);
+   530→      transition: transform .6s ease;
+   531→      pointer-events: none;
+   532→      z-index: 2;
+   533→    }
+   534→    .card:hover .card-img::after {
+   535→      transform: translateX(100%) rotate(25deg);
+   536→    }
+   537→    .card-img img {
+   538→      max-width: 85%;
+   539→      max-height: 85%;
+   540→      object-fit: contain;
+   541→      transition: transform .3s, filter .3s;
+   542→      filter: drop-shadow(0 6px 16px rgba(0,0,0,.15));
+   543→      border-radius: 6px;
+   544→      padding: 4px;
+   545→    }
+   546→    .card-img img[src*="-ppal"] {
+   547→      max-width: 65%;
+   548→    }
+   549→    .card-img .brand-tag {
+   550→      position: absolute;
+   551→      top: 10px;
+   552→      left: 10px;
+   553→      background: rgba(255,255,255,.95);
+   554→      backdrop-filter: blur(10px);
+   555→      -webkit-backdrop-filter: blur(10px);
+   556→      padding: 5px 13px;
+   557→      border-radius: 20px;
+   558→      font-size: .7rem;
+   559→      font-weight: 800;
+   560→      text-transform: uppercase;
+   561→      letter-spacing: .5px;
+   562→      color: #0f172a;
+   563→      box-shadow: 0 2px 10px rgba(0,0,0,.12);
+   564→      border: 1px solid rgba(15,23,42,.08);
+   565→      z-index: 3;
+   566→      max-width: calc(100% - 80px);
+   567→      white-space: nowrap;
+   568→      overflow: hidden;
+   569→      text-overflow: ellipsis;
+   570→    }
+   571→    .card-img .price-tag {
+   572→      position: absolute;
+   573→      bottom: 12px;
+   574→      right: 12px;
+   575→      background: linear-gradient(135deg, #1a1a2e, #16213e);
+   576→      color: #25d366;
+   577→      padding: 5px 14px;
+   578→      border-radius: 20px;
+   579→      font-size: .85rem;
+   580→      font-weight: 800;
+   581→      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+   582→      border: 1px solid rgba(37,211,102,.2);
+   583→    }
+   584→    .card:hover .card-img img { transform: scale(1.08); filter: drop-shadow(0 10px 24px rgba(0,0,0,.2)); }
+   585→    .card-body {
+   586→      padding: 16px 18px 18px;
+   587→      flex: 1;
+   588→      display: flex;
+   589→      flex-direction: column;
+   590→      gap: 6px;
+   591→    }
+   592→    .card-body .model { font-size: .72rem; color: #667085; font-weight: 500; letter-spacing: .3px; }
+   593→    .card-body h3 { font-size: 1rem; font-weight: 700; line-height: 1.3; color: #101828; }
+   594→    .card-body .desc { font-size: .82rem; color: #475467; flex: 1; }
+   595→    .card-body .size-info {
+   596→      font-size: .78rem;
+   597→      color: #667085;
+   598→      background: #f9fafb;
+   599→      padding: 4px 10px;
+   600→      border-radius: 8px;
+   601→      display: inline-block;
+   602→      width: fit-content;
+   603→    }
+   604→    .buy-btn {
+   605→      display: flex;
+   606→      align-items: center;
+   607→      justify-content: center;
+   608→      gap: 8px;
+   609→      margin-top: 10px;
+   610→      padding: 11px 16px;
+   611→      border: none;
+   612→      border-radius: 12px;
+   613→      font-size: .9rem;
+   614→      font-weight: 700;
+   615→      cursor: pointer;
+   616→      transition: all .2s;
+   617→      background: linear-gradient(135deg, #25d366, #128c7e);
+   618→      color: #fff;
+   619→      width: 100%;
+   620→    }
+   621→    .buy-btn:hover {
+   622→      background: linear-gradient(135deg, #128c7e, #075e54);
+   623→      box-shadow: 0 4px 15px rgba(37,211,102,.35);
+   624→    }
+   625→    .buy-btn svg { width: 20px; height: 20px; fill: #fff; }
+   626→    .modal-overlay {
+   627→      display: none;
+   628→      position: fixed;
+   629→      inset: 0;
+   630→      background: rgba(0,0,0,.55);
+   631→      z-index: 200;
+   632→      align-items: center;
+   633→      justify-content: center;
+   634→      padding: 20px;
+   635→    }
+   636→    .modal-overlay.open { display: flex; }
+   637→    .modal {
+   638→      background: #fff;
+   639→      border-radius: 20px;
+   640→      padding: 32px 28px 28px;
+   641→      max-width: 420px;
+   642→      width: 100%;
+   643→      text-align: center;
+   644→      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+   645→      animation: modalIn .3s ease;
+   646→    }
+   647→    @keyframes modalIn {
+   648→      from { opacity: 0; transform: scale(.92) translateY(20px); }
+   649→      to { opacity: 1; transform: scale(1) translateY(0); }
+   650→    }
+   651→    .modal h2 { font-size: 1.25rem; margin-bottom: 4px; }
+   652→    .modal .modal-product { font-size: .95rem; color: #475467; margin-bottom: 6px; }
+   653→    .modal .modal-price { font-size: 1.3rem; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; }
+   654→    .modal label { display: block; text-align: left; font-size: .85rem; font-weight: 600; color: #344054; margin-bottom: 6px; }
+   655→    .modal input[type="text"] {
+   656→      width: 100%;
+   657→      padding: 11px 14px;
+   658→      border: 2px solid #d0d5dd;
+   659→      border-radius: 12px;
+   660→      font-size: .95rem;
+   661→      margin-bottom: 14px;
+   662→      outline: none;
+   663→      transition: border-color .2s;
+   664→    }
+   665→    .modal input[type="text"]:focus { border-color: #25d366; }
+   666→    .phone-options { display: flex; gap: 10px; margin-bottom: 20px; }
+   667→    .phone-opt {
+   668→      flex: 1;
+   669→      padding: 12px 10px;
+   670→      border: 2px solid #d0d5dd;
+   671→      border-radius: 12px;
+   672→      text-align: center;
+   673→      cursor: pointer;
+   674→      transition: all .2s;
+   675→      font-weight: 600;
+   676→      font-size: .88rem;
+   677→    }
+   678→    .phone-opt:hover, .phone-opt.selected {
+   679→      border-color: #25d366;
+   680→      background: #f0fdf4;
+   681→      color: #075e54;
+   682→    }
+   683→    .delivery-options { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+   684→    .delivery-opt {
+   685→      flex: 1;
+   686→      min-width: 120px;
+   687→      padding: 12px 10px;
+   688→      border: 2px solid #d0d5dd;
+   689→      border-radius: 12px;
+   690→      text-align: center;
+   691→      cursor: pointer;
+   692→      transition: all .2s;
+   693→      font-weight: 600;
+   694→      font-size: .82rem;
+   695→      line-height: 1.4;
+   696→    }
+   697→    .delivery-opt:hover, .delivery-opt.selected {
+   698→      border-color: #1a1a2e;
+   699→      background: #f0f2f5;
+   700→      color: #1a1a2e;
+   701→    }
+   702→    .delivery-opt .del-price {
+   703→      display: block;
+   704→      font-size: .78rem;
+   705→      font-weight: 400;
+   706→      color: #667085;
+   707→      margin-top: 2px;
+   708→    }
+   709→    .delivery-opt.selected .del-price { color: #1a1a2e; }
+   710→    .modal-actions { display: flex; gap: 10px; }
+   711→    .modal-actions button {
+   712→      flex: 1;
+   713→      padding: 12px;
+   714→      border: none;
+   715→      border-radius: 12px;
+   716→      font-size: .92rem;
+   717→      font-weight: 700;
+   718→      cursor: pointer;
+   719→      transition: all .2s;
+   720→    }
+   721→    .btn-send { background: linear-gradient(135deg, #25d366, #128c7e); color: #fff; }
+   722→    .btn-send:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   723→    .btn-cancel { background: #f2f4f7; color: #344054; }
+   724→    .btn-cancel:hover { background: #e4e7ec; }
+   725→    .social-icons {
+   726→      display: flex;
+   727→      align-items: center;
+   728→      justify-content: center;
+   729→      gap: 14px;
+   730→      margin-top: 12px;
+   731→    }
+   732→    .social-icons a {
+   733→      display: flex;
+   734→      align-items: center;
+   735→      justify-content: center;
+   736→      width: 38px;
+   737→      height: 38px;
+   738→      border-radius: 50%;
+   739→      background: rgba(255,255,255,.15);
+   740→      transition: all .25s;
+   741→      text-decoration: none;
+   742→    }
+   743→    .social-icons a:hover { background: rgba(255,255,255,.3); transform: scale(1.12); }
+   744→    .social-icons svg { width: 20px; height: 20px; fill: #fff; }
+   745→    .share-row {
+   746→      display: flex;
+   747→      gap: 8px;
+   748→      margin-top: 14px;
+   749→      justify-content: center;
+   750→    }
+   751→    .share-btn {
+   752→      display: flex;
+   753→      align-items: center;
+   754→      gap: 6px;
+   755→      padding: 8px 14px;
+   756→      border: 2px solid #e4e7ec;
+   757→      border-radius: 10px;
+   758→      background: #fff;
+   759→      cursor: pointer;
+   760→      font-size: .8rem;
+   761→      font-weight: 600;
+   762→      color: #344054;
+   763→      transition: all .2s;
+   764→      text-decoration: none;
+   765→    }
+   766→    .share-btn:hover { border-color: #1a1a2e; background: #f9fafb; }
+   767→    .share-btn svg { width: 18px; height: 18px; }
+   768→    .share-btn.ig:hover { border-color: #E1306C; color: #E1306C; }
+   769→    .share-btn.fb:hover { border-color: #1877F2; color: #1877F2; }
+   770→    .share-btn.tt:hover { border-color: #000; color: #000; }
+   771→    .share-btn.ig svg { fill: #E1306C; }
+   772→    .share-btn.fb svg { fill: #1877F2; }
+   773→    .share-btn.tt svg { fill: #000; }
+   774→    .order-channel-label {
+   775→      font-size: .8rem;
+   776→      color: #667085;
+   777→      margin-bottom: 8px;
+   778→      font-weight: 600;
+   779→    }
+   780→    .channel-tabs {
+   781→      display: flex;
+   782→      gap: 8px;
+   783→      margin-bottom: 16px;
+   784→    }
+   785→    .channel-tab {
+   786→      flex: 1;
+   787→      padding: 10px 8px;
+   788→      border: 2px solid #d0d5dd;
+   789→      border-radius: 12px;
+   790→      text-align: center;
+   791→      cursor: pointer;
+   792→      transition: all .2s;
+   793→      font-weight: 600;
+   794→      font-size: .82rem;
+   795→      background: #fff;
+   796→    }
+   797→    .channel-tab:hover, .channel-tab.selected {
+   798→      border-color: #1a1a2e;
+   799→      background: #f0f2f5;
+   800→      color: #1a1a2e;
+   801→    }
+   802→    .channel-tab.selected { background: #1a1a2e; color: #fff; }
+   803→    .channel-tab svg { width: 18px; height: 18px; vertical-align: middle; margin-right: 4px; }
+   804→    .footer {
+   805→      text-align: center;
+   806→      padding: 24px 16px;
+   807→      font-size: .82rem;
+   808→      color: #667085;
+   809→      border-top: 1px solid #e4e7ec;
+   810→      background: #fff;
+   811→    }
+   812→    .footer-social {
+   813→      display: flex;
+   814→      align-items: center;
+   815→      justify-content: center;
+   816→      gap: 16px;
+   817→      margin-top: 12px;
+   818→    }
+   819→    .footer-social a {
+   820→      display: flex;
+   821→      align-items: center;
+   822→      gap: 6px;
+   823→      color: #667085;
+   824→      text-decoration: none;
+   825→      font-weight: 600;
+   826→      font-size: .85rem;
+   827→      transition: color .2s;
+   828→    }
+   829→    .footer-social a:hover { color: #1a1a2e; }
+   830→    .footer-social svg { width: 20px; height: 20px; }
+   831→    .card-img .photo-count {
+   832→      position: absolute;
+   833→      bottom: 12px;
+   834→      left: 12px;
+   835→      background: rgba(0,0,0,.55);
+   836→      backdrop-filter: blur(8px);
+   837→      -webkit-backdrop-filter: blur(8px);
+   838→      color: #fff;
+   839→      padding: 4px 12px;
+   840→      border-radius: 20px;
+   841→      font-size: .72rem;
+   842→      font-weight: 700;
+   843→      cursor: pointer;
+   844→      transition: all .2s;
+   845→      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+   846→    }
+   847→    .card-img .photo-count:hover { background: rgba(0,0,0,.8); transform: scale(1.05); }
+   848→    .lightbox-overlay {
+   849→      display: none;
+   850→      position: fixed;
+   851→      inset: 0;
+   852→      background: rgba(0,0,0,.92);
+   853→      z-index: 500;
+   854→      align-items: center;
+   855→      justify-content: center;
+   856→      flex-direction: column;
+   857→    }
+   858→    .lightbox-overlay.open { display: flex; }
+   859→    .lightbox-top {
+   860→      position: absolute;
+   861→      top: 0;
+   862→      left: 0;
+   863→      right: 0;
+   864→      display: flex;
+   865→      align-items: center;
+   866→      justify-content: space-between;
+   867→      padding: 16px 20px;
+   868→      z-index: 510;
+   869→    }
+   870→    .lightbox-title {
+   871→      color: #fff;
+   872→      font-size: .95rem;
+   873→      font-weight: 700;
+   874→      max-width: 70%;
+   875→      overflow: hidden;
+   876→      text-overflow: ellipsis;
+   877→      white-space: nowrap;
+   878→    }
+   879→    .lightbox-close {
+   880→      width: 40px;
+   881→      height: 40px;
+   882→      border-radius: 50%;
+   883→      border: none;
+   884→      background: rgba(255,255,255,.15);
+   885→      color: #fff;
+   886→      font-size: 1.4rem;
+   887→      cursor: pointer;
+   888→      display: flex;
+   889→      align-items: center;
+   890→      justify-content: center;
+   891→      transition: background .2s;
+   892→    }
+   893→    .lightbox-close:hover { background: rgba(255,255,255,.3); }
+   894→    .lightbox-img-wrap {
+   895→      position: relative;
+   896→      width: 90vw;
+   897→      max-width: 600px;
+   898→      height: 60vh;
+   899→      max-height: 500px;
+   900→      display: flex;
+   901→      align-items: center;
+   902→      justify-content: center;
+   903→      overflow: hidden;
+   904→    }
+   905→    .lightbox-img-wrap img {
+   906→      max-width: 90%;
+   907→      max-height: 90%;
+   908→      object-fit: contain;
+   909→      border-radius: 10px;
+   910→      transition: opacity .25s, transform .25s;
+   911→      user-select: none;
+   912→      -webkit-user-drag: none;
+   913→    }
+   914→    .lightbox-img-wrap img.slide-left {
+   915→      opacity: 0;
+   916→      transform: translateX(-40px);
+   917→    }
+   918→    .lightbox-img-wrap img.slide-right {
+   919→      opacity: 0;
+   920→      transform: translateX(40px);
+   921→    }
+   922→    .lb-arrow {
+   923→      position: absolute;
+   924→      top: 50%;
+   925→      transform: translateY(-50%);
+   926→      width: 44px;
+   927→      height: 44px;
+   928→      border-radius: 50%;
+   929→      border: none;
+   930→      background: rgba(255,255,255,.15);
+   931→      color: #fff;
+   932→      font-size: 1.5rem;
+   933→      cursor: pointer;
+   934→      display: flex;
+   935→      align-items: center;
+   936→      justify-content: center;
+   937→      transition: background .2s;
+   938→      z-index: 505;
+   939→      backdrop-filter: blur(4px);
+   940→    }
+   941→    .lb-arrow:hover { background: rgba(255,255,255,.3); }
+   942→    .lb-arrow.left { left: 10px; }
+   943→    .lb-arrow.right { right: 10px; }
+   944→    .lightbox-dots {
+   945→      display: flex;
+   946→      gap: 8px;
+   947→      margin-top: 16px;
+   948→    }
+   949→    .lightbox-dots .dot {
+   950→      width: 10px;
+   951→      height: 10px;
+   952→      border-radius: 50%;
+   953→      background: rgba(255,255,255,.3);
+   954→      cursor: pointer;
+   955→      transition: all .2s;
+   956→      border: none;
+   957→    }
+   958→    .lightbox-dots .dot.active {
+   959→      background: #fff;
+   960→      transform: scale(1.3);
+   961→    }
+   962→    .lightbox-counter {
+   963→      color: rgba(255,255,255,.7);
+   964→      font-size: .85rem;
+   965→      margin-top: 10px;
+   966→      font-weight: 600;
+   967→    }
+   968→    .lightbox-order-bar {
+   969→      position: absolute;
+   970→      bottom: 0;
+   971→      left: 0;
+   972→      right: 0;
+   973→      padding: 16px 20px;
+   974→      background: linear-gradient(transparent, rgba(0,0,0,.7));
+   975→      display: flex;
+   976→      align-items: center;
+   977→      justify-content: space-between;
+   978→      gap: 12px;
+   979→    }
+   980→    .lightbox-order-bar .lb-price {
+   981→      color: #25d366;
+   982→      font-size: 1.2rem;
+   983→      font-weight: 800;
+   984→    }
+   985→    .lightbox-order-bar .lb-order-btn {
+   986→      padding: 10px 24px;
+   987→      border: none;
+   988→      border-radius: 12px;
+   989→      background: linear-gradient(135deg, #25d366, #128c7e);
+   990→      color: #fff;
+   991→      font-weight: 700;
+   992→      font-size: .9rem;
+   993→      cursor: pointer;
+   994→      transition: box-shadow .2s;
+   995→    }
+   996→    .lightbox-order-bar .lb-order-btn:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   997→    .toast {
+   998→      position: fixed;
+   999→      bottom: 24px;
+  1000→      left: 50%;
+  1001→      transform: translateX(-50%) translateY(80px);
+  1002→      background: #1a1a2e;
+  1003→      color: #25d366;
+  1004→      padding: 12px 24px;
+  1005→      border-radius: 12px;
+  1006→      font-weight: 600;
+  1007→      font-size: .9rem;
+  1008→      z-index: 600;
+  1009→      opacity: 0;
+  1010→      transition: all .35s ease;
+  1011→      pointer-events: none;
+  1012→    }
+  1013→    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  1014→    @media (max-width: 600px) {
+  1015→      .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
+  1016→      .card-img { height: 160px; padding-top: 32px; }
+  1017→      .card-img img { max-width: 80%; max-height: 80%; }
+  1018→      .card-img .brand-tag { font-size: .6rem; padding: 3px 9px; top: 8px; left: 8px; max-width: calc(100% - 60px); }
+  1019→      .card-body { padding: 12px 13px 14px; }
+  1020→      .card-body h3 { font-size: .88rem; }
+  1021→      .buy-btn { padding: 9px 12px; font-size: .8rem; }
+  1022→      .phone-options { flex-direction: column; }
+  1023→      .modal { padding: 24px 20px 22px; }
+  1024→      .lightbox-img-wrap { width: 95vw; height: 50vh; }
+  1025→      .lb-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
+  1026→      .lb-arrow.left { left: 4px; }
+  1027→      .lb-arrow.right { right: 4px; }
+  1028→      .lightbox-order-bar { padding: 12px 14px; }
+  1029→      .lightbox-order-bar .lb-price { font-size: 1rem; }
+  1030→      .lightbox-order-bar .lb-order-btn { padding: 8px 16px; font-size: .82rem; }
+  1031→      .splash-logo { width: 100px; height: 100px; border-radius: 16px; }
+  1032→      .splash-welcome { font-size: 1.1rem; }
+  1033→      .splash-sub { font-size: .8rem; }
+  1034→      .splash-spinner { width: 32px; height: 32px; border-width: 3px; }
+  1035→      .header h1 { font-size: 1.2rem; }
+  1036→      .header p { font-size: .82rem; }
+  1037→      .wa-bar { font-size: .78rem; padding: 8px 12px; }
+  1038→    }
+  1039→  
+  1040→    .specs-btn {
+  1041→      display: inline-flex;
+  1042→      align-items: center;
+  1043→      gap: 4px;
+  1044→      padding: 5px 10px;
+  1045→      border: 1.5px solid #d0d5dd;
+  1046→      border-radius: 8px;
+  1047→      background: #f9fafb;
+  1048→      color: #344054;
+  1049→      font-size: .78rem;
+  1050→      font-weight: 600;
+  1051→      cursor: pointer;
+  1052→      transition: all .2s;
+  1053→      margin-top: 6px;
+  1054→    }
+  1055→    .specs-btn:hover { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+  1056→    .specs-overlay {
+  1057→      display: none;
+  1058→      position: fixed;
+  1059→      inset: 0;
+  1060→      background: rgba(0,0,0,.6);
+  1061→      z-index: 400;
+  1062→      align-items: center;
+  1063→      justify-content: center;
+  1064→      padding: 20px;
+  1065→    }
+  1066→    .specs-overlay.open { display: flex; }
+  1067→    .specs-panel {
+  1068→      background: #fff;
+  1069→      border-radius: 20px;
+  1070→      padding: 28px 24px;
+  1071→      max-width: 480px;
+  1072→      width: 100%;
+  1073→      max-height: 80vh;
+  1074→      overflow-y: auto;
+  1075→      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  1076→      position: relative;
+  1077→      animation: specsIn .3s ease;
+  1078→    }
+  1079→    @keyframes specsIn {
+  1080→      from { opacity: 0; transform: translateY(30px) scale(.95); }
+  1081→      to { opacity: 1; transform: translateY(0) scale(1); }
+  1082→    }
+  1083→    .specs-panel h3 {
+  1084→      font-size: 1.1rem;
+  1085→      color: #1a1a2e;
+  1086→      margin-bottom: 4px;
+  1087→    }
+  1088→    .specs-panel .specs-model {
+  1089→      font-size: .82rem;
+  1090→      color: #667085;
+  1091→      margin-bottom: 16px;
+  1092→    }
+  1093→    .specs-panel ul {
+  1094→      list-style: none;
+  1095→      padding: 0;
+  1096→      margin: 0;
+  1097→    }
+  1098→    .specs-panel ul li {
+  1099→      padding: 10px 14px;
+  1100→      background: #f9fafb;
+  1101→      border-radius: 10px;
+  1102→      margin-bottom: 8px;
+  1103→      font-size: .85rem;
+  1104→      color: #344054;
+  1105→      line-height: 1.45;
+  1106→      border-left: 3px solid #25d366;
+  1107→    }
+  1108→    .specs-panel ul li strong {
+  1109→      color: #1a1a2e;
+  1110→    }
+  1111→    .specs-close {
+  1112→      position: absolute;
+  1113→      top: 14px;
+  1114→      right: 14px;
+  1115→      width: 32px;
+  1116→      height: 32px;
+  1117→      border-radius: 50%;
+  1118→      border: none;
+  1119→      background: #f2f4f7;
+  1120→      color: #344054;
+  1121→      font-size: 1.1rem;
+  1122→      cursor: pointer;
+  1123→      display: flex;
+  1124→      align-items: center;
+  1125→      justify-content: center;
+  1126→      transition: background .2s;
+  1127→    }
+  1128→    .specs-close:hover { background: #e4e7ec; }
+  1129→    @media (max-width: 600px) {
+  1130→      .specs-btn { font-size: .72rem; padding: 4px 8px; }
+  1131→      .specs-panel { padding: 20px 16px; border-radius: 16px; }
+  1132→      .specs-panel ul li { font-size: .8rem; padding: 8px 10px; }
+  1133→    }
+  1134→
+  1135→  </style>
+  1136→</head>
+  1137→<body>
+  1138→  <div class="splash-screen" id="splashScreen" onclick="this.classList.add('hidden')">
+  1139→    <img class="splash-logo" src="logo.jpg" alt="Pixel Wire Solutions" onerror="this.style.display='none'" />
+  1140→    <div class="splash-welcome">Welcome to Pixel Wire Solutions</div>
+  1141→    <div class="splash-sub">Your trusted tech accessories store</div>
+  1142→    <div class="splash-spinner"></div>
+  1143→  </div>
+  1144→  <header class="header">
+  1145→    <h1>Laptop Bags &amp; Cases</h1>
+  1146→    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
+  1147→    <div class="social-icons">
+  1148→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank" title="Instagram">
+  1149→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  1150→      </a>
+  1151→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank" title="Facebook">
+  1152→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  1153→      </a>
+  1154→      <a href="https://wa.me/18767731173" target="_blank" title="WhatsApp">
+  1155→        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1156→      </a>
+  1157→    </div>
+  1158→  </header>
+  1159→  <div class="wa-bar">
+  1160→    <span>&#128172; Orders sent via WhatsApp to:</span>
+  1161→    <a href="https://wa.me/18767731173" target="_blank">(876) 773-1173</a>
+  1162→    <span>or</span>
+  1163→    <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
+  1164→  </div>
+  1165→  <div class="filter-bar" id="filterBar">
+  1166→    <button class="filter-btn active" data-filter="all">All Items</button>
+  1167→    <button class="filter-btn" data-filter="sleeve">Sleeves</button>
+  1168→    <button class="filter-btn" data-filter="case">Cases</button>
+  1169→    <button class="filter-btn" data-filter="backpack">Backpacks</button>
+  1170→    <button class="filter-btn" data-filter="handbag">Handbags</button>
+  1171→    <button class="filter-btn" data-filter="mouse">Mouse</button>
+  1172→    <button class="filter-btn" data-filter="camera">Cameras</button>
+  1173→    <button class="filter-btn" data-filter="scanner">Scanners</button>
+  1174→    <button class="filter-btn" data-filter="tool">Electrical</button>
+  1175→    <button class="filter-btn" data-filter="auto">Car Auto</button>
+  1176→    <button class="filter-btn" data-filter="hub">USB Hubs</button>
+  1177→    <button class="filter-btn" data-filter="mount">Mounts & Stands</button>
+  1178→    <button class="filter-btn" data-filter="printer">Printers</button>
+  1179→    <button class="filter-btn" data-filter="network">Networking</button>
+  1180→    <button class="services-btn" id="servicesToggle" onclick="toggleServices()">
+  1181→      Services
+  1182→      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  1183→    </button>
+  1184→  </div>
+  1185→  <div id="servicesSection">
+  1186→  <div class="service-banner">
+  1187→    <div class="service-card" id="cctvCard">
+  1188→      <button class="service-collapse-btn" onclick="toggleService('cctvCard')" title="Minimize">
+  1189→        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  1190→      </button>
+  1191→      <div class="service-collapsed-label">
+  1192→        <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+  1193→        CCTV Installation Services
+  1194→      </div>
+  1195→      <div class="service-card-left">
+  1196→        <h2>
+  1197→          <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+  1198→          CCTV Installation Services
+  1199→        </h2>
+  1200→        <p>Professional security camera supply &amp; installation for homes, offices, shops &amp; warehouses. Get a free quote today!</p>
+  1201→        <div class="service-highlight" style="color:#38bdf8;">
+  1202→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  1203→          A paid site survey is mandatory before final pricing
+  1204→        </div>
+  1205→      </div>
+  1206→      <div class="service-btns">
+  1207→        <a class="service-btn primary" id="cctvWaBtn" href="#" target="blank">
+  1208→          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1209→          Get CCTV Quote
+  1210→        </a>
+  1211→        <div class="service-btn secondary call-btn-group">
+  1212→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  1213→          Call Us
+  1214→          <div class="call-dropdown">
+  1215→            <a href="tel:18767731173"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 773-1173</a>
+  1216→            <a href="tel:18765595290"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 559-5290</a>
+  1217→          </div>
+  1218→        </div>
+  1219→      </div>
+  1220→    </div>
+  1221→  </div>
+  1222→  <div class="service-banner">
+  1223→    <div class="service-card" id="pbxCard" style="background: linear-gradient(135deg, #0c2d48 0%, #145374 50%, #0f3460 100%);">
+  1224→      <button class="service-collapse-btn" onclick="toggleService('pbxCard')" title="Minimize">
+  1225→        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  1226→      </button>
+  1227→      <div class="service-collapsed-label">
+  1228→        <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  1229→        PBX &amp; Phone Systems
+  1230→      </div>
+  1231→      <div class="service-card-left">
+  1232→        <h2>
+  1233→          <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  1234→          PBX &amp; Phone Systems
+  1235→        </h2>
+  1236→        <p>Professional VoIP phone system supply &amp; installation for offices, call centers &amp; multi-site businesses.</p>
+  1237→        <div class="service-highlight" style="color:#38bdf8;">
+  1238→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  1239→          A paid site survey is mandatory before final pricing
+  1240→        </div>
+  1241→        <button class="brand-toggle" onclick="document.getElementById('brandCompare').classList.toggle('open')">&#9660; Compare Desk Phone Brands</button>
+  1242→      </div>
+  1243→      <div class="service-btns">
+  1244→        <a class="service-btn primary" id="pbxWaBtn" href="#" target="_blank" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+  1245→          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1246→          Get PBX Quote
+  1247→        </a>
+  1248→        <div class="service-btn secondary call-btn-group" style="position:relative;cursor:pointer;" onclick="this.querySelector('.call-dropdown-pbx').classList.toggle('show')">
+  1249→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  1250→          Call Us
+  1251→          <div class="call-dropdown call-dropdown-pbx">
+  1252→            <a href="tel:18767731173"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 773-1173</a>
+  1253→            <a href="tel:18765595290"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 559-5290</a>
+  1254→          </div>
+  1255→        </div>
+  1256→      </div>
+  1257→    </div>
+  1258→    <div class="brand-compare" id="brandCompare">
+  1259→      <div class="brand-compare-inner">
+  1260→        <div class="brand-header">Desk Phone Brand Comparison</div>
+  1261→        <div class="brand-table-wrap">
+  1262→          <table>
+  1263→            <thead><tr><th>Brand</th><th>Pros</th><th>Cons</th></tr></thead>
+  1264→            <tbody>
+  1265→              <tr><td><strong>Yealink</strong></td><td>Great value for money, wide range from basic to executive models, easy to set up, reliable</td><td>Build quality feels less premium at lower price points; fewer advanced enterprise features than Cisco</td></tr>
+  1266→              <tr><td><strong>Grandstream</strong></td><td>Cheapest option, decent for small businesses, simple provisioning</td><td>Interface feels dated, less polished audio quality, weaker brand reputation for larger enterprise clients</td></tr>
+  1267→              <tr><td><strong>Cisco</strong></td><td>Rock-solid reliability, excellent audio quality, strong enterprise features (security, integrations), trusted brand name</td><td>Most expensive, steeper learning curve to configure, often overkill for small offices</td></tr>
+  1268→              <tr><td><strong>Poly (Polycom)</strong></td><td>Best-in-class audio/conference phone quality, great for boardrooms and call-heavy roles</td><td>Pricier than Yealink/Grandstream, focus is more on conferencing than basic desk use</td></tr>
+  1269→              <tr><td><strong>Avaya</strong></td><td>Strong for legacy enterprise environments already using Avaya PBX, solid support ecosystem</td><td>Can be expensive, company has had financial instability in recent years which worries some buyers on long-term support</td></tr>
+  1270→            </tbody>
+  1271→          </table>
+  1272→        </div>
+  1273→        <div class="brand-tips">
+  1274→          <div class="brand-tip-title">Quick Recommendation</div>
+  1275→          <div class="brand-tip"><span class="tip-label">Tight budget / Small office</span> Grandstream or entry-level Yealink</div>
+  1276→          <div class="brand-tip"><span class="tip-label">Best overall value</span> Yealink</div>
+  1277→          <div class="brand-tip"><span class="tip-label">Big enterprise / Top reliability</span> Cisco</div>
+  1278→          <div class="brand-tip"><span class="tip-label">Conference rooms / Call center</span> Poly</div>
+  1279→          <div class="brand-tip"><span class="tip-label">Already on Avaya ecosystem</span> Stick with Avaya</div>
+  1280→        </div>
+  1281→        <div class="brand-survey-note">
+  1282→          <strong>Important:</strong> A paid site survey is mandatory before final pricing is confirmed. This lets us physically inspect the space, verify existing cable runs, check wall/ceiling access, and confirm equipment placement (rack space, wiring closet, etc.). The quote given from the questions above is a rough estimate only - the site survey determines the final, accurate installation cost.
+  1283→        </div>
+  1284→      </div>
+  1285→    </div>
+  1286→  </div>
+  1287→  </div>
+  1288→  <div class="grid" id="productGrid"></div>
+  1289→  <div class="modal-overlay" id="modalOverlay">
+  1290→    <div class="modal">
+  1291→      <h2>&#128722; Order This Item</h2>
+  1292→      <p class="modal-product" id="modalProduct"></p>
+  1293→      <p class="modal-price" id="modalPrice"></p>
+  1294→      <button id="viewPhotosBtn" onclick="closeModal(); openLightboxByIndex(currentProductIndex)" style="display:none;width:100%;padding:10px;border:2px dashed #d0d5dd;border-radius:12px;background:#f9fafb;cursor:pointer;font-size:.88rem;font-weight:600;color:#344054;margin-bottom:16px;transition:all .2s;" onmouseover="this.style.borderColor='#1a1a2e';this.style.background='#f0f2f5'" onmouseout="this.style.borderColor='#d0d5dd';this.style.background='#f9fafb'">&#128247; View All Photos</button>
+  1295→      <label for="custName">Your Name</label>
+  1296→      <input type="text" id="custName" placeholder="Enter your full name" />
+  1297→      <label for="custQty">Quantity</label>
+  1298→      <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+  1299→      <div class="order-channel-label">Delivery Method</div>
+  1300→      <div class="delivery-options" id="deliveryOptions">
+  1301→        <div class="delivery-opt selected" data-delivery="pickup" data-cost="0" onclick="selectDelivery(this)">
+  1302→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+  1303→          Pickup
+  1304→          <span class="del-price">Free</span>
+  1305→        </div>
+  1306→        <div class="delivery-opt" data-delivery="round-town" data-cost="600" onclick="selectDelivery(this)">
+  1307→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM19.5 9.5L21 12h-3l1.5-2.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+  1308→          Round Town Delivery
+  1309→          <span class="del-price">$600 JMD</span>
+  1310→        </div>
+  1311→        <div class="delivery-opt" data-delivery="outside-kingston" data-cost="courier" onclick="selectDelivery(this)">
+  1312→          <svg viewBox="0 0 24 24" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm3.5-9l1.96 3.5H4l1.96-3.5h3.54zm10.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+  1313→          Outside Kingston
+  1314→          <span class="del-price">Knutsford / Doorway</span>
+  1315→        </div>
+  1316→      </div>
+  1317→      <div class="order-channel-label">Order via</div>
+  1318→      <div class="channel-tabs" id="channelTabs">
+  1319→        <div class="channel-tab selected" data-channel="whatsapp" onclick="selectChannel(this)">
+  1320→          <svg viewBox="0 0 24 24" style="fill:#25d366;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1321→          WhatsApp
+  1322→        </div>
+  1323→        <div class="channel-tab" data-channel="messenger" onclick="selectChannel(this)">
+  1324→          <svg viewBox="0 0 24 24" style="fill:#1877F2;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15.16.14.26.34.27.56l.05 1.74c.02.59.63.97 1.17.73l1.94-.81c.16-.07.34-.09.51-.05.9.25 1.85.38 2.83.38h.08C17.64 21.4 22 17.27 22 11.7 22 6.13 17.64 2 12 2zm5.89 7.54l-2.83 4.48c-.45.71-1.39.88-2.07.37l-2.25-1.69a.75.75 0 00-.9 0l-3.04 2.31c-.42.32-.97-.2-.68-.65l2.83-4.48c.45-.71 1.39-.88 2.07-.37l2.25 1.69a.75.75 0 00.9 0l3.04-2.31c.42-.32.97.2.68.65z"/></svg>
+  1325→          Messenger
+  1326→        </div>
+  1327→        <div class="channel-tab" data-channel="instagram" onclick="selectChannel(this)">
+  1328→          <svg viewBox="0 0 24 24" style="fill:#E1306C;width:18px;height:18px;vertical-align:middle;margin-right:4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  1329→          Instagram
+  1330→        </div>
+  1331→      </div>
+  1332→      <div id="waPhoneSection">
+  1333→        <label>Send Order To</label>
+  1334→        <div class="phone-options">
+  1335→          <div class="phone-opt selected" data-phone="18767731173" onclick="selectPhone(this)">(876) 773-1173</div>
+  1336→          <div class="phone-opt" data-phone="18765595290" onclick="selectPhone(this)">(876) 559-5290</div>
+  1337→        </div>
+  1338→      </div>
+  1339→      <div id="messengerInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+  1340→        Your order message will open in <b>Facebook Messenger</b> to <b>Pixel Wire Solutions</b>.
+  1341→      </div>
+  1342→      <div id="igInfo" style="display:none;text-align:left;background:#f0f2f5;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:.85rem;color:#344054;">
+  1343→        This will open <b>Instagram DM</b> to <b>@pixelwiresolutions</b> with your order details.
+  1344→      </div>
+  1345→      <div class="modal-actions">
+  1346→        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+  1347→        <button class="btn-send" id="btnSend" onclick="sendOrder()">&#128172; Send on WhatsApp</button>
+  1348→      </div>
+  1349→      <div class="share-row">
+  1350→        <a class="share-btn ig" id="shareIG" href="#" target="_blank" title="Share on Instagram">
+  1351→          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  1352→          Instagram
+  1353→        </a>
+  1354→        <a class="share-btn fb" id="shareFB" href="#" target="_blank" title="Share on Facebook">
+  1355→          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  1356→          Facebook
+  1357→        </a>
+  1358→        <a class="share-btn tt" id="shareCopy" href="#" onclick="copyProductLink(event); return false;" title="Copy product link">
+  1359→          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+  1360→          Copy Link
+  1361→        </a>
+  1362→      </div>
+  1363→    </div>
+  1364→  </div>
+  1365→  <div class="lightbox-overlay" id="lightboxOverlay">
+  1366→    <div class="lightbox-top">
+  1367→      <span class="lightbox-title" id="lbTitle"></span>
+  1368→      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  1369→    </div>
+  1370→    <button class="lb-arrow left" onclick="lbPrev()" id="lbArrowLeft">&#8249;</button>
+  1371→    <div class="lightbox-img-wrap" id="lbImgWrap">
+  1372→      <img id="lbImg" src="" alt="" />
+  1373→    </div>
+  1374→    <button class="lb-arrow right" onclick="lbNext()" id="lbArrowRight">&#8250;</button>
+  1375→    <div class="lightbox-dots" id="lbDots"></div>
+  1376→    <div class="lightbox-counter" id="lbCounter"></div>
+  1377→    <div class="lightbox-order-bar">
+  1378→      <span class="lb-price" id="lbPrice"></span>
+  1379→      <button class="lb-order-btn" onclick="orderFromLightbox()">&#128722; Order This Item</button>
+  1380→    </div>
+  1381→  </div>
+  1382→    <div class="specs-overlay" id="specsOverlay" onclick="if(event.target===this)closeSpecs()">
+  1383→    <div class="specs-panel">
+  1384→      <button class="specs-close" onclick="closeSpecs()">&times;</button>
+  1385→      <h3 id="specsTitle"></h3>
+  1386→      <div class="specs-model" id="specsModel"></div>
+  1387→      <ul id="specsList"></ul>
+  1388→    </div>
+  1389→  </div>
+  1390→  <div class="toast" id="toast"></div>
+  1391→  <footer class="footer">
+  1392→    &copy; 2025 Pixel Wire Solutions &#8212; All rights reserved. Prices are in JMD.
+  1393→    <div class="footer-social">
+  1394→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank">
+  1395→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  1396→        @pixelwiresolutions
+  1397→      </a>
+  1398→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank">
+  1399→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  1400→        pixelwiresolutions
+  1401→      </a>
+  1402→    </div>
+  1403→  </footer>
+  1404→
+  1405→  <script>
+  1406→  // Splash screen dismiss - separate script to avoid parse errors in main script
+  1407→  (function(){
+  1408→    var splash = document.getElementById('splashScreen');
+  1409→    if(splash){
+  1410→      setTimeout(function(){ splash.classList.add('hidden'); }, 2200);
+  1411→    }
+  1412→    splash.onclick = function(){ splash.classList.add('hidden'); };
+  1413→  })();
+  1414→  </script>
+  1415→  <script>
+  1416→  var products = [
+  1417→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+  1418→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://store.domainnetworks.ca/cdn/shop/files/51410.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
+  1419→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg"], size: '15.6\"', desc: "Minimalist rectangular design with smooth finish." },
+  1420→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg"], size: '15.6\"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+  1421→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg"], size: '15.6\"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+  1422→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg"], size: '15.6\"', desc: "Slim profile briefcase with front organizer pocket." },
+  1423→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406GR.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg"], size: '15.6\"', desc: "Light grey backpack with padded shoulder straps." },
+  1424→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg"], size: '15.6\"', desc: "Navy blue classic backpack with multiple compartments." },
+  1425→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg"], size: '15.6\"', desc: "Sleek black design with matching accessory pouch." },
+  1426→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg"], size: '15.6\"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+  1427→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg"], size: '15.6\"', desc: "Casual everyday backpack with multiple zippered compartments." },
+  1428→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", imgs: ["https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg"], size: '15.6\"', desc: "Athletic sporty design with breathable mesh backing." },
+  1429→    { name: "Octave III Backpack", brand: "Targus", model: "TBB65313GL", price: 6500, category: "backpack", color: "#e5e7eb", imgs: ["https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/62a0aac1d95a.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/43c4f64cbbd3.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1e38f157fa1f.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5f3e4aa8ccbc.jpg"], size: '15-16"', desc: "Targus Octave III 15-16 inch backpack in Papyrus/off-white - 22L capacity with padded laptop pocket, organizer & reflective accents." },
+  1430→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg"], size: '15.6\"', desc: "Structured business-casual backpack with accessory case." },
+  1431→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg"], size: '15.6\"', desc: "Professional executive style with extensive organization." },
+  1432→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg"], size: '15.6\"', desc: "Business-oriented design with clean lines." },
+  1433→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", imgs: ["https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png"], size: '15.6\"', desc: "Modern minimalist design with sleek profile." },
+  1434→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg"], size: '15.6\"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+  1435→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-banner-top.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_03.jpg"], size: '15.6\"', desc: "Expandable design with zippers to increase capacity." },
+  1436→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg"], size: '15.6\"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+  1437→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg"], size: '15.6\"', desc: "Rugged durable design with multiple external pockets." },
+  1438→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6\"', desc: "Premium leather-like finish, vintage-inspired design." },
+  1439→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://hp.widen.net/content/duud3on3mi/webp/duud3on3mi.png"], size: '15.6\"', desc: "Eco-friendly construction using sustainable materials." },
+  1440→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+  1441→    { name: "Vertical Ergonomic Mouse", brand: "HOMEFISH", model: "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical", price: 3500, category: "mouse", color: "#111827", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/mouse-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-3.jpg"], size: "N/A", desc: "Ergonomic vertical wireless optical mouse with 3 adjustable DPI levels (800/1200/1600)." },
+  1442→    { name: "C8c Lite Kit 4MP", brand: "EZVIZ", model: "EZVIZ C8c Lite Kit 4MP", price: 25990, category: "camera", color: "#1e40af", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/cam-1.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-2.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-3.png"], size: "N/A", desc: "4MP indoor/outdoor surveillance camera kit with color night vision and pan & tilt." },
+  1443→    { name: "2D Barcode Scanner X11", brand: "Generic", model: "X11-Black", price: 7800, category: "scanner", color: "#0f172a", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/scanner-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-4.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-5.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-6.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-7.jpg"], size: "N/A", desc: "Desktop omnidirectional 2D barcode scanner - reads 1D, 2D, QR, Data Matrix & PDF417 codes automatically." },
+  1444→    { name: "Non-Contact Voltage Tester Pen B15", brand: "ANENG", model: "ANENG B15", price: 3980, category: "tool", color: "#ea580c", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/volt-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/volt-2.jpg"], size: "N/A", desc: "Non-contact induction voltage tester pen (24V~250V AC) with dual LED indicators and built-in flashlight." },
+  1445→    { name: "Intelligent Pulse Repair Charger", brand: "XINHANGXIN", model: "Intelligent Pulse Repair Charger", price: 9500, category: "tool", color: "#1e293b", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/charger-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-1.jpg"], size: "N/A", desc: "12V/24V automatic smart battery charger with pulse repair mode - revives sulfated car, truck & motorcycle batteries." },
+  1446→    { name: "10PCS Precision Pick and Hook Set", brand: "Generic", model: "10PCS Precision Pick and Hook Set", price: 3800, category: "auto", color: "#15803d", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/pick-1.jpg"], size: "N/A", desc: "10-piece precision pick & hook set for removing oil seals, O-rings, gaskets & cotter pins in automotive work." },
+  1447→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://i5.walmartimages.com/seo/Dell-Backpack-14-16-Black_73e72394-17f6-4138-a95d-21141480471f.d5dbc49cb95fc3f27e7f8c8c99e1693c.jpeg", "https://i5.walmartimages.com/asr/2f629e66-82b4-4f6e-bf14-e68f94c40704.fbea6b3ab08c92257dedeeed035bd407.jpeg", "https://i5.walmartimages.com/asr/65e3fb23-570b-4fb7-b271-23d89fc37236.37d34e1dd25c7467ee28d7b720668e71.jpeg", "https://i5.walmartimages.com/asr/1617167f-31f2-47f9-8d5c-2878592dc0a7.3cf54ce390b8f150814faacd94d44fce.jpeg"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." },
+  1448→    { name: "USB-C Hub 8-in-1", brand: "Generic", model: "USB C Hub 8in1 7in2 7in1 Type C 3.1 To 4K HDMI Adapter with RJ45 SD/TF Card Reader PD", price: 5000, category: "hub", color: "#475569", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/usb-hub-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/usb-hub-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/usb-hub-3.jpeg"], size: "N/A", desc: "8-in-1 USB-C hub with 4K HDMI, RJ45 Ethernet, SD/TF card reader, USB-A ports and PD charging." },
+  1449→    { name: "Screen Storage Rack", brand: "Generic", model: "Computer and TV Screen Storage Rack - Large 26x11.5cm", price: 1800, category: "mount", color: "#1f2937", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/rack-1.jpeg"], size: "26x11.5cm", desc: "Large storage rack that sits on top of monitors or TVs to hold wireless routers, set-top boxes and small devices." },
+  1450→    { name: "Foldable Tablet Stand", brand: "Generic", model: "Adjustable Foldable Tablet & Phone Stand", price: 2800, category: "mount", color: "#374151", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/stand-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-3.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-4.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-5.jpeg"], size: "N/A", desc: "Universal foldable desktop stand for tablets and phones - adjustable multi-angle with articulated hinges." },
+  1451→    { name: "USB 3.0 Gigabit Ethernet Adapter", brand: "GLAABIT", model: "10/100/1000Mbps USB 3.0 to RJ45 LAN Ethernet Adapter", price: 2500, category: "hub", color: "#1e293b", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/ethernet-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/ethernet-2.jpeg"], size: "N/A", desc: "USB 3.0 Gigabit Ethernet LAN adapter - plug into any USB port for wired network connectivity up to 1000Mbps." },
+  1452→    { name: "Laptop Stand", brand: "Generic", model: "Creative Folding Storage Bracket Laptop Stand", price: 3500, category: "mount", color: "#374151", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-3.jpeg"], size: "N/A", desc: "X-shaped folding laptop stand with ventilation slots - elevates laptop for better airflow and ergonomic typing angle." },
+  1453→    { name: "Portable Mini Thermal Printer", brand: "Bisoffice", model: "Bisoffice Portable Mini Thermal Printer 58mm 2-Inch Wireless USB Receipt Bill Ticket Printer", price: 8000, category: "printer", color: "#1d4ed8", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/printer-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/printer-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/printer-3.jpeg"], size: "58mm (2 inch)", desc: "Portable mini thermal receipt printer - prints receipts, tickets, labels and bills via USB and wireless connection." },
+  1454→    { name: "WiFi Range Extender", brand: "Kebidumei", model: "Kebidumei 1200/300Mbps WiFi Repeater Amplifier 2.4G/5G Network Expander Range Extender", price: 5500, category: "network", color: "#7c3aed", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-3.jpeg"], size: "N/A", desc: "Dual-band WiFi range extender/repeater with 4 antennas - extends wireless coverage up to 1200Mbps on 5GHz and 300Mbps on 2.4GHz." }
+  1455→  ];
+  1456→
+  1457→  var productIndices = [];
+  1458→  var selectedDelivery = "pickup";
+  1459→  var selectedDeliveryCost = 0;
+  1460→  var productSpecs = {
+  1461→  "KNS-214BL": ["Fits laptops up to 14.1 inches", "Material: High-quality neoprene (water-repellent, lightweight)", "Closure: Two-tone reversible sleeve (no zipper); use as stand-alone or inside a bag", "Pockets: None (slip-in design)", "Dimensions: 15.7 x 11.14 x 0.59 in; Weight: 6.3 oz", "Machine washable; bone-shaped design creates a built-in bumper"],
+  1462→  "KNS-215": ["Fits laptops up to 15.6 inches", "Material: Outside 100% neoprene; inside 100% polyester (water-resistant)", "Closure: One main zippered pocket", "Pockets: Single main zippered compartment", "Dimensions: 15.3 x 11.4 x 0.5 in; Weight: 0.77 lb", "Lightweight, sleek design; ideal for standalone use or inside a backpack"],
+  1463→  "KNS-420": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (extra durable fabric for daily wear and tear)", "Closure: One main zippered pocket", "Pockets: Front zippered pocket for small accessories (cables, memory cards, etc.)", "Dimensions: 14.5 x 9.4 x 0.7 in; Weight: 0.6 lb", "Built-in carry handle; versatile and stylish design"],
+  1464→  "KNS-330": ["Fits laptops up to 15.6 inches", "Material: 4mm wetsuit-grade neoprene (lightweight, tough, shock-absorbing)", "Closure: Slip-in with elastic corner straps (stay-on mode)", "Pockets: None; standalone sleeve design", "Dimensions: 15.7 x 11.2 x 1.38 in; Weight: N/A", "Comfortable handles for easy carrying; machine washable; water-repellent"],
+  1465→  "KNC-041": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (durable construction)", "Straps: Adjustable & detachable shoulder strap; reinforced carry handles; trolley strap for carry-on", "Pockets: Zippered front pocket with internal organizer for accessories", "Dimensions: 15 x 11.2 x 2.3 in; Weight: 1 lb", "Max load weight: 22 lb; padded laptop compartment"],
+  1466→  "KNC-025": ["Fits laptops up to 15.6 inches", "Material: 840D polyester exterior / 210D polyester lining (durable top-load)", "Handles: Reinforced carry handles; top-load briefcase design", "Pockets: Two zippered compartments (main holds laptop and files; front for accessories); laptop compartment: 15 x 10 x 1 in", "Dimensions: 16.5 x 16 x 3 in; Weight: 1.3–1.4 lb", "Fully lined and padded main compartment with interior divider and strap"],
+  1467→  "KNB-406GR": ["Fits laptops up to 15.6 inches", "Material: Exterior 100% 600-denier polyester; lining 100% 210-denier polyester", "Straps: Adjustable padded shoulder straps; padded back panel; carry handle", "Compartments: Spacious padded main compartment with interior divider; zippered front pocket; multifunctional utility organizer; zippered mesh pocket", "Dimensions: 16.1 x 11.4 x 6.6 in; Laptop compartment: 13.7 x 10.6 x 1.5 in; Weight: 1 lb", "Max load: 26.4 lb"],
+  1468→  "KNB-416": ["Fits laptops up to 15.6 inches", "Material: Exterior 300-denier polyester; high-quality and durable", "Straps: Padded shoulder straps; padded back panel", "Compartments: One main padded compartment with divider; one accessory pocket; utility zippered pocket; smartphone compartment", "Dimensions: 17.1 x 11.4 x 3.7 in; Laptop compartment: 14.9 x 11 x 1.9 in; Weight: 1.52 lb", "Max load: 26 lb; organizer panel for accessories"],
+  1469→  "KNB-577": ["Fits laptops up to 15.6 inches", "Material: 100% polyester; ultra-padded back side", "Straps: Padded shoulder straps; carry handle", "Compartments: Well-padded laptop pocket; three frontal zipper pockets; interior organizer; exterior pockets", "Dimensions: 11.4 x 4.7 x 17.5 in; Laptop compartment: 11 x 1 x 15 in; Weight: 1.3 lb", "Max load: 33 lb; built-in USB charging port; water bottle pockets"],
+  1470→  "KNB-582": ["Fits laptops up to 15.6 inches; tablet pocket up to 12 inches", "Material: Exterior 100% high-quality polyester; lining 100% polyester; metal pullers", "Straps: Adjustable shoulder straps; integrated soft-padded handle; mesh-padded back panel; side straps", "Compartments: One spacious main compartment with interior zippered pocket; two front accessory/stationery pockets; two mesh side pockets", "Dimensions: 12.2 x 6.7 x 18.3 in; Laptop compartment: 15.5 x 11 x 1.5 in; Weight: N/A", "Max load: 39.6 lb; rubber grommet for cord pass-through; 1-year warranty"],
+  1471→  "KNB-426BL": ["Fits laptops up to 15.6 inches", "Material: Highly-durable protective nylon; metal pullers; high-quality lining", "Straps: Adjustable shoulder straps with ergonomically padded back panel; ultra-padded integrated handle", "Compartments: Two fully lined and padded main compartments; interior multifunctional organizer with zippered pocket; four lateral pockets (two zippered)", "Dimensions: 15.3 x 11.4 x 4.3 in; Laptop compartment: 12 x 11 x 1 in; Weight: 1 lb", "Max load: 33 lb; removable key clip; soft cushioned tablet pocket"],
+  1472→  "KNB-456": ["Fits laptops up to 15.6 inches; designed for women", "Material: Exterior 100% 1600D nylon; black leatherette accents and handle; polyester lining", "Straps: Adjustable padded shoulder straps; padded back panel; reinforced leatherette handle", "Compartments: One main padded compartment; one front zippered utility pocket; one interior zippered pocket", "Dimensions: 16.5 x 5.11 x 11.4 in; Laptop compartment: 15.7 x 0.5 x 10.6 in; Weight: 1.16 lb", "Max load: 33 lb; stylish design with leatherette detailing"],
+  1473→  "KNB-895": ["Fits laptops up to 15.6 inches; 2-in-1 backpack & notebook case", "Material: 100% polyester; built-in USB charging port for power bank (not included)", "Straps: Adjustable padded shoulder straps; carry-on strap; integrated handle", "Compartments: One main padded laptop compartment; two front zipper pockets (horizontal + vertical); interior organizer", "Dimensions: 11.8 x 3.1 x 16.5 in; Laptop compartment: 11 x 0.6 x 15 in; Weight: 1.7 lb", "Max load: 33 lb; TSA-compliant; versatile business/travel design"],
+  1474→  "KNB-467KH": ["Fits laptops up to 15.6 inches; fits tablets up to 10–12 inches", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; lining polyester; contemporary sleek design", "Straps: Adjustable padded shoulder straps; carry handle", "Compartments: Ample lined main compartment with laptop + tablet pockets; two interior utility/organizer pockets", "Dimensions: 17.3 x 12.5 x 4 in; Laptop compartment: 16.5 x 10.6 x 2 in; Weight: 1.32 lb", "Max load: 26.4 lb; premium tablet pouch; metal zippers"],
+  1475→  "KNB-650BK": ["Fits laptops up to 15.6 inches; tablet compartment up to 12 inches", "Material: High-quality water-resistant polyester; anti-theft rear pocket", "Straps: Padded shoulder straps; ultra-padded backrest; carry-on strap; handle", "Compartments: One main expandable compartment (expands up to 60%); tablet pocket; two front zipper pockets; interior mesh zippered pocket; anti-theft rear pocket", "Dimensions: 11 x 3.5 x 16.9 in (slim); expands 60%; Weight: 1.6 lb", "Max load: 33 lb; water-resistant exterior; expandable design for travel"],
+  1476→  "KNB-583": ["Fits laptops up to 16 inches; fully lined and padded main compartment with divider and strap", "Material: High-quality durable polyester; TSA-compliant", "Straps: Adjustable padded shoulder straps; integrated handle; luggage pass-through strap", "Compartments: Dedicated padded laptop compartment; two vertical front zippered pockets; interior organizer", "Dimensions: 12.9 x 5.5 x 18.8 in; Laptop compartment: 11 x 0.78 x 14.9 in; Weight: 1.85 lb", "Max load: 39.6 lb; spacious design; 1-year warranty"],
+  1477→  "KNB-468": ["Fits laptops up to 15.6 inches; ladies' collection", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; metal zippers with leatherette pullers; polyester lining", "Straps: Adjustable ergonomic padded shoulder straps; reinforced handle; pass-through carry-on strap", "Compartments: Three main compartments; one fully lined padded laptop compartment with four multipurpose pockets; zippered organizer; front zippered pocket", "Dimensions: 16.5 x 12.6 x 5.5 in; Laptop compartment: 13.3 x 11 x 2 in; Weight: 0.76 lb", "Load capacity: 12 kg; colors: red, blue, khaki, brown"],
+  1478→  "KLB-461": ["Fits laptops up to 15.6 inches; ladies' handbag design", "Material: 100% premium quality polyester; leatherette straps with fine stitching", "Handles: Leatherette straps for hand carry; double-stitched seams for durability", "Pockets: Two main zippered compartments; one interior zippered pocket; one zippered pocket on back panel", "Dimensions: 16.9 x 5.7 x 11.8 in; Weight: 1.2 lb", "Max load: 17.6 lb; trendy two-tone design; lightweight and portable"],
+  1479→  "TSB89104US": ["Fits laptops up to 15.6–16 inches", "Material: Polyester (lightweight, durable); reflective accents", "Straps: Shoulder carrying straps; hand strap", "Compartments: Padded laptop compartment; tablet compartment; front essentials pocket; dual mesh side water bottle pockets", "Dimensions: 12.23 x 5.23 x 17.76 in (L x W x H); Weight: 1.0 lb (16 oz)", "Storage volume: ~25 liters; water bottle pockets; sporty lightweight design"],
+  1480→  "TSB966GL-92": ["Fits laptops up to 15.6 inches", "Material: Polyester (lightweight, water-resistant)", "Straps: Adjustable shoulder straps; slim lightweight design", "Compartments: Dedicated side-loading laptop compartment; extra-large main compartment; zippered front pocket with organizer for business cards, keys, drives, chargers", "Dimensions: 16.75 x 12.19 x 5.71 in (L x W x H); Laptop compartment: 14.75 x 1.53 in; Weight: 0.92 lb", "Water-resistant; designed for work and travel essentials"],
+  1481→  "HP-PP15": ["Fits laptops up to 15.6 inches; padded laptop compartment", "Material: 95% post-consumer recycled external fabric; fabric body", "Straps: Adjustable shoulder straps; trolley strap; belt loop", "Compartments: Laptop compartment; document compartment; main compartment; accessories pockets; pen loop; zippered pockets; slip pockets for phone/wallet/sunglasses", "Dimensions: 16.7 x 5 x 12.5 in (D x W x H) / 317.5 x 127 x 425.5 mm; Weight: 0.48 kg (1.06 lb)", "Lockable zippers; reflective accents; water-resistant, bump-resistant, scratch-resistant"],
+  1482→  "HP-RB15": ["Fits laptops up to 15.6 inches", "Material: 100% ocean-bound plastics (main fabric); all tags/strings/stuffing from recycled sources; water-resistant", "Straps: Adjustable shoulder straps; carry handles", "Compartments: Padded laptop compartment; main storage; multiple pockets; lockable zippers", "Dimensions: 15.4 x 2.6 x 11.4 in (W x D x H) / 39 x 6.5 x 29 cm; Weight: 0.61 kg (1.34 lb)", "Max load: 18.9 lb; eco-friendly ocean-bound plastic construction"],
+  1483→  "DL-PS15": ["Fits laptops up to 15–15.6 inches (up to 39.6 cm)", "Material: 600D recycled polyester fabric with foam padding; weather-resistant, dirt-resistant; 100% recycled plastic content", "Straps: Padded carry handles; luggage pass-through strap", "Compartments: Padded laptop sleeve; tablet pocket; front zippered accessory pocket; pen loops; business card holder", "Dimensions: 15.4 x 3.5 x 11.4 in (W x D x H); Weight: 17.28 oz (549 g / 1.08 lb)", "Reflective accents; slim-fit briefcase design for business"],
+  1484→  "DL-EL15": ["Fits laptops up to 16 inches (max laptop dimension: 400 x 270 x 25 mm)", "Material: 100% recycled materials / ocean-bound plastic; 360° foam cushion protection", "Straps: Adjustable shoulder straps; padded back panel; top handle; luggage pass-through", "Compartments: Large full-access front opening; padded laptop compartment; zippered front pocket; accessory organization", "Dimensions: 17.3 x 5.5 x 12.2 in (H x D x W); Weight: 17.64 oz (500 g / 1.1 lb)", "18-liter capacity; eco-friendly sustainable design"],
+  1485→  "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical": ["Connectivity: 2.4 GHz wireless via USB nano receiver; receiving distance up to 10m", "DPI: 3 adjustable levels - 800 / 1200 / 1600 DPI (switchable button)", "Battery: USB rechargeable; low-noise click design", "OS Compatibility: Windows XP/7/8/10/11, macOS, Linux, Chrome OS", "Buttons: 6 buttons (left, right, scroll, DPI switch, forward, back); right-hand use only", "Ergonomic vertical design to reduce wrist strain; optical sensor; lightweight portable form factor"],
+  1486→  "EZVIZ C8c Lite Kit 4MP": ["Resolution: 4MP (2560 x 1440) QHD with color night vision", "Lens: 4mm focal length; 108-degree field of view", "Pan & Tilt: 340-degree horizontal pan; 120-degree vertical tilt; auto-tracking", "Indoor/Outdoor: IP65 weatherproof rating for outdoor use", "Storage: Supports microSD card up to 256GB (not included); H.265 video compression", "Connectivity: Wi-Fi 2.4GHz; works with EZVIZ app (iOS/Android) for remote viewing and alerts", "Audio: Built-in microphone and speaker for two-way communication", "Kit includes: Camera unit, mounting accessories, power adapter"],
+  1487→  "X11-Black": ["Type: Desktop omnidirectional 2D barcode scanner (presentation imager)", "Scan Capability: Reads 1D, 2D, QR, Data Matrix, PDF417 barcodes automatically", "Scan Pattern: Omnidirectional - reads codes from any angle", "Sensor: CMOS image sensor for fast, accurate scanning", "Light Source: White LED illumination with red aiming ring", "Connectivity: USB (wired); plug-and-play with Windows, Mac, Linux, POS systems", "Stand: Built-in adjustable stand for hands-free desktop use", "Beep Indicator: Built-in buzzer confirms successful scan", "Compatibility: Works with POS software, retail, restaurants, pharmacies, logistics", "Body: Compact black housing with durable design for daily commercial use"],
+  1488→  "ANENG B15": ["Type: Non-contact induction voltage tester pen (electrical test pencil)", "Voltage Range: 24V ~ 250V AC", "Detection Method: Non-contact - detects live wires without touching metal", "Indicators: Dual LED lights - Green for Low Voltage, Red for High Voltage", "Built-in Flashlight: Yellow button with LED torch for working in dark spaces", "Tip: Flathead screwdriver-style metal tip for precise sensing", "Body: Ergonomic black housing with textured grip", "Power: Battery operated (typical AAA - check packaging)", "Use Cases: Home wiring, electrical repairs, appliance testing, breaker panels, outlets, switches", "Safety: Always verify on a known live circuit before use"],
+  1489→  "Intelligent Pulse Repair Charger": ["Type: Smart battery charger with pulse repair function (automotive)", "Brand: XINHANGXIN", "Voltage Support: 12V / 24V automatic identification", "Battery Capacity Range: 30-300Ah (cars/trucks); 6-30Ah (motorcycles)", "Display: LED screen showing charge status and voltage", "Modes: Charge mode, Floating Charge (maintenance), Intelligent Pulse, Activate Repair", "Pulse Repair: Desulfates and revives weak/sulfated batteries to extend lifespan", "Safety Features: Reverse connection protection, overcharge protection, short-circuit protection", "Cooling: Built-in cooling fan for extended operation", "Connectors: Copper alligator clamps (red + / black -) for battery terminals", "Use Cases: Cars, trucks, motorcycles, tractors, lawn mowers, AGM/GEL/lead-acid batteries", "Includes: Charger unit, AC power cord, battery clamp cables"],
+  1490→  "10PCS Precision Pick and Hook Set": ["Type: 10-piece precision pick and hook tool set (automotive hand tools)", "Pieces: 10 picks/hooks with varying tip configurations for different jobs", "Tip Variations: Straight sharp pick, 90-degree angled hooks, curved picks, round hooks, complex double-bend hooks, complex angle hooks", "Handles: Ergonomic two-tone handles - black rubberized grip with green accents; textured finger grooves for non-slip use", "Shaft Material: Black-finished hardened metal (typically chrome vanadium steel)", "Protection: Several picks include clear plastic protective caps for safe storage", "Primary Use: Removing oil seals, O-rings, gaskets, cotter pins and accessing small internal components", "Applications: Engines, transmissions, machinery, electrical connectors, stubborn clips and fasteners", "Compact design for precision work in tight spaces; ideal for mechanics and DIYers"],
+  1491→    "USB-C Hub 8-in-1": ["Type: 8-in-1 USB-C multi-port hub/adapter", "Ports: HDMI (4K@30Hz), RJ45 Gigabit Ethernet, SD card slot, microSD/TF card slot, 2x USB-A 3.0, 2x USB-C (1x PD charging, 1x data)", "HDMI Output: Supports 4K resolution at 30Hz for external displays/monitors", "Ethernet: RJ45 port for wired Gigabit Ethernet network connection", "Card Readers: SD and microSD/TF slots for simultaneous card access", "USB-A: Two USB 3.0 ports (blue) for peripherals and data transfer", "USB-C PD: Power Delivery pass-through charging for laptop while using the hub", "Build: Dark gray/black metal body with USB-C cable attached", "Ideal for laptops with limited ports - expand connectivity for work, presentations and data transfer"],
+  1492→    "Screen Storage Rack": ["Type: Computer/TV screen top storage rack (wireless router & set-top box holder)", "Size: Large - 26 x 11.5 cm", "Material: Black textured surface (carbon-fiber look) with raised back lip and two front support legs", "Design: Sits on top of computer monitors or TVs to free up desk space", "Use: Holds wireless routers, set-top boxes, streaming devices, small speakers and other lightweight electronics", "Installation: No tools required - simply rests on top of screen; non-slip legs keep it stable", "Color: Black", "Max Load: Designed for lightweight electronic devices", "Perfect for organizing clutter around monitors and TVs"],
+  1493→    "Foldable Tablet Stand": ["Type: Universal foldable desktop tablet and phone stand", "Design: Articulated/folding stand with multiple joints and circular hinge mechanism for angle adjustment", "Compatibility: Holds tablets (iPad and all sizes), phones and e-readers", "Angles: Multi-angle adjustable - find the perfect viewing angle for reading, typing, watching videos or video calls", "Material: Matte black plastic/metal construction; lightweight and portable", "Base: Two support legs forming a stable A-frame/triangular base", "Folding: Fully foldable/collapsible - folds flat for easy storage and portability", "Non-slip: Rubberized feet and pads keep devices secure without scratching", "Use: Desktop use for work, presentations, video calls, watching media and reading"],
+  1494→    "USB 3.0 Gigabit Ethernet Adapter": ["Type: USB 3.0 to RJ45 Gigabit Ethernet LAN network adapter", "Brand: GLAABIT", "Speed: 10/100/1000Mbps Gigabit Ethernet - supports up to 1000Mbps wired connection", "USB: USB 3.0 (backward compatible with USB 2.0) with blue-tinted connector", "Port: RJ45 Ethernet port with LINK and ACT LED status indicators", "Cable: Built-in short USB cable for easy connection without additional cable needed", "Build: Compact matte black rectangular dongle with textured surface", "Use: Add wired Ethernet to laptops, tablets or PCs without built-in LAN ports", "Plug and play - no drivers needed for most operating systems"],
+  1495→    "Laptop Stand": ["Type: Creative folding storage bracket laptop stand", "Design: X-shaped scissor/cross-bar structure with central pivot point for foldable design", "Ventilation: Base bars with cut-out ventilation slots for improved laptop airflow and cooling", "Grips: Grey rubberized pads on vertical side supports to prevent laptop from slipping", "Adjustment: Adjustment slots on vertical arms for multiple height/angle settings", "Material: Black metal or high-durability plastic construction", "Folding: Fully foldable - collapses flat for easy storage and portability", "Ergonomic: Elevates laptop for improved typing angle, better posture and reduced neck strain", "Compatible with most laptop sizes; ideal for desk use at home or office"],
+  1496→    "Portable Mini Thermal Printer": ["Type: Portable mini 58mm (2-inch) thermal receipt/bill/ticket printer", "Brand: Bisoffice", "Print Width: 58mm (2 inch) thermal paper roll", "Connectivity: USB and wireless (Bluetooth/Wi-Fi) for flexible printing from multiple devices", "Controls: POWER button with power symbol and FEED button for manual paper feed", "Design: Blue translucent top cover (shows paper roll level) with matte black base", "Cable: Includes USB cable with USB-A connector", "Compact & Portable: Small lightweight design ideal for mobile vendors, small businesses and events", "Uses: Receipts, bills, tickets, labels, orders - perfect for POS systems, market stalls and food trucks"],
+  1497→    "WiFi Range Extender": ["Type: Dual-band WiFi range extender / wireless repeater / signal amplifier", "Brand: Kebidumei", "Speed: 1200Mbps (5GHz band) + 300Mbps (2.4GHz band) dual-band wireless", "Antennas: 4 external omni-directional antennas (2 taller center, 2 shorter outer) for maximum coverage", "Plug: US plug - plugs directly into wall outlet; no cables needed", "Input: AC 100-240V 50/60Hz", "Modes: WiFi Repeater mode and WiFi AP (Access Point) mode", "LED Indicators: Power, signal strength and connection status LEDs on front panel", "Setup: Default IP 192.168.10.1; easy web-based configuration", "Extends WiFi coverage to eliminate dead zones in homes, offices and buildings"]
+  1498→};
+  1499→
+  1500→  function openSpecsByIndex(idx) {
+  1501→    var p = products[idx];
+  1502→    if (!p) return;
+  1503→    var sp = productSpecs[p.model] || productSpecs[p.name] || [];
+  1504→    document.getElementById('specsTitle').textContent = p.brand + ' ' + p.name;
+  1505→    document.getElementById('specsModel').textContent = 'Model: ' + p.model + (p.size !== 'N/A' ? ' | Fits: ' + p.size + ' Laptop' : '');
+  1506→    var list = document.getElementById('specsList');
+  1507→    if (sp.length === 0) {
+  1508→      list.innerHTML = '<li>No detailed specs available for this product yet.</li>';
+  1509→    } else {
+  1510→      var li = '';
+  1511→      for (var i = 0; i < sp.length; i++) {
+  1512→        li += '<li>' + sp[i] + '</li>';
+  1513→      }
+  1514→      list.innerHTML = li;
+  1515→    }
+  1516→    document.getElementById('specsOverlay').classList.add('open');
+  1517→    document.body.style.overflow = 'hidden';
+  1518→  }
+  1519→  function closeSpecs() {
+  1520→    document.getElementById('specsOverlay').classList.remove('open');
+  1521→    document.body.style.overflow = '';
+  1522→  }
+  1523→  var selectedPhone = "18767731173";
+  1524→  var selectedChannel = "whatsapp";
+  1525→  var currentProduct = null;
+  1526→  var currentProductIndex = -1;
+  1527→  var lastViewedIndex = 0;
+  1528→  var lbProduct = null;
+  1529→  var lbProductIndex = -1;
+  1530→  var lbIndex = 0;
+  1531→  var lbImages = [];
+  1532→  var touchStartX = 0;
+  1533→  var touchEndX = 0;
+  1534→
+  1535→  function toggleServices() {
+  1536→    var section = document.getElementById('servicesSection');
+  1537→    var btn = document.getElementById('servicesToggle');
+  1538→    if (!section || !btn) return;
+  1539→    section.classList.toggle('open');
+  1540→    btn.classList.toggle('open');
+  1541→  }
+  1542→
+  1543→  function toggleService(cardId) {
+  1544→    var card = document.getElementById(cardId);
+  1545→    if (!card) return;
+  1546→    var isCollapsed = card.classList.contains('collapsed');
+  1547→    card.classList.toggle('collapsed');
+  1548→    var btn = card.querySelector('.service-collapse-btn');
+  1549→    if (isCollapsed) {
+  1550→      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+  1551→      btn.title = 'Minimize';
+  1552→    } else {
+  1553→      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="6 9 12 15 18 9"/></svg>';
+  1554→      btn.title = 'Expand';
+  1555→    }
+  1556→  }
+  1557→
+  1558→  function getSizeLabel(p) {
+  1559→    if (p.size && p.size !== 'N/A') {
+  1560→      return '&#128187; Fits ' + escAttr(p.size) + ' Laptop';
+  1561→    }
+  1562→    var labels = {
+  1563→      'mouse': '&#128433; Computer Accessory',
+  1564→      'camera': '&#128249; Security Camera',
+  1565→      'scanner': '&#128247; Barcode Scanner',
+  1566→      'tool': '&#9881; Electrical Tool',
+  1567→      'auto': '&#128663; Car Auto Tool',
+  1568→      'hub': '&#128268; USB Hub',
+  1569→      'mount': '&#128208; Mount & Stand',
+  1570→      'printer': '&#128424; Printer',
+  1571→      'network': '&#128225; Networking'
+  1572→    };
+  1573→    return labels[p.category] || '&#128433; Computer Accessory';
+  1574→  }
+  1575→
+  1576→  function escAttr(s) {
+  1577→    return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  1578→  }
+  1579→
+  1580→  function renderCards(filter) {
+  1581→    filter = filter || "all";
+  1582→    var grid = document.getElementById("productGrid");
+  1583→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+  1584→    productIndices = [];
+  1585→    for (var fi = 0; fi < filtered.length; fi++) {
+  1586→      for (var pi = 0; pi < products.length; pi++) {
+  1587→        if (products[pi] === filtered[fi]) { productIndices.push(pi); break; }
+  1588→      }
+  1589→    }
+  1590→    var html = "";
+  1591→    for (var i = 0; i < filtered.length; i++) {
+  1592→      var p = filtered[i];
+  1593→      var idx = productIndices[i];
+  1594→      var imgs = Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+  1595→      var safeName = escAttr(p.name);
+  1596→      var safeBrand = escAttr(p.brand);
+  1597→      var safeModel = escAttr(p.model);
+  1598→      var safeDesc = escAttr(p.desc);
+  1599→      var priceStr = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2});
+  1600→      html += '<div class="card">';
+  1601→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44), radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 60%); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
+  1602→      html += '<span class="brand-tag">' + safeBrand + '</span>';
+  1603→      html += '<img src="' + escAttr(imgs[0]) + '" alt="' + safeName + '" loading="lazy" onerror="this.style.display=\'none\'" />';
+  1604→      if (imgs.length > 1) {
+  1605→        html += '<span class="photo-count" onclick="event.stopPropagation(); openLightboxByIndex(' + idx + ')">' + imgs.length + ' Photos</span>';
+  1606→      }
+  1607→      html += '<span class="price-tag">' + priceStr + '</span>';
+  1608→      html += '</div>';
+  1609→      html += '<div class="card-body">';
+  1610→      html += '<span class="model">' + safeModel + '</span>';
+  1611→      html += '<h3>' + safeName + '</h3>';
+  1612→      html += '<p class="desc">' + safeDesc + '</p>';
+  1613→      html += '<span class="size-info">' + getSizeLabel(p) + '</span>';
+  1614→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModalByIndex(' + idx + ')">';
+  1615→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+  1616→      html += ' Order via WhatsApp</button>';
+  1617→      html += '<button class="specs-btn" onclick="event.stopPropagation(); openSpecsByIndex(' + idx + ')">&#9881; View Specs</button>';
+  1618→      html += '</div></div>';
+  1619→    }
+  1620→    grid.innerHTML = html;
+  1621→  }
+  1622→
+  1623→  function openModalByIndex(idx) {
+  1624→    var p = products[idx];
+  1625→    if (!p) return;
+  1626→    currentProduct = p;
+  1627→    currentProductIndex = idx;
+  1628→    lastViewedIndex = idx;
+  1629→    document.getElementById("modalProduct").textContent = p.brand + " \u2014 " + p.name;
+  1630→    document.getElementById("modalPrice").textContent = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+  1631→    document.getElementById("custName").value = "";
+  1632→    document.getElementById("custQty").value = "1";
+  1633→    selectedDelivery = "pickup";
+  1634→    selectedDeliveryCost = 0;
+  1635→    document.querySelectorAll(".delivery-opt").forEach(function(d) { d.classList.remove("selected"); });
+  1636→    document.querySelector('.delivery-opt[data-delivery="pickup"]').classList.add("selected");
+  1637→    document.getElementById("modalOverlay").classList.add("open");
+  1638→    selectedChannel = "whatsapp";
+  1639→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+  1640→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+  1641→    document.getElementById("waPhoneSection").style.display = "block";
+  1642→    document.getElementById("messengerInfo").style.display = "none";
+  1643→    document.getElementById("igInfo").style.display = "none";
+  1644→    document.getElementById("btnSend").innerHTML = "💬 Send on WhatsApp";
+  1645→    var imgCount = getProductImages(p).length;
+  1646→    document.getElementById("viewPhotosBtn").style.display = imgCount > 1 ? "block" : "none";
+  1647→    setupShareLinks();
+  1648→  }
+  1649→
+  1650→  function openLightboxByIndex(idx) {
+  1651→    var p = products[idx];
+  1652→    if (!p) return;
+  1653→    lastViewedIndex = idx;
+  1654→    lbProduct = p;
+  1655→    lbProductIndex = idx;
+  1656→    var allImgs = getProductImages(p);
+  1657→    lbImages = allImgs.filter(function(u) { return u && u.indexOf('http') === 0; });
+  1658→    lbIndex = 0;
+  1659→    renderLightbox();
+  1660→    document.getElementById("lightboxOverlay").classList.add("open");
+  1661→    document.body.style.overflow = "hidden";
+  1662→  }
+  1663→
+  1664→  function closeModal() {
+  1665→    document.getElementById("modalOverlay").classList.remove("open");
+  1666→    currentProduct = null;
+  1667→    currentProductIndex = -1;
+  1668→  }
+  1669→
+  1670→  function selectPhone(el) {
+  1671→    var opts = document.querySelectorAll(".phone-opt");
+  1672→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+  1673→    el.classList.add("selected");
+  1674→    selectedPhone = el.getAttribute("data-phone");
+  1675→  }
+  1676→
+  1677→  function selectDelivery(el) {
+  1678→    var opts = document.querySelectorAll(".delivery-opt");
+  1679→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+  1680→    el.classList.add("selected");
+  1681→    selectedDelivery = el.getAttribute("data-delivery");
+  1682→    var cost = el.getAttribute("data-cost");
+  1683→    selectedDeliveryCost = cost === "courier" ? -1 : Number(cost);
+  1684→  }
+  1685→
+  1686→  function selectChannel(el) {
+  1687→    var tabs = document.querySelectorAll(".channel-tab");
+  1688→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+  1689→    el.classList.add("selected");
+  1690→    selectedChannel = el.getAttribute("data-channel");
+  1691→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+  1692→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+  1693→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+  1694→    var btn = document.getElementById("btnSend");
+  1695→    if (selectedChannel === "whatsapp") btn.innerHTML = "💬 Send on WhatsApp";
+  1696→    else if (selectedChannel === "messenger") btn.innerHTML = "💬 Send on Messenger";
+  1697→    else btn.innerHTML = "💬 Send on Instagram";
+  1698→  }
+  1699→
+  1700→  function getOrderMsg() {
+  1701→    var name = document.getElementById("custName").value.trim();
+  1702→    var qty = document.getElementById("custQty").value.trim();
+  1703→    if (!name) { showToast("Please enter your name"); return null; }
+  1704→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+  1705→    var p = currentProduct;
+  1706→    var subtotal = p.price * Number(qty);
+  1707→    var deliveryLabel = "Pickup (Free)";
+  1708→    var deliveryLine = "";
+  1709→    if (selectedDelivery === "round-town") {
+  1710→      deliveryLabel = "Round Town Delivery";
+  1711→      deliveryLine = "\n*Delivery:* $600.00 JMD\n";
+  1712→    } else if (selectedDelivery === "outside-kingston") {
+  1713→      deliveryLabel = "Outside Kingston (Knutsford/Doorway Courier)";
+  1714→      deliveryLine = "\n*Delivery:* Via Knutsford or Doorway courier (rate quoted separately)\n";
+  1715→    }
+  1716→    var grandTotal = selectedDeliveryCost >= 0 ? subtotal + selectedDeliveryCost : subtotal;
+  1717→    return {
+  1718→      text: "*NEW BAG ORDER*\n\n" +
+  1719→        "*Customer:* " + name + "\n" +
+  1720→        "*Product:* " + p.brand + " " + p.name + "\n" +
+  1721→        "*Model:* " + p.model + "\n" +
+  1722→        "*Fits:* " + p.size + " Laptop\n" +
+  1723→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+  1724→        "*Quantity:* " + qty + "\n" +
+  1725→        "*Subtotal:* $" + subtotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+  1726→        deliveryLine +
+  1727→        "*Delivery Method:* " + deliveryLabel + "\n" +
+  1728→        (selectedDeliveryCost >= 0 ? "*Grand Total:* $" + grandTotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" : "*Grand Total:* To be quoted (courier rate)\n\n") +
+  1729→        "Please confirm availability and payment details."
+  1730→    };
+  1731→  }
+  1732→
+  1733→  function sendOrder() {
+  1734→    var order = getOrderMsg();
+  1735→    if (!order) return;
+  1736→    var msg = encodeURIComponent(order.text);
+  1737→    if (selectedChannel === "whatsapp") {
+  1738→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+  1739→      showToast("Opening WhatsApp...");
+  1740→    } else if (selectedChannel === "messenger") {
+  1741→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+  1742→      showToast("Opening Messenger...");
+  1743→    } else if (selectedChannel === "instagram") {
+  1744→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+  1745→      showToast("Opening Instagram DM...");
+  1746→    }
+  1747→    closeModal();
+  1748→  }
+  1749→
+  1750→  function getProductImages(p) {
+  1751→    return Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+  1752→  }
+  1753→
+  1754→  function closeLightbox() {
+  1755→    document.getElementById("lightboxOverlay").classList.remove("open");
+  1756→    document.body.style.overflow = "";
+  1757→    lbProduct = null;
+  1758→    lbProductIndex = -1;
+  1759→  }
+  1760→
+  1761→  function renderLightbox() {
+  1762→    var img = document.getElementById("lbImg");
+  1763→    img.onerror = function() {
+  1764→      this.style.display = 'none';
+  1765→      if (lbImages.length > 1) {
+  1766→        var next = (lbIndex + 1) % lbImages.length;
+  1767→        if (next !== lbIndex) { lbIndex = next; renderLightbox(); }
+  1768→      }
+  1769→    };
+  1770→    img.src = lbImages[lbIndex];
+  1771→    img.style.display = '';
+  1772→    img.alt = lbProduct.name + ' - Photo ' + (lbIndex + 1);
+  1773→    img.className = "";
+  1774→    document.getElementById("lbTitle").textContent = lbProduct.brand + " " + lbProduct.name;
+  1775→    document.getElementById("lbPrice").textContent = "$" + lbProduct.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+  1776→    document.getElementById("lbCounter").textContent = (lbIndex + 1) + " / " + lbImages.length;
+  1777→    document.getElementById("lbArrowLeft").style.display = lbImages.length > 1 ? "flex" : "none";
+  1778→    document.getElementById("lbArrowRight").style.display = lbImages.length > 1 ? "flex" : "none";
+  1779→    var dotsHtml = "";
+  1780→    for (var i = 0; i < lbImages.length; i++) {
+  1781→      dotsHtml += '<button class="dot' + (i === lbIndex ? ' active' : '') + '" onclick="lbGoTo(' + i + ')"></button>';
+  1782→    }
+  1783→    document.getElementById("lbDots").innerHTML = dotsHtml;
+  1784→    document.getElementById("lbDots").style.display = lbImages.length > 1 ? "flex" : "none";
+  1785→  }
+  1786→
+  1787→  function lbGoTo(index) {
+  1788→    if (index === lbIndex) return;
+  1789→    var img = document.getElementById("lbImg");
+  1790→    img.className = index > lbIndex ? "slide-left" : "slide-right";
+  1791→    setTimeout(function() {
+  1792→      lbIndex = index;
+  1793→      renderLightbox();
+  1794→      img.className = index > lbIndex ? "slide-right" : "slide-left";
+  1795→      requestAnimationFrame(function() { img.className = ""; });
+  1796→    }, 200);
+  1797→  }
+  1798→
+  1799→  function lbNext() {
+  1800→    if (lbImages.length <= 1) return;
+  1801→    lbGoTo((lbIndex + 1) % lbImages.length);
+  1802→  }
+  1803→
+  1804→  function lbPrev() {
+  1805→    if (lbImages.length <= 1) return;
+  1806→    lbGoTo((lbIndex - 1 + lbImages.length) % lbImages.length);
+  1807→  }
+  1808→
+  1809→  function orderFromLightbox() {
+  1810→    var idx = lbProductIndex >= 0 ? lbProductIndex : lastViewedIndex;
+  1811→    closeLightbox();
+  1812→    openModalByIndex(idx);
+  1813→  }
+  1814→
+  1815→  document.getElementById("lbImgWrap").addEventListener("touchstart", function(e) {
+  1816→    touchStartX = e.changedTouches[0].screenX;
+  1817→  }, {passive: true});
+  1818→
+  1819→  document.getElementById("lbImgWrap").addEventListener("touchend", function(e) {
+  1820→    touchEndX = e.changedTouches[0].screenX;
+  1821→    var diff = touchStartX - touchEndX;
+  1822→    if (Math.abs(diff) > 50) {
+  1823→      if (diff > 0) lbNext(); else lbPrev();
+  1824→    }
+  1825→  }, {passive: true});
+  1826→
+  1827→  document.getElementById("lightboxOverlay").addEventListener("click", function(e) {
+  1828→    if (e.target === e.currentTarget) closeLightbox();
+  1829→  });
+  1830→
+  1831→  document.addEventListener("keydown", function(e) {
+  1832→    if (!document.getElementById("lightboxOverlay").classList.contains("open")) return;
+  1833→    if (e.key === "ArrowRight" || e.key === "ArrowDown") lbNext();
+  1834→    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") lbPrev();
+  1835→    else if (e.key === "Escape") closeLightbox();
+  1836→  });
+  1837→
+  1838→  function showToast(msg) {
+  1839→    var t = document.getElementById("toast");
+  1840→    t.textContent = msg;
+  1841→    t.classList.add("show");
+  1842→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+  1843→  }
+  1844→
+  1845→  document.getElementById("filterBar").addEventListener("click", function(e) {
+  1846→    if (!e.target.classList.contains("filter-btn")) return;
+  1847→    var btns = document.querySelectorAll(".filter-btn");
+  1848→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+  1849→    e.target.classList.add("active");
+  1850→    renderCards(e.target.getAttribute("data-filter"));
+  1851→  });
+  1852→
+  1853→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+  1854→    if (e.target === e.currentTarget) closeModal();
+  1855→  });
+  1856→
+  1857→  function setupShareLinks() {
+  1858→    var p = currentProduct;
+  1859→    if (!p) return;
+  1860→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+  1861→    var pageUrl = encodeURIComponent(window.location.href);
+  1862→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+  1863→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+  1864→  }
+  1865→
+  1866→  function copyProductLink(e) {
+  1867→    e.preventDefault();
+  1868→    var p = currentProduct;
+  1869→    if (!p) return;
+  1870→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+  1871→    if (navigator.clipboard) {
+  1872→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+  1873→    } else {
+  1874→      showToast("Long-press to copy the link");
+  1875→    }
+  1876→  }
+  1877→
+  1878→  // CCTV Service WhatsApp link
+  1879→  var cctvMsg = encodeURIComponent(
+  1880→    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+  1881→    "Quick questions so we can send you an accurate quote:\n\n" +
+  1882→    "Please state name?\n" +
+  1883→    "a. Installation location:\n" +
+  1884→    "b. Property type: Home, Office, Shop, Warehouse, Other\n" +
+  1885→    "d. Indoor or Outdoor cameras request?\n" +
+  1886→    "e. Need night vision + mobile app viewing? Yes/No\n" +
+  1887→    "g. Best number to reach you:\n\n" +
+  1888→    "Once we have this information, our team will get back to you within 24 hours with pricing + next steps.\n\n" +
+  1889→    "Also, note site visits are mandated for all installation!!\n\n" +
+  1890→    "Thank you,\n" +
+  1891→    "Team Pixelwire Solutions"
+  1892→  );
+  1893→  var cctvBtn = document.getElementById('cctvWaBtn');
+  1894→  if (cctvBtn) {
+  1895→    cctvBtn.href = 'https://wa.me/18767731173?text=' + cctvMsg;
+  1896→  }
+  1897→
+  1898→  // PBX Service WhatsApp link
+  1899→  var pbxMsg = encodeURIComponent(
+  1900→    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+  1901→    "Quick questions so we can send you an accurate PBX quote:\n\n" +
+  1902→    "Please state name?\n" +
+  1903→    "How many users/extensions do you need?\n" +
+  1904→    "Do you need desk phones?\n" +
+  1905→    "Single location or multiple sites?\n" +
+  1906→    "Do you already have a server/network cabinet, or do you need one provided?\n" +
+  1907→    "Are there existing cable runs in place, or will new cable runs need to be installed?\n" +
+  1908→    "What's your target budget for the installation?\n\n" +
+  1909→    "Note: A paid site survey is mandatory before final pricing. This lets us physically inspect the space, verify cable runs, check wall/ceiling access, and confirm equipment placement.\n\n" +
+  1910→    "Once we have this info, our team will get back to you within 24 hours.\n\n" +
+  1911→    "Thank you,\n" +
+  1912→    "Team Pixelwire Solutions"
+  1913→  );
+  1914→  var pbxBtn = document.getElementById('pbxWaBtn');
+  1915→  if (pbxBtn) {
+  1916→    pbxBtn.href = 'https://wa.me/18767731173?text=' + pbxMsg;
+  1917→  }
+  1918→
+  1919→  // Call Us dropdown toggle
+  1920→  var callGroup = document.querySelector('.call-btn-group');
+  1921→  if (callGroup) {
+  1922→    callGroup.addEventListener('click', function(e) {
+  1923→      if (e.target.closest('.call-dropdown a')) return;
+  1924→      var dd = this.querySelector('.call-dropdown');
+  1925→      dd.classList.toggle('show');
+  1926→    });
+  1927→    document.addEventListener('click', function(e) {
+  1928→      if (!e.target.closest('.call-btn-group')) {
+  1929→        var dd = document.querySelector('.call-dropdown');
+  1930→        if (dd) dd.classList.remove('show');
+  1931→      }
+  1932→    });
+  1933→  }
+  1934→
+  1935→  renderCards();
+  1936→  setTimeout(function(){
+  1937→    var splash = document.getElementById('splashScreen');
+  1938→    if(splash){ splash.classList.add('hidden'); }
+  1939→  }, 2200);
+  1940→  </script>
+  1941→</body>
+  1942→</html>

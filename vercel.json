@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vercel.com/schema.json",
+  "framework": "nextjs",
+  "buildCommand": "npx prisma generate && next build",
+  "installCommand": "bun install",
+  "regions": ["iad1"],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "DIRECT_URL": "@direct_url"
+  }
+}

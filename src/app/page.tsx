@@ -86,7 +86,7 @@ export default function Storefront() {
       `🚚 Delivery: ${delivery === 'pickup' ? 'Pickup (free)' : delivery === 'kgn' ? `Kingston ($1,500)` : `Islandwide ($3,000)`}\n` +
       `💰 Total: ${fmtPrice(total)} JMD\n\n` +
       `👤 Name: ${custName || 'Not provided'}`
-    window.open(`https://wa.me/18765551234?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/18767731173?text=${encodeURIComponent(msg)}`, '_blank')
     setOrderProduct(null)
   }, [orderProduct, custQty, delivery, custName, fmtPrice])
 
@@ -101,7 +101,7 @@ export default function Storefront() {
         </div>
         {/* WhatsApp bar */}
         <div className="bg-[#075e54] text-center py-2 text-sm font-medium">
-          📞 Call or WhatsApp: <a href="https://wa.me/18765551234" className="underline font-bold hover:text-green-300 transition">(876) 555-1234</a>
+          📞 Call or WhatsApp: <a href="https://wa.me/18767731173" className="underline font-bold hover:text-green-300 transition">(876) 773-1173</a> or <a href="https://wa.me/18765595290" className="underline font-bold hover:text-green-300 transition">(876) 559-5290</a>
         </div>
         {/* Search */}
         <div className="max-w-2xl mx-auto px-4 pb-4">

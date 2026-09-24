@@ -514,7 +514,8 @@ async function seed() {
   // Seed site settings
   const settings = [
     { key: 'site_name', value: 'PixelWire Solutions' },
-    { key: 'whatsapp_number', value: '18765551234' },
+    { key: 'whatsapp_primary', value: '18767731173' },
+    { key: 'whatsapp_secondary', value: '18765595290' },
     { key: 'currency', value: 'JMD' },
     { key: 'delivery_kgn_cost', value: '1500' },
     { key: 'delivery_parish_cost', value: '3000' },

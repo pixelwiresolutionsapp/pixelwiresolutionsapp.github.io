@@ -1,0 +1,402 @@
+   901→   901→      align-items: center;
+   902→   902→      justify-content: center;
+   903→   903→      overflow: hidden;
+   904→   904→    }
+   905→   905→    .lightbox-img-wrap img {
+   906→   906→      max-width: 90%;
+   907→   907→      max-height: 90%;
+   908→   908→      object-fit: contain;
+   909→   909→      border-radius: 10px;
+   910→   910→      transition: opacity .25s, transform .25s;
+   911→   911→      user-select: none;
+   912→   912→      -webkit-user-drag: none;
+   913→   913→    }
+   914→   914→    .lightbox-img-wrap img.slide-left {
+   915→   915→      opacity: 0;
+   916→   916→      transform: translateX(-40px);
+   917→   917→    }
+   918→   918→    .lightbox-img-wrap img.slide-right {
+   919→   919→      opacity: 0;
+   920→   920→      transform: translateX(40px);
+   921→   921→    }
+   922→   922→    .lb-arrow {
+   923→   923→      position: absolute;
+   924→   924→      top: 50%;
+   925→   925→      transform: translateY(-50%);
+   926→   926→      width: 44px;
+   927→   927→      height: 44px;
+   928→   928→      border-radius: 50%;
+   929→   929→      border: none;
+   930→   930→      background: rgba(255,255,255,.15);
+   931→   931→      color: #fff;
+   932→   932→      font-size: 1.5rem;
+   933→   933→      cursor: pointer;
+   934→   934→      display: flex;
+   935→   935→      align-items: center;
+   936→   936→      justify-content: center;
+   937→   937→      transition: background .2s;
+   938→   938→      z-index: 505;
+   939→   939→      backdrop-filter: blur(4px);
+   940→   940→    }
+   941→   941→    .lb-arrow:hover { background: rgba(255,255,255,.3); }
+   942→   942→    .lb-arrow.left { left: 10px; }
+   943→   943→    .lb-arrow.right { right: 10px; }
+   944→   944→    .lightbox-dots {
+   945→   945→      display: flex;
+   946→   946→      gap: 8px;
+   947→   947→      margin-top: 16px;
+   948→   948→    }
+   949→   949→    .lightbox-dots .dot {
+   950→   950→      width: 10px;
+   951→   951→      height: 10px;
+   952→   952→      border-radius: 50%;
+   953→   953→      background: rgba(255,255,255,.3);
+   954→   954→      cursor: pointer;
+   955→   955→      transition: all .2s;
+   956→   956→      border: none;
+   957→   957→    }
+   958→   958→    .lightbox-dots .dot.active {
+   959→   959→      background: #fff;
+   960→   960→      transform: scale(1.3);
+   961→   961→    }
+   962→   962→    .lightbox-counter {
+   963→   963→      color: rgba(255,255,255,.7);
+   964→   964→      font-size: .85rem;
+   965→   965→      margin-top: 10px;
+   966→   966→      font-weight: 600;
+   967→   967→    }
+   968→   968→    .lightbox-order-bar {
+   969→   969→      position: absolute;
+   970→   970→      bottom: 0;
+   971→   971→      left: 0;
+   972→   972→      right: 0;
+   973→   973→      padding: 16px 20px;
+   974→   974→      background: linear-gradient(transparent, rgba(0,0,0,.7));
+   975→   975→      display: flex;
+   976→   976→      align-items: center;
+   977→   977→      justify-content: space-between;
+   978→   978→      gap: 12px;
+   979→   979→    }
+   980→   980→    .lightbox-order-bar .lb-price {
+   981→   981→      color: #25d366;
+   982→   982→      font-size: 1.2rem;
+   983→   983→      font-weight: 800;
+   984→   984→    }
+   985→   985→    .lightbox-order-bar .lb-order-btn {
+   986→   986→      padding: 10px 24px;
+   987→   987→      border: none;
+   988→   988→      border-radius: 12px;
+   989→   989→      background: linear-gradient(135deg, #25d366, #128c7e);
+   990→   990→      color: #fff;
+   991→   991→      font-weight: 700;
+   992→   992→      font-size: .9rem;
+   993→   993→      cursor: pointer;
+   994→   994→      transition: box-shadow .2s;
+   995→   995→    }
+   996→   996→    .lightbox-order-bar .lb-order-btn:hover { box-shadow: 0 4px 15px rgba(37,211,102,.4); }
+   997→   997→    .toast {
+   998→   998→      position: fixed;
+   999→   999→      bottom: 24px;
+  1000→  1000→      left: 50%;
+  1001→  1001→      transform: translateX(-50%) translateY(80px);
+  1002→  1002→      background: #1a1a2e;
+  1003→  1003→      color: #25d366;
+  1004→  1004→      padding: 12px 24px;
+  1005→  1005→      border-radius: 12px;
+  1006→  1006→      font-weight: 600;
+  1007→  1007→      font-size: .9rem;
+  1008→  1008→      z-index: 600;
+  1009→  1009→      opacity: 0;
+  1010→  1010→      transition: all .35s ease;
+  1011→  1011→      pointer-events: none;
+  1012→  1012→    }
+  1013→  1013→    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  1014→  1014→    @media (max-width: 600px) {
+  1015→  1015→      .grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 12px 30px; }
+  1016→  1016→      .card-img { height: 160px; padding-top: 32px; }
+  1017→  1017→      .card-img img { max-width: 80%; max-height: 80%; }
+  1018→  1018→      .card-img .brand-tag { font-size: .6rem; padding: 3px 9px; top: 8px; left: 8px; max-width: calc(100% - 60px); }
+  1019→  1019→      .card-body { padding: 12px 13px 14px; }
+  1020→  1020→      .card-body h3 { font-size: .88rem; }
+  1021→  1021→      .buy-btn { padding: 9px 12px; font-size: .8rem; }
+  1022→  1022→      .phone-options { flex-direction: column; }
+  1023→  1023→      .modal { padding: 24px 20px 22px; }
+  1024→  1024→      .lightbox-img-wrap { width: 95vw; height: 50vh; }
+  1025→  1025→      .lb-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
+  1026→  1026→      .lb-arrow.left { left: 4px; }
+  1027→  1027→      .lb-arrow.right { right: 4px; }
+  1028→  1028→      .lightbox-order-bar { padding: 12px 14px; }
+  1029→  1029→      .lightbox-order-bar .lb-price { font-size: 1rem; }
+  1030→  1030→      .lightbox-order-bar .lb-order-btn { padding: 8px 16px; font-size: .82rem; }
+  1031→  1031→      .splash-logo { width: 100px; height: 100px; border-radius: 16px; }
+  1032→  1032→      .splash-welcome { font-size: 1.1rem; }
+  1033→  1033→      .splash-sub { font-size: .8rem; }
+  1034→  1034→      .splash-spinner { width: 32px; height: 32px; border-width: 3px; }
+  1035→  1035→      .header h1 { font-size: 1.2rem; }
+  1036→  1036→      .header p { font-size: .82rem; }
+  1037→  1037→      .wa-bar { font-size: .78rem; padding: 8px 12px; }
+  1038→  1038→    }
+  1039→  1039→  
+  1040→  1040→    .specs-btn {
+  1041→  1041→      display: inline-flex;
+  1042→  1042→      align-items: center;
+  1043→  1043→      gap: 4px;
+  1044→  1044→      padding: 5px 10px;
+  1045→  1045→      border: 1.5px solid #d0d5dd;
+  1046→  1046→      border-radius: 8px;
+  1047→  1047→      background: #f9fafb;
+  1048→  1048→      color: #344054;
+  1049→  1049→      font-size: .78rem;
+  1050→  1050→      font-weight: 600;
+  1051→  1051→      cursor: pointer;
+  1052→  1052→      transition: all .2s;
+  1053→  1053→      margin-top: 6px;
+  1054→  1054→    }
+  1055→  1055→    .specs-btn:hover { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+  1056→  1056→    .specs-overlay {
+  1057→  1057→      display: none;
+  1058→  1058→      position: fixed;
+  1059→  1059→      inset: 0;
+  1060→  1060→      background: rgba(0,0,0,.6);
+  1061→  1061→      z-index: 400;
+  1062→  1062→      align-items: center;
+  1063→  1063→      justify-content: center;
+  1064→  1064→      padding: 20px;
+  1065→  1065→    }
+  1066→  1066→    .specs-overlay.open { display: flex; }
+  1067→  1067→    .specs-panel {
+  1068→  1068→      background: #fff;
+  1069→  1069→      border-radius: 20px;
+  1070→  1070→      padding: 28px 24px;
+  1071→  1071→      max-width: 480px;
+  1072→  1072→      width: 100%;
+  1073→  1073→      max-height: 80vh;
+  1074→  1074→      overflow-y: auto;
+  1075→  1075→      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  1076→  1076→      position: relative;
+  1077→  1077→      animation: specsIn .3s ease;
+  1078→  1078→    }
+  1079→  1079→    @keyframes specsIn {
+  1080→  1080→      from { opacity: 0; transform: translateY(30px) scale(.95); }
+  1081→  1081→      to { opacity: 1; transform: translateY(0) scale(1); }
+  1082→  1082→    }
+  1083→  1083→    .specs-panel h3 {
+  1084→  1084→      font-size: 1.1rem;
+  1085→  1085→      color: #1a1a2e;
+  1086→  1086→      margin-bottom: 4px;
+  1087→  1087→    }
+  1088→  1088→    .specs-panel .specs-model {
+  1089→  1089→      font-size: .82rem;
+  1090→  1090→      color: #667085;
+  1091→  1091→      margin-bottom: 16px;
+  1092→  1092→    }
+  1093→  1093→    .specs-panel ul {
+  1094→  1094→      list-style: none;
+  1095→  1095→      padding: 0;
+  1096→  1096→      margin: 0;
+  1097→  1097→    }
+  1098→  1098→    .specs-panel ul li {
+  1099→  1099→      padding: 10px 14px;
+  1100→  1100→      background: #f9fafb;
+  1101→  1101→      border-radius: 10px;
+  1102→  1102→      margin-bottom: 8px;
+  1103→  1103→      font-size: .85rem;
+  1104→  1104→      color: #344054;
+  1105→  1105→      line-height: 1.45;
+  1106→  1106→      border-left: 3px solid #25d366;
+  1107→  1107→    }
+  1108→  1108→    .specs-panel ul li strong {
+  1109→  1109→      color: #1a1a2e;
+  1110→  1110→    }
+  1111→  1111→    .specs-close {
+  1112→  1112→      position: absolute;
+  1113→  1113→      top: 14px;
+  1114→  1114→      right: 14px;
+  1115→  1115→      width: 32px;
+  1116→  1116→      height: 32px;
+  1117→  1117→      border-radius: 50%;
+  1118→  1118→      border: none;
+  1119→  1119→      background: #f2f4f7;
+  1120→  1120→      color: #344054;
+  1121→  1121→      font-size: 1.1rem;
+  1122→  1122→      cursor: pointer;
+  1123→  1123→      display: flex;
+  1124→  1124→      align-items: center;
+  1125→  1125→      justify-content: center;
+  1126→  1126→      transition: background .2s;
+  1127→  1127→    }
+  1128→  1128→    .specs-close:hover { background: #e4e7ec; }
+  1129→  1129→    @media (max-width: 600px) {
+  1130→  1130→      .specs-btn { font-size: .72rem; padding: 4px 8px; }
+  1131→  1131→      .specs-panel { padding: 20px 16px; border-radius: 16px; }
+  1132→  1132→      .specs-panel ul li { font-size: .8rem; padding: 8px 10px; }
+  1133→  1133→    }
+  1134→  1134→
+  1135→  1135→  </style>
+  1136→  1136→</head>
+  1137→  1137→<body>
+  1138→  1138→  <div class="splash-screen" id="splashScreen" onclick="this.classList.add('hidden')">
+  1139→  1139→    <img class="splash-logo" src="logo.jpg" alt="Pixel Wire Solutions" onerror="this.style.display='none'" />
+  1140→  1140→    <div class="splash-welcome">Welcome to Pixel Wire Solutions</div>
+  1141→  1141→    <div class="splash-sub">Your trusted tech accessories store</div>
+  1142→  1142→    <div class="splash-spinner"></div>
+  1143→  1143→  </div>
+  1144→  1144→  <header class="header">
+  1145→  1145→    <h1>Laptop Bags &amp; Cases</h1>
+  1146→  1146→    <p>Klipxtreme &#8226; Targus &#8226; HP &#8226; Dell &#8212; Order via WhatsApp, Facebook &amp; more</p>
+  1147→  1147→    <div class="social-icons">
+  1148→  1148→      <a href="https://www.instagram.com/pixelwiresolutions" target="_blank" title="Instagram">
+  1149→  1149→        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  1150→  1150→      </a>
+  1151→  1151→      <a href="https://www.facebook.com/pixelwiresolutions" target="_blank" title="Facebook">
+  1152→  1152→        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  1153→  1153→      </a>
+  1154→  1154→      <a href="https://wa.me/18767731173" target="_blank" title="WhatsApp">
+  1155→  1155→        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1156→  1156→      </a>
+  1157→  1157→    </div>
+  1158→  1158→  </header>
+  1159→  1159→  <div class="wa-bar">
+  1160→  1160→    <span>&#128222; Call or WhatsApp:</span>
+  1161→  1161→    <a href="https://wa.me/18767731173" target="_blank">(876) 773-1173</a>
+  1162→  1162→    <span>or</span>
+  1163→  1163→    <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
+  1164→  1164→  </div>
+  1165→  1165→  <div class="filter-bar" id="filterBar">
+  1166→  1166→    <button class="filter-btn active" data-filter="all">All Items</button>
+  1167→  1167→    <button class="filter-btn" data-filter="sleeve">Sleeves</button>
+  1168→  1168→    <button class="filter-btn" data-filter="case">Cases</button>
+  1169→  1169→    <button class="filter-btn" data-filter="backpack">Backpacks</button>
+  1170→  1170→    <button class="filter-btn" data-filter="handbag">Handbags</button>
+  1171→  1171→    <button class="filter-btn" data-filter="mouse">Mouse</button>
+  1172→  1172→    <button class="filter-btn" data-filter="camera">Cameras</button>
+  1173→  1173→    <button class="filter-btn" data-filter="scanner">Scanners</button>
+  1174→  1174→    <button class="filter-btn" data-filter="tool">Electrical</button>
+  1175→  1175→    <button class="filter-btn" data-filter="auto">Car Auto</button>
+  1176→  1176→    <button class="filter-btn" data-filter="hub">USB Hubs</button>
+  1177→  1177→    <button class="filter-btn" data-filter="mount">Mounts & Stands</button>
+  1178→  1178→    <button class="filter-btn" data-filter="printer">Printers</button>
+  1179→  1179→    <button class="filter-btn" data-filter="network">Networking</button>
+  1180→  1180→    <button class="services-btn" id="servicesToggle" onclick="toggleServices()">
+  1181→  1181→      Services
+  1182→  1182→      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  1183→  1183→    </button>
+  1184→  1184→  </div>
+  1185→  1185→  <div id="servicesSection">
+  1186→  1186→  <div class="service-banner">
+  1187→  1187→    <div class="service-card" id="cctvCard">
+  1188→  1188→      <button class="service-collapse-btn" onclick="toggleService('cctvCard')" title="Minimize">
+  1189→  1189→        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  1190→  1190→      </button>
+  1191→  1191→      <div class="service-collapsed-label">
+  1192→  1192→        <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+  1193→  1193→        CCTV Installation Services
+  1194→  1194→      </div>
+  1195→  1195→      <div class="service-card-left">
+  1196→  1196→        <h2>
+  1197→  1197→          <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+  1198→  1198→          CCTV Installation Services
+  1199→  1199→        </h2>
+  1200→  1200→        <p>Professional security camera supply &amp; installation for homes, offices, shops &amp; warehouses. Get a free quote today!</p>
+  1201→  1201→        <div class="service-highlight" style="color:#38bdf8;">
+  1202→  1202→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  1203→  1203→          A paid site survey is mandatory before final pricing
+  1204→  1204→        </div>
+  1205→  1205→      </div>
+  1206→  1206→      <div class="service-btns">
+  1207→  1207→        <a class="service-btn primary" id="cctvWaBtn" href="#" target="blank">
+  1208→  1208→          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1209→  1209→          Get CCTV Quote
+  1210→  1210→        </a>
+  1211→  1211→        <div class="service-btn secondary call-btn-group">
+  1212→  1212→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  1213→  1213→          Call Us
+  1214→  1214→          <div class="call-dropdown">
+  1215→  1215→            <a href="tel:18767731173"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 773-1173</a>
+  1216→  1216→            <a href="tel:18765595290"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 559-5290</a>
+  1217→  1217→          </div>
+  1218→  1218→        </div>
+  1219→  1219→      </div>
+  1220→  1220→    </div>
+  1221→  1221→  </div>
+  1222→  1222→  <div class="service-banner">
+  1223→  1223→    <div class="service-card" id="pbxCard" style="background: linear-gradient(135deg, #0c2d48 0%, #145374 50%, #0f3460 100%);">
+  1224→  1224→      <button class="service-collapse-btn" onclick="toggleService('pbxCard')" title="Minimize">
+  1225→  1225→        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  1226→  1226→      </button>
+  1227→  1227→      <div class="service-collapsed-label">
+  1228→  1228→        <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  1229→  1229→        PBX &amp; Phone Systems
+  1230→  1230→      </div>
+  1231→  1231→      <div class="service-card-left">
+  1232→  1232→        <h2>
+  1233→  1233→          <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  1234→  1234→          PBX &amp; Phone Systems
+  1235→  1235→        </h2>
+  1236→  1236→        <p>Professional VoIP phone system supply &amp; installation for offices, call centers &amp; multi-site businesses.</p>
+  1237→  1237→        <div class="service-highlight" style="color:#38bdf8;">
+  1238→  1238→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  1239→  1239→          A paid site survey is mandatory before final pricing
+  1240→  1240→        </div>
+  1241→  1241→        <button class="brand-toggle" onclick="document.getElementById('brandCompare').classList.toggle('open')">&#9660; Compare Desk Phone Brands</button>
+  1242→  1242→      </div>
+  1243→  1243→      <div class="service-btns">
+  1244→  1244→        <a class="service-btn primary" id="pbxWaBtn" href="#" target="_blank" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+  1245→  1245→          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  1246→  1246→          Get PBX Quote
+  1247→  1247→        </a>
+  1248→  1248→        <div class="service-btn secondary call-btn-group" style="position:relative;cursor:pointer;" onclick="this.querySelector('.call-dropdown-pbx').classList.toggle('show')">
+  1249→  1249→          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  1250→  1250→          Call Us
+  1251→  1251→          <div class="call-dropdown call-dropdown-pbx">
+  1252→  1252→            <a href="tel:18767731173"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 773-1173</a>
+  1253→  1253→            <a href="tel:18765595290"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(876) 559-5290</a>
+  1254→  1254→          </div>
+  1255→  1255→        </div>
+  1256→  1256→      </div>
+  1257→  1257→    </div>
+  1258→  1258→    <div class="brand-compare" id="brandCompare">
+  1259→  1259→      <div class="brand-compare-inner">
+  1260→  1260→        <div class="brand-header">Desk Phone Brand Comparison</div>
+  1261→  1261→        <div class="brand-table-wrap">
+  1262→  1262→          <table>
+  1263→  1263→            <thead><tr><th>Brand</th><th>Pros</th><th>Cons</th></tr></thead>
+  1264→  1264→            <tbody>
+  1265→  1265→              <tr><td><strong>Yealink</strong></td><td>Great value for money, wide range from basic to executive models, easy to set up, reliable</td><td>Build quality feels less premium at lower price points; fewer advanced enterprise features than Cisco</td></tr>
+  1266→  1266→              <tr><td><strong>Grandstream</strong></td><td>Cheapest option, decent for small businesses, simple provisioning</td><td>Interface feels dated, less polished audio quality, weaker brand reputation for larger enterprise clients</td></tr>
+  1267→  1267→              <tr><td><strong>Cisco</strong></td><td>Rock-solid reliability, excellent audio quality, strong enterprise features (security, integrations), trusted brand name</td><td>Most expensive, steeper learning curve to configure, often overkill for small offices</td></tr>
+  1268→  1268→              <tr><td><strong>Poly (Polycom)</strong></td><td>Best-in-class audio/conference phone quality, great for boardrooms and call-heavy roles</td><td>Pricier than Yealink/Grandstream, focus is more on conferencing than basic desk use</td></tr>
+  1269→  1269→              <tr><td><strong>Avaya</strong></td><td>Strong for legacy enterprise environments already using Avaya PBX, solid support ecosystem</td><td>Can be expensive, company has had financial instability in recent years which worries some buyers on long-term support</td></tr>
+  1270→  1270→            </tbody>
+  1271→  1271→          </table>
+  1272→  1272→        </div>
+  1273→  1273→        <div class="brand-tips">
+  1274→  1274→          <div class="brand-tip-title">Quick Recommendation</div>
+  1275→  1275→          <div class="brand-tip"><span class="tip-label">Tight budget / Small office</span> Grandstream or entry-level Yealink</div>
+  1276→  1276→          <div class="brand-tip"><span class="tip-label">Best overall value</span> Yealink</div>
+  1277→  1277→          <div class="brand-tip"><span class="tip-label">Big enterprise / Top reliability</span> Cisco</div>
+  1278→  1278→          <div class="brand-tip"><span class="tip-label">Conference rooms / Call center</span> Poly</div>
+  1279→  1279→          <div class="brand-tip"><span class="tip-label">Already on Avaya ecosystem</span> Stick with Avaya</div>
+  1280→  1280→        </div>
+  1281→  1281→        <div class="brand-survey-note">
+  1282→  1282→          <strong>Important:</strong> A paid site survey is mandatory before final pricing is confirmed. This lets us physically inspect the space, verify existing cable runs, check wall/ceiling access, and confirm equipment placement (rack space, wiring closet, etc.). The quote given from the questions above is a rough estimate only - the site survey determines the final, accurate installation cost.
+  1283→  1283→        </div>
+  1284→  1284→      </div>
+  1285→  1285→    </div>
+  1286→  1286→  </div>
+  1287→  1287→  </div>
+  1288→  1288→  <div class="grid" id="productGrid"></div>
+  1289→  1289→  <div class="modal-overlay" id="modalOverlay">
+  1290→  1290→    <div class="modal">
+  1291→  1291→      <h2>&#128722; Order This Item</h2>
+  1292→  1292→      <p class="modal-product" id="modalProduct"></p>
+  1293→  1293→      <p class="modal-price" id="modalPrice"></p>
+  1294→  1294→      <button id="viewPhotosBtn" onclick="closeModal(); openLightboxByIndex(currentProductIndex)" style="display:none;width:100%;padding:10px;border:2px dashed #d0d5dd;border-radius:12px;background:#f9fafb;cursor:pointer;font-size:.88rem;font-weight:600;color:#344054;margin-bottom:16px;transition:all .2s;" onmouseover="this.style.borderColor='#1a1a2e';this.style.background='#f0f2f5'" onmouseout="this.style.borderColor='#d0d5dd';this.style.background='#f9fafb'">&#128247; View All Photos</button>
+  1295→  1295→      <label for="custName">Your Name</label>
+  1296→  1296→      <input type="text" id="custName" placeholder="Enter your full name" />
+  1297→  1297→      <label for="custQty">Quantity</label>
+  1298→  1298→      <input type="text" id="custQty" placeholder="e.g. 1" value="1" />
+  1299→  1299→      <div class="order-channel-label">Delivery Method</div>
+  1300→  1300→      <div class="delivery-options" id="deliveryOptions">
+
+[showing lines 901-1300 of 1942; use offset=1301 with limit to continue reading]

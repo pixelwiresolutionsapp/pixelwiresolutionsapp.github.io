@@ -1157,7 +1157,7 @@
     </div>
   </header>
   <div class="wa-bar">
-    <span>&#128172; Orders sent via WhatsApp to:</span>
+    <span>&#128222; Call or WhatsApp:</span>
     <a href="https://wa.me/18767731173" target="_blank">(876) 773-1173</a>
     <span>or</span>
     <a href="https://wa.me/18765595290" target="_blank">(876) 559-5290</a>
@@ -1413,6 +1413,11 @@
   })();
   </script>
   <script>
+  // ===== API Configuration =====
+  // Set to your Vercel backend URL, e.g. 'https://your-app.vercel.app'
+  // Leave as empty string to use hardcoded fallback data
+  var API_BASE_URL = '';
+
   var products = [
     { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
     { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://store.domainnetworks.ca/cdn/shop/files/51410.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
@@ -1496,6 +1501,129 @@
     "Portable Mini Thermal Printer": ["Type: Portable mini 58mm (2-inch) thermal receipt/bill/ticket printer", "Brand: Bisoffice", "Print Width: 58mm (2 inch) thermal paper roll", "Connectivity: USB and wireless (Bluetooth/Wi-Fi) for flexible printing from multiple devices", "Controls: POWER button with power symbol and FEED button for manual paper feed", "Design: Blue translucent top cover (shows paper roll level) with matte black base", "Cable: Includes USB cable with USB-A connector", "Compact & Portable: Small lightweight design ideal for mobile vendors, small businesses and events", "Uses: Receipts, bills, tickets, labels, orders - perfect for POS systems, market stalls and food trucks"],
     "WiFi Range Extender": ["Type: Dual-band WiFi range extender / wireless repeater / signal amplifier", "Brand: Kebidumei", "Speed: 1200Mbps (5GHz band) + 300Mbps (2.4GHz band) dual-band wireless", "Antennas: 4 external omni-directional antennas (2 taller center, 2 shorter outer) for maximum coverage", "Plug: US plug - plugs directly into wall outlet; no cables needed", "Input: AC 100-240V 50/60Hz", "Modes: WiFi Repeater mode and WiFi AP (Access Point) mode", "LED Indicators: Power, signal strength and connection status LEDs on front panel", "Setup: Default IP 192.168.10.1; easy web-based configuration", "Extends WiFi coverage to eliminate dead zones in homes, offices and buildings"]
 };
+
+  // ===== API Data Fetching & Mapping =====
+  var apiCategories = null;
+  var apiDataLoaded = false;
+
+  /**
+   * Map an API product object to the local products array format.
+   * API format: { id, name, slug, model, price, description, size, color, isActive, featured, sortOrder,
+   *               images: [{id, url, alt, sortOrder, isPrimary}],
+   *               brand: {id, name, slug},
+   *               category: {id, name, slug, icon, color} }
+   * Local format: { name, brand, model, price, category, color, imgs, size, desc }
+   */
+  function mapAPIProduct(apiProduct) {
+    var catSlug = (apiProduct.category && apiProduct.category.slug) || '';
+    var catColor = (apiProduct.category && apiProduct.category.color) || '';
+    var images = [];
+    if (apiProduct.images && apiProduct.images.length > 0) {
+      // Sort by sortOrder, then isPrimary first
+      var sortedImgs = apiProduct.images.slice().sort(function(a, b) {
+        if (a.isPrimary && !b.isPrimary) return -1;
+        if (!a.isPrimary && b.isPrimary) return 1;
+        return (a.sortOrder || 0) - (b.sortOrder || 0);
+      });
+      images = sortedImgs.map(function(img) { return img.url; });
+    }
+    return {
+      name: apiProduct.name || '',
+      brand: (apiProduct.brand && apiProduct.brand.name) || '',
+      model: apiProduct.model || '',
+      price: apiProduct.price || 0,
+      category: catSlug,
+      color: apiProduct.color || catColor || '#1a1a2e',
+      imgs: images,
+      size: apiProduct.size || 'N/A',
+      desc: apiProduct.description || ''
+    };
+  }
+
+  /**
+   * Dynamically rebuild the filter bar from API categories.
+   * API categories: [{ id, name, slug, icon, color, sortOrder, _count: { products: number } }]
+   */
+  function updateFilterBar(categories) {
+    var filterBar = document.getElementById('filterBar');
+    if (!filterBar || !categories || categories.length === 0) return;
+    var sorted = categories.slice().sort(function(a, b) {
+      return (a.sortOrder || 0) - (b.sortOrder || 0);
+    });
+    var html = '<button class="filter-btn active" data-filter="all">All Items</button>';
+    for (var i = 0; i < sorted.length; i++) {
+      var cat = sorted[i];
+      var label = cat.name || cat.slug || '';
+      var icon = cat.icon ? cat.icon + ' ' : '';
+      html += '<button class="filter-btn" data-filter="' + escAttr(cat.slug) + '">' + icon + escAttr(label) + '</button>';
+    }
+    filterBar.innerHTML = html;
+  }
+
+  /**
+   * Attempt to fetch product + category data from the backend API.
+   * If API_BASE_URL is empty or fetch fails, falls back to hardcoded data.
+   * Returns true if API data was successfully loaded.
+   */
+  async function initFromAPI() {
+    if (!API_BASE_URL) {
+      console.log('[API] API_BASE_URL is empty, using hardcoded fallback data');
+      return false;
+    }
+
+    try {
+      // Fetch products
+      var productsUrl = API_BASE_URL + '/api/products?limit=200';
+      console.log('[API] Fetching products from:', productsUrl);
+      var productsRes = await fetch(productsUrl);
+      if (!productsRes.ok) {
+        console.warn('[API] Products fetch returned status:', productsRes.status);
+        return false;
+      }
+      var productsData = await productsRes.json();
+
+      if (productsData && productsData.products && productsData.products.length > 0) {
+        // Filter active products and sort by sortOrder
+        var mappedProducts = productsData.products
+          .filter(function(p) { return p.isActive !== false; })
+          .sort(function(a, b) { return (a.sortOrder || 0) - (b.sortOrder || 0); })
+          .map(mapAPIProduct);
+
+        if (mappedProducts.length > 0) {
+          products = mappedProducts;
+          apiDataLoaded = true;
+          console.log('[API] Loaded', mappedProducts.length, 'products from API (total:', productsData.total, ')');
+        }
+      } else {
+        console.warn('[API] No products returned from API');
+        return false;
+      }
+
+      // Fetch categories (best-effort, don't block product rendering on failure)
+      try {
+        var catsUrl = API_BASE_URL + '/api/categories';
+        console.log('[API] Fetching categories from:', catsUrl);
+        var catsRes = await fetch(catsUrl);
+        if (catsRes.ok) {
+          var catsData = await catsRes.json();
+          if (Array.isArray(catsData) && catsData.length > 0) {
+            apiCategories = catsData;
+            updateFilterBar(catsData);
+            console.log('[API] Loaded', catsData.length, 'categories from API');
+          }
+        } else {
+          console.warn('[API] Categories fetch returned status:', catsRes.status);
+        }
+      } catch (catErr) {
+        console.warn('[API] Categories fetch failed, keeping default filters:', catErr);
+      }
+
+      return apiDataLoaded;
+    } catch (err) {
+      console.warn('[API] Fetch failed, using fallback data:', err);
+      return false;
+    }
+  }
 
   function openSpecsByIndex(idx) {
     var p = products[idx];
@@ -1932,7 +2060,18 @@
     });
   }
 
-  renderCards();
+  // ===== App Initialization =====
+  // Try API first, then render with whatever data is available
+  (async function() {
+    var apiOk = await initFromAPI();
+    if (apiOk) {
+      console.log('[App] Rendering products from API');
+    } else {
+      console.log('[App] Rendering products from hardcoded fallback data');
+    }
+    renderCards();
+  })();
+
   setTimeout(function(){
     var splash = document.getElementById('splashScreen');
     if(splash){ splash.classList.add('hidden'); }
