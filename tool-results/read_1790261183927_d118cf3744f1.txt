@@ -1,0 +1,527 @@
+  1416→  var products = [
+  1417→    { name: "Colours Reversible Laptop Sleeve", brand: "Klipxtreme", model: "KNS-214BL", price: 2431.91, category: "sleeve", color: "#3b82f6", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-214BL-detalle-03.jpg"], size: '14.1\"', desc: "Reversible 2-in-1 design sleeve with red zipper pulls." },
+  1418→    { name: "NeoActive Laptop Sleeve", brand: "Klipxtreme", model: "KNS-215", price: 3364.44, category: "sleeve", color: "#374151", imgs: ["https://store.domainnetworks.ca/cdn/shop/files/51410.jpg"], size: '15.6\"', desc: "Textured surface with enhanced shock absorption." },
+  1419→    { name: "SquarePro Laptop Sleeve", brand: "Klipxtreme", model: "KNS-420", price: 3839.85, category: "sleeve", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-ppal.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle-KNS-420-GR.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNS-420-3.jpg"], size: '15.6\"', desc: "Minimalist rectangular design with smooth finish." },
+  1420→    { name: "NeoShield Laptop Sleeve", brand: "Klipxtreme", model: "KNS-330", price: 5607.40, category: "sleeve", color: "#4b5563", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-03.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNS-330-detalle-04.jpg"], size: '15.6\"', desc: "Heavy-duty sleeve with reinforced corners and textured padding." },
+  1421→    { name: "Classic Go 15.6\" Notebook Case", brand: "Klipxtreme", model: "KNC-041", price: 4626.11, category: "case", color: "#d4a574", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041_landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-041-detalle-3.jpg"], size: '15.6\"', desc: "Messenger bag style with buckle closures and shoulder strap." },
+  1422→    { name: "Classic Essential 15.6\" Laptop Case", brand: "Klipxtreme", model: "KNC-025", price: 4571.25, category: "case", color: "#4b5563", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNC-025-detalle-03.jpg"], size: '15.6\"', desc: "Slim profile briefcase with front organizer pocket." },
+  1423→    { name: "Grey Backpack Berna", brand: "Klipxtreme", model: "KNB-406GR", price: 5607.40, category: "backpack", color: "#9ca3af", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-landing-KNB-406GR.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Fotos-detalle-KNB-406-3.jpg"], size: '15.6\"', desc: "Light grey backpack with padded shoulder straps." },
+  1424→    { name: "Indigo Backpack", brand: "Klipxtreme", model: "KNB-416", price: 5973.10, category: "backpack", color: "#3730a3", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416GR-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-416-detalle-03.jpg"], size: '15.6\"', desc: "Navy blue classic backpack with multiple compartments." },
+  1425→    { name: "Stendal Backpack", brand: "Klipxtreme", model: "KNB-577", price: 5973.10, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577BK-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-577-detalle-3.jpg"], size: '15.6\"', desc: "Sleek black design with matching accessory pouch." },
+  1426→    { name: "Emblem Backpack", brand: "Klipxtreme", model: "KNB-582", price: 5973.10, category: "backpack", color: "#1f2937", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-582_dt_03.jpg"], size: '15.6\"', desc: "Geometric diamond-patterned fabric, modern stylish design." },
+  1427→    { name: "Monaco Backpack", brand: "Klipxtreme", model: "KNB-426BL", price: 6448.51, category: "backpack", color: "#2563eb", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing_Azul.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/Foto-banner-principalKNB-426(0).png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_01(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_02(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-landing-y-detalle_03(1).jpg"], size: '15.6\"', desc: "Casual everyday backpack with multiple zippered compartments." },
+  1428→    { name: "Sport Backpack", brand: "Targus", model: "TAS-119", price: 6704.50, category: "backpack", color: "#111827", imgs: ["https://us.targus.com/cdn/shop/files/TSB89104_MAIN1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle_1_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle6_1.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB89104US_Lifestyle7_1_2.jpg"], size: '15.6\"', desc: "Athletic sporty design with breathable mesh backing." },
+  1429→    { name: "Octave III Backpack", brand: "Targus", model: "TBB65313GL", price: 6500, category: "backpack", color: "#e5e7eb", imgs: ["https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/62a0aac1d95a.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/43c4f64cbbd3.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1e38f157fa1f.jpg", "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5f3e4aa8ccbc.jpg"], size: '15-16"', desc: "Targus Octave III 15-16 inch backpack in Papyrus/off-white - 22L capacity with padded laptop pocket, organizer & reflective accents." },
+  1430→    { name: "Aberdeen Backpack", brand: "Klipxtreme", model: "KNB-456", price: 6869.07, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-456BK.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-1(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-2(1).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/fotos-detalle-KNB-456-3(0).jpg"], size: '15.6\"', desc: "Structured business-casual backpack with accessory case." },
+  1431→    { name: "Bizman Backpack", brand: "Klipxtreme", model: "KNB-895", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-895-banner-detalle-3.jpg"], size: '15.6\"', desc: "Professional executive style with extensive organization." },
+  1432→    { name: "Intellect Essential Backpack", brand: "Targus", model: "TAS-217", price: 7009.25, category: "backpack", color: "#111827", imgs: ["https://us.targus.com/cdn/shop/files/TSB966GL-92_FRONT.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_MAIN2.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL-92_BACK.jpg", "https://cdn.shopify.com/s/files/1/0121/0014/1114/files/TSB966GL_PREMIUM_CAPACITY.jpg"], size: '15.6\"', desc: "Business-oriented design with clean lines." },
+  1433→    { name: "Prelude Pro Laptop Backpack", brand: "HP", model: "HP-PP15", price: 7923.50, category: "backpack", color: "#6b7280", imgs: ["https://hp.widen.net/content/1xs4ybd3x4/webp/1xs4ybd3x4.png"], size: '15.6\"', desc: "Modern minimalist design with sleek profile." },
+  1434→    { name: "Khaki Bari Backpack", brand: "Klipxtreme", model: "KNB-467KH", price: 7710.18, category: "backpack", color: "#a68a64", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-landing-detalle-RD-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-467-detalle-KH-4.jpg"], size: '15.6\"', desc: "Earth-tone casual outdoor backpack with accessory pouch." },
+  1435→    { name: "XpandPack Backpack", brand: "Klipxtreme", model: "KNB-650BK", price: 7710.18, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_LAND.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK-banner-top.png", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-650BK_DET_03.jpg"], size: '15.6\"', desc: "Expandable design with zippers to increase capacity." },
+  1436→    { name: "Capri Ladies Laptop Handbag", brand: "Klipxtreme", model: "KLB-461", price: 7710.18, category: "handbag", color: "#7f1d1d", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461GR-Landing.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_02(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_03(0).jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KLB-461BG_Detalles_04(0).jpg"], size: '15.6\"', desc: "Feminine tote/handbag with dual handles and matching clutch." },
+  1437→    { name: "Pioneer Backpack", brand: "Klipxtreme", model: "KNB-583", price: 7301.81, category: "backpack", color: "#111827", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_land.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_01.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_02.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/knb-583_det_03.jpg"], size: '15.6\"', desc: "Rugged durable design with multiple external pockets." },
+  1438→    { name: "Toscana Backpack", brand: "Klipxtreme", model: "KNB-468", price: 8533.00, category: "backpack", color: "#92400e", imgs: ["https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-1.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-2.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-3.jpg", "https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KNB-468-detalle-BL-4.jpg"], size: '15.6\"', desc: "Premium leather-like finish, vintage-inspired design." },
+  1439→    { name: "Renew Business 15.6\" Laptop Bag", brand: "HP", model: "HP-RB15", price: 9630.10, category: "case", color: "#d1d5db", imgs: ["https://hp.widen.net/content/duud3on3mi/webp/duud3on3mi.png"], size: '15.6\"', desc: "Eco-friendly construction using sustainable materials." },
+  1440→    { name: "Pro Slim Briefcase", brand: "Dell", model: "DL-PS15", price: 9672.77, category: "case", color: "#111827", imgs: ["https://www.lambda-tek.com/componentshop/images/imgB49114594.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/5eb22808f531cd9b98e64cbc16462835/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d50501730b93820f23f4e91f3d8b3ecf/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/d566328d967d690c98f06453d88964bc/original.jpg", "https://cdn.cs.1worldsync.com/syndication/mediaserverredirect/f3a1cdec5bf8bb30c60728f0595c4a94/width(1200).jpg"], size: '15\"', desc: "Ultra-slim professional briefcase with minimal bulk." },
+  1441→    { name: "Vertical Ergonomic Mouse", brand: "HOMEFISH", model: "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical", price: 3500, category: "mouse", color: "#111827", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/mouse-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/mouse-3.jpg"], size: "N/A", desc: "Ergonomic vertical wireless optical mouse with 3 adjustable DPI levels (800/1200/1600)." },
+  1442→    { name: "C8c Lite Kit 4MP", brand: "EZVIZ", model: "EZVIZ C8c Lite Kit 4MP", price: 25990, category: "camera", color: "#1e40af", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/cam-1.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-2.png", "https://pixelwiresolutionsapp.github.io/download/images/cam-3.png"], size: "N/A", desc: "4MP indoor/outdoor surveillance camera kit with color night vision and pan & tilt." },
+  1443→    { name: "2D Barcode Scanner X11", brand: "Generic", model: "X11-Black", price: 7800, category: "scanner", color: "#0f172a", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/scanner-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-4.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-5.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-6.jpg", "https://pixelwiresolutionsapp.github.io/download/images/scanner-7.jpg"], size: "N/A", desc: "Desktop omnidirectional 2D barcode scanner - reads 1D, 2D, QR, Data Matrix & PDF417 codes automatically." },
+  1444→    { name: "Non-Contact Voltage Tester Pen B15", brand: "ANENG", model: "ANENG B15", price: 3980, category: "tool", color: "#ea580c", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/volt-1.jpg", "https://pixelwiresolutionsapp.github.io/download/images/volt-2.jpg"], size: "N/A", desc: "Non-contact induction voltage tester pen (24V~250V AC) with dual LED indicators and built-in flashlight." },
+  1445→    { name: "Intelligent Pulse Repair Charger", brand: "XINHANGXIN", model: "Intelligent Pulse Repair Charger", price: 9500, category: "tool", color: "#1e293b", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/charger-3.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-2.jpg", "https://pixelwiresolutionsapp.github.io/download/images/charger-1.jpg"], size: "N/A", desc: "12V/24V automatic smart battery charger with pulse repair mode - revives sulfated car, truck & motorcycle batteries." },
+  1446→    { name: "10PCS Precision Pick and Hook Set", brand: "Generic", model: "10PCS Precision Pick and Hook Set", price: 3800, category: "auto", color: "#15803d", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/pick-1.jpg"], size: "N/A", desc: "10-piece precision pick & hook set for removing oil seals, O-rings, gaskets & cotter pins in automotive work." },
+  1447→    { name: "Eco Loop Essential Backpack", brand: "Dell", model: "DL-EL15", price: 9740.00, category: "backpack", color: "#111827", imgs: ["https://i5.walmartimages.com/seo/Dell-Backpack-14-16-Black_73e72394-17f6-4138-a95d-21141480471f.d5dbc49cb95fc3f27e7f8c8c99e1693c.jpeg", "https://i5.walmartimages.com/asr/2f629e66-82b4-4f6e-bf14-e68f94c40704.fbea6b3ab08c92257dedeeed035bd407.jpeg", "https://i5.walmartimages.com/asr/65e3fb23-570b-4fb7-b271-23d89fc37236.37d34e1dd25c7467ee28d7b720668e71.jpeg", "https://i5.walmartimages.com/asr/1617167f-31f2-47f9-8d5c-2878592dc0a7.3cf54ce390b8f150814faacd94d44fce.jpeg"], size: '15.6\"', desc: "Environmentally friendly with Eco Loop materials." },
+  1448→    { name: "USB-C Hub 8-in-1", brand: "Generic", model: "USB C Hub 8in1 7in2 7in1 Type C 3.1 To 4K HDMI Adapter with RJ45 SD/TF Card Reader PD", price: 5000, category: "hub", color: "#475569", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/usb-hub-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/usb-hub-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/usb-hub-3.jpeg"], size: "N/A", desc: "8-in-1 USB-C hub with 4K HDMI, RJ45 Ethernet, SD/TF card reader, USB-A ports and PD charging." },
+  1449→    { name: "Screen Storage Rack", brand: "Generic", model: "Computer and TV Screen Storage Rack - Large 26x11.5cm", price: 1800, category: "mount", color: "#1f2937", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/rack-1.jpeg"], size: "26x11.5cm", desc: "Large storage rack that sits on top of monitors or TVs to hold wireless routers, set-top boxes and small devices." },
+  1450→    { name: "Foldable Tablet Stand", brand: "Generic", model: "Adjustable Foldable Tablet & Phone Stand", price: 2800, category: "mount", color: "#374151", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/stand-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-3.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-4.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/stand-5.jpeg"], size: "N/A", desc: "Universal foldable desktop stand for tablets and phones - adjustable multi-angle with articulated hinges." },
+  1451→    { name: "USB 3.0 Gigabit Ethernet Adapter", brand: "GLAABIT", model: "10/100/1000Mbps USB 3.0 to RJ45 LAN Ethernet Adapter", price: 2500, category: "hub", color: "#1e293b", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/ethernet-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/ethernet-2.jpeg"], size: "N/A", desc: "USB 3.0 Gigabit Ethernet LAN adapter - plug into any USB port for wired network connectivity up to 1000Mbps." },
+  1452→    { name: "Laptop Stand", brand: "Generic", model: "Creative Folding Storage Bracket Laptop Stand", price: 3500, category: "mount", color: "#374151", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/laptop-stand-3.jpeg"], size: "N/A", desc: "X-shaped folding laptop stand with ventilation slots - elevates laptop for better airflow and ergonomic typing angle." },
+  1453→    { name: "Portable Mini Thermal Printer", brand: "Bisoffice", model: "Bisoffice Portable Mini Thermal Printer 58mm 2-Inch Wireless USB Receipt Bill Ticket Printer", price: 8000, category: "printer", color: "#1d4ed8", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/printer-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/printer-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/printer-3.jpeg"], size: "58mm (2 inch)", desc: "Portable mini thermal receipt printer - prints receipts, tickets, labels and bills via USB and wireless connection." },
+  1454→    { name: "WiFi Range Extender", brand: "Kebidumei", model: "Kebidumei 1200/300Mbps WiFi Repeater Amplifier 2.4G/5G Network Expander Range Extender", price: 5500, category: "network", color: "#7c3aed", imgs: ["https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-1.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-2.jpeg", "https://pixelwiresolutionsapp.github.io/download/images/wifi-ext-3.jpeg"], size: "N/A", desc: "Dual-band WiFi range extender/repeater with 4 antennas - extends wireless coverage up to 1200Mbps on 5GHz and 300Mbps on 2.4GHz." }
+  1455→  ];
+  1456→
+  1457→  var productIndices = [];
+  1458→  var selectedDelivery = "pickup";
+  1459→  var selectedDeliveryCost = 0;
+  1460→  var productSpecs = {
+  1461→  "KNS-214BL": ["Fits laptops up to 14.1 inches", "Material: High-quality neoprene (water-repellent, lightweight)", "Closure: Two-tone reversible sleeve (no zipper); use as stand-alone or inside a bag", "Pockets: None (slip-in design)", "Dimensions: 15.7 x 11.14 x 0.59 in; Weight: 6.3 oz", "Machine washable; bone-shaped design creates a built-in bumper"],
+  1462→  "KNS-215": ["Fits laptops up to 15.6 inches", "Material: Outside 100% neoprene; inside 100% polyester (water-resistant)", "Closure: One main zippered pocket", "Pockets: Single main zippered compartment", "Dimensions: 15.3 x 11.4 x 0.5 in; Weight: 0.77 lb", "Lightweight, sleek design; ideal for standalone use or inside a backpack"],
+  1463→  "KNS-420": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (extra durable fabric for daily wear and tear)", "Closure: One main zippered pocket", "Pockets: Front zippered pocket for small accessories (cables, memory cards, etc.)", "Dimensions: 14.5 x 9.4 x 0.7 in; Weight: 0.6 lb", "Built-in carry handle; versatile and stylish design"],
+  1464→  "KNS-330": ["Fits laptops up to 15.6 inches", "Material: 4mm wetsuit-grade neoprene (lightweight, tough, shock-absorbing)", "Closure: Slip-in with elastic corner straps (stay-on mode)", "Pockets: None; standalone sleeve design", "Dimensions: 15.7 x 11.2 x 1.38 in; Weight: N/A", "Comfortable handles for easy carrying; machine washable; water-repellent"],
+  1465→  "KNC-041": ["Fits laptops up to 15.6 inches", "Material: 100% polyester (durable construction)", "Straps: Adjustable & detachable shoulder strap; reinforced carry handles; trolley strap for carry-on", "Pockets: Zippered front pocket with internal organizer for accessories", "Dimensions: 15 x 11.2 x 2.3 in; Weight: 1 lb", "Max load weight: 22 lb; padded laptop compartment"],
+  1466→  "KNC-025": ["Fits laptops up to 15.6 inches", "Material: 840D polyester exterior / 210D polyester lining (durable top-load)", "Handles: Reinforced carry handles; top-load briefcase design", "Pockets: Two zippered compartments (main holds laptop and files; front for accessories); laptop compartment: 15 x 10 x 1 in", "Dimensions: 16.5 x 16 x 3 in; Weight: 1.3–1.4 lb", "Fully lined and padded main compartment with interior divider and strap"],
+  1467→  "KNB-406GR": ["Fits laptops up to 15.6 inches", "Material: Exterior 100% 600-denier polyester; lining 100% 210-denier polyester", "Straps: Adjustable padded shoulder straps; padded back panel; carry handle", "Compartments: Spacious padded main compartment with interior divider; zippered front pocket; multifunctional utility organizer; zippered mesh pocket", "Dimensions: 16.1 x 11.4 x 6.6 in; Laptop compartment: 13.7 x 10.6 x 1.5 in; Weight: 1 lb", "Max load: 26.4 lb"],
+  1468→  "KNB-416": ["Fits laptops up to 15.6 inches", "Material: Exterior 300-denier polyester; high-quality and durable", "Straps: Padded shoulder straps; padded back panel", "Compartments: One main padded compartment with divider; one accessory pocket; utility zippered pocket; smartphone compartment", "Dimensions: 17.1 x 11.4 x 3.7 in; Laptop compartment: 14.9 x 11 x 1.9 in; Weight: 1.52 lb", "Max load: 26 lb; organizer panel for accessories"],
+  1469→  "KNB-577": ["Fits laptops up to 15.6 inches", "Material: 100% polyester; ultra-padded back side", "Straps: Padded shoulder straps; carry handle", "Compartments: Well-padded laptop pocket; three frontal zipper pockets; interior organizer; exterior pockets", "Dimensions: 11.4 x 4.7 x 17.5 in; Laptop compartment: 11 x 1 x 15 in; Weight: 1.3 lb", "Max load: 33 lb; built-in USB charging port; water bottle pockets"],
+  1470→  "KNB-582": ["Fits laptops up to 15.6 inches; tablet pocket up to 12 inches", "Material: Exterior 100% high-quality polyester; lining 100% polyester; metal pullers", "Straps: Adjustable shoulder straps; integrated soft-padded handle; mesh-padded back panel; side straps", "Compartments: One spacious main compartment with interior zippered pocket; two front accessory/stationery pockets; two mesh side pockets", "Dimensions: 12.2 x 6.7 x 18.3 in; Laptop compartment: 15.5 x 11 x 1.5 in; Weight: N/A", "Max load: 39.6 lb; rubber grommet for cord pass-through; 1-year warranty"],
+  1471→  "KNB-426BL": ["Fits laptops up to 15.6 inches", "Material: Highly-durable protective nylon; metal pullers; high-quality lining", "Straps: Adjustable shoulder straps with ergonomically padded back panel; ultra-padded integrated handle", "Compartments: Two fully lined and padded main compartments; interior multifunctional organizer with zippered pocket; four lateral pockets (two zippered)", "Dimensions: 15.3 x 11.4 x 4.3 in; Laptop compartment: 12 x 11 x 1 in; Weight: 1 lb", "Max load: 33 lb; removable key clip; soft cushioned tablet pocket"],
+  1472→  "KNB-456": ["Fits laptops up to 15.6 inches; designed for women", "Material: Exterior 100% 1600D nylon; black leatherette accents and handle; polyester lining", "Straps: Adjustable padded shoulder straps; padded back panel; reinforced leatherette handle", "Compartments: One main padded compartment; one front zippered utility pocket; one interior zippered pocket", "Dimensions: 16.5 x 5.11 x 11.4 in; Laptop compartment: 15.7 x 0.5 x 10.6 in; Weight: 1.16 lb", "Max load: 33 lb; stylish design with leatherette detailing"],
+  1473→  "KNB-895": ["Fits laptops up to 15.6 inches; 2-in-1 backpack & notebook case", "Material: 100% polyester; built-in USB charging port for power bank (not included)", "Straps: Adjustable padded shoulder straps; carry-on strap; integrated handle", "Compartments: One main padded laptop compartment; two front zipper pockets (horizontal + vertical); interior organizer", "Dimensions: 11.8 x 3.1 x 16.5 in; Laptop compartment: 11 x 0.6 x 15 in; Weight: 1.7 lb", "Max load: 33 lb; TSA-compliant; versatile business/travel design"],
+  1474→  "KNB-467KH": ["Fits laptops up to 15.6 inches; fits tablets up to 10–12 inches", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; lining polyester; contemporary sleek design", "Straps: Adjustable padded shoulder straps; carry handle", "Compartments: Ample lined main compartment with laptop + tablet pockets; two interior utility/organizer pockets", "Dimensions: 17.3 x 12.5 x 4 in; Laptop compartment: 16.5 x 10.6 x 2 in; Weight: 1.32 lb", "Max load: 26.4 lb; premium tablet pouch; metal zippers"],
+  1475→  "KNB-650BK": ["Fits laptops up to 15.6 inches; tablet compartment up to 12 inches", "Material: High-quality water-resistant polyester; anti-theft rear pocket", "Straps: Padded shoulder straps; ultra-padded backrest; carry-on strap; handle", "Compartments: One main expandable compartment (expands up to 60%); tablet pocket; two front zipper pockets; interior mesh zippered pocket; anti-theft rear pocket", "Dimensions: 11 x 3.5 x 16.9 in (slim); expands 60%; Weight: 1.6 lb", "Max load: 33 lb; water-resistant exterior; expandable design for travel"],
+  1476→  "KNB-583": ["Fits laptops up to 16 inches; fully lined and padded main compartment with divider and strap", "Material: High-quality durable polyester; TSA-compliant", "Straps: Adjustable padded shoulder straps; integrated handle; luggage pass-through strap", "Compartments: Dedicated padded laptop compartment; two vertical front zippered pockets; interior organizer", "Dimensions: 12.9 x 5.5 x 18.8 in; Laptop compartment: 11 x 0.78 x 14.9 in; Weight: 1.85 lb", "Max load: 39.6 lb; spacious design; 1-year warranty"],
+  1477→  "KNB-468": ["Fits laptops up to 15.6 inches; ladies' collection", "Material: Exterior 90% 1200-denier nylon / 100% polyurethane; metal zippers with leatherette pullers; polyester lining", "Straps: Adjustable ergonomic padded shoulder straps; reinforced handle; pass-through carry-on strap", "Compartments: Three main compartments; one fully lined padded laptop compartment with four multipurpose pockets; zippered organizer; front zippered pocket", "Dimensions: 16.5 x 12.6 x 5.5 in; Laptop compartment: 13.3 x 11 x 2 in; Weight: 0.76 lb", "Load capacity: 12 kg; colors: red, blue, khaki, brown"],
+  1478→  "KLB-461": ["Fits laptops up to 15.6 inches; ladies' handbag design", "Material: 100% premium quality polyester; leatherette straps with fine stitching", "Handles: Leatherette straps for hand carry; double-stitched seams for durability", "Pockets: Two main zippered compartments; one interior zippered pocket; one zippered pocket on back panel", "Dimensions: 16.9 x 5.7 x 11.8 in; Weight: 1.2 lb", "Max load: 17.6 lb; trendy two-tone design; lightweight and portable"],
+  1479→  "TSB89104US": ["Fits laptops up to 15.6–16 inches", "Material: Polyester (lightweight, durable); reflective accents", "Straps: Shoulder carrying straps; hand strap", "Compartments: Padded laptop compartment; tablet compartment; front essentials pocket; dual mesh side water bottle pockets", "Dimensions: 12.23 x 5.23 x 17.76 in (L x W x H); Weight: 1.0 lb (16 oz)", "Storage volume: ~25 liters; water bottle pockets; sporty lightweight design"],
+  1480→  "TSB966GL-92": ["Fits laptops up to 15.6 inches", "Material: Polyester (lightweight, water-resistant)", "Straps: Adjustable shoulder straps; slim lightweight design", "Compartments: Dedicated side-loading laptop compartment; extra-large main compartment; zippered front pocket with organizer for business cards, keys, drives, chargers", "Dimensions: 16.75 x 12.19 x 5.71 in (L x W x H); Laptop compartment: 14.75 x 1.53 in; Weight: 0.92 lb", "Water-resistant; designed for work and travel essentials"],
+  1481→  "HP-PP15": ["Fits laptops up to 15.6 inches; padded laptop compartment", "Material: 95% post-consumer recycled external fabric; fabric body", "Straps: Adjustable shoulder straps; trolley strap; belt loop", "Compartments: Laptop compartment; document compartment; main compartment; accessories pockets; pen loop; zippered pockets; slip pockets for phone/wallet/sunglasses", "Dimensions: 16.7 x 5 x 12.5 in (D x W x H) / 317.5 x 127 x 425.5 mm; Weight: 0.48 kg (1.06 lb)", "Lockable zippers; reflective accents; water-resistant, bump-resistant, scratch-resistant"],
+  1482→  "HP-RB15": ["Fits laptops up to 15.6 inches", "Material: 100% ocean-bound plastics (main fabric); all tags/strings/stuffing from recycled sources; water-resistant", "Straps: Adjustable shoulder straps; carry handles", "Compartments: Padded laptop compartment; main storage; multiple pockets; lockable zippers", "Dimensions: 15.4 x 2.6 x 11.4 in (W x D x H) / 39 x 6.5 x 29 cm; Weight: 0.61 kg (1.34 lb)", "Max load: 18.9 lb; eco-friendly ocean-bound plastic construction"],
+  1483→  "DL-PS15": ["Fits laptops up to 15–15.6 inches (up to 39.6 cm)", "Material: 600D recycled polyester fabric with foam padding; weather-resistant, dirt-resistant; 100% recycled plastic content", "Straps: Padded carry handles; luggage pass-through strap", "Compartments: Padded laptop sleeve; tablet pocket; front zippered accessory pocket; pen loops; business card holder", "Dimensions: 15.4 x 3.5 x 11.4 in (W x D x H); Weight: 17.28 oz (549 g / 1.08 lb)", "Reflective accents; slim-fit briefcase design for business"],
+  1484→  "DL-EL15": ["Fits laptops up to 16 inches (max laptop dimension: 400 x 270 x 25 mm)", "Material: 100% recycled materials / ocean-bound plastic; 360° foam cushion protection", "Straps: Adjustable shoulder straps; padded back panel; top handle; luggage pass-through", "Compartments: Large full-access front opening; padded laptop compartment; zippered front pocket; accessory organization", "Dimensions: 17.3 x 5.5 x 12.2 in (H x D x W); Weight: 17.64 oz (500 g / 1.1 lb)", "18-liter capacity; eco-friendly sustainable design"],
+  1485→  "HOMEFISH Vertical Mouse Ergonomic 2.4GHz Wireless Optical": ["Connectivity: 2.4 GHz wireless via USB nano receiver; receiving distance up to 10m", "DPI: 3 adjustable levels - 800 / 1200 / 1600 DPI (switchable button)", "Battery: USB rechargeable; low-noise click design", "OS Compatibility: Windows XP/7/8/10/11, macOS, Linux, Chrome OS", "Buttons: 6 buttons (left, right, scroll, DPI switch, forward, back); right-hand use only", "Ergonomic vertical design to reduce wrist strain; optical sensor; lightweight portable form factor"],
+  1486→  "EZVIZ C8c Lite Kit 4MP": ["Resolution: 4MP (2560 x 1440) QHD with color night vision", "Lens: 4mm focal length; 108-degree field of view", "Pan & Tilt: 340-degree horizontal pan; 120-degree vertical tilt; auto-tracking", "Indoor/Outdoor: IP65 weatherproof rating for outdoor use", "Storage: Supports microSD card up to 256GB (not included); H.265 video compression", "Connectivity: Wi-Fi 2.4GHz; works with EZVIZ app (iOS/Android) for remote viewing and alerts", "Audio: Built-in microphone and speaker for two-way communication", "Kit includes: Camera unit, mounting accessories, power adapter"],
+  1487→  "X11-Black": ["Type: Desktop omnidirectional 2D barcode scanner (presentation imager)", "Scan Capability: Reads 1D, 2D, QR, Data Matrix, PDF417 barcodes automatically", "Scan Pattern: Omnidirectional - reads codes from any angle", "Sensor: CMOS image sensor for fast, accurate scanning", "Light Source: White LED illumination with red aiming ring", "Connectivity: USB (wired); plug-and-play with Windows, Mac, Linux, POS systems", "Stand: Built-in adjustable stand for hands-free desktop use", "Beep Indicator: Built-in buzzer confirms successful scan", "Compatibility: Works with POS software, retail, restaurants, pharmacies, logistics", "Body: Compact black housing with durable design for daily commercial use"],
+  1488→  "ANENG B15": ["Type: Non-contact induction voltage tester pen (electrical test pencil)", "Voltage Range: 24V ~ 250V AC", "Detection Method: Non-contact - detects live wires without touching metal", "Indicators: Dual LED lights - Green for Low Voltage, Red for High Voltage", "Built-in Flashlight: Yellow button with LED torch for working in dark spaces", "Tip: Flathead screwdriver-style metal tip for precise sensing", "Body: Ergonomic black housing with textured grip", "Power: Battery operated (typical AAA - check packaging)", "Use Cases: Home wiring, electrical repairs, appliance testing, breaker panels, outlets, switches", "Safety: Always verify on a known live circuit before use"],
+  1489→  "Intelligent Pulse Repair Charger": ["Type: Smart battery charger with pulse repair function (automotive)", "Brand: XINHANGXIN", "Voltage Support: 12V / 24V automatic identification", "Battery Capacity Range: 30-300Ah (cars/trucks); 6-30Ah (motorcycles)", "Display: LED screen showing charge status and voltage", "Modes: Charge mode, Floating Charge (maintenance), Intelligent Pulse, Activate Repair", "Pulse Repair: Desulfates and revives weak/sulfated batteries to extend lifespan", "Safety Features: Reverse connection protection, overcharge protection, short-circuit protection", "Cooling: Built-in cooling fan for extended operation", "Connectors: Copper alligator clamps (red + / black -) for battery terminals", "Use Cases: Cars, trucks, motorcycles, tractors, lawn mowers, AGM/GEL/lead-acid batteries", "Includes: Charger unit, AC power cord, battery clamp cables"],
+  1490→  "10PCS Precision Pick and Hook Set": ["Type: 10-piece precision pick and hook tool set (automotive hand tools)", "Pieces: 10 picks/hooks with varying tip configurations for different jobs", "Tip Variations: Straight sharp pick, 90-degree angled hooks, curved picks, round hooks, complex double-bend hooks, complex angle hooks", "Handles: Ergonomic two-tone handles - black rubberized grip with green accents; textured finger grooves for non-slip use", "Shaft Material: Black-finished hardened metal (typically chrome vanadium steel)", "Protection: Several picks include clear plastic protective caps for safe storage", "Primary Use: Removing oil seals, O-rings, gaskets, cotter pins and accessing small internal components", "Applications: Engines, transmissions, machinery, electrical connectors, stubborn clips and fasteners", "Compact design for precision work in tight spaces; ideal for mechanics and DIYers"],
+  1491→    "USB-C Hub 8-in-1": ["Type: 8-in-1 USB-C multi-port hub/adapter", "Ports: HDMI (4K@30Hz), RJ45 Gigabit Ethernet, SD card slot, microSD/TF card slot, 2x USB-A 3.0, 2x USB-C (1x PD charging, 1x data)", "HDMI Output: Supports 4K resolution at 30Hz for external displays/monitors", "Ethernet: RJ45 port for wired Gigabit Ethernet network connection", "Card Readers: SD and microSD/TF slots for simultaneous card access", "USB-A: Two USB 3.0 ports (blue) for peripherals and data transfer", "USB-C PD: Power Delivery pass-through charging for laptop while using the hub", "Build: Dark gray/black metal body with USB-C cable attached", "Ideal for laptops with limited ports - expand connectivity for work, presentations and data transfer"],
+  1492→    "Screen Storage Rack": ["Type: Computer/TV screen top storage rack (wireless router & set-top box holder)", "Size: Large - 26 x 11.5 cm", "Material: Black textured surface (carbon-fiber look) with raised back lip and two front support legs", "Design: Sits on top of computer monitors or TVs to free up desk space", "Use: Holds wireless routers, set-top boxes, streaming devices, small speakers and other lightweight electronics", "Installation: No tools required - simply rests on top of screen; non-slip legs keep it stable", "Color: Black", "Max Load: Designed for lightweight electronic devices", "Perfect for organizing clutter around monitors and TVs"],
+  1493→    "Foldable Tablet Stand": ["Type: Universal foldable desktop tablet and phone stand", "Design: Articulated/folding stand with multiple joints and circular hinge mechanism for angle adjustment", "Compatibility: Holds tablets (iPad and all sizes), phones and e-readers", "Angles: Multi-angle adjustable - find the perfect viewing angle for reading, typing, watching videos or video calls", "Material: Matte black plastic/metal construction; lightweight and portable", "Base: Two support legs forming a stable A-frame/triangular base", "Folding: Fully foldable/collapsible - folds flat for easy storage and portability", "Non-slip: Rubberized feet and pads keep devices secure without scratching", "Use: Desktop use for work, presentations, video calls, watching media and reading"],
+  1494→    "USB 3.0 Gigabit Ethernet Adapter": ["Type: USB 3.0 to RJ45 Gigabit Ethernet LAN network adapter", "Brand: GLAABIT", "Speed: 10/100/1000Mbps Gigabit Ethernet - supports up to 1000Mbps wired connection", "USB: USB 3.0 (backward compatible with USB 2.0) with blue-tinted connector", "Port: RJ45 Ethernet port with LINK and ACT LED status indicators", "Cable: Built-in short USB cable for easy connection without additional cable needed", "Build: Compact matte black rectangular dongle with textured surface", "Use: Add wired Ethernet to laptops, tablets or PCs without built-in LAN ports", "Plug and play - no drivers needed for most operating systems"],
+  1495→    "Laptop Stand": ["Type: Creative folding storage bracket laptop stand", "Design: X-shaped scissor/cross-bar structure with central pivot point for foldable design", "Ventilation: Base bars with cut-out ventilation slots for improved laptop airflow and cooling", "Grips: Grey rubberized pads on vertical side supports to prevent laptop from slipping", "Adjustment: Adjustment slots on vertical arms for multiple height/angle settings", "Material: Black metal or high-durability plastic construction", "Folding: Fully foldable - collapses flat for easy storage and portability", "Ergonomic: Elevates laptop for improved typing angle, better posture and reduced neck strain", "Compatible with most laptop sizes; ideal for desk use at home or office"],
+  1496→    "Portable Mini Thermal Printer": ["Type: Portable mini 58mm (2-inch) thermal receipt/bill/ticket printer", "Brand: Bisoffice", "Print Width: 58mm (2 inch) thermal paper roll", "Connectivity: USB and wireless (Bluetooth/Wi-Fi) for flexible printing from multiple devices", "Controls: POWER button with power symbol and FEED button for manual paper feed", "Design: Blue translucent top cover (shows paper roll level) with matte black base", "Cable: Includes USB cable with USB-A connector", "Compact & Portable: Small lightweight design ideal for mobile vendors, small businesses and events", "Uses: Receipts, bills, tickets, labels, orders - perfect for POS systems, market stalls and food trucks"],
+  1497→    "WiFi Range Extender": ["Type: Dual-band WiFi range extender / wireless repeater / signal amplifier", "Brand: Kebidumei", "Speed: 1200Mbps (5GHz band) + 300Mbps (2.4GHz band) dual-band wireless", "Antennas: 4 external omni-directional antennas (2 taller center, 2 shorter outer) for maximum coverage", "Plug: US plug - plugs directly into wall outlet; no cables needed", "Input: AC 100-240V 50/60Hz", "Modes: WiFi Repeater mode and WiFi AP (Access Point) mode", "LED Indicators: Power, signal strength and connection status LEDs on front panel", "Setup: Default IP 192.168.10.1; easy web-based configuration", "Extends WiFi coverage to eliminate dead zones in homes, offices and buildings"]
+  1498→};
+  1499→
+  1500→  function openSpecsByIndex(idx) {
+  1501→    var p = products[idx];
+  1502→    if (!p) return;
+  1503→    var sp = productSpecs[p.model] || productSpecs[p.name] || [];
+  1504→    document.getElementById('specsTitle').textContent = p.brand + ' ' + p.name;
+  1505→    document.getElementById('specsModel').textContent = 'Model: ' + p.model + (p.size !== 'N/A' ? ' | Fits: ' + p.size + ' Laptop' : '');
+  1506→    var list = document.getElementById('specsList');
+  1507→    if (sp.length === 0) {
+  1508→      list.innerHTML = '<li>No detailed specs available for this product yet.</li>';
+  1509→    } else {
+  1510→      var li = '';
+  1511→      for (var i = 0; i < sp.length; i++) {
+  1512→        li += '<li>' + sp[i] + '</li>';
+  1513→      }
+  1514→      list.innerHTML = li;
+  1515→    }
+  1516→    document.getElementById('specsOverlay').classList.add('open');
+  1517→    document.body.style.overflow = 'hidden';
+  1518→  }
+  1519→  function closeSpecs() {
+  1520→    document.getElementById('specsOverlay').classList.remove('open');
+  1521→    document.body.style.overflow = '';
+  1522→  }
+  1523→  var selectedPhone = "18767731173";
+  1524→  var selectedChannel = "whatsapp";
+  1525→  var currentProduct = null;
+  1526→  var currentProductIndex = -1;
+  1527→  var lastViewedIndex = 0;
+  1528→  var lbProduct = null;
+  1529→  var lbProductIndex = -1;
+  1530→  var lbIndex = 0;
+  1531→  var lbImages = [];
+  1532→  var touchStartX = 0;
+  1533→  var touchEndX = 0;
+  1534→
+  1535→  function toggleServices() {
+  1536→    var section = document.getElementById('servicesSection');
+  1537→    var btn = document.getElementById('servicesToggle');
+  1538→    if (!section || !btn) return;
+  1539→    section.classList.toggle('open');
+  1540→    btn.classList.toggle('open');
+  1541→  }
+  1542→
+  1543→  function toggleService(cardId) {
+  1544→    var card = document.getElementById(cardId);
+  1545→    if (!card) return;
+  1546→    var isCollapsed = card.classList.contains('collapsed');
+  1547→    card.classList.toggle('collapsed');
+  1548→    var btn = card.querySelector('.service-collapse-btn');
+  1549→    if (isCollapsed) {
+  1550→      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+  1551→      btn.title = 'Minimize';
+  1552→    } else {
+  1553→      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="6 9 12 15 18 9"/></svg>';
+  1554→      btn.title = 'Expand';
+  1555→    }
+  1556→  }
+  1557→
+  1558→  function getSizeLabel(p) {
+  1559→    if (p.size && p.size !== 'N/A') {
+  1560→      return '&#128187; Fits ' + escAttr(p.size) + ' Laptop';
+  1561→    }
+  1562→    var labels = {
+  1563→      'mouse': '&#128433; Computer Accessory',
+  1564→      'camera': '&#128249; Security Camera',
+  1565→      'scanner': '&#128247; Barcode Scanner',
+  1566→      'tool': '&#9881; Electrical Tool',
+  1567→      'auto': '&#128663; Car Auto Tool',
+  1568→      'hub': '&#128268; USB Hub',
+  1569→      'mount': '&#128208; Mount & Stand',
+  1570→      'printer': '&#128424; Printer',
+  1571→      'network': '&#128225; Networking'
+  1572→    };
+  1573→    return labels[p.category] || '&#128433; Computer Accessory';
+  1574→  }
+  1575→
+  1576→  function escAttr(s) {
+  1577→    return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  1578→  }
+  1579→
+  1580→  function renderCards(filter) {
+  1581→    filter = filter || "all";
+  1582→    var grid = document.getElementById("productGrid");
+  1583→    var filtered = filter === "all" ? products : products.filter(function(p) { return p.category === filter; });
+  1584→    productIndices = [];
+  1585→    for (var fi = 0; fi < filtered.length; fi++) {
+  1586→      for (var pi = 0; pi < products.length; pi++) {
+  1587→        if (products[pi] === filtered[fi]) { productIndices.push(pi); break; }
+  1588→      }
+  1589→    }
+  1590→    var html = "";
+  1591→    for (var i = 0; i < filtered.length; i++) {
+  1592→      var p = filtered[i];
+  1593→      var idx = productIndices[i];
+  1594→      var imgs = Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+  1595→      var safeName = escAttr(p.name);
+  1596→      var safeBrand = escAttr(p.brand);
+  1597→      var safeModel = escAttr(p.model);
+  1598→      var safeDesc = escAttr(p.desc);
+  1599→      var priceStr = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2});
+  1600→      html += '<div class="card">';
+  1601→      html += '<div class="card-img" style="background: linear-gradient(135deg, ' + p.color + '22, ' + p.color + '44), radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 60%); cursor:pointer;" onclick="openLightboxByIndex(' + idx + ')">';
+  1602→      html += '<span class="brand-tag">' + safeBrand + '</span>';
+  1603→      html += '<img src="' + escAttr(imgs[0]) + '" alt="' + safeName + '" loading="lazy" onerror="this.style.display=\'none\'" />';
+  1604→      if (imgs.length > 1) {
+  1605→        html += '<span class="photo-count" onclick="event.stopPropagation(); openLightboxByIndex(' + idx + ')">' + imgs.length + ' Photos</span>';
+  1606→      }
+  1607→      html += '<span class="price-tag">' + priceStr + '</span>';
+  1608→      html += '</div>';
+  1609→      html += '<div class="card-body">';
+  1610→      html += '<span class="model">' + safeModel + '</span>';
+  1611→      html += '<h3>' + safeName + '</h3>';
+  1612→      html += '<p class="desc">' + safeDesc + '</p>';
+  1613→      html += '<span class="size-info">' + getSizeLabel(p) + '</span>';
+  1614→      html += '<button class="buy-btn" onclick="event.stopPropagation(); openModalByIndex(' + idx + ')">';
+  1615→      html += '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.768-6.262-2.064l-.438-.332-2.639.885.885-2.639-.332-.438A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>';
+  1616→      html += ' Order via WhatsApp</button>';
+  1617→      html += '<button class="specs-btn" onclick="event.stopPropagation(); openSpecsByIndex(' + idx + ')">&#9881; View Specs</button>';
+  1618→      html += '</div></div>';
+  1619→    }
+  1620→    grid.innerHTML = html;
+  1621→  }
+  1622→
+  1623→  function openModalByIndex(idx) {
+  1624→    var p = products[idx];
+  1625→    if (!p) return;
+  1626→    currentProduct = p;
+  1627→    currentProductIndex = idx;
+  1628→    lastViewedIndex = idx;
+  1629→    document.getElementById("modalProduct").textContent = p.brand + " \u2014 " + p.name;
+  1630→    document.getElementById("modalPrice").textContent = "$" + p.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+  1631→    document.getElementById("custName").value = "";
+  1632→    document.getElementById("custQty").value = "1";
+  1633→    selectedDelivery = "pickup";
+  1634→    selectedDeliveryCost = 0;
+  1635→    document.querySelectorAll(".delivery-opt").forEach(function(d) { d.classList.remove("selected"); });
+  1636→    document.querySelector('.delivery-opt[data-delivery="pickup"]').classList.add("selected");
+  1637→    document.getElementById("modalOverlay").classList.add("open");
+  1638→    selectedChannel = "whatsapp";
+  1639→    document.querySelectorAll(".channel-tab").forEach(function(t) { t.classList.remove("selected"); });
+  1640→    document.querySelector('.channel-tab[data-channel="whatsapp"]').classList.add("selected");
+  1641→    document.getElementById("waPhoneSection").style.display = "block";
+  1642→    document.getElementById("messengerInfo").style.display = "none";
+  1643→    document.getElementById("igInfo").style.display = "none";
+  1644→    document.getElementById("btnSend").innerHTML = "💬 Send on WhatsApp";
+  1645→    var imgCount = getProductImages(p).length;
+  1646→    document.getElementById("viewPhotosBtn").style.display = imgCount > 1 ? "block" : "none";
+  1647→    setupShareLinks();
+  1648→  }
+  1649→
+  1650→  function openLightboxByIndex(idx) {
+  1651→    var p = products[idx];
+  1652→    if (!p) return;
+  1653→    lastViewedIndex = idx;
+  1654→    lbProduct = p;
+  1655→    lbProductIndex = idx;
+  1656→    var allImgs = getProductImages(p);
+  1657→    lbImages = allImgs.filter(function(u) { return u && u.indexOf('http') === 0; });
+  1658→    lbIndex = 0;
+  1659→    renderLightbox();
+  1660→    document.getElementById("lightboxOverlay").classList.add("open");
+  1661→    document.body.style.overflow = "hidden";
+  1662→  }
+  1663→
+  1664→  function closeModal() {
+  1665→    document.getElementById("modalOverlay").classList.remove("open");
+  1666→    currentProduct = null;
+  1667→    currentProductIndex = -1;
+  1668→  }
+  1669→
+  1670→  function selectPhone(el) {
+  1671→    var opts = document.querySelectorAll(".phone-opt");
+  1672→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+  1673→    el.classList.add("selected");
+  1674→    selectedPhone = el.getAttribute("data-phone");
+  1675→  }
+  1676→
+  1677→  function selectDelivery(el) {
+  1678→    var opts = document.querySelectorAll(".delivery-opt");
+  1679→    for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+  1680→    el.classList.add("selected");
+  1681→    selectedDelivery = el.getAttribute("data-delivery");
+  1682→    var cost = el.getAttribute("data-cost");
+  1683→    selectedDeliveryCost = cost === "courier" ? -1 : Number(cost);
+  1684→  }
+  1685→
+  1686→  function selectChannel(el) {
+  1687→    var tabs = document.querySelectorAll(".channel-tab");
+  1688→    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("selected");
+  1689→    el.classList.add("selected");
+  1690→    selectedChannel = el.getAttribute("data-channel");
+  1691→    document.getElementById("waPhoneSection").style.display = selectedChannel === "whatsapp" ? "block" : "none";
+  1692→    document.getElementById("messengerInfo").style.display = selectedChannel === "messenger" ? "block" : "none";
+  1693→    document.getElementById("igInfo").style.display = selectedChannel === "instagram" ? "block" : "none";
+  1694→    var btn = document.getElementById("btnSend");
+  1695→    if (selectedChannel === "whatsapp") btn.innerHTML = "💬 Send on WhatsApp";
+  1696→    else if (selectedChannel === "messenger") btn.innerHTML = "💬 Send on Messenger";
+  1697→    else btn.innerHTML = "💬 Send on Instagram";
+  1698→  }
+  1699→
+  1700→  function getOrderMsg() {
+  1701→    var name = document.getElementById("custName").value.trim();
+  1702→    var qty = document.getElementById("custQty").value.trim();
+  1703→    if (!name) { showToast("Please enter your name"); return null; }
+  1704→    if (!qty || isNaN(qty) || Number(qty) < 1) { showToast("Please enter a valid quantity"); return null; }
+  1705→    var p = currentProduct;
+  1706→    var subtotal = p.price * Number(qty);
+  1707→    var deliveryLabel = "Pickup (Free)";
+  1708→    var deliveryLine = "";
+  1709→    if (selectedDelivery === "round-town") {
+  1710→      deliveryLabel = "Round Town Delivery";
+  1711→      deliveryLine = "\n*Delivery:* $600.00 JMD\n";
+  1712→    } else if (selectedDelivery === "outside-kingston") {
+  1713→      deliveryLabel = "Outside Kingston (Knutsford/Doorway Courier)";
+  1714→      deliveryLine = "\n*Delivery:* Via Knutsford or Doorway courier (rate quoted separately)\n";
+  1715→    }
+  1716→    var grandTotal = selectedDeliveryCost >= 0 ? subtotal + selectedDeliveryCost : subtotal;
+  1717→    return {
+  1718→      text: "*NEW BAG ORDER*\n\n" +
+  1719→        "*Customer:* " + name + "\n" +
+  1720→        "*Product:* " + p.brand + " " + p.name + "\n" +
+  1721→        "*Model:* " + p.model + "\n" +
+  1722→        "*Fits:* " + p.size + " Laptop\n" +
+  1723→        "*Price:* $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+  1724→        "*Quantity:* " + qty + "\n" +
+  1725→        "*Subtotal:* $" + subtotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n" +
+  1726→        deliveryLine +
+  1727→        "*Delivery Method:* " + deliveryLabel + "\n" +
+  1728→        (selectedDeliveryCost >= 0 ? "*Grand Total:* $" + grandTotal.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\n\n" : "*Grand Total:* To be quoted (courier rate)\n\n") +
+  1729→        "Please confirm availability and payment details."
+  1730→    };
+  1731→  }
+  1732→
+  1733→  function sendOrder() {
+  1734→    var order = getOrderMsg();
+  1735→    if (!order) return;
+  1736→    var msg = encodeURIComponent(order.text);
+  1737→    if (selectedChannel === "whatsapp") {
+  1738→      window.open("https://wa.me/" + selectedPhone + "?text=" + msg, "_blank");
+  1739→      showToast("Opening WhatsApp...");
+  1740→    } else if (selectedChannel === "messenger") {
+  1741→      window.open("https://m.me/pixelwiresolutions?ref=" + encodeURIComponent(order.text), "_blank");
+  1742→      showToast("Opening Messenger...");
+  1743→    } else if (selectedChannel === "instagram") {
+  1744→      window.open("https://ig.me/m/pixelwiresolutions?text=" + msg, "_blank");
+  1745→      showToast("Opening Instagram DM...");
+  1746→    }
+  1747→    closeModal();
+  1748→  }
+  1749→
+  1750→  function getProductImages(p) {
+  1751→    return Array.isArray(p.imgs) ? p.imgs : [p.img || ""];
+  1752→  }
+  1753→
+  1754→  function closeLightbox() {
+  1755→    document.getElementById("lightboxOverlay").classList.remove("open");
+  1756→    document.body.style.overflow = "";
+  1757→    lbProduct = null;
+  1758→    lbProductIndex = -1;
+  1759→  }
+  1760→
+  1761→  function renderLightbox() {
+  1762→    var img = document.getElementById("lbImg");
+  1763→    img.onerror = function() {
+  1764→      this.style.display = 'none';
+  1765→      if (lbImages.length > 1) {
+  1766→        var next = (lbIndex + 1) % lbImages.length;
+  1767→        if (next !== lbIndex) { lbIndex = next; renderLightbox(); }
+  1768→      }
+  1769→    };
+  1770→    img.src = lbImages[lbIndex];
+  1771→    img.style.display = '';
+  1772→    img.alt = lbProduct.name + ' - Photo ' + (lbIndex + 1);
+  1773→    img.className = "";
+  1774→    document.getElementById("lbTitle").textContent = lbProduct.brand + " " + lbProduct.name;
+  1775→    document.getElementById("lbPrice").textContent = "$" + lbProduct.price.toLocaleString("en-JM", {minimumFractionDigits:2}) + " JMD";
+  1776→    document.getElementById("lbCounter").textContent = (lbIndex + 1) + " / " + lbImages.length;
+  1777→    document.getElementById("lbArrowLeft").style.display = lbImages.length > 1 ? "flex" : "none";
+  1778→    document.getElementById("lbArrowRight").style.display = lbImages.length > 1 ? "flex" : "none";
+  1779→    var dotsHtml = "";
+  1780→    for (var i = 0; i < lbImages.length; i++) {
+  1781→      dotsHtml += '<button class="dot' + (i === lbIndex ? ' active' : '') + '" onclick="lbGoTo(' + i + ')"></button>';
+  1782→    }
+  1783→    document.getElementById("lbDots").innerHTML = dotsHtml;
+  1784→    document.getElementById("lbDots").style.display = lbImages.length > 1 ? "flex" : "none";
+  1785→  }
+  1786→
+  1787→  function lbGoTo(index) {
+  1788→    if (index === lbIndex) return;
+  1789→    var img = document.getElementById("lbImg");
+  1790→    img.className = index > lbIndex ? "slide-left" : "slide-right";
+  1791→    setTimeout(function() {
+  1792→      lbIndex = index;
+  1793→      renderLightbox();
+  1794→      img.className = index > lbIndex ? "slide-right" : "slide-left";
+  1795→      requestAnimationFrame(function() { img.className = ""; });
+  1796→    }, 200);
+  1797→  }
+  1798→
+  1799→  function lbNext() {
+  1800→    if (lbImages.length <= 1) return;
+  1801→    lbGoTo((lbIndex + 1) % lbImages.length);
+  1802→  }
+  1803→
+  1804→  function lbPrev() {
+  1805→    if (lbImages.length <= 1) return;
+  1806→    lbGoTo((lbIndex - 1 + lbImages.length) % lbImages.length);
+  1807→  }
+  1808→
+  1809→  function orderFromLightbox() {
+  1810→    var idx = lbProductIndex >= 0 ? lbProductIndex : lastViewedIndex;
+  1811→    closeLightbox();
+  1812→    openModalByIndex(idx);
+  1813→  }
+  1814→
+  1815→  document.getElementById("lbImgWrap").addEventListener("touchstart", function(e) {
+  1816→    touchStartX = e.changedTouches[0].screenX;
+  1817→  }, {passive: true});
+  1818→
+  1819→  document.getElementById("lbImgWrap").addEventListener("touchend", function(e) {
+  1820→    touchEndX = e.changedTouches[0].screenX;
+  1821→    var diff = touchStartX - touchEndX;
+  1822→    if (Math.abs(diff) > 50) {
+  1823→      if (diff > 0) lbNext(); else lbPrev();
+  1824→    }
+  1825→  }, {passive: true});
+  1826→
+  1827→  document.getElementById("lightboxOverlay").addEventListener("click", function(e) {
+  1828→    if (e.target === e.currentTarget) closeLightbox();
+  1829→  });
+  1830→
+  1831→  document.addEventListener("keydown", function(e) {
+  1832→    if (!document.getElementById("lightboxOverlay").classList.contains("open")) return;
+  1833→    if (e.key === "ArrowRight" || e.key === "ArrowDown") lbNext();
+  1834→    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") lbPrev();
+  1835→    else if (e.key === "Escape") closeLightbox();
+  1836→  });
+  1837→
+  1838→  function showToast(msg) {
+  1839→    var t = document.getElementById("toast");
+  1840→    t.textContent = msg;
+  1841→    t.classList.add("show");
+  1842→    setTimeout(function() { t.classList.remove("show"); }, 2500);
+  1843→  }
+  1844→
+  1845→  document.getElementById("filterBar").addEventListener("click", function(e) {
+  1846→    if (!e.target.classList.contains("filter-btn")) return;
+  1847→    var btns = document.querySelectorAll(".filter-btn");
+  1848→    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+  1849→    e.target.classList.add("active");
+  1850→    renderCards(e.target.getAttribute("data-filter"));
+  1851→  });
+  1852→
+  1853→  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+  1854→    if (e.target === e.currentTarget) closeModal();
+  1855→  });
+  1856→
+  1857→  function setupShareLinks() {
+  1858→    var p = currentProduct;
+  1859→    if (!p) return;
+  1860→    var shareText = encodeURIComponent(p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD. Order now at Pixel Wire Solutions!");
+  1861→    var pageUrl = encodeURIComponent(window.location.href);
+  1862→    document.getElementById("shareIG").href = "https://www.instagram.com/pixelwiresolutions";
+  1863→    document.getElementById("shareFB").href = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote=" + shareText;
+  1864→  }
+  1865→
+  1866→  function copyProductLink(e) {
+  1867→    e.preventDefault();
+  1868→    var p = currentProduct;
+  1869→    if (!p) return;
+  1870→    var text = p.brand + " " + p.name + " (" + p.model + ") - $" + p.price.toLocaleString("en-JM",{minimumFractionDigits:2}) + " JMD\nOrder at: " + window.location.href;
+  1871→    if (navigator.clipboard) {
+  1872→      navigator.clipboard.writeText(text).then(function() { showToast("Link copied to clipboard!"); });
+  1873→    } else {
+  1874→      showToast("Long-press to copy the link");
+  1875→    }
+  1876→  }
+  1877→
+  1878→  // CCTV Service WhatsApp link
+  1879→  var cctvMsg = encodeURIComponent(
+  1880→    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+  1881→    "Quick questions so we can send you an accurate quote:\n\n" +
+  1882→    "Please state name?\n" +
+  1883→    "a. Installation location:\n" +
+  1884→    "b. Property type: Home, Office, Shop, Warehouse, Other\n" +
+  1885→    "d. Indoor or Outdoor cameras request?\n" +
+  1886→    "e. Need night vision + mobile app viewing? Yes/No\n" +
+  1887→    "g. Best number to reach you:\n\n" +
+  1888→    "Once we have this information, our team will get back to you within 24 hours with pricing + next steps.\n\n" +
+  1889→    "Also, note site visits are mandated for all installation!!\n\n" +
+  1890→    "Thank you,\n" +
+  1891→    "Team Pixelwire Solutions"
+  1892→  );
+  1893→  var cctvBtn = document.getElementById('cctvWaBtn');
+  1894→  if (cctvBtn) {
+  1895→    cctvBtn.href = 'https://wa.me/18767731173?text=' + cctvMsg;
+  1896→  }
+  1897→
+  1898→  // PBX Service WhatsApp link
+  1899→  var pbxMsg = encodeURIComponent(
+  1900→    "Hi! Thanks for contacting Pixelwire Solutions\n" +
+  1901→    "Quick questions so we can send you an accurate PBX quote:\n\n" +
+  1902→    "Please state name?\n" +
+  1903→    "How many users/extensions do you need?\n" +
+  1904→    "Do you need desk phones?\n" +
+  1905→    "Single location or multiple sites?\n" +
+  1906→    "Do you already have a server/network cabinet, or do you need one provided?\n" +
+  1907→    "Are there existing cable runs in place, or will new cable runs need to be installed?\n" +
+  1908→    "What's your target budget for the installation?\n\n" +
+  1909→    "Note: A paid site survey is mandatory before final pricing. This lets us physically inspect the space, verify cable runs, check wall/ceiling access, and confirm equipment placement.\n\n" +
+  1910→    "Once we have this info, our team will get back to you within 24 hours.\n\n" +
+  1911→    "Thank you,\n" +
+  1912→    "Team Pixelwire Solutions"
+  1913→  );
+  1914→  var pbxBtn = document.getElementById('pbxWaBtn');
+  1915→  if (pbxBtn) {
+  1916→    pbxBtn.href = 'https://wa.me/18767731173?text=' + pbxMsg;
+  1917→  }
+  1918→
+  1919→  // Call Us dropdown toggle
+  1920→  var callGroup = document.querySelector('.call-btn-group');
+  1921→  if (callGroup) {
+  1922→    callGroup.addEventListener('click', function(e) {
+  1923→      if (e.target.closest('.call-dropdown a')) return;
+  1924→      var dd = this.querySelector('.call-dropdown');
+  1925→      dd.classList.toggle('show');
+  1926→    });
+  1927→    document.addEventListener('click', function(e) {
+  1928→      if (!e.target.closest('.call-btn-group')) {
+  1929→        var dd = document.querySelector('.call-dropdown');
+  1930→        if (dd) dd.classList.remove('show');
+  1931→      }
+  1932→    });
+  1933→  }
+  1934→
+  1935→  renderCards();
+  1936→  setTimeout(function(){
+  1937→    var splash = document.getElementById('splashScreen');
+  1938→    if(splash){ splash.classList.add('hidden'); }
+  1939→  }, 2200);
+  1940→  </script>
+  1941→</body>
+  1942→</html>

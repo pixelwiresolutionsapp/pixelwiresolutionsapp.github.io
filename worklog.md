@@ -20,3 +20,34 @@ Stage Summary:
 - 3 single-image products: HP-RB15, DL-PS15, DL-EL15 (JS-rendered sites, couldn't scrape)
 - Gallery viewer handles both img: and imgs: formats, with error handling for broken URLs
 - File updated: /home/z/my-project/download/index.html (54,630 bytes)
+
+---
+Task ID: 2
+Agent: Main Agent
+Task: Build backend API for PixelWire Solutions with Neon PostgreSQL and Vercel deployment
+
+Work Log:
+- Initialized Next.js 16 fullstack project with TypeScript, Tailwind CSS, shadcn/ui
+- Installed @neondatabase/serverless and @prisma/adapter-neon for Neon serverless support
+- Created Prisma schema with 8 models: Category, Brand, Product, ProductImage, ProductSpec, Order, OrderItem, SiteSetting
+- Seeded database with all 38 products from static site, 13 categories, 12 brands, 5 site settings
+- Created REST API routes:
+  - GET/POST /api/products (list with filtering, search, sort, pagination / create)
+  - GET/PUT/DELETE /api/products/[id] (read/update/delete single product)
+  - GET /api/categories (list with product counts)
+  - GET /api/brands (list with product counts)
+  - GET/POST /api/orders (list/create orders with items)
+  - GET/PUT /api/settings (site configuration)
+  - GET /api/health (database connectivity check)
+- Built React frontend with: search, category filters, sort, product grid, image lightbox/gallery, WhatsApp order modal, delivery options
+- Created prisma/schema.neon.prisma for PostgreSQL/Neon production deployment
+- Tested all API endpoints and verified frontend with Agent Browser
+- All 38 products rendering with images, 16 backpacks, filters, order flow working
+
+Stage Summary:
+- Full-stack Next.js 16 backend replacing static GitHub Pages site
+- 38 products, 13 categories, 12 brands seeded from existing data
+- Complete REST API with CRUD for products, orders, settings
+- WhatsApp/Call/Email order flow with delivery pricing (pickup/Kingston/islandwide)
+- Neon PostgreSQL schema ready for Vercel deployment
+- Local dev uses SQLite, production uses Neon via @neondatabase/serverless
