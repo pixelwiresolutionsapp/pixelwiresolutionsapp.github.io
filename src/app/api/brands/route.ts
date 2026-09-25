@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
 // GET /api/brands
@@ -8,4 +8,17 @@ export async function GET() {
     include: { _count: { select: { products: { where: { isActive: true } } } } },
   })
   return NextResponse.json(brands)
+}
+
+// POST /api/brands
+export async function POST(req: NextRequest) {
+  const body = await req.json()
+  const brand = await db.brand.create({
+    data: {
+      name: body.name,
+      slug: body.slug || body.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      logoUrl: body.logoUrl || null,
+    },
+  })
+  return NextResponse.json(brand, { status: 201 })
 }
