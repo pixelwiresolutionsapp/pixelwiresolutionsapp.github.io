@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // GET /api/brands
 export async function GET() {
@@ -7,7 +8,7 @@ export async function GET() {
     orderBy: { name: 'asc' },
     include: { _count: { select: { products: { where: { isActive: true } } } } },
   })
-  return NextResponse.json(brands)
+  return cors(NextResponse.json(brands))
 }
 
 // POST /api/brands
@@ -20,5 +21,10 @@ export async function POST(req: NextRequest) {
       logoUrl: body.logoUrl || null,
     },
   })
-  return NextResponse.json(brand, { status: 201 })
+  return cors(NextResponse.json(brand, { status: 201 }))
+}
+
+// OPTIONS — CORS preflight
+export async function OPTIONS() {
+  return corsPreflight()
 }

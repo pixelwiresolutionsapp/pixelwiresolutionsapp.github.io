@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // GET /api/orders — list orders
 export async function GET(req: NextRequest) {
@@ -34,7 +35,7 @@ export async function GET(req: NextRequest) {
     db.order.count({ where }),
   ])
 
-  return NextResponse.json({ orders, total, limit, offset })
+  return cors(NextResponse.json({ orders, total, limit, offset }))
 }
 
 // POST /api/orders — create an order
@@ -64,5 +65,10 @@ export async function POST(req: NextRequest) {
     include: { items: true },
   })
 
-  return NextResponse.json(order, { status: 201 })
+  return cors(NextResponse.json(order, { status: 201 }))
+}
+
+// OPTIONS — CORS preflight
+export async function OPTIONS() {
+  return corsPreflight()
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // GET /api/products — list all products with images, brand, category
 export async function GET(req: NextRequest) {
@@ -50,7 +51,7 @@ export async function GET(req: NextRequest) {
     db.product.count({ where }),
   ])
 
-  return NextResponse.json({ products, total, limit, offset })
+  return cors(NextResponse.json({ products, total, limit, offset }))
 }
 
 // POST /api/products — create a new product
@@ -81,5 +82,10 @@ export async function POST(req: NextRequest) {
     include: { images: true, brand: true, category: true },
   })
 
-  return NextResponse.json(product, { status: 201 })
+  return cors(NextResponse.json(product, { status: 201 }))
+}
+
+// OPTIONS — CORS preflight
+export async function OPTIONS() {
+  return corsPreflight()
 }

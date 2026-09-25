@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // DELETE /api/categories/[id]
 export async function DELETE(
@@ -8,5 +9,7 @@ export async function DELETE(
 ) {
   const { id } = await params
   await db.category.delete({ where: { id } })
-  return NextResponse.json({ success: true })
+  return cors(NextResponse.json({ success: true }))
 }
+
+export async function OPTIONS() { return corsPreflight() }

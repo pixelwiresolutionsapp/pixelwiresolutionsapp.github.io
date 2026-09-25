@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // PUT /api/orders/[id] — update order status
 export async function PUT(
@@ -12,5 +13,7 @@ export async function PUT(
     where: { id },
     data: { status: body.status },
   })
-  return NextResponse.json(order)
+  return cors(NextResponse.json(order))
 }
+
+export async function OPTIONS() { return corsPreflight() }

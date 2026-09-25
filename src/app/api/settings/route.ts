@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // GET /api/settings
 export async function GET() {
   const settings = await db.siteSetting.findMany()
   const map: Record<string, string> = {}
   for (const s of settings) map[s.key] = s.value
-  return NextResponse.json(map)
+  return cors(NextResponse.json(map))
 }
 
 // PUT /api/settings — update settings
@@ -20,5 +21,7 @@ export async function PUT(req: NextRequest) {
     })
   )
   await Promise.all(updates)
-  return NextResponse.json({ success: true })
+  return cors(NextResponse.json({ success: true }))
 }
+
+export async function OPTIONS() { return corsPreflight() }

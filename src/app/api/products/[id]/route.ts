@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { cors, corsPreflight } from '@/lib/cors'
 
 // GET /api/products/[id]
 export async function GET(
@@ -16,8 +17,8 @@ export async function GET(
       category: true,
     },
   })
-  if (!product) return NextResponse.json({ error: 'Not found' }, { status: 404 })
-  return NextResponse.json(product)
+  if (!product) return cors(NextResponse.json({ error: 'Not found' }, { status: 404 }))
+  return cors(NextResponse.json(product))
 }
 
 // PUT /api/products/[id]
@@ -59,7 +60,7 @@ export async function PUT(
     include: { images: { orderBy: { sortOrder: 'asc' } }, brand: true, category: true },
   })
 
-  return NextResponse.json(product)
+  return cors(NextResponse.json(product))
 }
 
 // DELETE /api/products/[id]
@@ -69,5 +70,10 @@ export async function DELETE(
 ) {
   const { id } = await params
   await db.product.delete({ where: { id } })
-  return NextResponse.json({ success: true })
+  return cors(NextResponse.json({ success: true }))
+}
+
+// OPTIONS — CORS preflight
+export async function OPTIONS() {
+  return corsPreflight()
 }
