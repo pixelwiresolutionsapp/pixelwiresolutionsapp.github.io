@@ -162,7 +162,7 @@
         h += '<div class="bg-white rounded-xl shadow hover:shadow-lg transition group">';
         h += '<div class="relative h-48 rounded-t-xl overflow-hidden cursor-pointer" style="background:linear-gradient(135deg,'+p.color+'22,'+p.color+'44),radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 60%)" onclick="lightboxProduct=products['+pi+'];lightboxIdx=0;render()">';
         h += '<span class="absolute top-2 left-2 bg-white/90 text-[10px] font-bold px-2 py-0.5 rounded-full text-gray-700 z-10">'+esc(p.brand.name)+'</span>';
-        if (img) h += '<img src="'+img.url+'" alt="'+esc(p.name)+'" class="w-full h-full object-contain p-4 transition group-hover:scale-105" onerror="this.style.display=\'none\'" />';
+        if (img) h += '<img src="'+img.url+'" alt="'+esc(p.name)+'" class="w-full h-full object-contain p-4 transition group-hover:scale-105" onerror="this.style.display=\'none\'" referrerpolicy="no-referrer" />';
         if (p.images.length>1) h += '<span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10" onclick="event.stopPropagation();lightboxProduct=products['+pi+'];lightboxIdx=0;render()">'+p.images.length+' Photos</span>';
         h += '<span class="absolute top-2 right-2 bg-green-600 text-white text-sm font-bold px-2.5 py-0.5 rounded-full z-10">'+fmtPrice(p.price)+'</span>';
         h += '</div>';
@@ -192,7 +192,7 @@
       h += '<button onclick="lightboxProduct=null;render()" class="absolute top-3 right-3 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/70 transition">\u2715</button>';
       h += '<div class="p-6">';
       h += '<div class="relative bg-gray-50 rounded-xl overflow-hidden mb-4 flex items-center justify-center" style="min-height:300px">';
-      if (lp.images[lightboxIdx]) h += '<img src="'+lp.images[lightboxIdx].url+'" alt="'+esc(lp.name)+'" class="max-h-80 object-contain" onerror="this.style.display=\'none\'" />';
+      if (lp.images[lightboxIdx]) h += '<img src="'+lp.images[lightboxIdx].url+'" alt="'+esc(lp.name)+'" class="max-h-80 object-contain" onerror="this.style.display=\'none\'" referrerpolicy="no-referrer" />';
       if (lp.images.length>1) {
         h += '<button onclick="lightboxIdx=lightboxIdx>0?lightboxIdx-1:'+(lp.images.length-1)+';render()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/70">\u2039</button>';
         h += '<button onclick="lightboxIdx=lightboxIdx<'+(lp.images.length-1)+'?lightboxIdx+1:0;render()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/70">\u203A</button>';
