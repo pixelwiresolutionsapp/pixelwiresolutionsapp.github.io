@@ -1,29 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/lib/db'
 
 export async function GET(req: NextRequest) {
-  const connectionString = process.env.DATABASE_URL
-  if (!connectionString) {
-    return NextResponse.json({ error: 'DATABASE_URL not configured' }, { status: 500 })
-  }
-
   try {
-    const { Pool } = await import('@neondatabase/serverless')
-    const pool = new Pool({ connectionString })
-    const result = await pool.query('SELECT NOW() as now')
-    await pool.end()
+    const result = await db.$queryRaw`SELECT NOW() as now, current_database() as db`
+    const row = result[0] as any
     return NextResponse.json({
       status: 'connected',
-      timestamp: result.rows[0].now,
-      provider: 'Neon PostgreSQL',
+      timestamp: row.now,
+      database: row.db,
+      provider: 'Neon PostgreSQL via Prisma',
+      envSource: process.env.DATABASE_URL ? 'env' : 'fallback',
     })
   } catch (error: any) {
-    // Fallback to Prisma check
-    try {
-      const { db } = await import('@/lib/db')
-      await db.$queryRaw`SELECT 1`
-      return NextResponse.json({ status: 'connected', provider: 'SQLite (local)' })
-    } catch (e: any) {
-      return NextResponse.json({ error: e.message }, { status: 500 })
-    }
+    return NextResponse.json({
+      error: error.message || String(error),
+      name: error.name,
+    }, { status: 500 })
   }
 }

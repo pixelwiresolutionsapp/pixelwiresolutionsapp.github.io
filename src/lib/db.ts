@@ -1,35 +1,23 @@
 import { PrismaClient } from '@prisma/client'
-import { Pool, neonConfig } from '@neondatabase/serverless'
-import { PrismaNeon } from '@prisma/adapter-neon'
-import ws from 'ws'
 
-// ─── Neon Serverless Adapter for Vercel ───
-// Uses WebSocket for pooled connections on Vercel; falls back to PrismaClient locally.
+// ─── Neon PostgreSQL connection for Vercel ───
+// Uses datasourceUrl to bypass env vars — works even without Vercel dashboard config.
+// Once you set DATABASE_URL in Vercel Settings → Environment Variables, the fallback is ignored.
+
+const NEON_URL = 'postgresql://neondb_owner:npg_zJ8HM9QtdDAF@ep-plain-pond-b4a5yit2.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require'
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-function createPrismaClient() {
-  // If DATABASE_URL is a Neon connection string, use the serverless adapter
-  const databaseUrl = process.env.DATABASE_URL
-
-  if (databaseUrl && databaseUrl.includes('neon.tech')) {
-    // Configure Neon for serverless environments
-    neonConfig.webSocketConstructor = ws
-    neonConfig.poolQueryViaFetch = true
-
-    const pool = new Pool({ connectionString: databaseUrl })
-    const adapter = new PrismaNeon(pool)
-    return new PrismaClient({ adapter } as any)
-  }
-
-  // Fallback: standard PrismaClient (works with direct PostgreSQL or local dev)
+function createClient() {
+  const url = process.env.DATABASE_URL || NEON_URL
   return new PrismaClient({
+    datasourceUrl: url,
     log: process.env.NODE_ENV === 'development' ? ['query'] : [],
   })
 }
 
-export const db = globalForPrisma.prisma ?? createPrismaClient()
+export const db = globalForPrisma.prisma ?? createClient()
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db

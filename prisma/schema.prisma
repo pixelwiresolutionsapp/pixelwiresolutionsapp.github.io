@@ -9,6 +9,10 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+// NOTE: For first Vercel deployment without env vars set,
+// the instrumentation.ts file sets DATABASE_URL and DIRECT_URL
+// as process.env fallbacks before Prisma Client is imported.
+
 // ─── Product Categories ───
 model Category {
   id        String   @id @default(cuid())
