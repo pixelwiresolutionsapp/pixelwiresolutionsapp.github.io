@@ -7,7 +7,7 @@ import json
 import os
 import urllib.request
 
-API_BASE = "https://temporary-speedy-fjord-82xmuy4.vercel.app"
+API_BASE = "https://temporary-quick-sapphire-clgkxzk.vercel.app"
 
 def fetch(path):
     url = f"{API_BASE}{path}"
