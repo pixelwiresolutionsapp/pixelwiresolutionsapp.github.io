@@ -27,4 +27,5 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: ['/api/admin/:path*'],
+  runtime: 'nodejs',
 }
