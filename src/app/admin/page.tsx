@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { toast } from 'sonner'
+import { LogOut } from 'lucide-react'
+import AdminLogin from './login'
+import { API, getApiUrl } from '@/lib/api-config'
 
 // ─── Types ───
 interface ProductImage { id: string; url: string; alt?: string; sortOrder: number; isPrimary: boolean }
@@ -17,6 +20,11 @@ type Tab = 'products' | 'add' | 'categories' | 'brands' | 'orders'
 
 // ─── Component ───
 export default function AdminDashboard() {
+  // ─── Auth state (must be before conditional returns) ───
+  const [authenticated, setAuthenticated] = useState(false)
+  const [checkingAuth, setCheckingAuth] = useState(true)
+
+  // ─── All state hooks declared first (React rules) ───
   const [tab, setTab] = useState<Tab>('products')
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
@@ -39,8 +47,6 @@ export default function AdminDashboard() {
   const [catForm, setCatForm] = useState({ name: '', slug: '', icon: '', color: '#1a1a2e' })
   // Add brand form
   const [brandForm, setBrandForm] = useState({ name: '', slug: '', logoUrl: '' })
-
-  const API = '/api'
 
   // ─── Load data ───
   const loadData = useCallback(async () => {
@@ -75,6 +81,20 @@ export default function AdminDashboard() {
 
   useEffect(() => { loadData() }, [loadData])
   useEffect(() => { if (tab === 'orders') loadOrders() }, [tab, loadOrders])
+
+  // ─── Auth check ───
+  useEffect(() => {
+    fetch(getApiUrl('/api/admin/verify'))
+      .then(res => res.ok ? setAuthenticated(true) : setAuthenticated(false))
+      .catch(() => setAuthenticated(false))
+      .finally(() => setCheckingAuth(false))
+  }, [])
+
+  const handleLogout = async () => {
+    await fetch(getApiUrl('/api/admin/logout'), { method: 'POST' })
+    setAuthenticated(false)
+    toast.success('Logged out')
+  }
 
   // ─── Product CRUD ───
   const deleteProduct = async (id: string) => {
@@ -244,6 +264,25 @@ export default function AdminDashboard() {
     !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.model.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
+  // ─── Auth gate (after all hooks) ───
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+        <div className="flex items-center gap-3 text-slate-400">
+          <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          Verifying session...
+        </div>
+      </div>
+    )
+  }
+
+  if (!authenticated) {
+    return <AdminLogin onLogin={() => setAuthenticated(true)} />
+  }
+
   // ─── Render ───
   return (
     <div className="min-h-screen bg-gray-50">
@@ -254,9 +293,18 @@ export default function AdminDashboard() {
             <h1 className="text-xl font-bold">PixelWire Admin</h1>
             <p className="text-xs opacity-60">Product &amp; Inventory Management</p>
           </div>
-          <a href="/" className="text-sm bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">
-            View Storefront
-          </a>
+          <div className="flex items-center gap-3">
+            <a href="/" className="text-sm bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">
+              View Storefront
+            </a>
+            <button
+              onClick={handleLogout}
+              className="text-sm bg-white/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Logout
+            </button>
+          </div>
         </div>
       </header>
 
