@@ -1,0 +1,612 @@
+     1→'use client'
+     2→
+     3→import { useEffect, useState, useCallback } from 'react'
+     4→import { toast } from 'sonner'
+     5→
+     6→// ─── Types ───
+     7→interface ProductImage { id: string; url: string; alt?: string; sortOrder: number; isPrimary: boolean }
+     8→interface Brand { id: string; name: string; slug: string }
+     9→interface Category { id: string; name: string; slug: string; icon?: string; color?: string }
+    10→interface Product {
+    11→  id: string; name: string; slug: string; model: string; price: number
+    12→  description?: string; size?: string; color: string; isActive: boolean; featured: boolean; sortOrder: number
+    13→  images: ProductImage[]; brand: Brand; category: Category
+    14→}
+    15→
+    16→type Tab = 'products' | 'add' | 'categories' | 'brands' | 'orders'
+    17→
+    18→// ─── Component ───
+    19→export default function AdminDashboard() {
+    20→  const [tab, setTab] = useState<Tab>('products')
+    21→  const [products, setProducts] = useState<Product[]>([])
+    22→  const [categories, setCategories] = useState<Category[]>([])
+    23→  const [brands, setBrands] = useState<Brand[]>([])
+    24→  const [orders, setOrders] = useState<any[]>([])
+    25→  const [loading, setLoading] = useState(true)
+    26→  const [searchQuery, setSearchQuery] = useState('')
+    27→
+    28→  // Edit state
+    29→  const [editingProduct, setEditingProduct] = useState<Product | null>(null)
+    30→
+    31→  // Add product form
+    32→  const [form, setForm] = useState({
+    33→    name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827',
+    34→    categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0,
+    35→    imageUrls: ''  // comma-separated
+    36→  })
+    37→
+    38→  // Add category form
+    39→  const [catForm, setCatForm] = useState({ name: '', slug: '', icon: '', color: '#1a1a2e' })
+    40→  // Add brand form
+    41→  const [brandForm, setBrandForm] = useState({ name: '', slug: '', logoUrl: '' })
+    42→
+    43→  const API = '/api'
+    44→
+    45→  // ─── Load data ───
+    46→  const loadData = useCallback(async () => {
+    47→    try {
+    48→      const [prodRes, catRes, brandRes] = await Promise.all([
+    49→        fetch(`${API}/products?limit=500`),
+    50→        fetch(`${API}/categories`),
+    51→        fetch(`${API}/brands`),
+    52→      ])
+    53→      const prodData = await prodRes.json()
+    54→      const catData = await catRes.json()
+    55→      const brandData = await brandRes.json()
+    56→      setProducts(prodData.products || [])
+    57→      setCategories(catData || [])
+    58→      setBrands(brandData || [])
+    59→    } catch {
+    60→      toast.error('Failed to load data')
+    61→    } finally {
+    62→      setLoading(false)
+    63→    }
+    64→  }, [])
+    65→
+    66→  const loadOrders = useCallback(async () => {
+    67→    try {
+    68→      const res = await fetch(`${API}/orders?limit=100`)
+    69→      const data = await res.json()
+    70→      setOrders(data.orders || [])
+    71→    } catch {
+    72→      toast.error('Failed to load orders')
+    73→    }
+    74→  }, [])
+    75→
+    76→  useEffect(() => { loadData() }, [loadData])
+    77→  useEffect(() => { if (tab === 'orders') loadOrders() }, [tab, loadOrders])
+    78→
+    79→  // ─── Product CRUD ───
+    80→  const deleteProduct = async (id: string) => {
+    81→    if (!confirm('Delete this product? This cannot be undone.')) return
+    82→    try {
+    83→      await fetch(`${API}/products/${id}`, { method: 'DELETE' })
+    84→      toast.success('Product deleted')
+    85→      loadData()
+    86→    } catch {
+    87→      toast.error('Delete failed')
+    88→    }
+    89→  }
+    90→
+    91→  const toggleActive = async (product: Product) => {
+    92→    try {
+    93→      await fetch(`${API}/products/${product.id}`, {
+    94→        method: 'PUT',
+    95→        headers: { 'Content-Type': 'application/json' },
+    96→        body: JSON.stringify({ ...product, isActive: !product.isActive, brandId: product.brand.id, categoryId: product.category.id }),
+    97→      })
+    98→      toast.success(product.isActive ? 'Product hidden' : 'Product visible')
+    99→      loadData()
+   100→    } catch {
+   101→      toast.error('Update failed')
+   102→    }
+   103→  }
+   104→
+   105→  const toggleFeatured = async (product: Product) => {
+   106→    try {
+   107→      await fetch(`${API}/products/${product.id}`, {
+   108→        method: 'PUT',
+   109→        headers: { 'Content-Type': 'application/json' },
+   110→        body: JSON.stringify({ ...product, featured: !product.featured, brandId: product.brand.id, categoryId: product.category.id }),
+   111→      })
+   112→      toast.success(product.featured ? 'Unfeatured' : 'Featured!')
+   113→      loadData()
+   114→    } catch {
+   115→      toast.error('Update failed')
+   116→    }
+   117→  }
+   118→
+   119→  // ─── Add product ───
+   120→  const handleAddProduct = async (e: React.FormEvent) => {
+   121→    e.preventDefault()
+   122→    if (!form.name || !form.model || !form.categoryId || !form.brandId) {
+   123→      toast.error('Fill in all required fields')
+   124→      return
+   125→    }
+   126→    try {
+   127→      const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+   128→      const res = await fetch(`${API}/products`, {
+   129→        method: 'POST',
+   130→        headers: { 'Content-Type': 'application/json' },
+   131→        body: JSON.stringify({ ...form, images, price: Number(form.price), sortOrder: Number(form.sortOrder) }),
+   132→      })
+   133→      if (!res.ok) throw new Error()
+   134→      toast.success('Product added!')
+   135→      setForm({ name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827', categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0, imageUrls: '' })
+   136→      loadData()
+   137→      setTab('products')
+   138→    } catch {
+   139→      toast.error('Failed to add product')
+   140→    }
+   141→  }
+   142→
+   143→  // ─── Update product ───
+   144→  const handleUpdateProduct = async (e: React.FormEvent) => {
+   145→    e.preventDefault()
+   146→    if (!editingProduct) return
+   147→    try {
+   148→      const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+   149→      await fetch(`${API}/products/${editingProduct.id}`, {
+   150→        method: 'PUT',
+   151→        headers: { 'Content-Type': 'application/json' },
+   152→        body: JSON.stringify({
+   153→          name: form.name, model: form.model, price: Number(form.price),
+   154→          description: form.description, size: form.size, color: form.color,
+   155→          categoryId: form.categoryId, brandId: form.brandId,
+   156→          featured: form.featured, isActive: form.isActive, sortOrder: Number(form.sortOrder),
+   157→          images
+   158→        }),
+   159→      })
+   160→      toast.success('Product updated!')
+   161→      setEditingProduct(null)
+   162→      setForm({ name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827', categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0, imageUrls: '' })
+   163→      loadData()
+   164→      setTab('products')
+   165→    } catch {
+   166→      toast.error('Failed to update product')
+   167→    }
+   168→  }
+   169→
+   170→  const startEdit = (p: Product) => {
+   171→    setEditingProduct(p)
+   172→    setForm({
+   173→      name: p.name, model: p.model, price: p.price, description: p.description || '',
+   174→      size: p.size || 'N/A', color: p.color, categoryId: p.category.id, brandId: p.brand.id,
+   175→      featured: p.featured, isActive: p.isActive, sortOrder: p.sortOrder,
+   176→      imageUrls: p.images.map(i => i.url).join(', ')
+   177→    })
+   178→    setTab('add')
+   179→  }
+   180→
+   181→  // ─── Add category ───
+   182→  const handleAddCategory = async (e: React.FormEvent) => {
+   183→    e.preventDefault()
+   184→    if (!catForm.name) return
+   185→    try {
+   186→      const slug = catForm.slug || catForm.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+   187→      const res = await fetch(`${API}/categories`, {
+   188→        method: 'POST',
+   189→        headers: { 'Content-Type': 'application/json' },
+   190→        body: JSON.stringify({ ...catForm, slug }),
+   191→      })
+   192→      if (!res.ok) throw new Error()
+   193→      toast.success('Category added!')
+   194→      setCatForm({ name: '', slug: '', icon: '', color: '#1a1a2e' })
+   195→      loadData()
+   196→    } catch {
+   197→      toast.error('Failed to add category')
+   198→    }
+   199→  }
+   200→
+   201→  // ─── Add brand ───
+   202→  const handleAddBrand = async (e: React.FormEvent) => {
+   203→    e.preventDefault()
+   204→    if (!brandForm.name) return
+   205→    try {
+   206→      const slug = brandForm.slug || brandForm.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+   207→      const res = await fetch(`${API}/brands`, {
+   208→        method: 'POST',
+   209→        headers: { 'Content-Type': 'application/json' },
+   210→        body: JSON.stringify({ ...brandForm, slug }),
+   211→      })
+   212→      if (!res.ok) throw new Error()
+   213→      toast.success('Brand added!')
+   214→      setBrandForm({ name: '', slug: '', logoUrl: '' })
+   215→      loadData()
+   216→    } catch {
+   217→      toast.error('Failed to add brand')
+   218→    }
+   219→  }
+   220→
+   221→  // ─── Delete category ───
+   222→  const deleteCategory = async (id: string) => {
+   223→    if (!confirm('Delete this category? All products in it will also be deleted!')) return
+   224→    try {
+   225→      await fetch(`${API}/categories/${id}`, { method: 'DELETE' })
+   226→      toast.success('Category deleted')
+   227→      loadData()
+   228→    } catch { toast.error('Delete failed') }
+   229→  }
+   230→
+   231→  // ─── Delete brand ───
+   232→  const deleteBrand = async (id: string) => {
+   233→    if (!confirm('Delete this brand? All products under it will also be deleted!')) return
+   234→    try {
+   235→      await fetch(`${API}/brands/${id}`, { method: 'DELETE' })
+   236→      toast.success('Brand deleted')
+   237→      loadData()
+   238→    } catch { toast.error('Delete failed') }
+   239→  }
+   240→
+   241→  const fmtPrice = (p: number) => `$${p.toLocaleString('en-JM', { minimumFractionDigits: 2 })}`
+   242→
+   243→  const filtered = products.filter(p =>
+   244→    !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.model.toLowerCase().includes(searchQuery.toLowerCase())
+   245→  )
+   246→
+   247→  // ─── Render ───
+   248→  return (
+   249→    <div className="min-h-screen bg-gray-50">
+   250→      {/* Header */}
+   251→      <header className="bg-[#1a1a2e] text-white shadow-lg">
+   252→        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+   253→          <div>
+   254→            <h1 className="text-xl font-bold">PixelWire Admin</h1>
+   255→            <p className="text-xs opacity-60">Product &amp; Inventory Management</p>
+   256→          </div>
+   257→          <a href="/" className="text-sm bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">
+   258→            View Storefront
+   259→          </a>
+   260→        </div>
+   261→      </header>
+   262→
+   263→      {/* Tabs */}
+   264→      <nav className="bg-white border-b shadow-sm sticky top-0 z-40">
+   265→        <div className="max-w-7xl mx-auto px-4 flex gap-1 overflow-x-auto">
+   266→          {([
+   267→            ['products', 'Products', `${products.length} items`],
+   268→            ['add', editingProduct ? 'Edit Product' : 'Add Product', ''],
+   269→            ['categories', 'Categories', `${categories.length}`],
+   270→            ['brands', 'Brands', `${brands.length}`],
+   271→            ['orders', 'Orders', ''],
+   272→          ] as [Tab, string, string][]).map(([key, label, count]) => (
+   273→            <button
+   274→              key={key}
+   275→              onClick={() => setTab(key)}
+   276→              className={`px-4 py-3 text-sm font-medium border-b-2 transition whitespace-nowrap ${
+   277→                tab === key
+   278→                  ? 'border-[#1a1a2e] text-[#1a1a2e]'
+   279→                  : 'border-transparent text-gray-500 hover:text-gray-700'
+   280→              }`}
+   281→            >
+   282→              {label}{count ? ` (${count})` : ''}
+   283→            </button>
+   284→          ))}
+   285→        </div>
+   286→      </nav>
+   287→
+   288→      <main className="max-w-7xl mx-auto px-4 py-6">
+   289→        {/* ─── PRODUCTS TAB ─── */}
+   290→        {tab === 'products' && (
+   291→          <div>
+   292→            <div className="flex gap-3 items-center mb-4">
+   293→              <input
+   294→                type="text"
+   295→                placeholder="Search products..."
+   296→                value={searchQuery}
+   297→                onChange={e => setSearchQuery(e.target.value)}
+   298→                className="flex-1 px-4 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none"
+   299→              />
+   300→              <button
+   301→                onClick={() => { setEditingProduct(null); setForm({ name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827', categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0, imageUrls: '' }); setTab('add') }}
+   302→                className="bg-[#1a1a2e] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#0f3460] transition"
+   303→              >
+   304→                + Add Product
+   305→              </button>
+   306→            </div>
+   307→
+   308→            {loading ? (
+   309→              <div className="text-center py-12 text-gray-400">Loading...</div>
+   310→            ) : (
+   311→              <div className="bg-white rounded-xl shadow overflow-hidden">
+   312→                <table className="w-full text-sm">
+   313→                  <thead className="bg-gray-50 border-b">
+   314→                    <tr>
+   315→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Product</th>
+   316→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Brand</th>
+   317→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Category</th>
+   318→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Price</th>
+   319→                      <th className="px-4 py-3 text-center font-medium text-gray-600">Images</th>
+   320→                      <th className="px-4 py-3 text-center font-medium text-gray-600">Active</th>
+   321→                      <th className="px-4 py-3 text-center font-medium text-gray-600">Featured</th>
+   322→                      <th className="px-4 py-3 text-center font-medium text-gray-600">Actions</th>
+   323→                    </tr>
+   324→                  </thead>
+   325→                  <tbody className="divide-y">
+   326→                    {filtered.map(p => (
+   327→                      <tr key={p.id} className="hover:bg-gray-50 transition">
+   328→                        <td className="px-4 py-3">
+   329→                          <div className="flex items-center gap-3">
+   330→                            {p.images[0] && (
+   331→                              <img src={p.images[0].url} alt="" className="w-10 h-10 object-contain rounded border bg-gray-50" onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
+   332→                            )}
+   333→                            <div>
+   334→                              <p className="font-medium text-gray-900">{p.name}</p>
+   335→                              <p className="text-xs text-gray-400 font-mono">{p.model}</p>
+   336→                            </div>
+   337→                          </div>
+   338→                        </td>
+   339→                        <td className="px-4 py-3 text-gray-700">{p.brand.name}</td>
+   340→                        <td className="px-4 py-3 text-gray-700">{p.category.name}</td>
+   341→                        <td className="px-4 py-3 font-semibold text-green-600">{fmtPrice(p.price)}</td>
+   342→                        <td className="px-4 py-3 text-center text-gray-500">{p.images.length}</td>
+   343→                        <td className="px-4 py-3 text-center">
+   344→                          <button onClick={() => toggleActive(p)} className={`px-2 py-1 rounded-full text-xs font-bold ${p.isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+   345→                            {p.isActive ? 'Live' : 'Hidden'}
+   346→                          </button>
+   347→                        </td>
+   348→                        <td className="px-4 py-3 text-center">
+   349→                          <button onClick={() => toggleFeatured(p)} className={`text-lg ${p.featured ? 'text-yellow-500' : 'text-gray-300'}`}>
+   350→                            ★
+   351→                          </button>
+   352→                        </td>
+   353→                        <td className="px-4 py-3 text-center">
+   354→                          <div className="flex gap-1 justify-center">
+   355→                            <button onClick={() => startEdit(p)} className="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold hover:bg-blue-100 transition">
+   356→                              Edit
+   357→                            </button>
+   358→                            <button onClick={() => deleteProduct(p.id)} className="px-2 py-1 bg-red-50 text-red-600 rounded text-xs font-semibold hover:bg-red-100 transition">
+   359→                              Delete
+   360→                            </button>
+   361→                          </div>
+   362→                        </td>
+   363→                      </tr>
+   364→                    ))}
+   365→                  </tbody>
+   366→                </table>
+   367→                {filtered.length === 0 && (
+   368→                  <div className="text-center py-12 text-gray-400">No products found</div>
+   369→                )}
+   370→              </div>
+   371→            )}
+   372→          </div>
+   373→        )}
+   374→
+   375→        {/* ─── ADD / EDIT PRODUCT TAB ─── */}
+   376→        {tab === 'add' && (
+   377→          <div className="max-w-2xl mx-auto bg-white rounded-xl shadow p-6">
+   378→            <h2 className="text-lg font-bold mb-4">{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
+   379→            <form onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct} className="space-y-4">
+   380→              <div className="grid grid-cols-2 gap-4">
+   381→                <div>
+   382→                  <label className="block text-sm font-medium text-gray-700 mb-1">Product Name *</label>
+   383→                  <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   384→                </div>
+   385→                <div>
+   386→                  <label className="block text-sm font-medium text-gray-700 mb-1">Model/SKU *</label>
+   387→                  <input type="text" value={form.model} onChange={e => setForm({ ...form, model: e.target.value })} required className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   388→                </div>
+   389→              </div>
+   390→
+   391→              <div className="grid grid-cols-2 gap-4">
+   392→                <div>
+   393→                  <label className="block text-sm font-medium text-gray-700 mb-1">Price (JMD) *</label>
+   394→                  <input type="number" step="0.01" value={form.price} onChange={e => setForm({ ...form, price: parseFloat(e.target.value) || 0 })} required className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   395→                </div>
+   396→                <div>
+   397→                  <label className="block text-sm font-medium text-gray-700 mb-1">Size (laptop fit)</label>
+   398→                  <input type="text" value={form.size} onChange={e => setForm({ ...form, size: e.target.value })} placeholder='e.g. "15.6 inch" or "N/A"' className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   399→                </div>
+   400→              </div>
+   401→
+   402→              <div className="grid grid-cols-2 gap-4">
+   403→                <div>
+   404→                  <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+   405→                  <select value={form.categoryId} onChange={e => setForm({ ...form, categoryId: e.target.value })} required className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none">
+   406→                    <option value="">Select category</option>
+   407→                    {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+   408→                  </select>
+   409→                </div>
+   410→                <div>
+   411→                  <label className="block text-sm font-medium text-gray-700 mb-1">Brand *</label>
+   412→                  <select value={form.brandId} onChange={e => setForm({ ...form, brandId: e.target.value })} required className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none">
+   413→                    <option value="">Select brand</option>
+   414→                    {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+   415→                  </select>
+   416→                </div>
+   417→              </div>
+   418→
+   419→              <div>
+   420→                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+   421→                <textarea value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} rows={3} className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   422→              </div>
+   423→
+   424→              <div>
+   425→                <label className="block text-sm font-medium text-gray-700 mb-1">Image URLs <span className="text-gray-400 font-normal">(comma-separated)</span></label>
+   426→                <textarea value={form.imageUrls} onChange={e => setForm({ ...form, imageUrls: e.target.value })} rows={3} placeholder="https://example.com/img1.jpg, https://example.com/img2.jpg" className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none font-mono" />
+   427→                {form.imageUrls && (
+   428→                  <div className="flex gap-2 mt-2 flex-wrap">
+   429→                    {form.imageUrls.split(',').map((u, i) => u.trim() && (
+   430→                      <img key={i} src={u.trim()} alt="" className="w-16 h-16 object-contain rounded border bg-gray-50" onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
+   431→                    ))}
+   432→                  </div>
+   433→                )}
+   434→              </div>
+   435→
+   436→              <div className="grid grid-cols-3 gap-4">
+   437→                <div>
+   438→                  <label className="block text-sm font-medium text-gray-700 mb-1">Color</label>
+   439→                  <input type="color" value={form.color} onChange={e => setForm({ ...form, color: e.target.value })} className="w-full h-10 rounded-lg border cursor-pointer" />
+   440→                </div>
+   441→                <div>
+   442→                  <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+   443→                  <input type="number" value={form.sortOrder} onChange={e => setForm({ ...form, sortOrder: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   444→                </div>
+   445→                <div className="flex flex-col justify-end gap-2">
+   446→                  <label className="flex items-center gap-2 text-sm">
+   447→                    <input type="checkbox" checked={form.isActive} onChange={e => setForm({ ...form, isActive: e.target.checked })} className="rounded" />
+   448→                    Active
+   449→                  </label>
+   450→                  <label className="flex items-center gap-2 text-sm">
+   451→                    <input type="checkbox" checked={form.featured} onChange={e => setForm({ ...form, featured: e.target.checked })} className="rounded" />
+   452→                    Featured
+   453→                  </label>
+   454→                </div>
+   455→              </div>
+   456→
+   457→              <div className="flex gap-3 pt-2">
+   458→                <button type="submit" className="flex-1 bg-[#1a1a2e] text-white py-2.5 rounded-lg font-semibold hover:bg-[#0f3460] transition">
+   459→                  {editingProduct ? 'Update Product' : 'Add Product'}
+   460→                </button>
+   461→                {editingProduct && (
+   462→                  <button type="button" onClick={() => { setEditingProduct(null); setForm({ name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827', categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0, imageUrls: '' }); setTab('products') }} className="px-6 py-2.5 border rounded-lg text-gray-600 hover:bg-gray-50 transition">
+   463→                    Cancel
+   464→                  </button>
+   465→                )}
+   466→              </div>
+   467→            </form>
+   468→          </div>
+   469→        )}
+   470→
+   471→        {/* ─── CATEGORIES TAB ─── */}
+   472→        {tab === 'categories' && (
+   473→          <div className="max-w-2xl mx-auto space-y-6">
+   474→            <div className="bg-white rounded-xl shadow p-6">
+   475→              <h2 className="text-lg font-bold mb-4">Add Category</h2>
+   476→              <form onSubmit={handleAddCategory} className="grid grid-cols-2 gap-4">
+   477→                <input type="text" value={catForm.name} onChange={e => setCatForm({ ...catForm, name: e.target.value })} placeholder="Category name *" required className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   478→                <input type="text" value={catForm.slug} onChange={e => setCatForm({ ...catForm, slug: e.target.value })} placeholder="Slug (auto-generated)" className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   479→                <input type="text" value={catForm.icon} onChange={e => setCatForm({ ...catForm, icon: e.target.value })} placeholder="Icon emoji" className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   480→                <input type="color" value={catForm.color} onChange={e => setCatForm({ ...catForm, color: e.target.value })} className="h-10 rounded-lg border cursor-pointer" />
+   481→                <button type="submit" className="col-span-2 bg-[#1a1a2e] text-white py-2 rounded-lg font-semibold hover:bg-[#0f3460] transition">
+   482→                  Add Category
+   483→                </button>
+   484→              </form>
+   485→            </div>
+   486→
+   487→            <div className="bg-white rounded-xl shadow overflow-hidden">
+   488→              <table className="w-full text-sm">
+   489→                <thead className="bg-gray-50 border-b">
+   490→                  <tr>
+   491→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Icon</th>
+   492→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Name</th>
+   493→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Slug</th>
+   494→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Products</th>
+   495→                    <th className="px-4 py-3 text-center font-medium text-gray-600">Actions</th>
+   496→                  </tr>
+   497→                </thead>
+   498→                <tbody className="divide-y">
+   499→                  {categories.map(c => (
+   500→                    <tr key={c.id} className="hover:bg-gray-50">
+   501→                      <td className="px-4 py-3 text-xl">{c.icon || '—'}</td>
+   502→                      <td className="px-4 py-3 font-medium">{c.name}</td>
+   503→                      <td className="px-4 py-3 text-gray-400 font-mono text-xs">{c.slug}</td>
+   504→                      <td className="px-4 py-3 text-gray-500">{products.filter(p => p.category.id === c.id).length}</td>
+   505→                      <td className="px-4 py-3 text-center">
+   506→                        <button onClick={() => deleteCategory(c.id)} className="px-2 py-1 bg-red-50 text-red-600 rounded text-xs font-semibold hover:bg-red-100 transition">
+   507→                          Delete
+   508→                        </button>
+   509→                      </td>
+   510→                    </tr>
+   511→                  ))}
+   512→                </tbody>
+   513→              </table>
+   514→            </div>
+   515→          </div>
+   516→        )}
+   517→
+   518→        {/* ─── BRANDS TAB ─── */}
+   519→        {tab === 'brands' && (
+   520→          <div className="max-w-2xl mx-auto space-y-6">
+   521→            <div className="bg-white rounded-xl shadow p-6">
+   522→              <h2 className="text-lg font-bold mb-4">Add Brand</h2>
+   523→              <form onSubmit={handleAddBrand} className="grid grid-cols-3 gap-4">
+   524→                <input type="text" value={brandForm.name} onChange={e => setBrandForm({ ...brandForm, name: e.target.value })} placeholder="Brand name *" required className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   525→                <input type="text" value={brandForm.slug} onChange={e => setBrandForm({ ...brandForm, slug: e.target.value })} placeholder="Slug (auto)" className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   526→                <input type="text" value={brandForm.logoUrl} onChange={e => setBrandForm({ ...brandForm, logoUrl: e.target.value })} placeholder="Logo URL" className="px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none" />
+   527→                <button type="submit" className="col-span-3 bg-[#1a1a2e] text-white py-2 rounded-lg font-semibold hover:bg-[#0f3460] transition">
+   528→                  Add Brand
+   529→                </button>
+   530→              </form>
+   531→            </div>
+   532→
+   533→            <div className="bg-white rounded-xl shadow overflow-hidden">
+   534→              <table className="w-full text-sm">
+   535→                <thead className="bg-gray-50 border-b">
+   536→                  <tr>
+   537→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Name</th>
+   538→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Slug</th>
+   539→                    <th className="px-4 py-3 text-left font-medium text-gray-600">Products</th>
+   540→                    <th className="px-4 py-3 text-center font-medium text-gray-600">Actions</th>
+   541→                  </tr>
+   542→                </thead>
+   543→                <tbody className="divide-y">
+   544→                  {brands.map(b => (
+   545→                    <tr key={b.id} className="hover:bg-gray-50">
+   546→                      <td className="px-4 py-3 font-medium">{b.name}</td>
+   547→                      <td className="px-4 py-3 text-gray-400 font-mono text-xs">{b.slug}</td>
+   548→                      <td className="px-4 py-3 text-gray-500">{products.filter(p => p.brand.id === b.id).length}</td>
+   549→                      <td className="px-4 py-3 text-center">
+   550→                        <button onClick={() => deleteBrand(b.id)} className="px-2 py-1 bg-red-50 text-red-600 rounded text-xs font-semibold hover:bg-red-100 transition">
+   551→                          Delete
+   552→                        </button>
+   553→                      </td>
+   554→                    </tr>
+   555→                  ))}
+   556→                </tbody>
+   557→              </table>
+   558→            </div>
+   559→          </div>
+   560→        )}
+   561→
+   562→        {/* ─── ORDERS TAB ─── */}
+   563→        {tab === 'orders' && (
+   564→          <div>
+   565→            <h2 className="text-lg font-bold mb-4">Recent Orders</h2>
+   566→            {orders.length === 0 ? (
+   567→              <div className="text-center py-12 text-gray-400 bg-white rounded-xl shadow">No orders yet</div>
+   568→            ) : (
+   569→              <div className="bg-white rounded-xl shadow overflow-hidden">
+   570→                <table className="w-full text-sm">
+   571→                  <thead className="bg-gray-50 border-b">
+   572→                    <tr>
+   573→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Customer</th>
+   574→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Items</th>
+   575→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Total</th>
+   576→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Channel</th>
+   577→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Delivery</th>
+   578→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Status</th>
+   579→                      <th className="px-4 py-3 text-left font-medium text-gray-600">Date</th>
+   580→                    </tr>
+   581→                  </thead>
+   582→                  <tbody className="divide-y">
+   583→                    {orders.map((o: any) => (
+   584→                      <tr key={o.id} className="hover:bg-gray-50">
+   585→                        <td className="px-4 py-3 font-medium">{o.customerName}</td>
+   586→                        <td className="px-4 py-3 text-gray-500">{o.items?.length || 0} item(s)</td>
+   587→                        <td className="px-4 py-3 font-semibold text-green-600">{fmtPrice(o.totalPrice)}</td>
+   588→                        <td className="px-4 py-3 text-gray-500 capitalize">{o.channel}</td>
+   589→                        <td className="px-4 py-3 text-gray-500 capitalize">{o.delivery?.replace('_', ' ')}</td>
+   590→                        <td className="px-4 py-3">
+   591→                          <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+   592→                            o.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+   593→                            o.status === 'confirmed' ? 'bg-blue-100 text-blue-700' :
+   594→                            o.status === 'shipped' ? 'bg-purple-100 text-purple-700' :
+   595→                            o.status === 'delivered' ? 'bg-green-100 text-green-700' :
+   596→                            'bg-red-100 text-red-700'
+   597→                          }`}>{o.status}</span>
+   598→                        </td>
+   599→                        <td className="px-4 py-3 text-gray-400 text-xs">{new Date(o.createdAt).toLocaleDateString()}</td>
+   600→                      </tr>
+   601→                    ))}
+   602→                  </tbody>
+   603→                </table>
+   604→              </div>
+   605→            )}
+   606→          </div>
+   607→        )}
+   608→      </main>
+   609→    </div>
+   610→  )
+   611→}
+   612→
