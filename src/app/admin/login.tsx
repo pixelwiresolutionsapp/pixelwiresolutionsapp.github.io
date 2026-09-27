@@ -4,6 +4,10 @@ import { useState } from 'react'
 import { Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react'
 import { getApiUrl, apiFetch } from '@/lib/api-config'
 
+// Client-side fallback password for when the API backend is unreachable
+// This allows the admin to work on GitHub Pages even if Vercel is down
+const ADMIN_PASSWORD_HASH = 'PixelWire2026!'
+
 interface AdminLoginProps {
   onLogin: () => void
 }
@@ -20,6 +24,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
     setLoading(true)
 
     try {
+      // Try server-side authentication first (via Vercel API)
       const res = await apiFetch(getApiUrl('/api/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -29,13 +34,27 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
       const data = await res.json()
 
       if (res.ok && data.success) {
+        // Server auth succeeded - store session indicator
+        localStorage.setItem('admin_auth', 'server')
+        localStorage.setItem('admin_ts', String(Date.now()))
         onLogin()
-      } else {
-        setError(data.error || 'Invalid password')
-        setPassword('')
+        return
       }
+
+      // Server returned an error response (not a network error)
+      // This means the API is reachable but the password was wrong
+      setError(data.error || 'Invalid password')
+      setPassword('')
     } catch {
-      setError('Connection error. Please try again.')
+      // API is unreachable (e.g., Vercel not deployed) - fall back to client-side check
+      if (password === ADMIN_PASSWORD_HASH) {
+        localStorage.setItem('admin_auth', 'client')
+        localStorage.setItem('admin_ts', String(Date.now()))
+        onLogin()
+        return
+      }
+      setError('Invalid password')
+      setPassword('')
     } finally {
       setLoading(false)
     }

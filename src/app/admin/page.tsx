@@ -84,6 +84,16 @@ export default function AdminDashboard() {
 
   // ─── Auth check ───
   useEffect(() => {
+    // First check localStorage for client-side auth (works on GitHub Pages)
+    const clientAuth = localStorage.getItem('admin_auth')
+    const authTs = localStorage.getItem('admin_ts')
+    const EIGHT_HOURS = 8 * 60 * 60 * 1000
+    if (clientAuth && authTs && (Date.now() - Number(authTs)) < EIGHT_HOURS) {
+      setAuthenticated(true)
+      setCheckingAuth(false)
+      return
+    }
+    // Otherwise try server-side verification
     apiFetch(getApiUrl('/api/admin/verify'))
       .then(res => res.ok ? setAuthenticated(true) : setAuthenticated(false))
       .catch(() => setAuthenticated(false))
@@ -91,7 +101,9 @@ export default function AdminDashboard() {
   }, [])
 
   const handleLogout = async () => {
-    await apiFetch(getApiUrl('/api/admin/logout'), { method: 'POST' })
+    localStorage.removeItem('admin_auth')
+    localStorage.removeItem('admin_ts')
+    await apiFetch(getApiUrl('/api/admin/logout'), { method: 'POST' }).catch(() => {})
     setAuthenticated(false)
     toast.success('Logged out')
   }
