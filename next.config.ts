@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.BUILD_TARGET === "github-pages";
-const isStaticExport = process.env.BUILD_TARGET === "static";
+const isStaticExport = process.env.BUILD_TARGET === "static" || isGitHubPages;
 
 const nextConfig: NextConfig = {
   // For GitHub Pages static export, use 'export'; otherwise use 'standalone' for Vercel

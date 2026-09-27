@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
-import { cors, corsPreflight } from '@/lib/cors'
+import { cors, getAllowedOrigin, corsPreflight } from '@/lib/cors'
 
 // GET /api/products — list all products with images, brand, category
 export async function GET(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const url = req.nextUrl
   const category = url.searchParams.get('category')
   const brand = url.searchParams.get('brand')
@@ -51,11 +52,12 @@ export async function GET(req: NextRequest) {
     db.product.count({ where }),
   ])
 
-  return cors(NextResponse.json({ products, total, limit, offset }))
+  return cors(NextResponse.json({ products, total, limit, offset }), origin)
 }
 
 // POST /api/products — create a new product
 export async function POST(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const body = await req.json()
 
   const product = await db.product.create({
@@ -82,10 +84,10 @@ export async function POST(req: NextRequest) {
     include: { images: true, brand: true, category: true },
   })
 
-  return cors(NextResponse.json(product, { status: 201 }))
+  return cors(NextResponse.json(product, { status: 201 }), origin)
 }
 
 // OPTIONS — CORS preflight
-export async function OPTIONS() {
-  return corsPreflight()
+export async function OPTIONS(req: NextRequest) {
+  return corsPreflight(req)
 }

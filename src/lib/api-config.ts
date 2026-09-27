@@ -17,3 +17,15 @@ export function getApiUrl(path: string): string {
 }
 
 export const API = API_BASE ? `${API_BASE}/api` : '/api'
+
+/**
+ * Enhanced fetch wrapper that includes credentials for cross-origin cookie support.
+ * When the frontend is deployed on GitHub Pages and the API is on Vercel,
+ * cookies won't be sent unless credentials: 'include' is set.
+ */
+export function apiFetch(url: string, options: RequestInit = {}): Promise<Response> {
+  return fetch(url, {
+    ...options,
+    credentials: 'include',
+  })
+}

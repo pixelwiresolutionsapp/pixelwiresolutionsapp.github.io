@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
-import { cors, corsPreflight } from '@/lib/cors'
+import { cors, getAllowedOrigin, corsPreflight } from '@/lib/cors'
 
 // GET /api/products/[id]
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const origin = getAllowedOrigin(req)
   const { id } = await params
   const product = await db.product.findUnique({
     where: { id },
@@ -17,8 +18,8 @@ export async function GET(
       category: true,
     },
   })
-  if (!product) return cors(NextResponse.json({ error: 'Not found' }, { status: 404 }))
-  return cors(NextResponse.json(product))
+  if (!product) return cors(NextResponse.json({ error: 'Not found' }, { status: 404 }), origin)
+  return cors(NextResponse.json(product), origin)
 }
 
 // PUT /api/products/[id]
@@ -26,6 +27,7 @@ export async function PUT(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const origin = getAllowedOrigin(req)
   const { id } = await params
   const body = await req.json()
 
@@ -60,7 +62,7 @@ export async function PUT(
     include: { images: { orderBy: { sortOrder: 'asc' } }, brand: true, category: true },
   })
 
-  return cors(NextResponse.json(product))
+  return cors(NextResponse.json(product), origin)
 }
 
 // DELETE /api/products/[id]
@@ -68,12 +70,13 @@ export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const origin = getAllowedOrigin(req)
   const { id } = await params
   await db.product.delete({ where: { id } })
-  return cors(NextResponse.json({ success: true }))
+  return cors(NextResponse.json({ success: true }), origin)
 }
 
 // OPTIONS — CORS preflight
-export async function OPTIONS() {
-  return corsPreflight()
+export async function OPTIONS(req: NextRequest) {
+  return corsPreflight(req)
 }

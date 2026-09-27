@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react'
-import { getApiUrl } from '@/lib/api-config'
+import { getApiUrl, apiFetch } from '@/lib/api-config'
 
 interface AdminLoginProps {
   onLogin: () => void
@@ -20,7 +20,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
     setLoading(true)
 
     try {
-      const res = await fetch(getApiUrl('/api/admin/login'), {
+      const res = await apiFetch(getApiUrl('/api/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),

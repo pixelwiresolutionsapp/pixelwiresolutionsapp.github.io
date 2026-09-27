@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
-import { cors, corsPreflight } from '@/lib/cors'
+import { cors, getAllowedOrigin, corsPreflight } from '@/lib/cors'
 
 // GET /api/orders — list orders
 export async function GET(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const url = req.nextUrl
   const status = url.searchParams.get('status')
   const limit = parseInt(url.searchParams.get('limit') || '50')
@@ -35,11 +36,12 @@ export async function GET(req: NextRequest) {
     db.order.count({ where }),
   ])
 
-  return cors(NextResponse.json({ orders, total, limit, offset }))
+  return cors(NextResponse.json({ orders, total, limit, offset }), origin)
 }
 
 // POST /api/orders — create an order
 export async function POST(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const body = await req.json()
 
   const order = await db.order.create({
@@ -65,10 +67,10 @@ export async function POST(req: NextRequest) {
     include: { items: true },
   })
 
-  return cors(NextResponse.json(order, { status: 201 }))
+  return cors(NextResponse.json(order, { status: 201 }), origin)
 }
 
 // OPTIONS — CORS preflight
-export async function OPTIONS() {
-  return corsPreflight()
+export async function OPTIONS(req: NextRequest) {
+  return corsPreflight(req)
 }

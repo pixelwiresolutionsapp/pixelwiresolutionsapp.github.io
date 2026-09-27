@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { API } from '@/lib/api-config'
+import { API, apiFetch } from '@/lib/api-config'
 
 // ─── Types ───
 interface ProductImage { id: string; url: string; alt?: string; sortOrder: number; isPrimary: boolean }
@@ -40,8 +40,8 @@ export default function Storefront() {
     async function load() {
       try {
         const [prodRes, catRes] = await Promise.all([
-          fetch(`${API}/products?limit=200`),
-          fetch(`${API}/categories`),
+          apiFetch(`${API}/products?limit=200`),
+          apiFetch(`${API}/categories`),
         ])
         const prodData = await prodRes.json()
         const catData = await catRes.json()

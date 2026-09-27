@@ -1,18 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
-import { cors, corsPreflight } from '@/lib/cors'
+import { cors, getAllowedOrigin, corsPreflight } from '@/lib/cors'
 
 // GET /api/categories
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const categories = await db.category.findMany({
     orderBy: { sortOrder: 'asc' },
     include: { _count: { select: { products: { where: { isActive: true } } } } },
   })
-  return cors(NextResponse.json(categories))
+  return cors(NextResponse.json(categories), origin)
 }
 
 // POST /api/categories
 export async function POST(req: NextRequest) {
+  const origin = getAllowedOrigin(req)
   const body = await req.json()
   const category = await db.category.create({
     data: {
@@ -23,10 +25,10 @@ export async function POST(req: NextRequest) {
       sortOrder: body.sortOrder || 0,
     },
   })
-  return cors(NextResponse.json(category, { status: 201 }))
+  return cors(NextResponse.json(category, { status: 201 }), origin)
 }
 
 // OPTIONS — CORS preflight
-export async function OPTIONS() {
-  return corsPreflight()
+export async function OPTIONS(req: NextRequest) {
+  return corsPreflight(req)
 }

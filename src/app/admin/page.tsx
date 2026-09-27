@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { toast } from 'sonner'
 import { LogOut } from 'lucide-react'
 import AdminLogin from './login'
-import { API, getApiUrl } from '@/lib/api-config'
+import { API, getApiUrl, apiFetch } from '@/lib/api-config'
 
 // ─── Types ───
 interface ProductImage { id: string; url: string; alt?: string; sortOrder: number; isPrimary: boolean }
@@ -52,9 +52,9 @@ export default function AdminDashboard() {
   const loadData = useCallback(async () => {
     try {
       const [prodRes, catRes, brandRes] = await Promise.all([
-        fetch(`${API}/products?limit=500`),
-        fetch(`${API}/categories`),
-        fetch(`${API}/brands`),
+        apiFetch(`${API}/products?limit=500`),
+        apiFetch(`${API}/categories`),
+        apiFetch(`${API}/brands`),
       ])
       const prodData = await prodRes.json()
       const catData = await catRes.json()
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
 
   const loadOrders = useCallback(async () => {
     try {
-      const res = await fetch(`${API}/orders?limit=100`)
+      const res = await apiFetch(`${API}/orders?limit=100`)
       const data = await res.json()
       setOrders(data.orders || [])
     } catch {
@@ -84,14 +84,14 @@ export default function AdminDashboard() {
 
   // ─── Auth check ───
   useEffect(() => {
-    fetch(getApiUrl('/api/admin/verify'))
+    apiFetch(getApiUrl('/api/admin/verify'))
       .then(res => res.ok ? setAuthenticated(true) : setAuthenticated(false))
       .catch(() => setAuthenticated(false))
       .finally(() => setCheckingAuth(false))
   }, [])
 
   const handleLogout = async () => {
-    await fetch(getApiUrl('/api/admin/logout'), { method: 'POST' })
+    await apiFetch(getApiUrl('/api/admin/logout'), { method: 'POST' })
     setAuthenticated(false)
     toast.success('Logged out')
   }
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
   const deleteProduct = async (id: string) => {
     if (!confirm('Delete this product? This cannot be undone.')) return
     try {
-      await fetch(`${API}/products/${id}`, { method: 'DELETE' })
+      await apiFetch(`${API}/products/${id}`, { method: 'DELETE' })
       toast.success('Product deleted')
       loadData()
     } catch {
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
 
   const toggleActive = async (product: Product) => {
     try {
-      await fetch(`${API}/products/${product.id}`, {
+      await apiFetch(`${API}/products/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...product, isActive: !product.isActive, brandId: product.brand.id, categoryId: product.category.id }),
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
 
   const toggleFeatured = async (product: Product) => {
     try {
-      await fetch(`${API}/products/${product.id}`, {
+      await apiFetch(`${API}/products/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...product, featured: !product.featured, brandId: product.brand.id, categoryId: product.category.id }),
@@ -145,7 +145,7 @@ export default function AdminDashboard() {
     }
     try {
       const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
-      const res = await fetch(`${API}/products`, {
+      const res = await apiFetch(`${API}/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, images, price: Number(form.price), sortOrder: Number(form.sortOrder) }),
@@ -166,7 +166,7 @@ export default function AdminDashboard() {
     if (!editingProduct) return
     try {
       const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
-      await fetch(`${API}/products/${editingProduct.id}`, {
+      await apiFetch(`${API}/products/${editingProduct.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
     if (!catForm.name) return
     try {
       const slug = catForm.slug || catForm.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
-      const res = await fetch(`${API}/categories`, {
+      const res = await apiFetch(`${API}/categories`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...catForm, slug }),
@@ -224,7 +224,7 @@ export default function AdminDashboard() {
     if (!brandForm.name) return
     try {
       const slug = brandForm.slug || brandForm.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
-      const res = await fetch(`${API}/brands`, {
+      const res = await apiFetch(`${API}/brands`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...brandForm, slug }),
@@ -242,7 +242,7 @@ export default function AdminDashboard() {
   const deleteCategory = async (id: string) => {
     if (!confirm('Delete this category? All products in it will also be deleted!')) return
     try {
-      await fetch(`${API}/categories/${id}`, { method: 'DELETE' })
+      await apiFetch(`${API}/categories/${id}`, { method: 'DELETE' })
       toast.success('Category deleted')
       loadData()
     } catch { toast.error('Delete failed') }
@@ -252,7 +252,7 @@ export default function AdminDashboard() {
   const deleteBrand = async (id: string) => {
     if (!confirm('Delete this brand? All products under it will also be deleted!')) return
     try {
-      await fetch(`${API}/brands/${id}`, { method: 'DELETE' })
+      await apiFetch(`${API}/brands/${id}`, { method: 'DELETE' })
       toast.success('Brand deleted')
       loadData()
     } catch { toast.error('Delete failed') }
