@@ -31,6 +31,13 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
         body: JSON.stringify({ password }),
       })
 
+      // Check if response is JSON (API route exists) or HTML (404 page / no route)
+      const contentType = res.headers.get('content-type') || ''
+      if (!contentType.includes('application/json')) {
+        // API route not deployed — fall back to client-side check
+        throw new Error('API route not available')
+      }
+
       const data = await res.json()
 
       if (res.ok && data.success) {
@@ -46,7 +53,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
       setError(data.error || 'Invalid password')
       setPassword('')
     } catch {
-      // API is unreachable (e.g., Vercel not deployed) - fall back to client-side check
+      // API is unreachable or not deployed - fall back to client-side check
       if (password === ADMIN_PASSWORD_HASH) {
         localStorage.setItem('admin_auth', 'client')
         localStorage.setItem('admin_ts', String(Date.now()))

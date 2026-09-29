@@ -50,20 +50,25 @@ export default function AdminDashboard() {
 
   // ─── Load data ───
   const loadData = useCallback(async () => {
+    setLoading(true)
     try {
       const [prodRes, catRes, brandRes] = await Promise.all([
         apiFetch(`${API}/products?limit=500`),
         apiFetch(`${API}/categories`),
         apiFetch(`${API}/brands`),
       ])
+      if (!prodRes.ok || !catRes.ok || !brandRes.ok) {
+        throw new Error(`API error: products=${prodRes.status}, categories=${catRes.status}, brands=${brandRes.status}`)
+      }
       const prodData = await prodRes.json()
       const catData = await catRes.json()
       const brandData = await brandRes.json()
       setProducts(prodData.products || [])
       setCategories(catData || [])
       setBrands(brandData || [])
-    } catch {
-      toast.error('Failed to load data')
+    } catch (err) {
+      console.error('Failed to load admin data:', err)
+      toast.error('Failed to load data — check that the API backend is reachable')
     } finally {
       setLoading(false)
     }
@@ -79,8 +84,9 @@ export default function AdminDashboard() {
     }
   }, [])
 
-  useEffect(() => { loadData() }, [loadData])
-  useEffect(() => { if (tab === 'orders') loadOrders() }, [tab, loadOrders])
+  // Only load data AFTER authentication is confirmed
+  useEffect(() => { if (authenticated) loadData() }, [authenticated, loadData])
+  useEffect(() => { if (authenticated && tab === 'orders') loadOrders() }, [authenticated, tab, loadOrders])
 
   // ─── Auth check ───
   useEffect(() => {
