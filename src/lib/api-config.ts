@@ -19,13 +19,17 @@ export function getApiUrl(path: string): string {
 export const API = API_BASE ? `${API_BASE}/api` : '/api'
 
 /**
- * Enhanced fetch wrapper that includes credentials for cross-origin cookie support.
- * When the frontend is deployed on GitHub Pages and the API is on Vercel,
- * cookies won't be sent unless credentials: 'include' is set.
+ * Fetch wrapper for cross-origin API calls from GitHub Pages.
+ * 
+ * IMPORTANT: We do NOT include credentials: 'include' by default.
+ * When Access-Control-Allow-Origin is '*' (wildcard), browsers REJECT
+ * responses if credentials are included — the origin must be specific.
+ * 
+ * Since admin auth uses localStorage (not cookies), we don't need
+ * credentials for most API calls. Only admin login/verify/logout
+ * endpoints need credentials for cookie-based sessions, and those
+ * are called with explicit credentials in the login component.
  */
 export function apiFetch(url: string, options: RequestInit = {}): Promise<Response> {
-  return fetch(url, {
-    ...options,
-    credentials: 'include',
-  })
+  return fetch(url, options)
 }

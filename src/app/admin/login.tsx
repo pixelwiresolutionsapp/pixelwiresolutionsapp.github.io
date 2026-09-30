@@ -25,10 +25,12 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
 
     try {
       // Try server-side authentication first (via Vercel API)
+      // Include credentials for auth endpoints (cookie-based sessions)
       const res = await apiFetch(getApiUrl('/api/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
+        credentials: 'include',
       })
 
       // Check if response is JSON (API route exists) or HTML (404 page / no route)

@@ -99,8 +99,8 @@ export default function AdminDashboard() {
       setCheckingAuth(false)
       return
     }
-    // Otherwise try server-side verification
-    apiFetch(getApiUrl('/api/admin/verify'))
+    // Otherwise try server-side verification (with credentials for cookies)
+    apiFetch(getApiUrl('/api/admin/verify'), { credentials: 'include' })
       .then(res => res.ok ? setAuthenticated(true) : setAuthenticated(false))
       .catch(() => setAuthenticated(false))
       .finally(() => setCheckingAuth(false))
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
   const handleLogout = async () => {
     localStorage.removeItem('admin_auth')
     localStorage.removeItem('admin_ts')
-    await apiFetch(getApiUrl('/api/admin/logout'), { method: 'POST' }).catch(() => {})
+    await apiFetch(getApiUrl('/api/admin/logout'), { method: 'POST', credentials: 'include' }).catch(() => {})
     setAuthenticated(false)
     toast.success('Logged out')
   }
