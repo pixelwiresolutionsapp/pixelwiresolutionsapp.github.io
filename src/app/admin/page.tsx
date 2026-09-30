@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { toast } from 'sonner'
-import { LogOut } from 'lucide-react'
+import { LogOut, Upload, X, ImagePlus } from 'lucide-react'
 import AdminLogin from './login'
 import { API, getApiUrl, apiFetch } from '@/lib/api-config'
 
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
   const [form, setForm] = useState({
     name: '', model: '', price: 0, description: '', size: 'N/A', color: '#111827',
     categoryId: '', brandId: '', featured: false, isActive: true, sortOrder: 0,
-    imageUrls: ''  // comma-separated
+    imageUrls: ''  // existing URLs (comma-separated) + newly uploaded URLs
   })
 
   // Add category form
@@ -154,6 +154,71 @@ export default function AdminDashboard() {
     }
   }
 
+  // ─── Image upload state ───
+  const [uploading, setUploading] = useState(false)
+  const [pendingFiles, setPendingFiles] = useState<File[]>([])
+  const [previewUrls, setPreviewUrls] = useState<string[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  // Handle file selection
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    const imageFiles = files.filter(f => f.type.startsWith('image/'))
+    if (imageFiles.length !== files.length) {
+      toast.error('Only image files are allowed')
+    }
+    if (imageFiles.length === 0) return
+
+    // Add to pending files and create previews
+    setPendingFiles(prev => [...prev, ...imageFiles])
+    const newPreviews = imageFiles.map(f => URL.createObjectURL(f))
+    setPreviewUrls(prev => [...prev, ...newPreviews])
+  }
+
+  // Remove a pending file
+  const removePendingFile = (index: number) => {
+    URL.revokeObjectURL(previewUrls[index])
+    setPendingFiles(prev => prev.filter((_, i) => i !== index))
+    setPreviewUrls(prev => prev.filter((_, i) => i !== index))
+  }
+
+  // Remove an existing URL
+  const removeExistingUrl = (index: number) => {
+    const urls = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+    urls.splice(index, 1)
+    setForm({ ...form, imageUrls: urls.join(', ') })
+  }
+
+  // Upload pending files to the server
+  const uploadPendingFiles = async (): Promise<string[]> => {
+    if (pendingFiles.length === 0) return []
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      pendingFiles.forEach(f => formData.append('files', f))
+      const res = await apiFetch(getApiUrl('/api/upload'), {
+        method: 'POST',
+        body: formData,
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Upload failed')
+      }
+      const data = await res.json()
+      toast.success(`${pendingFiles.length} image(s) uploaded`)
+      // Clean up previews
+      previewUrls.forEach(u => URL.revokeObjectURL(u))
+      setPendingFiles([])
+      setPreviewUrls([])
+      return data.urls || []
+    } catch (err) {
+      toast.error(`Upload failed: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      return []
+    } finally {
+      setUploading(false)
+    }
+  }
+
   // ─── Add product ───
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -162,11 +227,15 @@ export default function AdminDashboard() {
       return
     }
     try {
-      const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+      // Upload any pending files first
+      const uploadedUrls = await uploadPendingFiles()
+      const existingUrls = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+      const allImages = [...existingUrls, ...uploadedUrls]
+
       const res = await apiFetch(`${API}/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, images, price: Number(form.price), sortOrder: Number(form.sortOrder) }),
+        body: JSON.stringify({ ...form, images: allImages, price: Number(form.price), sortOrder: Number(form.sortOrder) }),
       })
       if (!res.ok) throw new Error()
       toast.success('Product added!')
@@ -183,7 +252,11 @@ export default function AdminDashboard() {
     e.preventDefault()
     if (!editingProduct) return
     try {
-      const images = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+      // Upload any pending files first
+      const uploadedUrls = await uploadPendingFiles()
+      const existingUrls = form.imageUrls.split(',').map(u => u.trim()).filter(Boolean)
+      const allImages = [...existingUrls, ...uploadedUrls]
+
       await apiFetch(`${API}/products/${editingProduct.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -192,7 +265,7 @@ export default function AdminDashboard() {
           description: form.description, size: form.size, color: form.color,
           categoryId: form.categoryId, brandId: form.brandId,
           featured: form.featured, isActive: form.isActive, sortOrder: Number(form.sortOrder),
-          images
+          images: allImages
         }),
       })
       toast.success('Product updated!')
@@ -488,13 +561,98 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URLs <span className="text-gray-400 font-normal">(comma-separated)</span></label>
-                <textarea value={form.imageUrls} onChange={e => setForm({ ...form, imageUrls: e.target.value })} rows={3} placeholder="https://example.com/img1.jpg, https://example.com/img2.jpg" className="w-full px-3 py-2 border rounded-lg text-sm focus:border-[#1a1a2e] focus:outline-none font-mono" />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Product Images</label>
+
+                {/* Drag & Drop / Click to Upload */}
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  onDragOver={e => { e.preventDefault(); e.stopPropagation() }}
+                  onDrop={e => {
+                    e.preventDefault(); e.stopPropagation()
+                    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'))
+                    if (files.length > 0) {
+                      setPendingFiles(prev => [...prev, ...files])
+                      setPreviewUrls(prev => [...prev, ...files.map(f => URL.createObjectURL(f))])
+                    }
+                  }}
+                  className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-[#1a1a2e] hover:bg-gray-50 transition-all"
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                  <ImagePlus className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500 font-medium">Click to upload or drag & drop images</p>
+                  <p className="text-xs text-gray-400 mt-1">PNG, JPG, WEBP up to 5MB each</p>
+                </div>
+
+                {/* Preview of pending (newly selected) files */}
+                {previewUrls.length > 0 && (
+                  <div className="mt-3">
+                    <p className="text-xs text-gray-500 font-medium mb-2">New images (will upload on save)</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {previewUrls.map((url, i) => (
+                        <div key={i} className="relative group">
+                          <img src={url} alt="" className="w-20 h-20 object-cover rounded-lg border border-gray-200" />
+                          <button
+                            type="button"
+                            onClick={() => removePendingFile(i)}
+                            className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                          {i === 0 && <span className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white text-[9px] text-center rounded-b-lg">Primary</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Existing image URLs (from editing a product) */}
                 {form.imageUrls && (
-                  <div className="flex gap-2 mt-2 flex-wrap">
-                    {form.imageUrls.split(',').map((u, i) => u.trim() && (
-                      <img key={i} src={u.trim()} alt="" className="w-16 h-16 object-contain rounded border bg-gray-50" onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
-                    ))}
+                  <div className="mt-3">
+                    <p className="text-xs text-gray-500 font-medium mb-2">Existing images</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {form.imageUrls.split(',').map((u, i) => u.trim() && (
+                        <div key={i} className="relative group">
+                          <img src={u.trim()} alt="" className="w-20 h-20 object-cover rounded-lg border border-gray-200" onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                          <button
+                            type="button"
+                            onClick={() => removeExistingUrl(i)}
+                            className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                          {i === 0 && previewUrls.length === 0 && <span className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white text-[9px] text-center rounded-b-lg">Primary</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Optional: manually add URL */}
+                <details className="mt-3">
+                  <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-600">Or paste image URLs manually</summary>
+                  <textarea
+                    value={form.imageUrls}
+                    onChange={e => setForm({ ...form, imageUrls: e.target.value })}
+                    rows={2}
+                    placeholder="https://example.com/img1.jpg, https://example.com/img2.jpg"
+                    className="w-full px-3 py-2 border rounded-lg text-xs focus:border-[#1a1a2e] focus:outline-none font-mono mt-2"
+                  />
+                </details>
+
+                {uploading && (
+                  <div className="mt-2 flex items-center gap-2 text-sm text-blue-600">
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Uploading images...
                   </div>
                 )}
               </div>
