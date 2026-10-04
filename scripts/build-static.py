@@ -1,45 +1,78 @@
 #!/usr/bin/env python3
 """
-Build a static storefront HTML for GitHub Pages (pixelwiresolutionsapp.github.io)
-that fetches product data from the Vercel API backend.
+Build a fully self-contained static storefront HTML for GitHub Pages
+(pixelwiresolutionsapp.github.io) with product data embedded directly
+from the local SQLite database. No runtime API calls needed.
 """
 import json
 import os
-import urllib.request
+import sqlite3
 
-API_BASE = "https://temporary-snappy-beryl-va7pr0z.vercel.app"
+def load_data(db_path):
+    """Load products and categories from the local SQLite database."""
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
 
-def fetch(path):
-    url = f"{API_BASE}{path}"
-    req = urllib.request.Request(url, headers={"User-Agent": "build-script/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read())
+    products = cur.execute('''
+      SELECT p.id, p.name, p.slug, p.model, p.price, p.description, p.size, p.color,
+             p.isActive, p.featured, p.sortOrder,
+             b.id as brandId, b.name as brandName, b.slug as brandSlug,
+             c.id as catId, c.name as catName, c.slug as catSlug, c.icon as catIcon, c.color as catColor
+      FROM products p
+      JOIN brands b ON p.brandId = b.id
+      JOIN categories c ON p.categoryId = c.id
+      WHERE p.isActive = 1
+      ORDER BY p.sortOrder
+    ''').fetchall()
+
+    result = []
+    for p in products:
+        images = cur.execute(
+            'SELECT id, url, alt, sortOrder, isPrimary FROM product_images WHERE productId = ? ORDER BY sortOrder',
+            (p['id'],)
+        ).fetchall()
+        result.append({
+            'id': p['id'], 'name': p['name'], 'slug': p['slug'], 'model': p['model'],
+            'price': p['price'], 'description': p['description'] or '', 'size': p['size'] or 'N/A',
+            'color': p['color'] or '#1a1a2e', 'isActive': bool(p['isActive']), 'featured': bool(p['featured']),
+            'sortOrder': p['sortOrder'],
+            'brand': {'id': p['brandId'], 'name': p['brandName'], 'slug': p['brandSlug']},
+            'category': {'id': p['catId'], 'name': p['catName'], 'slug': p['catSlug'], 'icon': p['catIcon'] or '', 'color': p['catColor'] or ''},
+            'images': [{'id': i['id'], 'url': i['url'], 'alt': i['alt'] or '', 'sortOrder': i['sortOrder'], 'isPrimary': bool(i['isPrimary'])} for i in images]
+        })
+
+    categories = []
+    for c in cur.execute('SELECT id, name, slug, icon, color FROM categories ORDER BY name').fetchall():
+        categories.append({
+            'id': c['id'], 'name': c['name'], 'slug': c['slug'],
+            'icon': c['icon'] or '', 'color': c['color'] or ''
+        })
+
+    conn.close()
+    return result, categories
 
 def main():
     base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     out_dir = os.path.join(base, "docs")
     os.makedirs(out_dir, exist_ok=True)
 
-    try:
-        prod_data = fetch("/api/products?limit=500")
-        cat_data = fetch("/api/categories")
-        brand_data = fetch("/api/brands")
-        print(f"Pre-fetched {prod_data['total']} products, {len(cat_data)} categories, {len(brand_data)} brands")
-    except Exception as e:
-        print(f"Warning: could not pre-fetch data: {e}")
-        prod_data = {"products": [], "total": 0}
-        cat_data = []
-        brand_data = []
+    # Load data from local database
+    db_path = os.path.join(base, "db", "custom.db")
+    products, categories = load_data(db_path)
+    print(f"Loaded {len(products)} products, {len(categories)} categories from local database")
 
-    # Read the JS template from a separate file to avoid Python escaping issues
+    # Serialize data for embedding in HTML
+    products_json = json.dumps(products, ensure_ascii=False)
+    categories_json = json.dumps(categories, ensure_ascii=False)
+
     js_code = r'''
-  // ─── Config ───
-  const API = "''' + API_BASE + r'''/api";
+  // ─── Embedded Data (loaded from database at build time) ───
+  let products = ''' + products_json + r''';
+  let categories = ''' + categories_json + r''';
 
   // ─── State ───
-  let products = [];
-  let categories = [];
-  let loading = true;
+  let loading = false;
   let activeCategory = "all";
   let searchQuery = "";
   let sortBy = "sortOrder";
@@ -50,24 +83,6 @@ def main():
   let custQty = 1;
   let delivery = "pickup";
   let channel = "whatsapp";
-
-  async function loadData() {
-    try {
-      const [prodRes, catRes] = await Promise.all([
-        fetch(API + "/products?limit=200"),
-        fetch(API + "/categories"),
-      ]);
-      const prodData = await prodRes.json();
-      const catData = await catRes.json();
-      products = prodData.products || [];
-      categories = catData || [];
-    } catch (e) {
-      console.error("Failed to load:", e);
-    } finally {
-      loading = false;
-      render();
-    }
-  }
 
   function fmtPrice(p) {
     return "$" + p.toLocaleString("en-JM", { minimumFractionDigits: 2 });
@@ -200,7 +215,7 @@ def main():
       if (lp.images.length>1) {
         h += '<div class="flex gap-2 mb-4 overflow-x-auto pb-1">';
         lp.images.forEach((img,i) => {
-          h += '<button onclick="lightboxIdx='+i+';render()" class="shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition '+(i===lightboxIdx?'border-green-500':'border-gray-200 hover:border-gray-400')+'"><img src="'+img.url+'" alt="" class="w-full h-full object-cover" onerror="this.style.display=\'none\'" /></button>';
+          h += '<button onclick="lightboxIdx='+i+';render()" class="shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition '+(i===lightboxIdx?'border-green-500':'border-gray-200 hover:border-gray-400')+'"><img src="'+img.url+'" alt="" class="w-full h-full object-cover" onerror="this.style.display=\'none\'" referrerpolicy="no-referrer" /></button>';
         });
         h += '</div>';
       }
@@ -225,7 +240,7 @@ def main():
       h += '<div class="p-6">';
       h += '<h2 class="text-lg font-bold text-gray-900">Order: '+esc(op.brand.name)+' \u2014 '+esc(op.name)+'</h2>';
       h += '<p class="text-green-600 font-bold text-xl mt-1">'+fmtPrice(op.price)+' JMD</p>';
-      h += '<label class="block mt-4"><span class="text-sm font-medium text-gray-700">Your Name</span><input type="text" id="custNameInput" placeholder="Enter your name" class="mt-1 w!-full px-3 py-2 border rounded-lg text-sm focus:border-green-500 focus:outline-none" /></label>';
+      h += '<label class="block mt-4"><span class="text-sm font-medium text-gray-700">Your Name</span><input type="text" id="custNameInput" placeholder="Enter your name" class="mt-1 w-full px-3 py-2 border rounded-lg text-sm focus:border-green-500 focus:outline-none" /></label>';
       h += '<label class="block mt-3"><span class="text-sm font-medium text-gray-700">Quantity</span><input type="number" min="1" id="custQtyInput" value="'+custQty+'" class="mt-1 w-full px-3 py-2 border rounded-lg text-sm focus:border-green-500 focus:outline-none" /></label>';
       h += '<div class="mt-3"><span class="text-sm font-medium text-gray-700 block mb-1">Delivery</span><div class="space-y-1">';
       [{key:"pickup",label:"Pickup (Free)"},{key:"kgn",label:"Kingston ($1,500)"},{key:"parish",label:"Islandwide ($3,000)"}].forEach(o => {
@@ -255,7 +270,8 @@ def main():
     }
   }
 
-  loadData();
+  // Render immediately — data is already embedded
+  render();
 '''
 
     html = '''<!DOCTYPE html>
@@ -298,7 +314,7 @@ def main():
 </body>
 </html>'''
 
-    # Fix the typo in the generated code
+    # Fix any typos
     html = html.replace('w!-full', 'w-full')
 
     with open(os.path.join(out_dir, "index.html"), "w") as f:
@@ -310,13 +326,12 @@ def main():
         import shutil
         shutil.copy2(logo_src, os.path.join(out_dir, "logo.jpg"))
 
-    # Create CNAME for custom domain (if needed later)
     # Create 404.html for SPA routing
     with open(os.path.join(out_dir, "404.html"), "w") as f:
         f.write(html)
 
     print(f"Static site built to {out_dir}/index.html")
-    print(f"API backend: {API_BASE}")
+    print(f"Data embedded: {len(products)} products, {len(categories)} categories")
 
 if __name__ == "__main__":
     main()
