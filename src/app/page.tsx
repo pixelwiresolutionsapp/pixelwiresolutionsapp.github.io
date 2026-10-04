@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import Image from 'next/image'
 import { toast } from 'sonner'
 import { API, apiFetch } from '@/lib/api-config'
 
@@ -191,8 +190,9 @@ export default function Storefront() {
                       <img
                         src={primaryImg.url}
                         alt={p.name}
+                        referrerPolicy="no-referrer"
                         className="w-full h-full object-contain p-4 transition group-hover:scale-105"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                        onError={(e) => { (e.target as HTMLImageElement).src = ''; (e.target as HTMLImageElement).alt = 'Image unavailable' }}
                       />
                     )}
                     {p.images.length > 1 && (
@@ -259,8 +259,9 @@ export default function Storefront() {
                   <img
                     src={lightboxProduct.images[lightboxIdx].url}
                     alt={lightboxProduct.name}
+                    referrerPolicy="no-referrer"
                     className="max-h-80 object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    onError={(e) => { (e.target as HTMLImageElement).src = ''; (e.target as HTMLImageElement).alt = 'Image unavailable' }}
                   />
                 )}
                 {lightboxProduct.images.length > 1 && (
@@ -285,7 +286,7 @@ export default function Storefront() {
                       onClick={() => setLightboxIdx(i)}
                       className={`shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition ${i === lightboxIdx ? 'border-green-500' : 'border-gray-200 hover:border-gray-400'}`}
                     >
-                      <img src={img.url} alt="" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                      <img src={img.url} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
                     </button>
                   ))}
                 </div>
